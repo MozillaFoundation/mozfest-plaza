@@ -1,0 +1,26 @@
+{
+  "atrium": {
+    "enabled": true,
+    "visible": true
+  },
+  "whatsOn": {
+    "enabled": true,
+    "visible": true
+  },
+  "schedule": {
+    "enabled": true,
+    "visible": true
+  },
+  "coffeeChat": {
+    "enabled": false,
+    "visible": false
+  },
+  "helpDesk": {
+    "enabled": true,
+    "visible": true
+  },
+
+  "startDate": "2021-10-12T00:00:00.000Z",
+  "endDate": "2021-10-14T20:00:00.000Z",
+  "isStatic": false
+}
