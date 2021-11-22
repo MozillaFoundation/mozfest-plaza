@@ -4,8 +4,6 @@
 
 MozFest is a unique hybrid: part art, tech and society convening, part maker festival, and the premiere gathering for activists in diverse global movements fighting for a more humane digital world. If you registered for a ticket, you’ll be able to access the full schedule and features.
 
-<AtriumVideo />
-
 %feature_video%
 
 <br />
