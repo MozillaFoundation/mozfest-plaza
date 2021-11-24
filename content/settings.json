@@ -15,6 +15,18 @@
     "enabled": false,
     "visible": false
   },
+  "spaces": {
+    "enabled": true,
+    "visible": true
+  },
+  "artGallery": {
+    "enabled": true,
+    "visible": true
+  },
+  "skillShare": {
+    "enabled": true,
+    "visible": true
+  },
   "helpDesk": {
     "enabled": true,
     "visible": true
