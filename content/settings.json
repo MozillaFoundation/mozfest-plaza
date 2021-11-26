@@ -8,7 +8,7 @@
     "visible": true
   },
   "schedule": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "coffeeChat": {
@@ -16,26 +16,26 @@
     "visible": false
   },
   "spaces": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "artGallery": {
     "enabled": true,
-    "visible": true
+    "visible": false
   },
   "skillShare": {
     "enabled": true,
-    "visible": true
+    "visible": false
   },
   "helpDesk": {
     "enabled": true,
-    "visible": true
+    "visible": false
   },
 
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": true,
+    "showLogin": false,
     "showRegister": true
   },
 
