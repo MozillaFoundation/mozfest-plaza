@@ -39,6 +39,17 @@
     "showRegister": true
   },
 
+  "atriumWidgets": {
+    "siteVisitors": true,
+    "twitter": true,
+    "login": true,
+    "register": true,
+    "spatialChat": true,
+    "slack": true,
+    "familyResources": true,
+    "mozfestBook": true
+  },
+
   "startDate": "2021-10-12T00:00:00.000Z",
   "endDate": "2021-10-14T20:00:00.000Z",
   "isStatic": false
