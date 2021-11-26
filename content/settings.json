@@ -32,6 +32,13 @@
     "visible": true
   },
 
+  "navigation": {
+    "showInterpret": false,
+    "showProfile": true,
+    "showLogin": true,
+    "showRegister": true
+  },
+
   "startDate": "2021-10-12T00:00:00.000Z",
   "endDate": "2021-10-14T20:00:00.000Z",
   "isStatic": false
