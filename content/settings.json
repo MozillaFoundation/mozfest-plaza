@@ -42,11 +42,11 @@
   "atriumWidgets": {
     "siteVisitors": true,
     "twitter": true,
-    "login": true,
+    "login": false,
     "register": true,
-    "spatialChat": true,
-    "slack": true,
-    "familyResources": true,
+    "spatialChat": false,
+    "slack": false,
+    "familyResources": false,
     "mozfestBook": true
   },
 
