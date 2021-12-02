@@ -45,7 +45,7 @@
     "login": false,
     "register": true,
     "spatialChat": false,
-    "slack": false,
+    "slack": true,
     "familyResources": false,
     "mozfestBook": true
   },
