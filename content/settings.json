@@ -17,7 +17,7 @@
   },
   "spaces": {
     "enabled": false,
-    "visible": false
+    "visible": true
   },
   "artGallery": {
     "enabled": true,
