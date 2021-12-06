@@ -15,11 +15,16 @@
     "enabled": false,
     "visible": false
   },
-  "spaces": {
+  "helpDesk": {
+    "enabled": true,
+    "visible": false
+  },
+
+  "social": {
     "enabled": false,
     "visible": true
   },
-  "artGallery": {
+  "arts": {
     "enabled": true,
     "visible": false
   },
@@ -27,7 +32,7 @@
     "enabled": true,
     "visible": false
   },
-  "helpDesk": {
+  "fringe": {
     "enabled": true,
     "visible": false
   },
