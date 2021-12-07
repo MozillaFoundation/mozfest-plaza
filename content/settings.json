@@ -22,7 +22,7 @@
 
   "social": {
     "enabled": false,
-    "visible": true
+    "visible": false
   },
   "arts": {
     "enabled": true,
