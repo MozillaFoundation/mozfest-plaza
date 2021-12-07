@@ -36,6 +36,10 @@
     "enabled": false,
     "visible": true
   },
+  "house": {
+    "enabled": false,
+    "visible": true
+  },
 
   "navigation": {
     "showInterpret": false,
