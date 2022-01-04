@@ -8,28 +8,37 @@
     "visible": true
   },
   "schedule": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "coffeeChat": {
     "enabled": false,
     "visible": false
   },
-  "spaces": {
-    "enabled": false,
-    "visible": false
-  },
-  "artGallery": {
-    "enabled": true,
-    "visible": false
-  },
-  "skillShare": {
-    "enabled": true,
-    "visible": false
-  },
   "helpDesk": {
     "enabled": true,
     "visible": false
+  },
+
+  "social": {
+    "enabled": true,
+    "visible": true
+  },
+  "arts": {
+    "enabled": true,
+    "visible": true
+  },
+  "skillShare": {
+    "enabled": true,
+    "visible": true
+  },
+  "fringe": {
+    "enabled": true,
+    "visible": true
+  },
+  "house": {
+    "enabled": false,
+    "visible": true
   },
 
   "navigation": {
@@ -42,11 +51,11 @@
   "atriumWidgets": {
     "siteVisitors": true,
     "twitter": true,
-    "login": false,
+    "login": true,
     "register": true,
-    "spatialChat": false,
+    "spatialChat": true,
     "slack": true,
-    "familyResources": false,
+    "familyResources": true,
     "mozfestBook": true
   },
 
