@@ -4,8 +4,8 @@
     "visible": true
   },
   "whatsOn": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "schedule": {
     "enabled": true,
@@ -16,13 +16,13 @@
     "visible": false
   },
   "helpDesk": {
-    "enabled": true,
-    "visible": false
+    "enabled": false,
+    "visible": true
   },
 
   "social": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "arts": {
     "enabled": true,
@@ -51,11 +51,11 @@
   "atriumWidgets": {
     "siteVisitors": true,
     "twitter": true,
-    "login": true,
+    "login": false,
     "register": true,
-    "spatialChat": true,
+    "spatialChat": false,
     "slack": true,
-    "familyResources": true,
+    "familyResources": false,
     "mozfestBook": true
   },
 
