@@ -33,7 +33,7 @@
     "visible": true
   },
   "fringe": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "house": {
