@@ -4,11 +4,11 @@
     "visible": true
   },
   "whatsOn": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "schedule": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "coffeeChat": {
@@ -25,15 +25,15 @@
     "visible": false
   },
   "arts": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "skillShare": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "fringe": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "house": {
@@ -60,6 +60,6 @@
   },
 
   "startDate": "2022-03-07T00:00:00.000Z",
-  "endDate": "2022-03-10T23:59:59.999Z",
+  "endDate": "2022-03-11T23:59:59.999Z",
   "isStatic": false
 }
