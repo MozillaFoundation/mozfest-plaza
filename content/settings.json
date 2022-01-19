@@ -38,7 +38,7 @@
   },
   "house": {
     "enabled": false,
-    "visible": true
+    "visible": false
   },
 
   "navigation": {
