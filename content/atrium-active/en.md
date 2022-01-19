@@ -1,3 +1,5 @@
+<!-- This is the Plaza page when the visitor is signed in -->
+
 %conference_over_message%
 
 Over the last ten years, MozFest has fueled the movement to ensure the internet benefits humanity, rather than harms it. This year, your part in the story is critical to our community’s mission: a better, healthier internet and more Trustworthy AI.

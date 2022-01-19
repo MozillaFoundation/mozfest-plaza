@@ -1,3 +1,5 @@
+<!-- This is the Plaza page when the visitor is signed out -->
+
 # Arrive with an idea, leave with a community
 
 %conference_over_message%
