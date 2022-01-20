@@ -44,7 +44,7 @@
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": true,
+    "showLogin": false,
     "showRegister": true
   },
 
