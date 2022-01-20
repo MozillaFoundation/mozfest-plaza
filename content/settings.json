@@ -25,15 +25,15 @@
     "visible": false
   },
   "arts": {
-    "enabled": false,
-    "visible": true
+    "enabled": true,
+    "visible": false
   },
   "skillShare": {
-    "enabled": false,
-    "visible": true
+    "enabled": true,
+    "visible": false
   },
   "fringe": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "house": {
@@ -44,7 +44,7 @@
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": true,
+    "showLogin": false,
     "showRegister": true
   },
 
