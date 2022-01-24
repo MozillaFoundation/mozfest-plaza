@@ -8,7 +8,7 @@
     "visible": true
   },
   "schedule": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "coffeeChat": {
