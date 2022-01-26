@@ -10,7 +10,7 @@ MozFest is a unique hybrid: part art, tech and society convening, part maker fes
 
 Over the last twelve years, MozFest has fueled the movement to ensure the internet benefits humanity, rather than harms it. As the festival matures, we remain focused in our work to build a healthier internet and more Trustworthy AI.
 
-%feature_audio%
+%feature_audio_a%
 
 <br />
 
