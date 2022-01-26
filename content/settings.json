@@ -49,10 +49,10 @@
   },
 
   "atriumWidgets": {
-    "siteVisitors": true,
+    "register": true,
     "twitter": true,
     "login": false,
-    "register": true,
+    "siteVisitors": true,
     "spatialChat": false,
     "slack": true,
     "familyResources": false,
