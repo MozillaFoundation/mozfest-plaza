@@ -4,7 +4,7 @@
     "visible": true
   },
   "whatsOn": {
-    "enabled": true,
+    "enabled": false,
     "visible": false
   },
   "schedule": {
@@ -25,11 +25,11 @@
     "visible": false
   },
   "arts": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "skillShare": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "fringe": {
