@@ -40,6 +40,10 @@
     "enabled": false,
     "visible": false
   },
+  "misinfoCon": {
+    "enabled": true,
+    "visible": true
+  },
 
   "navigation": {
     "showInterpret": false,
