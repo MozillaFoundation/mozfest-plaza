@@ -41,7 +41,7 @@
     "visible": false
   },
   "misinfoCon": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
 
