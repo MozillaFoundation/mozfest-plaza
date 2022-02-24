@@ -44,6 +44,14 @@
     "enabled": true,
     "visible": true
   },
+  "emergentInfo": {
+    "enabled": true,
+    "visible": true
+  },
+  "emergentSessions": {
+    "enabled": true,
+    "visible": true
+  },
 
   "navigation": {
     "showInterpret": false,
