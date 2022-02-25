@@ -45,12 +45,12 @@
     "visible": true
   },
   "emergentInfo": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "emergentSessions": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "navigation": {
