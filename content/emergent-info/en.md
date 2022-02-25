@@ -6,7 +6,7 @@ Sometimes you come up with a great idea for a session _during_ the festival. Her
 
 Submit a new idea or high five an existing one. When multiple people share your interest, a session can emerge.
 
-Leave your username of the [MozFest Slack](https://www.mozillafestival.org/en/slack/) and you will be contacted to turn your idea into a session on the emergent schedule!
+Leave your [MozFest Slack](https://www.mozillafestival.org/en/slack/) username and you will be contacted to turn your idea into a session on the emergent schedule!
 
 Happy sharing!
 
