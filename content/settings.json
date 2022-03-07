@@ -16,7 +16,7 @@
     "visible": false
   },
   "helpDesk": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
 
