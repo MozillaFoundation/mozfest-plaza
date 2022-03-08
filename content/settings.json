@@ -65,7 +65,7 @@
     "twitter": true,
     "login": false,
     "siteVisitors": true,
-    "spatialChat": false,
+    "spatialChat": true,
     "slack": true,
     "familyResources": true,
     "mozfestBook": true
