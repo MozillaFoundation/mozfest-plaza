@@ -64,7 +64,7 @@
     "register": true,
     "twitter": true,
     "login": false,
-    "siteVisitors": true,
+    "siteVisitors": false,
     "spatialChat": true,
     "slack": true,
     "familyResources": true,
