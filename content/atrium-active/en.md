@@ -4,6 +4,8 @@
 
 Over the last twelve years, MozFest has fueled the movement to ensure the internet benefits humanity, rather than harms it. This year, your part in the story is critical to our community’s mission: a better, healthier internet and more Trustworthy AI. Come and go as your schedule allows - the events, and sessions taking place at MozFest include important and critical work towards Trustworthy AI, alongside moments to reset, refocus, and refresh. Important work will be intertwined between a diversity of sessions (some away from Zoom), coffee breaks, self care, and tons of fun. Instructions for navigating around the festival can be found below. 
 
+%feature_video%
+
 This is the MozFest Plaza, the central hub for all things Mozilla Festival. Here are a few pointers to help you navigate your way through the festival:
 
 - **Browse On-Demand Sessions.** In the Schedule view (found on the left hand side of this page) you can filter sessions by Space, session format or by tag.. 
