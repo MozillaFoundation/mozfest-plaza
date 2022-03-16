@@ -2,6 +2,7 @@
 
 # Arrive with an idea, leave with a community
 
+%feature_video%
 
 MozFest is a unique hybrid: part art, tech and society convening, part maker festival, and the premiere gathering for activists in diverse global movements fighting for a more humane digital world.
 
