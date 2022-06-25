@@ -8,16 +8,16 @@
     "visible": false
   },
   "schedule": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "coffeeChat": {
     "enabled": false,
     "visible": false
   },
   "helpDesk": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "social": {
@@ -25,39 +25,39 @@
     "visible": false
   },
   "arts": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "skillShare": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "fringe": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "house": {
     "enabled": false,
     "visible": false
   },
   "misinfoCon": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "emergentInfo": {
     "enabled": false,
     "visible": false
   },
   "emergentSessions": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
     "showLogin": true,
-    "showRegister": true
+    "showRegister": false
   },
 
   "atriumWidgets": {
