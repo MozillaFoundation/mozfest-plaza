@@ -1,0 +1,83 @@
+[
+  {
+    "id": "discussion-capped",
+    "iconGroup": "fas",
+    "iconName": "comments",
+    "layout": "workshop",
+    "title": {
+      "en": "Discussion"
+    }
+  },
+  {
+    "id": "workshop",
+    "iconGroup": "fas",
+    "iconName": "object-group",
+    "layout": "workshop",
+    "title": {
+      "en": "Workshop"
+    }
+  },
+  {
+    "id": "skill-share",
+    "iconGroup": "fas",
+    "iconName": "people-arrows",
+    "layout": "workshop",
+    "title": {
+      "en": "Skill Share"
+    }
+  },
+  {
+    "id": "skill-share-discussion",
+    "iconGroup": "fas",
+    "iconName": "people-arrows",
+    "layout": "workshop",
+    "title": {
+      "en": "Skill Share"
+    }
+  },
+  {
+    "id": "art-and-media",
+    "iconGroup": "fas",
+    "iconName": "palette",
+    "layout": "plenary",
+    "title": {
+      "en": "Art and Media"
+    }
+  },
+  {
+    "id": "art-and-media-discussion",
+    "iconGroup": "fas",
+    "iconName": "palette",
+    "layout": "workshop",
+    "title": {
+      "en": "Art and Media"
+    }
+  },
+  {
+    "id": "broadcast-talks",
+    "iconGroup": "fas",
+    "iconName": "podcast",
+    "layout": "plenary",
+    "title": {
+      "en": "Community Plenary"
+    }
+  },
+  {
+    "id": "social-moments",
+    "iconGroup": "fas",
+    "iconName": "share-alt",
+    "layout": "plenary",
+    "title": {
+      "en": "Social Moments"
+    }
+  },
+  {
+    "id": "contribute-a-thons-and-hack-a-thons",
+    "iconGroup": "fas",
+    "iconName": "lightbulb",
+    "layout": "plenary",
+    "title": {
+      "en": "Hackathons"
+    }
+  }
+]

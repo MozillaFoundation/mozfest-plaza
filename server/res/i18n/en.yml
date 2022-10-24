@@ -1,0 +1,7 @@
+test:
+  simple: Hello, world!
+  substituted: Hello, {{ name }}!
+
+email:
+  login:
+    subject: MozFest login

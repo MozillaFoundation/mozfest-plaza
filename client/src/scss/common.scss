@@ -1,0 +1,45 @@
+// ...
+$family-sans-serif: 'Nunito Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI',
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+$title-family: 'Zilla Slab', $family-sans-serif;
+$title-weight: 700;
+$title-color: #000;
+
+$text-light: #757a8a;
+
+// $primary: #b35ffc;
+$primary: #b7007e;
+$secondary: #8f14fb;
+$green: #00cccc;
+
+$link: #6703bf;
+
+$sideTabs-background: $link;
+$sideTabs-active: #954fd2;
+
+$countdown-background: $link;
+
+$background: #f4f4f4;
+
+$button-border-width: 1px;
+$button-padding-vertical: calc(0.1em - #{$button-border-width});
+$button-padding-horizontal: 0.7em;
+
+$navbar-item-img-max-height: 2.1rem;
+
+$sponsorRow-largeHeight: 150px !default;
+$sponsorRow-mediumHeight: 120px !default;
+$sponsorRow-regularHeight: 90px !default;
+$sponsorRow-smallHeight: 60px !default;
+
+$whatsOn-titleFamily: $title-family;
+$scheduleView-titleFamily: $title-family;
+
+@mixin title-font() {
+  font-family: $title-family;
+  font-weight: $title-weight;
+}
+
+@import '@openlab/deconf-ui-toolkit/common.scss';

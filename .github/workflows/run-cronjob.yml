@@ -1,0 +1,49 @@
+name: Run CronJob
+
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        type: choice
+        required: true
+        description: Which CronJob to run
+        options:
+          - content
+          - pretalx
+          - tito
+      namespace:
+        type: choice
+        required: true
+        description: Which namespace to run the Job in
+        options:
+          - production
+          - development
+
+jobs:
+  run_k8s_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup .kube/config
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          mkdir -p $HOME/.kube
+          echo -n "$KUBE_CONFIG" > $HOME/.kube/config
+
+      - name: run job
+        run: |
+          kubectl \
+            --namespace=${{ github.event.inputs.namespace }} \
+            delete job \
+            --wait \
+            gha-${{ github.event.inputs.job }} \
+              || true
+
+          kubectl \
+            --namespace=${{ github.event.inputs.namespace }} \
+            create job \
+            --from=cronjob/${{ github.event.inputs.job }} \
+            gha-${{ github.event.inputs.job }}
