@@ -1,6 +1,7 @@
 {
   "name": "@openlab/mozfest",
   "private": true,
+  "version": "3.0.0-alpha.0",
   "scripts": {
     "prepare": "husky install",
     "release": "standard-version && git push --follow-tags origin main",
