@@ -13,13 +13,13 @@
     "serve": "npm run -s dev -- serve --migrate"
   },
   "dependencies": {
-    "@godaddy/terminus": "^4.9.0",
-    "@koa/cors": "^3.1.0",
+    "@godaddy/terminus": "^4.11.2",
+    "@koa/cors": "^3.4.3",
     "@koa/router": "^10.1.1",
-    "@openlab/deconf-api-toolkit": "^4.7.1",
-    "@openlab/deconf-shared": "^3.4.0",
-    "@sendgrid/mail": "^7.4.2",
-    "@socket.io/redis-adapter": "^7.0.0",
+    "@openlab/deconf-api-toolkit": "^4.8.1",
+    "@openlab/deconf-shared": "^3.5.0",
+    "@sendgrid/mail": "^7.7.0",
+    "@socket.io/redis-adapter": "^7.2.0",
     "debug": "^4.3.2",
     "dedent": "^0.7.0",
     "dotenv": "^10.0.0",
@@ -38,13 +38,13 @@
     "superstruct": "^0.15.2",
     "valid-env": "^1.1.1",
     "yaml": "^1.10.2",
-    "yargs": "^17.1.1"
+    "yargs": "^17.6.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/dedent": "^0.7.0",
-    "@types/escape-html": "^1.0.1",
-    "@types/jsonwebtoken": "^8.5.5",
+    "@types/escape-html": "^1.0.2",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/koa": "^2.13.4",
     "@types/koa__cors": "^3.0.3",
     "@types/koa__router": "^8.0.7",
