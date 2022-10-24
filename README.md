@@ -1,5 +1,10 @@
-# mozfest-content
+# MozFest Plaza
 
----
+This repo contains the source code, content and deployment configuration to run the MozFest Plaza!
 
-> This project was set up by [puggle](https://npm.im/puggle)
+**Contents**
+
+- [client](./client/) — The Vue.js front-end app
+- [config](./config/) — Kubernetes configurations to deploy the infrastructure
+- [content](./content/) — Markdown copy and content for the website
+- [server](./server/) — The Node.js server

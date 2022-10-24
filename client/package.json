@@ -1,0 +1,60 @@
+{
+  "name": "@openlab/mozfest-client",
+  "version": "2.15.3",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --modern",
+    "lint": "vue-cli-service lint",
+    "report": "vue-cli-service build --report-json && webpack-bundle-analyzer dist/report.json"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^2.0.8",
+    "@openlab/deconf-shared": "^3.5.0",
+    "@openlab/deconf-ui-toolkit": "^2.24.2",
+    "bulma": "^0.9.4",
+    "copy-to-clipboard": "^3.3.2",
+    "core-js": "^3.26.0",
+    "ky": "^0.28.7",
+    "marked": "^4.1.1",
+    "socket.io-client": "^4.5.3",
+    "vue": "^2.7.13",
+    "vue-gtag": "^1.16.1",
+    "vue-i18n": "^8.27.2",
+    "vue-router": "^3.6.5",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/marked": "^4.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "json-loader": "^0.5.7",
+    "sass": "^1.55.0",
+    "sass-loader": "^12.6.0",
+    "vue-template-compiler": "^2.7.13",
+    "yaml-loader": "^0.6.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "vue-cli-service lint"
+    ],
+    "*.{scss,yml,md,mdx}": [
+      "prettier --write"
+    ]
+  }
+}

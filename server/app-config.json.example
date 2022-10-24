@@ -1,0 +1,30 @@
+{
+  "admins": [{ "email": "geoff@example.com" }],
+  "mail": {
+    "fromEmail": "noreply@example.com",
+    "replyToEmail": "support@example.com"
+  },
+  "organiser": {
+    "name": "Open Lab",
+    "email": "support@example.com"
+  },
+  "carbon": {
+    "originCountry": "GB"
+  },
+  "sendgrid": {
+    "loginTemplateId": "d-123456789abcdef0"
+  },
+  "pretalx": {
+    "eventSlug": "mozfest-2022",
+    "englishKeys": ["en", "en-mozilla"],
+    "questions": {
+      "pulsePhoto": 1,
+      "affiliation": 2,
+      "links": [3]
+    }
+  },
+  "tito": {
+    "accountSlug": "mozilla",
+    "eventSlug": "mozfest-2022"
+  }
+}

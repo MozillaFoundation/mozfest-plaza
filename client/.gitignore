@@ -1,0 +1,5 @@
+#
+# Files to ignore from git source control
+#
+
+dist

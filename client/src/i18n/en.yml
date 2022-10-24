@@ -1,0 +1,311 @@
+deconf:
+  sideTabs:
+    unavailable: Unavailable
+
+  apiError:
+    title: Something went wrong
+    content: We're having a bit of trouble, try refresing or coming back later.
+    retry: 'Retrying in {0}'
+
+  appLoading:
+    message: Loading...
+
+  scheduleBlock:
+    workshopTitle: Interactive Sessions
+    workshopDescription: To browse all of the exciting, interactive sessions happening at MozFest during this time period, click show all.
+    workshops: 'None | 1 session | {n} sessions'
+    showWorkshops: Show all
+    hideWorkshops: Hide all
+
+  general:
+    days: days | day | days
+    hours: hours | hour | hours
+    minutes: minutes | minute | minutes
+    seconds: seconds | second | seconds
+    genericError: Something went wrong, please try again
+    closeDialog: Close
+
+  miniSession:
+    view: View
+    live: Live
+
+  featuredSessions:
+    title: Featured Sessions
+    action: Explore all sessions
+
+  scheduleFilters:
+    query: Search
+    showFilters: Show filters
+    hideFilters: Hide filters
+    clearFilters: Clear filters
+    dateFilter: Date
+    typeFilter: Type
+    trackFilter: Space
+    themeFilter: Theme
+    recordedFilter: Is Recorded
+    languageFilter: Language
+    offLabel: All
+    'yes': 'Yes'
+    'no': 'No'
+
+  attendanceSection:
+    loading: Fetching attendance
+    processing: Processing
+    registered: You are registered for this session
+    full: This session is full
+    spacesLeft: '{0}/{1} seats remaining.'
+    registerButton: Register now
+    unregisterButton: Release my seat
+
+  timeSlot:
+    past: Past
+    live: Live
+
+  joinSession:
+    future: Preview session
+    present: Join session
+    past: View session
+
+  sessionAttributes:
+    isRecorded: Recorded
+    notRecorded: Not recorded
+
+  addToCalendar:
+    action: Add to calendar
+
+  sessionLink:
+    copy: copy
+    copied: copied
+
+  sessionState:
+    liveNow: Live Now
+    sessionOver: Session over
+    interest: 'no activity | added to 1 schedule | added to {n} schedules'
+
+  sessionEmbed:
+    noEmbed: Something went wrong, there is nothing to show here
+    openTeams: Open Teams meeting
+    openZoom: Open Zoom meeting
+    openZoomRegister: Register for Zoom meeting
+    openGoogleMeet: Open Google Meet
+    openHubs: Open Mozilla Hub
+    openSpatial: Open Spatial Chat
+
+  languageWarning:
+    message: 'Please note this session is only available in {0}'
+
+  navigationBar:
+    profile: My profile # TODO - new
+    login: Login
+    interpret: Interpret mode
+    register: Register
+    unavailable: ' (Unavailable)'
+
+  # Slots used instead
+  # whatsOn:
+  #   title: What's On
+  #   infoText: Browse the Schedule before release day
+  #   noResults: Nothing matched your query
+
+  login:
+    title: Login
+    email:
+      label: Email
+      placeholder: e.g. geoff@example.com
+      help: The email you registered with on ti.to
+    badEmail: Bad email
+    doneText: Login code sent
+    submitButton: Request magic link
+    registerLabel: Not registered yet?
+    registerAction: Register here
+
+  profile:
+    title: My Profile # TODO - new
+    actionLabel: Actions
+    logoutButton: Log out
+    dangerLabel: Danger zone
+    deleteButton: Delete account
+    deleteText: This is permenant, are you sure?
+    mozfest:
+      emailText: Email
+      localeText: Chosen language
+      whenText: Logged in
+      registeredText: Registered
+      nameText: Name
+      countryText: Country
+      affiliationText: Affiliation
+      marketingText: Marketing
+
+  schedule:
+    title: Schedule
+    description: ''
+    noResults: Nothing matched your query
+    allSessions: Full Schedule
+    userSessions: My Schedule
+    hidePast: Hide previous sessions
+    showPast: Show previous sessions
+
+  session:
+    slot: Schedule
+    countdown: Countdown
+    links: Links
+    linkPreview: The session links will be available 15 minutes before the start time
+    actions: Actions
+    logIn: If you wish to attend this session please login and press the "Add to My Schedule" button. Links to join the session will then appear 15 minutes before the session starts.
+    speakers: Facilitators
+    zoomLink: Zoom Room
+    teamsLink: Teams Meeting
+    miroLink: Miro Board
+    generalLink: Link
+    mozfest:
+      backButton: Back to Schedule
+      externalLinks: Please be aware the Facilitator for this session is using a third-party service not officially being used at MozFest.
+
+  interestSection:
+    message: Register your interest
+    unregisterButton: Remove from My Schedule
+    registerButton: Add to My Schedule
+
+  addToCalendarDialog:
+    title: Add session to calendar
+    # info: You can also get a personalised calendar link on the profile page.
+    info: Use the buttons below to add this session to your preferred calendar.
+    ical: Download event
+    google: Google Calendar
+    cancel: Cancel
+
+mozfest:
+  general:
+    appName: Mozilla Festival 2022 Schedule
+    backToAtrium: Back to Plaza
+    'yes': 'Yes'
+    'no': 'No'
+    registerUrl: https://www.mozillafestival.org/en/tickets/
+    helpDeskUrl: https://www.mozillafestival.org/helpdesk
+
+  atrium:
+    bookSubtitle: Discover our award-winning book, a celebration of our past and future.
+    bookTitle: How To MozFest
+    bookUrl: https://book.mozillafestival.org
+    familySubtitle: On-demand activities for attendees ages 3-12.
+    familyTitle: MozFest Family Resources
+    familyUrl: https://www.mozillafestival.org/family-resources
+    heading: MozFest 2022
+    logIn: Log in
+    onlineUsers: Online now
+    registerTitle: Secure Your Ticket
+    registerSubtitle: Registration is now available for MozFest 2022.
+    registerUrl: https://www.mozillafestival.org/tickets
+    slackSubtitle: Connect, collaborate, join the conversation.
+    slackTitle: MozFest Slack
+    slackUrl: https://www.mozillafestival.org/slack
+    spacialChatSubtitle: Visit our virtual common spaces here
+    spacialChatTitle: Spatial Chat
+    spacialChatUrl: https://spatial.chat/s/mozilla-festival-2022?guest
+    subtitle: from March 7th - 11th 2022.
+    title: Join us for a virtual MozFest
+    twitterSubtitle: Share the sessions you’re most excited about attending.
+    twitterTitle: 'Tweet #MozFest'
+    twitterUrl: https://twitter.com/hashtag/MozFest
+
+  footer:
+    appName: MozFest
+    guidelines: Community Guidelines
+    guidelinesUrl: https://www.mozillafestival.org/guidelines/
+    privacy: Privacy
+    privacyUrl: https://www.mozilla.org/privacy/websites/
+    terms: Terms & Conditions
+    termsUrl: https://www.mozillafestival.org/tickets/terms/
+
+  pageTitles:
+    atrium: Plaza
+    login: Log in
+    profile: Your Profile
+    schedule: Schedule
+    session: View Session
+    spaces: Social
+    skillShare: Lightning Talks
+    artGallery: Art & Media
+    terms: Ts & Cs
+    guidelines: Guidelines
+    privacy: Privacy
+    fringeEvents: Fringe Events
+    whatsOn: Sneak Peek
+    helpDesk: Help Desk
+    houseEvents: HouseEvents
+    misinfoCon: MisinfoCon # TODO - new
+    emergentSessions: Emergent Sessions # TODO - new
+
+  whatsOn:
+    title: Sneak Peek
+    noResults: Nothing matched your query
+    loading: Loading...
+
+  artAndMedia:
+    title: Art and Media
+    noResults: We couldn't find any sessions matching that
+    loading: Loading...
+
+  fringeEvents:
+    title: Fringe Events
+    noResults: We couldn't find any sessions matching that
+    loading: Loading...
+
+  houseEvents:
+    title: House Events
+    noResults: We couldn't find any sessions matching that
+    loading: Loading...
+
+  # TODO - new
+  misinfoCon:
+    title: MisinfoCon
+    noResults: We couldn't find any sessions matching that
+    loading: Loading...
+
+  # TODO - new
+  emergent:
+    title: Emergent Sessions
+    noResults: We couldn't find any sessions matching that
+    loading: Loading...
+    takePart: Take Part
+    caption: A sample of sessions that emerged at MozFest 2021
+
+  skillShare:
+    title: Lightning Talks
+    noResults: We couldn't find any sessions matching that
+    loading: Loading...
+
+  notFound:
+    title: Page Not Found
+    info: We can't find the page you're looking for
+
+  serverError:
+    unknown:
+      title: Something went wrong
+      info: An unknown error occured, please try again. If the problem persists, please contact us.
+      email: festival@mozilla.org
+    loginExpired:
+      title: Expired magic link
+      info: Your magic link to login has expired, they only last for 30 minutes for security reasons. Use the button below to start again.
+      action: Log in again
+
+  addUserCalendar:
+    title: Private calendar
+    generate: Generate url
+    info: Use this link to subscribe to "My Schedule" in your own calendar. Your calendar will refresh periodically to fetch the latest information and show you the events you have added to "My Schedule".
+    copy: copy
+    copied: copied
+
+  appLayout:
+    atrium: Plaza
+    whatsOn: Sneak Peek
+    schedule: Schedule
+    helpDesk: Help Desk
+
+    social: Social
+    arts: Arts & Media
+    skillShare: Lightning Talks
+    fringe: Fringe Events
+    house: House Events
+    misinfoCon: MisinfoCon # TODO - new
+    emergentSessions: Emergent Sessions # TODO - new
