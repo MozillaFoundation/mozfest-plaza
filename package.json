@@ -4,8 +4,10 @@
   "version": "3.0.0-alpha.0",
   "scripts": {
     "prepare": "husky install",
-    "release": "standard-version && git push --follow-tags origin main",
-    "format": "npm run --prefix server format && npm run --prefix client format"
+    "format": "npm run --prefix server format && npm run --prefix client format",
+    "release": "standard-version",
+    "release:beta": "standard-version --prerelease=beta",
+    "release:alpha": "standard-version --prerelease=alpha"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
