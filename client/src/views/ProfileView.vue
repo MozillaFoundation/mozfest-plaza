@@ -1,5 +1,5 @@
 <template>
-  <MozUtilLayout>
+  <UtilLayout>
     <ProfileView
       v-if="user && profile"
       api-module="api"
@@ -7,27 +7,26 @@
       @logout="onLogout"
       @unregister="onUnregister"
     >
-      <AddUserCalendar slot="preActions" />
+      <PrivateCalendarCreator slot="preActions" api-module="api" />
     </ProfileView>
-  </MozUtilLayout>
+  </UtilLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import {
   FullAuthToken,
-  mapApiState,
+  PrivateCalendarCreator,
   ProfileField,
   ProfileView,
 } from '@openlab/deconf-ui-toolkit'
-import MozUtilLayout from '@/components/MozUtilLayout.vue'
-import AddUserCalendar from '@/components/AddUserCalendar.vue'
 
+import UtilLayout from '@/components/MozUtilLayout.vue'
 import languageData from '@/data/languages.json'
-import { StorageKey } from '@/lib/module'
+import { mapApiState, StorageKey } from '@/lib/module'
 
 export default Vue.extend({
-  components: { MozUtilLayout, ProfileView, AddUserCalendar },
+  components: { UtilLayout, ProfileView, PrivateCalendarCreator },
   computed: {
     ...mapApiState('api', ['user', 'profile']),
     fields(): ProfileField[] {

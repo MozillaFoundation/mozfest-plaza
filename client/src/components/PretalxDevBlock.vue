@@ -20,8 +20,7 @@
 
 <script lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { mapApiState, Stack } from '@openlab/deconf-ui-toolkit'
-import { KyInstance } from 'ky/distribution/types/ky'
+import { DeconfApiClient, mapApiState, Stack } from '@openlab/deconf-ui-toolkit'
 import Vue from 'vue'
 
 interface Data {
@@ -47,8 +46,8 @@ export default Vue.extend({
     isAdmin(): boolean {
       return Boolean(this.user && this.user.user_roles.includes('admin'))
     },
-    pretalxAgent(): KyInstance {
-      return this.$store.getters['api/agent']
+    apiClient(): DeconfApiClient {
+      return this.$store.getters['api/apiClient']
     },
   },
   mounted() {
@@ -66,9 +65,9 @@ export default Vue.extend({
   methods: {
     /** Fetch the pretalx status from the API */
     async fetchStatus() {
-      this.status = await this.pretalxAgent
-        .get('admin/pretalx')
-        .json<PretalxStatus>()
+      this.status = await this.apiClient.fetchJson<PretalxStatus>(
+        'admin/pretalx'
+      )
     },
 
     /** Start a pretalx scrape */
@@ -81,9 +80,9 @@ export default Vue.extend({
       const confirmed = confirm('Are you sure?')
       if (!confirmed) return
 
-      const result = await this.pretalxAgent
-        .post('admin/pretalx')
-        .catch(() => null)
+      const result = await this.apiClient.fetchJson('admin/pretalx', {
+        method: 'post',
+      })
 
       if (result === null) alert('Failed to start regeneration')
     },

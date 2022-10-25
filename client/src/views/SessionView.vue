@@ -1,5 +1,5 @@
 <template>
-  <MozAppLayout v-if="session">
+  <AppLayout v-if="session">
     <SessionView
       api-module="api"
       :class="extraClasses"
@@ -25,7 +25,7 @@
         <div class="content" v-html="localeContent"></div>
       </template>
     </SessionView>
-  </MozAppLayout>
+  </AppLayout>
   <NotFoundView v-else />
 </template>
 
@@ -40,7 +40,7 @@ import {
   localiseFromObject,
 } from '@openlab/deconf-ui-toolkit'
 import { Location } from 'vue-router'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 import { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
 import { getSessionParentRoute } from '@/lib/module'
@@ -72,7 +72,7 @@ interface Data {
 
 export default Vue.extend({
   components: {
-    MozAppLayout,
+    AppLayout,
     SessionView,
     BackButton,
     NotFoundView,

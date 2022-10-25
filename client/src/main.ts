@@ -5,14 +5,17 @@ import router from './router/module'
 import store from './store/module'
 import i18n from './i18n/module'
 
-import { DevPlugin, TemporalPlugin } from '@openlab/deconf-ui-toolkit'
+import {
+  DevPlugin,
+  DialogPlugin,
+  TemporalPlugin,
+} from '@openlab/deconf-ui-toolkit'
 
 import { EnvPlugin, env } from './plugins/env-plugin'
 import { FontawesomePlugin } from './plugins/fontawesome-plugin'
 import { MozFestDeconfPlugin } from './plugins/deconf-plugin'
 import { MetricsPlugin } from './plugins/metrics-plugin'
 import { SocketIoPlugin } from './plugins/socketio-plugin'
-import { DialogPlugin } from './plugins/dialog-plugin'
 
 if (!env.DISABLE_SOCKETS) {
   Vue.use(SocketIoPlugin)

@@ -1,5 +1,5 @@
 <template>
-  <MozAppLayout>
+  <AppLayout>
     <WhatsOnView
       v-if="filteredSessions != null"
       :schedule="filteredSchedule"
@@ -20,28 +20,29 @@
     <InlineLoading v-else>
       {{ $t('mozfest.artAndMedia.loading') }}
     </InlineLoading>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 
 import {
   ApiContent,
   decodeUrlScheduleFilters,
   encodeScheduleFilters,
-  mapApiState,
+  filterScheduleFromSessions,
+  guardPage,
   ScheduleConfig,
   ScheduleFilterRecord,
   SelectOption,
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
-import { ScheduleRecord, Session } from '@openlab/deconf-shared'
+import { Session } from '@openlab/deconf-shared'
 import {
-  filterScheduleFromSessions,
   getLanguageOptions,
-  guardRoute,
+  mapApiState,
+  ScheduleRecord,
   StorageKey,
 } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
@@ -57,7 +58,7 @@ interface Data {
 const sessionTypeAllowList = new Set(['art-and-media'])
 
 export default Vue.extend({
-  components: { MozAppLayout, WhatsOnView, InlineLoading, ApiContent },
+  components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {
     return {
       filtersKey: StorageKey.ArtFilters,
@@ -85,7 +86,7 @@ export default Vue.extend({
     },
   },
   created() {
-    guardRoute(this.schedule?.settings, 'arts', this.user, this.$router)
+    guardPage(this.schedule?.settings.arts, this.user, this.$router)
   },
   methods: {
     onFilter(filters: ScheduleFilterRecord) {

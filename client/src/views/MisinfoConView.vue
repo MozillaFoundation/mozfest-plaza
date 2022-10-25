@@ -1,10 +1,14 @@
 <template>
-  <MozAppLayout>
+  <AppLayout>
     <FilteredScheduleView
       v-if="schedule"
       :schedule="schedule"
       :user-sessions="userSessions"
       :options="options"
+      :schedule-date="scheduleDate"
+      :route-query="$route.query"
+      @filter="onFilter"
+      class="appLayout-main"
     >
       <span slot="title">{{ $t('mozfest.misinfoCon.title') }}</span>
       <ApiContent slot="infoText" slug="misinfo-con-filters" />
@@ -13,27 +17,32 @@
     <InlineLoading v-else>
       {{ $t('mozfest.misinfoCon.loading') }}
     </InlineLoading>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 import InlineLoading from '@/components/InlineLoading.vue'
-import { ApiContent, mapApiState } from '@openlab/deconf-ui-toolkit'
 import {
-  StorageKey,
-  getLanguageOptions,
-  guardRoute,
+  ApiContent,
   FilteredScheduleOptions,
-} from '@/lib/module'
-import { Session } from '@openlab/deconf-shared'
-import FilteredScheduleView from '@/components/FilteredScheduleView.vue'
+  FilteredScheduleView,
+  guardPage,
+} from '@openlab/deconf-ui-toolkit'
+import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
 
 const typeAllowList = new Set(['misinfocon-discussion', 'misinfocon-workshop'])
 
-function predicate(session: Session): boolean {
-  return typeAllowList.has(session.type)
+const options: FilteredScheduleOptions = {
+  predicate: (s) => typeAllowList.has(s.type),
+  filtersKey: StorageKey.MisinfoConFilters,
+  enabledFilters: ['query', 'sessionType', 'language', 'date', 'theme'],
+  scheduleConfig: {
+    tileHeader: ['type'],
+    tileAttributes: ['languages', 'themes', 'recorded'],
+  },
+  languages: getLanguageOptions(),
 }
 
 interface Data {
@@ -41,30 +50,16 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: { MozAppLayout, FilteredScheduleView, ApiContent, InlineLoading },
-  data(): Data {
-    return {
-      options: {
-        predicate: (s) => predicate(s),
-        filtersKey: StorageKey.MisinfoConFilters,
-        scheduleConfig: {
-          tileHeader: ['type'],
-          tileAttributes: ['languages', 'themes', 'recorded'],
-        },
-        enabledFilters: ['query', 'sessionType', 'language', 'date', 'theme'],
-        languages: getLanguageOptions(),
-      },
-    }
-  },
+  components: { AppLayout, FilteredScheduleView, ApiContent, InlineLoading },
+  data: (): Data => ({ options }),
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),
+    scheduleDate() {
+      return this.$dev?.scheduleDate ?? this.$temporal.date
+    },
   },
   created() {
-    guardRoute(this.schedule?.settings, 'misinfoCon', this.user, this.$router)
+    guardPage(this.schedule?.settings.misinfoCon, this.user, this.$router)
   },
 })
 </script>
-
-<style lang="scss">
-// ...
-</style>

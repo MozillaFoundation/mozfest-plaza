@@ -1,6 +1,14 @@
-import { ConferenceConfig, PageFlag } from '@openlab/deconf-shared'
+import {
+  PageFlag,
+  ScheduleRecord as DeconfScheduleRecord,
+} from '@openlab/deconf-shared'
 
-export interface MozConferenceConfig extends ConferenceConfig {
+export interface MozConferenceConfig {
+  atrium?: PageFlag
+  whatsOn?: PageFlag
+  schedule: PageFlag
+  helpDesk: PageFlag
+
   social?: PageFlag
   arts?: PageFlag
   skillShare?: PageFlag
@@ -18,23 +26,21 @@ export interface MozConferenceConfig extends ConferenceConfig {
   }
 
   atriumWidgets: {
-    siteVisitors: boolean
+    register: boolean
     twitter: boolean
     login: boolean
-    register: boolean
+    siteVisitors: boolean
     spatialChat: boolean
     slack: boolean
     familyResources: boolean
     mozfestBook: boolean
   }
+
+  startDate: Date
+  endDate: Date
+  isStatic: boolean
 }
 
-// TODO: migrate to deconf version
-export function getSlug(input: string): string {
-  return input
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/[^\w-]+/g, '')
+export type ScheduleRecord = Omit<DeconfScheduleRecord, 'settings'> & {
+  settings: MozConferenceConfig
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="registerView">Redirecting...</div>
+  <p>Redirecting...</p>
 </template>
 
 <script lang="ts">

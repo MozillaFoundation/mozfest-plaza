@@ -1,100 +1,69 @@
 <template>
-  <MozAppLayout>
-    <ScheduleView
-      v-if="filteredSessions != null"
+  <AppLayout>
+    <FilteredScheduleView
+      v-if="schedule"
       :schedule="schedule"
-      :sessions="filteredSessions"
-      :user-sessions="userSessions || []"
-      :filters-key="filtersKey"
-      :config="config"
+      :user-sessions="userSessions"
+      :options="options"
       :schedule-date="scheduleDate"
-      :enabled-filters="enabledFilters"
-      :is-during-conference="isDuringConference"
-      :language-options="languages"
-      :url-filters="urlFilters"
+      :route-query="$route.query"
       @filter="onFilter"
+      class="appLayout-main"
     >
       <p slot="title">{{ $t('mozfest.houseEvents.title') }}</p>
       <p slot="infoText">{{ $t('mozfest.houseEvents.info') }}</p>
       <p slot="noResults">{{ $t('mozfest.houseEvents.noResults') }}</p>
-    </ScheduleView>
+    </FilteredScheduleView>
     <InlineLoading v-else>
       {{ $t('mozfest.houseEvents.loading') }}
     </InlineLoading>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 import {
-  decodeUrlScheduleFilters,
-  encodeScheduleFilters,
-  isDuringConference,
-  mapApiState,
-  ScheduleConfig,
-  ScheduleFilterRecord,
-  ScheduleView,
-  SelectOption,
+  FilteredScheduleOptions,
+  FilteredScheduleView,
+  guardPage,
 } from '@openlab/deconf-ui-toolkit'
-import { StorageKey, getLanguageOptions } from '@/lib/module'
-import { Session } from '@openlab/deconf-shared'
+import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 
 const sessionTypeAllowList = new Set(['mozfest-house'])
 
+const options: FilteredScheduleOptions = {
+  predicate: (s) => sessionTypeAllowList.has(s.type),
+  filtersKey: StorageKey.HouseEventsFilters,
+  enabledFilters: ['query', 'track', 'language', 'theme'],
+  scheduleConfig: {
+    tileHeader: ['track'],
+    tileAttributes: ['languages', 'themes'],
+  },
+  languages: getLanguageOptions(),
+}
+
 interface Data {
-  filtersKey: string
-  config: ScheduleConfig
-  enabledFilters: Array<keyof ScheduleFilterRecord>
-  languages: SelectOption[]
-  urlFilters: ScheduleFilterRecord | null
+  options: FilteredScheduleOptions
 }
 
 export default Vue.extend({
-  components: { MozAppLayout, ScheduleView, InlineLoading },
-  data(): Data {
-    return {
-      filtersKey: StorageKey.HouseEventsFilters,
-      enabledFilters: ['query', 'track', 'language', 'theme'],
-      config: {
-        tileHeader: ['track'],
-        tileAttributes: ['languages', 'themes'],
-      },
-      languages: getLanguageOptions(),
-      urlFilters: decodeUrlScheduleFilters(this.$route.query),
-    }
-  },
+  components: { AppLayout, FilteredScheduleView, InlineLoading },
+  data: (): Data => ({ options }),
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),
-    scheduleDate(): Date {
-      return this.$dev.scheduleDate || this.$temporal.date
-    },
-    filteredSessions(): Session[] {
-      if (!this.schedule) return []
-
-      return this.schedule.sessions.filter((s) =>
-        sessionTypeAllowList.has(s.type)
-      )
-    },
-    isDuringConference(): boolean {
-      // TODO: custom date range for these events
-      return isDuringConference(
-        this.scheduleDate,
-        this.schedule?.settings ?? null
-      )
+    scheduleDate() {
+      return this.$dev?.scheduleDate ?? this.$temporal.date
     },
   },
+  mounted() {
+    guardPage(this.schedule?.settings.house, this.user, this.$router)
+  },
   methods: {
-    onFilter(filters: ScheduleFilterRecord) {
-      this.$router.replace({
-        query: encodeScheduleFilters(filters),
-      })
+    onFilter(query: Record<string, string>) {
+      this.$router.replace({ query })
     },
   },
 })
 </script>
-
-<style lang="scss">
-// ...
-</style>

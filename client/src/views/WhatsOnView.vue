@@ -1,5 +1,5 @@
 <template>
-  <MozAppLayout>
+  <AppLayout>
     <WhatsOnView
       v-if="apiState === 'ready'"
       :schedule="schedule"
@@ -20,24 +20,24 @@
     <InlineLoading v-else>
       {{ $t('mozfest.whatsOn.loading') }}
     </InlineLoading>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 import {
   ApiContent,
   decodeUrlScheduleFilters,
   encodeScheduleFilters,
-  mapApiState,
+  guardPage,
   ScheduleConfig,
   ScheduleFilterRecord,
   SelectOption,
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
 import { Session } from '@openlab/deconf-shared'
-import { StorageKey, getLanguageOptions, guardRoute } from '@/lib/module'
+import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 import { mapWhatsOnState } from '@/store/module'
 
@@ -50,7 +50,7 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: { MozAppLayout, WhatsOnView, InlineLoading, ApiContent },
+  components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {
     return {
       filtersKey: StorageKey.WhatsOnFilters,
@@ -78,7 +78,7 @@ export default Vue.extend({
     },
   },
   created() {
-    guardRoute(this.schedule?.settings, 'whatsOn', this.user, this.$router)
+    guardPage(this.schedule?.settings.whatsOn, this.user, this.$router)
   },
   mounted() {
     this.fetchData()

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter, { Route, RouteConfig } from 'vue-router'
+import VueRouter, { RouteConfig } from 'vue-router'
 import i18n from '../i18n/module'
 
 import AtriumView from '../views/AtriumView.vue'
@@ -7,7 +7,12 @@ import TokenCaptureView from '../views/TokenCaptureView.vue'
 import ApiErrorView from '../views/ApiErrorView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
-import { createPageViewEvent, Routes } from '@openlab/deconf-ui-toolkit'
+import {
+  createPageViewEvent,
+  getRouteTitle,
+  getScrollBehaviour,
+  Routes,
+} from '@openlab/deconf-ui-toolkit'
 import { ExtraRoutes, StorageKey } from '@/lib/module'
 import { MetricsPlugin } from '@/plugins/metrics-plugin'
 
@@ -220,54 +225,18 @@ const protectedRoutes = new Set<string>([
   Routes.CoffeeChatRoom,
 ])
 
-function getRouteTitle(route: Route): string {
-  const routeWithTitle = [...route.matched]
-    .reverse()
-    .find((r) => r.meta.pageTitle)
-
-  const appName = i18n.t('mozfest.general.appName') as string
-
-  if (routeWithTitle) {
-    const pageName = i18n.t(routeWithTitle.meta.pageTitle)
-    return [pageName, appName].join(' | ')
-  }
-
-  return appName
-}
-
 // 5.25rem into pixels ($navbar-height + tabbar height)
 const SCROLL_OFFSET = 80
-
-function scrollBehavior(
-  to: Route,
-  from: Route,
-  savedPosition: { x: number; y: number } | void
-) {
-  // If they clicked on a hash, scroll to that
-  if (to.hash && to.name !== Routes.TokenCapture) {
-    return {
-      selector: to.hash,
-      offset: { x: 0, y: SCROLL_OFFSET },
-    }
-  }
-
-  // If they've been to the page, scroll back to there
-  // Only available when navigating back via the browser
-  if (savedPosition) return savedPosition
-
-  // Otherwise, its a new page so go to the top
-  return { x: 0, y: 0 }
-}
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior: getScrollBehaviour(SCROLL_OFFSET),
   routes,
-  scrollBehavior,
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = getRouteTitle(to)
+  document.title = getRouteTitle(to, i18n)
 
   const loggedIn = Boolean(localStorage.getItem(StorageKey.AuthToken))
 

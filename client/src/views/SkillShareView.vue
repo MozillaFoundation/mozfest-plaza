@@ -1,5 +1,5 @@
 <template>
-  <MozAppLayout>
+  <AppLayout>
     <WhatsOnView
       v-if="filteredSessions != null"
       :schedule="filteredSchedule"
@@ -20,30 +20,26 @@
     <InlineLoading v-else>
       {{ $t('mozfest.skillShare.loading') }}
     </InlineLoading>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 
 import {
   ApiContent,
   decodeUrlScheduleFilters,
   encodeScheduleFilters,
-  mapApiState,
+  filterScheduleFromSessions,
+  guardPage,
   ScheduleConfig,
   ScheduleFilterRecord,
   SelectOption,
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
-import { ScheduleRecord, Session } from '@openlab/deconf-shared'
-import {
-  filterScheduleFromSessions,
-  getLanguageOptions,
-  guardRoute,
-  StorageKey,
-} from '@/lib/module'
+import { Session } from '@openlab/deconf-shared'
+import { getLanguageOptions, mapApiState, StorageKey } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 
 interface Data {
@@ -57,7 +53,7 @@ interface Data {
 const sessionTypeAllowList = new Set(['skill-share--lightning-talk'])
 
 export default Vue.extend({
-  components: { MozAppLayout, WhatsOnView, InlineLoading, ApiContent },
+  components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {
     return {
       filtersKey: StorageKey.SkillShareFilters,
@@ -79,13 +75,13 @@ export default Vue.extend({
         sessionTypeAllowList.has(s.type)
       )
     },
-    filteredSchedule(): ScheduleRecord | null {
+    filteredSchedule(): unknown | null {
       if (!this.schedule || !this.filteredSessions) return null
       return filterScheduleFromSessions(this.schedule, this.filteredSessions)
     },
   },
   created() {
-    guardRoute(this.schedule?.settings, 'skillShare', this.user, this.$router)
+    guardPage(this.schedule?.settings.skillShare, this.user, this.$router)
   },
   methods: {
     onFilter(filters: ScheduleFilterRecord) {

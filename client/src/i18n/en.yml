@@ -18,6 +18,7 @@ deconf:
     hideWorkshops: Hide all
 
   general:
+    appName: MozFest 2022 Schedule
     days: days | day | days
     hours: hours | hour | hours
     minutes: minutes | minute | minutes
@@ -144,6 +145,7 @@ deconf:
     userSessions: My Schedule
     hidePast: Hide previous sessions
     showPast: Show previous sessions
+    resultHeading: 'Search results — {0}'
 
   session:
     slot: Schedule
@@ -174,9 +176,18 @@ deconf:
     google: Google Calendar
     cancel: Cancel
 
+  apiMessage:
+    unknown:
+      title: Something went wrong
+      info: An unknown error occured, please try again. If the problem persists, please contact us.
+      email: festival@mozilla.org
+    loginExpired:
+      title: Expired magic link
+      info: Your magic link to login has expired, they only last for 30 minutes for security reasons. Use the button below to start again.
+      action: Log in again
+
 mozfest:
   general:
-    appName: Mozilla Festival 2022 Schedule
     backToAtrium: Back to Plaza
     'yes': 'Yes'
     'no': 'No'
@@ -278,16 +289,6 @@ mozfest:
   notFound:
     title: Page Not Found
     info: We can't find the page you're looking for
-
-  serverError:
-    unknown:
-      title: Something went wrong
-      info: An unknown error occured, please try again. If the problem persists, please contact us.
-      email: festival@mozilla.org
-    loginExpired:
-      title: Expired magic link
-      info: Your magic link to login has expired, they only last for 30 minutes for security reasons. Use the button below to start again.
-      action: Log in again
 
   addUserCalendar:
     title: Private calendar

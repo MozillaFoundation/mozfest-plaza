@@ -18,6 +18,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import {
+  AppDialog,
   AppLoading,
   DevControl,
   mapApiState,
@@ -27,7 +28,6 @@ import { ConferenceConfig } from '@openlab/deconf-shared'
 import { Location } from 'vue-router'
 
 import MozApiError from '@/components/MozApiError.vue'
-import AppDialog from '@/components/AppDialog.vue'
 import PretalxDevBlock from '@/components/PretalxDevBlock.vue'
 
 import { StorageKey } from '@/lib/module'

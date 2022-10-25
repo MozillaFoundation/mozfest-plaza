@@ -1,30 +1,32 @@
 <template>
-  <MozAppLayout>
+  <AppLayout>
     <FilteredScheduleView
       v-if="schedule"
       :schedule="schedule"
       :user-sessions="userSessions"
       :options="options"
+      :schedule-date="scheduleDate"
+      :route-query="$route.query"
+      @filter="onFilter"
+      class="appLayout-main"
     >
       <span slot="title">{{ $t('deconf.schedule.title') }}</span>
       <ApiContent slot="infoText" slug="schedule-filters" />
       <span slot="noResults">{{ $t('deconf.schedule.noResults') }}</span>
     </FilteredScheduleView>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
-import { ApiContent, mapApiState } from '@openlab/deconf-ui-toolkit'
+import AppLayout from '@/components/MozAppLayout.vue'
 import {
-  StorageKey,
-  getLanguageOptions,
-  guardRoute,
+  ApiContent,
   FilteredScheduleOptions,
-} from '@/lib/module'
-import { Session } from '@openlab/deconf-shared'
-import FilteredScheduleView from '@/components/FilteredScheduleView.vue'
+  FilteredScheduleView,
+  guardPage,
+} from '@openlab/deconf-ui-toolkit'
+import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
 
 const typeAllowList = new Set([
   'discussion',
@@ -35,8 +37,23 @@ const typeAllowList = new Set([
   'community-plenary',
 ])
 
-function predicate(session: Session): boolean {
-  return typeAllowList.has(session.type)
+const options: FilteredScheduleOptions = {
+  predicate: (s) => typeAllowList.has(s.type),
+  filtersKey: StorageKey.ScheduleFilters,
+  scheduleConfig: {
+    tileHeader: ['type'],
+    tileAttributes: ['languages', 'recorded', 'track', 'themes'],
+  },
+  enabledFilters: [
+    'query',
+    'sessionType',
+    'track',
+    'language',
+    'date',
+    'isRecorded',
+    'theme',
+  ],
+  languages: getLanguageOptions(),
 }
 
 interface Data {
@@ -44,34 +61,21 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: { MozAppLayout, FilteredScheduleView, ApiContent },
-  data(): Data {
-    return {
-      options: {
-        predicate: (s) => predicate(s),
-        filtersKey: StorageKey.ScheduleFilters,
-        scheduleConfig: {
-          tileHeader: ['type'],
-          tileAttributes: ['languages', 'recorded', 'track', 'themes'],
-        },
-        enabledFilters: [
-          'query',
-          'sessionType',
-          'track',
-          'language',
-          'date',
-          'isRecorded',
-          'theme',
-        ],
-        languages: getLanguageOptions(),
-      },
-    }
-  },
+  components: { AppLayout, FilteredScheduleView, ApiContent },
+  data: (): Data => ({ options }),
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),
+    scheduleDate() {
+      return this.$dev?.scheduleDate ?? this.$temporal.date
+    },
   },
-  created() {
-    guardRoute(this.schedule?.settings, 'schedule', this.user, this.$router)
+  mounted() {
+    guardPage(this.schedule?.settings.schedule, this.user, this.$router)
+  },
+  methods: {
+    onFilter(query: Record<string, string>) {
+      this.$router.replace({ query })
+    },
   },
 })
 </script>

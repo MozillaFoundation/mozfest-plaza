@@ -1,10 +1,14 @@
 <template>
-  <MozAppLayout>
+  <AppLayout>
     <FilteredScheduleView
       v-if="schedule"
       :schedule="schedule"
       :user-sessions="userSessions"
       :options="options"
+      :schedule-date="scheduleDate"
+      :route-query="$route.query"
+      @filter="onFilter"
+      class="appLayout-main"
     >
       <span slot="title">{{ $t('mozfest.fringeEvents.title') }}</span>
       <ApiContent slot="infoText" slug="fringe-filters" />
@@ -13,28 +17,33 @@
     <InlineLoading v-else>
       {{ $t('mozfest.fringeEvents.loading') }}
     </InlineLoading>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 
-import { ApiContent, mapApiState } from '@openlab/deconf-ui-toolkit'
-import { Session } from '@openlab/deconf-shared'
 import {
+  ApiContent,
   FilteredScheduleOptions,
-  getLanguageOptions,
-  guardRoute,
-  StorageKey,
-} from '@/lib/module'
+  FilteredScheduleView,
+  guardPage,
+} from '@openlab/deconf-ui-toolkit'
+import { getLanguageOptions, mapApiState, StorageKey } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
-import FilteredScheduleView from '@/components/FilteredScheduleView.vue'
 
 const typeAllowList = new Set(['fringe-events'])
 
-function predicate(session: Session): boolean {
-  return typeAllowList.has(session.type)
+const options: FilteredScheduleOptions = {
+  predicate: (s) => typeAllowList.has(s.type),
+  filtersKey: StorageKey.FringeEventsFilters,
+  enabledFilters: ['query', 'track', 'language', 'date', 'theme'],
+  scheduleConfig: {
+    tileHeader: ['track'],
+    tileAttributes: ['themes'],
+  },
+  languages: getLanguageOptions(),
 }
 
 interface Data {
@@ -42,26 +51,21 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: { MozAppLayout, FilteredScheduleView, InlineLoading, ApiContent },
-  data(): Data {
-    return {
-      options: {
-        predicate: (s) => predicate(s),
-        filtersKey: StorageKey.FringeEventsFilters,
-        enabledFilters: ['query', 'track', 'language', 'date', 'theme'],
-        scheduleConfig: {
-          tileHeader: ['track'],
-          tileAttributes: ['themes'],
-        },
-        languages: getLanguageOptions(),
-      },
-    }
-  },
+  components: { AppLayout, FilteredScheduleView, InlineLoading, ApiContent },
+  data: (): Data => ({ options }),
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),
+    scheduleDate() {
+      return this.$dev?.scheduleDate ?? this.$temporal.date
+    },
   },
   mounted() {
-    guardRoute(this.schedule?.settings, 'fringe', this.user, this.$router)
+    guardPage(this.schedule?.settings.fringe, this.user, this.$router)
+  },
+  methods: {
+    onFilter(query: Record<string, string>) {
+      this.$router.replace({ query })
+    },
   },
 })
 </script>

@@ -1,9 +1,12 @@
-import { DeconfPlugin, MetricsEvent } from '@openlab/deconf-ui-toolkit'
+import {
+  DeconfPlugin,
+  DialogPlugin,
+  MetricsEvent,
+} from '@openlab/deconf-ui-toolkit'
 import { Session } from '@openlab/deconf-shared'
 import _Vue, { Component } from 'vue'
 import { env } from './env-plugin'
 import { MetricsPlugin } from './metrics-plugin'
-import { DialogPlugin } from './dialog-plugin'
 
 export class MozFestDeconfPlugin implements DeconfPlugin {
   static install(Vue: typeof _Vue): void {
@@ -24,11 +27,9 @@ export class MozFestDeconfPlugin implements DeconfPlugin {
 
     return url ? url.toString() : null
   }
-
   trackMetric(metric: MetricsEvent): void {
     MetricsPlugin.shared?.track(metric)
   }
-
   showDialog(component: Component, props: Record<string, unknown>): void {
     DialogPlugin.shared?.show(component, props)
   }

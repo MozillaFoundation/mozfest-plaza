@@ -15,6 +15,9 @@ export class SocketIoPlugin {
   static authenticate(token: string): void {
     this.sharedSocket?.emit('auth', token)
   }
+  static unauthenticate(): void {
+    this.sharedSocket?.emit('deauth')
+  }
 
   constructor(serverUrl: string) {
     // Concat the path onto the server url, e.g.

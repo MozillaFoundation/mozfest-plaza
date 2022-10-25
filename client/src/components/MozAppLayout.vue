@@ -25,12 +25,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { PageFlag } from '@openlab/deconf-shared'
-import {
-  AppLayout,
-  AppRoute,
-  mapApiState,
-  Routes,
-} from '@openlab/deconf-ui-toolkit'
+import { AppLayout, AppRoute, Routes } from '@openlab/deconf-ui-toolkit'
 
 import MozfestLogo from '@/components/MozfestLogo.vue'
 import MozillaLogo from '@/components/MozillaLogo.vue'
@@ -48,7 +43,7 @@ import SpacesIcon from '@/icons/SpacesIcon.vue'
 import EmergentIcon from '@/icons/EmergentIcon.vue'
 import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
 import MisinfoConIcon from '@/icons/MisinfoConIcon.vue'
-import { ExtraRoutes, MozConferenceConfig } from '@/lib/module'
+import { ExtraRoutes, mapApiState, MozConferenceConfig } from '@/lib/module'
 import { Location } from 'vue-router'
 
 interface RouteIntermediate {
@@ -69,7 +64,7 @@ export default Vue.extend({
   computed: {
     ...mapApiState('api', ['schedule', 'user']),
     settings(): MozConferenceConfig | null {
-      return (this.schedule?.settings as MozConferenceConfig) ?? null
+      return this.schedule?.settings ?? null
     },
     navLinks(): string[] {
       const links: string[] = []

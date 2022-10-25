@@ -1,5 +1,5 @@
 <template>
-  <MozAppLayout class="atriumView">
+  <AppLayout class="atriumView">
     <AtriumLayout>
       <HeroCard
         slot="top"
@@ -116,7 +116,7 @@
         <SponsorGrid :groups="sponsors" />
       </div>
     </AtriumLayout>
-  </MozAppLayout>
+  </AppLayout>
 </template>
 
 <script lang="ts">
@@ -133,15 +133,14 @@ import {
   deepSeal,
   Routes,
   SessionAndSlot,
-  mapApiState,
   mapMetricsState,
   ApiContent,
   PrimaryEmbed,
+  getFeaturedSessions,
 } from '@openlab/deconf-ui-toolkit'
-import { SessionSlot } from '@openlab/deconf-shared'
-import MozAppLayout from '@/components/MozAppLayout.vue'
+import AppLayout from '@/components/MozAppLayout.vue'
 import AnchorFmEmbed from '@/components/AnchorFmEmbed.vue'
-import { MozConferenceConfig } from '@/lib/module'
+import { mapApiState, MozConferenceConfig } from '@/lib/module'
 
 import sponsorData from '@/data/sponsors.json'
 
@@ -149,14 +148,11 @@ interface Data {
   sponsors: SponsorGroup[]
 }
 
-// TODO filter out non art-gallery types, confirm with marc
-// const featuredTypeBlocklist = new Set(['art-and-media'])
-
 export default Vue.extend({
   components: {
     ApiContent,
     PrimaryEmbed,
-    MozAppLayout,
+    AppLayout,
     AtriumLayout,
     HeroCard,
     BoxContent,
@@ -196,29 +192,18 @@ export default Vue.extend({
       return this.$dev.scheduleDate ?? this.$temporal.date
     },
 
-    // TODO: migrate to deconf-ui's getFeaturedSessions
     featuredSessions(): null | SessionAndSlot[] {
       if (!this.schedule) return null
       if (!this.schedule.settings.schedule.enabled) return null
 
-      const now = this.scheduleDate.getTime()
-      const inAWeek = now + 7 * 24 * 60 * 60 * 1000
-      const slotMap = new Map(this.schedule.slots.map((s) => [s.id, s]))
-
-      return this.schedule.sessions
-        .filter((session) => Boolean(session.slot) && session.isFeatured)
-        .map((session) => ({
-          slot: slotMap.get(session.slot as string) as SessionSlot,
-          session: session,
-        }))
-        .filter(
-          (group) =>
-            Boolean(group.slot) &&
-            group.slot.end.getTime() > now &&
-            group.slot.start.getTime() < inAWeek
-        )
-        .sort((a, b) => a.slot?.start.getTime() - b.slot?.start.getTime())
-        .slice(0, 3)
+      return (
+        getFeaturedSessions(
+          this.schedule,
+          7,
+          this.scheduleDate,
+          (s) => Boolean(s.slot) && s.isFeatured
+        )?.slice(0, 3) ?? null
+      )
     },
     conferenceIsOver(): boolean {
       if (!this.settings) return false
