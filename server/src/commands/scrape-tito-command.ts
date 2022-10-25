@@ -19,12 +19,9 @@ import {
   TitoAccountInfo,
   TitoEvent,
   TitoRelease,
-} from '../lib/module.js'
-import {
   createDebug,
-  RedisService,
-  SemaphoreService,
-} from '@openlab/deconf-api-toolkit'
+} from '../lib/module.js'
+import { RedisService, SemaphoreService } from '@openlab/deconf-api-toolkit'
 
 const debug = createDebug('cmd:scrape-tito')
 const LOCK_KEY = 'tito/lock'

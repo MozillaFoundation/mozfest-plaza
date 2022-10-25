@@ -4,9 +4,7 @@
 //
 
 import {
-  createDebug,
   PretalxService,
-  PretalxSpeaker,
   PretalxTalk,
   PretalxTax,
   RedisService,
@@ -30,7 +28,7 @@ import ms from 'ms'
 // import languages = require('../data/languages.json')
 // import tracks = require('../data/tracks.json')
 
-import { AppConfig, loadConfig } from '../lib/module.js'
+import { AppConfig, createDebug, loadConfig } from '../lib/module.js'
 
 export interface ScrapePretalxCommandOptions {}
 

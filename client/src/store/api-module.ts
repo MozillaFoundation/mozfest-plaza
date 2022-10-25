@@ -39,6 +39,7 @@ export function apiModule(): ApiStoreModule {
 
         commit('user', user)
 
+        apiClient.setAuthToken(token)
         SocketIoPlugin.authenticate(token)
 
         await dispatch('fetchData')
