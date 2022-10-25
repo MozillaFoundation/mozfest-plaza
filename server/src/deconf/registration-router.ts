@@ -43,9 +43,7 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
       ...context,
       mailer: this,
       userDataStruct: UserDataStruct as any,
-
-      // TODO: remove when deconf updated
-      config: { admins: [] },
+      config: undefined,
     })
   }
 

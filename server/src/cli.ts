@@ -75,7 +75,7 @@ cli.command(
 /** "scrape-pretalx" is @deprecated */
 cli.command(
   ['fetch-schedule', 'scrape-pretalx'],
-  'Fetch resources from pretalx and generate the schedule',
+  'Fetch resources from pretalx and make the schedule',
   (yargs) => yargs,
   (args) => {
     deprecatedCommand(args, 'scrape-pretalx', 'fetch-schedule')
