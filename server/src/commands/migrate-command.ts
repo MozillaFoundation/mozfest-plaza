@@ -6,7 +6,7 @@ import {
 } from '@openlab/deconf-api-toolkit'
 import { createEnv, createDebug } from '../lib/module.js'
 
-const debug = createDebug('moz:cmd:migrate')
+const debug = createDebug('cmd:migrate')
 
 const MOZFEST_MIGRATIONS = [...DECONF_MIGRATIONS]
 

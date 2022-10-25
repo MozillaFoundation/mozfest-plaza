@@ -18,19 +18,19 @@ import {
   EmailService,
   I18nService,
   JwtService,
+  loadI18nLocales,
   loadResources,
   MetricsRepository,
   PostgresService,
   RedisService,
   RegistrationRepository,
-  ResourcesMap,
   SemaphoreService,
 } from '@openlab/deconf-api-toolkit'
 import { createServer } from '../server.js'
 import { RedisAdapter } from '@socket.io/redis-adapter'
 import { migrateCommand } from './migrate-command.js'
 
-const debug = createDebug('moz:cmd:serve')
+const debug = createDebug('cmd:serve')
 
 export function pickAStore(redisUrl: string | null) {
   if (redisUrl) {
@@ -40,22 +40,6 @@ export function pickAStore(redisUrl: string | null) {
     debug('Using in-memory store')
     return createMemoryStore()
   }
-}
-
-// TODO: move to deconf
-function loadI18nStrings(resources: ResourcesMap) {
-  const result: Record<string, unknown> = {}
-
-  for (const locale of ['en']) {
-    const key = `i18n/${locale}.yml`
-    debug('load %o', key)
-
-    const raw = resources.get(key)?.toString('utf8')
-    if (!raw) throw new Error(`I18n: "${key}" not found`)
-    result[locale] = Yaml.parse(raw)
-  }
-
-  return result
 }
 
 export interface ServeCommandOptions {
@@ -76,7 +60,7 @@ export async function serveCommand(options: ServeCommandOptions) {
   const postgres = new PostgresService({ env })
   const url = new UrlService({ env })
   const jwt = new JwtService({ env, store, config })
-  const i18n = new I18nService(loadI18nStrings(resources))
+  const i18n = new I18nService(loadI18nLocales(resources, ['en']))
   const semaphore = new SemaphoreService({ store })
   const email = new EmailService({ env, config })
   const sockets = new SocketService()
@@ -102,16 +86,13 @@ export async function serveCommand(options: ServeCommandOptions) {
     i18n,
     jwt,
     postgres,
-    // s3,
     semaphore,
     sockets,
     store,
     url,
 
     attendanceRepo,
-    // carbonRepo,
     conferenceRepo,
-    // interpreterRepo,
     metricsRepo,
     registrationRepo,
   }

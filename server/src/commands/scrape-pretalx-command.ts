@@ -30,7 +30,7 @@ import createDebug from 'debug'
 // import languages = require('../data/languages.json')
 // import tracks = require('../data/tracks.json')
 
-import { loadConfig, PretalxConfig } from '../lib/module.js'
+import { AppConfig, loadConfig } from '../lib/module.js'
 
 export interface ScrapePretalxCommandOptions {}
 
@@ -38,7 +38,7 @@ export interface ScrapePretalxCommandOptions {}
 // Constants
 //
 
-const debug = createDebug('moz:cmd:scrape-pretalx')
+const debug = createDebug('cmd:scrape-pretalx')
 const LOCK_MAX_DURATION_MS = ms('10m')
 export const PRETALX_LOCK_KEY = 'pretalx/lock'
 
@@ -148,7 +148,10 @@ export async function scrapePretalxCommand(
 //
 
 class PretalxHelpers {
-  constructor(public pretalx: PretalxService, public config: PretalxConfig) {}
+  constructor(
+    public pretalx: PretalxService,
+    public config: AppConfig['pretalx']
+  ) {}
 
   getSessions(submissions: PretalxTalk[]): Session[] {
     return submissions.map((submission) => {
@@ -185,9 +188,7 @@ class PretalxHelpers {
         hostLanguages: [submission.content_locale],
         enableInterpretation: false,
         speakers: submission.speakers.map((s) => s.code),
-        hostOrganisation: {
-          en: '', // TODO
-        },
+        hostOrganisation: { en: '' },
         isRecorded: submission.do_not_record !== true,
         isOfficial: false,
         isFeatured: submission.is_featured,

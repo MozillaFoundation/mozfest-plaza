@@ -8,7 +8,7 @@ import {
   SocketErrorHandler,
 } from '../lib/module.js'
 
-const debug = createDebug('moz:deconf:metrics-broker')
+const debug = createDebug('deconf:metrics-broker')
 const METRICS_ROOM = 'metrics_analisis'
 
 const eventStructs = new Map<string, Struct<any>>()

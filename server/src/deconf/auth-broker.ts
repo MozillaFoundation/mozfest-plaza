@@ -1,10 +1,10 @@
 import { AuthSockets } from '@openlab/deconf-api-toolkit'
 import { Socket } from 'socket.io'
 
-import { AppBroker, SocketErrorHandler } from '../lib/app-broker'
+import { AppBroker, SocketErrorHandler } from '../lib/types.js'
 import { createDebug, AppContext } from '../lib/module.js'
 
-const debug = createDebug('moz:deconf:auth-broker')
+const debug = createDebug('deconf:auth-broker')
 
 type Context = AppContext
 

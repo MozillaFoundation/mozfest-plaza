@@ -23,10 +23,7 @@ import {
 } from '../lib/module.js'
 import { RedisService, SemaphoreService } from '@openlab/deconf-api-toolkit'
 
-// TODO:
-// - test with new access
-
-const debug = createDebug('moz:cmd:scrape-tito')
+const debug = createDebug('cmd:scrape-tito')
 const LOCK_KEY = 'tito/lock'
 const SINCE_KEY = 'tito/lastScrape'
 const LOCK_MAX_DURATION_MS = ms('2m')

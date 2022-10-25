@@ -1,9 +1,8 @@
 import KoaRouter from '@koa/router'
 import {
-  ApiError,
   CalendarOptions,
   CalendarRoutes,
-  UserICalToken,
+  getRedirectErrorCode,
   UserICalTokenStruct,
   validateStruct,
 } from '@openlab/deconf-api-toolkit'
@@ -13,7 +12,6 @@ import {
   AppContext,
   AppRouter,
   TokenStruct,
-  getRedirectErrorCode,
 } from '../lib/module.js'
 
 type Context = AppContext
@@ -75,20 +73,11 @@ export class CalendarRouter implements AppRouter {
       }
     )
 
-    // TODO: migrate to deconf implementation
     router.get('calendar.createUserCalendar', '/calendar/me', async (ctx) => {
-      const token = this.#jwt.getRequestAuth(ctx.request.headers)
-      if (!token) throw ApiError.unauthorized()
-
-      const icalToken = this.#jwt.signToken<UserICalToken>({
-        kind: 'user-ical',
-        sub: token.sub,
-        user_lang: token.user_lang,
-      })
-
-      ctx.body = {
-        url: new URL(`calendar/me/${icalToken}`, this.#env.SELF_URL),
-      }
+      ctx.body = this.#routes.createUserCalendar(
+        this.#jwt.getRequestAuth(ctx.request.headers),
+        (token) => new URL(`calendar/me/${token}`, this.#env.SELF_URL)
+      )
     })
 
     router.get('calendar.user', '/calendar/me/:token', async (ctx) => {

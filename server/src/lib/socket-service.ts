@@ -1,12 +1,12 @@
 import { Server as SocketIoServer } from 'socket.io'
-import { createDebug } from './debug.js'
+import { createDebug } from './utils.js'
 
 import {
   ApiError,
   SocketService as DeconfSocketService,
 } from '@openlab/deconf-api-toolkit'
 
-const debug = createDebug('moz:lib:sockets-service')
+const debug = createDebug('lib:sockets-service')
 
 export class SocketService implements Readonly<DeconfSocketService> {
   get #io() {

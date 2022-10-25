@@ -13,7 +13,7 @@ import {
   UrlService,
 } from '../lib/module.js'
 
-const debug = createDebug('moz:cmd:dev-auth')
+const debug = createDebug('cmd:dev-auth')
 
 export async function devAuthCommand(options: DevAuthCommandOptions) {
   debug('start')

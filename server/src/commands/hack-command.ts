@@ -3,9 +3,6 @@ import { Session } from '@openlab/deconf-shared'
 import ipRegex from 'ip-regex'
 import { createEnv, loadConfig } from '../lib/module.js'
 
-// TODO:
-// - review these
-
 //
 // Helpers
 //

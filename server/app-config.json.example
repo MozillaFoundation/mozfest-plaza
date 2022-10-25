@@ -1,30 +1,119 @@
 {
-  "admins": [{ "email": "geoff@example.com" }],
   "mail": {
-    "fromEmail": "noreply@example.com",
-    "replyToEmail": "support@example.com"
-  },
-  "organiser": {
-    "name": "Open Lab",
-    "email": "support@example.com"
-  },
-  "carbon": {
-    "originCountry": "GB"
+    "fromEmail": "noreply@openlab.dev",
+    "replyToEmail": "festival@mozilla.org"
   },
   "sendgrid": {
-    "loginTemplateId": "d-123456789abcdef0"
+    "loginTemplateId": "d-123456789abcdef"
+  },
+  "jwt": {
+    "issuer": "mozfest-localhost"
+  },
+  "content": {
+    "keys": [
+      "art-filters",
+      "atrium-active",
+      "atrium-public",
+      "conference-over",
+      "fringe-filters",
+      "help",
+      "lightning-talks-filters",
+      "login",
+      "schedule-filters",
+      "spaces",
+      "whats-on-filters",
+      "misinfo-con-filters",
+      "emergent-info",
+      "emergent-filters"
+    ]
   },
   "pretalx": {
     "eventSlug": "mozfest-2022",
     "englishKeys": ["en", "en-mozilla"],
     "questions": {
-      "pulsePhoto": 1,
-      "affiliation": 2,
-      "links": [3]
+      "pulsePhoto": 1179,
+      "links": [1183],
+      "affiliation": 1184
     }
   },
   "tito": {
     "accountSlug": "mozilla",
-    "eventSlug": "mozfest-2022"
-  }
+    "eventSlug": "mozilla-festival-2022"
+  },
+  "sessionTypes": [
+    {
+      "title": { "en": "Discussion" },
+      "icon": ["fas", "comments"],
+      "layout": "workshop"
+    },
+    {
+      "title": { "en": "Workshop" },
+      "icon": ["fas", "object-group"],
+      "layout": "workshop"
+    },
+    {
+      "title": { "en": "Extended Workshop" },
+      "icon": ["fas", "object-group"],
+      "layout": "workshop"
+    },
+    {
+      "title": { "en": "Skill Share / Lightning Talk" },
+      "icon": ["fas", "people-arrows"],
+      "layout": "workshop"
+    },
+    {
+      "title": { "en": "Social Moments" },
+      "icon": ["fas", "share-alt"],
+      "layout": "plenary"
+    },
+    {
+      "title": { "en": "Art and Media" },
+      "icon": ["fas", "palette"],
+      "layout": "workshop"
+    },
+    {
+      "title": { "en": "Broadcast Talk" },
+      "icon": ["fas", "podcast"],
+      "layout": "plenary"
+    },
+    {
+      "title": { "en": "Community Plenary" },
+      "icon": ["fas", "podcast"],
+      "layout": "plenary"
+    },
+    {
+      "title": { "en": "Fringe Events" },
+      "icon": ["fas", "podcast"],
+      "layout": "plenary"
+    },
+    {
+      "title": { "en": "MisinfoCon Discussion" },
+      "icon": ["fas", "comments"],
+      "layout": "plenary"
+    },
+    {
+      "title": { "en": "MisinfoCon Workshop" },
+      "icon": ["fas", "object-group"],
+      "layout": "plenary"
+    },
+    {
+      "title": { "en": "Emergent Session" },
+      "icon": ["fas", "seedling"],
+      "layout": "plenary"
+    }
+  ],
+  "tracks": [
+    { "title": { "en": "Mozilla" } },
+    { "title": { "en": "Rethinking Power & Ethics" } },
+    { "title": { "en": "Sustainability & Climate Change" } },
+    { "title": { "en": "Gender, Tech & Intersectionality" } },
+    { "title": { "en": "Digitizing Cultures & Languages" } },
+    { "title": { "en": "Digital ID & Privacy" } },
+    { "title": { "en": "Decolonized AI Futures" } },
+    { "title": { "en": "Creating Neurodiverse Wellbeing" } },
+    { "title": { "en": "Youth & Futures" } },
+    { "title": { "en": "Misinformation & Disinformation" } },
+    { "title": { "en": "Trustworthy AI" } },
+    { "title": { "en": "MisinfoCon" } }
+  ]
 }

@@ -15,7 +15,11 @@ export class ConferenceRouter implements AppRouter {
   #routes: ConferenceRoutes
   constructor(context: Context) {
     this.#context = context
-    this.#routes = new ConferenceRoutes(context)
+    this.#routes = new ConferenceRoutes({
+      ...context,
+      // TODO: remove when deconf updated
+      config: { organiser: { name: '', email: '' } },
+    })
   }
 
   apply(router: KoaRouter) {

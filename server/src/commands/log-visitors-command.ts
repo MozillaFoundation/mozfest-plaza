@@ -14,7 +14,7 @@ import { createDebug, createEnv } from '../lib/module.js'
 
 const LOG_VISITORS_MAX_LOCK = ms('1m')
 const LOG_VISITORS_LOCK_KEY = 'log_visitors_lock'
-const debug = createDebug('moz:cmd:log-visitors')
+const debug = createDebug('cmd:log-visitors')
 
 export interface LogVisitorsOptions {}
 

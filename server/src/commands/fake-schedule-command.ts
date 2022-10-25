@@ -2,7 +2,7 @@ import { MockScheduleCommand, RedisService } from '@openlab/deconf-api-toolkit'
 import { checkEnvObject, pluck } from 'valid-env'
 import { createDebug } from '../lib/module.js'
 
-const debug = createDebug('moz:cmd:fake-schedule')
+const debug = createDebug('cmd:fake-schedule')
 
 export interface FakeScheduleCommandOptions {}
 

@@ -6,10 +6,6 @@ import { AppContext, AppRouter, SessionIdStruct } from '../lib/module.js'
 type Context = AppContext
 
 export class AttendanceRouter implements AppRouter {
-  get #jwt() {
-    return this.#context.jwt
-  }
-
   #context: Context
   #routes: AttendanceRoutes
   constructor(context: Context) {
@@ -19,13 +15,13 @@ export class AttendanceRouter implements AppRouter {
 
   apply(router: KoaRouter): void {
     router.get('attendance.user', '/attendance/me', async (ctx) => {
-      const token = this.#jwt.getRequestAuth(ctx.request.headers)
+      const token = this.#context.jwt.getRequestAuth(ctx.request.headers)
       ctx.body = await this.#routes.getUserAttendance(token)
     })
 
     router.get('attendance.session', '/attendance/:sessionId', async (ctx) => {
       const { sessionId } = validateStruct(ctx.params, SessionIdStruct)
-      const token = this.#jwt.getRequestAuth(ctx.request.headers)
+      const token = this.#context.jwt.getRequestAuth(ctx.request.headers)
       ctx.body = await this.#routes.getSessionAttendance(token, sessionId)
     })
 
@@ -34,7 +30,7 @@ export class AttendanceRouter implements AppRouter {
       '/attendance/:sessionId/attend',
       async (ctx) => {
         const { sessionId } = validateStruct(ctx.params, SessionIdStruct)
-        const token = this.#jwt.getRequestAuth(ctx.request.headers)
+        const token = this.#context.jwt.getRequestAuth(ctx.request.headers)
         ctx.body = await this.#routes.attend(token, sessionId)
       }
     )
@@ -44,7 +40,7 @@ export class AttendanceRouter implements AppRouter {
       '/attendance/:sessionId/unattend',
       async (ctx) => {
         const { sessionId } = validateStruct(ctx.params, SessionIdStruct)
-        const token = this.#jwt.getRequestAuth(ctx.request.headers)
+        const token = this.#context.jwt.getRequestAuth(ctx.request.headers)
         ctx.body = await this.#routes.unattend(token, sessionId)
       }
     )

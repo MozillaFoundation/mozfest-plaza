@@ -1,16 +1,18 @@
+import { PageFlagStruct } from '@openlab/deconf-api-toolkit'
 import {
-  ConferenceConfigStruct as DeconfConferenceConfigStruct,
-  PageFlagStruct,
-} from '@openlab/deconf-api-toolkit'
-import {
-  assign,
   object,
   string,
   array,
   Infer,
   boolean,
   optional,
+  date,
+  number,
+  tuple,
+  enums,
 } from 'superstruct'
+
+export const localised = () => object({ en: string() })
 
 /** Koa Session URL parameters e.g. /session/:sessionId */
 export const SessionIdStruct = object({
@@ -23,39 +25,83 @@ export const TokenStruct = object({
 })
 
 /** MozFest custom conference config */
-export const ConferenceConfigStruct = assign(
-  DeconfConferenceConfigStruct,
-  object({
-    social: optional(PageFlagStruct),
-    arts: optional(PageFlagStruct),
-    skillShare: optional(PageFlagStruct),
-    fringe: optional(PageFlagStruct),
-    house: optional(PageFlagStruct),
-    misinfoCon: optional(PageFlagStruct),
-    emergentInfo: optional(PageFlagStruct),
-    emergentSessions: optional(PageFlagStruct),
+export const ConferenceConfigStruct = object({
+  atrium: optional(PageFlagStruct),
+  whatsOn: optional(PageFlagStruct),
+  schedule: optional(PageFlagStruct),
+  helpDesk: optional(PageFlagStruct),
 
-    navigation: object({
-      showInterpret: boolean(),
-      showProfile: boolean(),
-      showLogin: boolean(),
-      showRegister: boolean(),
-    }),
+  social: optional(PageFlagStruct),
+  arts: optional(PageFlagStruct),
+  skillShare: optional(PageFlagStruct),
+  fringe: optional(PageFlagStruct),
+  house: optional(PageFlagStruct),
+  misinfoCon: optional(PageFlagStruct),
+  emergentInfo: optional(PageFlagStruct),
+  emergentSessions: optional(PageFlagStruct),
 
-    atriumWidgets: object({
-      siteVisitors: boolean(),
-      twitter: boolean(),
-      login: boolean(),
-      register: boolean(),
-      spatialChat: boolean(),
-      slack: boolean(),
-      familyResources: boolean(),
-      mozfestBook: boolean(),
-    }),
-  })
-)
+  navigation: object({
+    showInterpret: boolean(),
+    showProfile: boolean(),
+    showLogin: boolean(),
+    showRegister: boolean(),
+  }),
+
+  atriumWidgets: object({
+    siteVisitors: boolean(),
+    twitter: boolean(),
+    login: boolean(),
+    register: boolean(),
+    spatialChat: boolean(),
+    slack: boolean(),
+    familyResources: boolean(),
+    mozfestBook: boolean(),
+  }),
+
+  startDate: date(),
+  endDate: date(),
+  isStatic: boolean(),
+})
 
 export type BlockList = Infer<typeof BlockedStruct>
 export const BlockedStruct = object({
   emails: array(string()),
+})
+
+export type AppConfig = Infer<typeof AppConfigStruct>
+export const AppConfigStruct = object({
+  mail: object({
+    fromEmail: string(),
+    replyToEmail: string(),
+  }),
+  sendgrid: object({
+    loginTemplateId: string(),
+  }),
+  jwt: object({
+    issuer: string(),
+  }),
+  content: object({
+    keys: array(string()),
+  }),
+  pretalx: object({
+    eventSlug: string(),
+    englishKeys: array(string()),
+    questions: object({
+      pulsePhoto: number(),
+      links: array(number()),
+      affiliation: number(),
+    }),
+  }),
+  tito: object({
+    accountSlug: string(),
+    eventSlug: string(),
+  }),
+  sessionTypes: array(
+    object({
+      title: localised(),
+      icon: tuple([string(), string()]),
+      layout: enums(['plenary', 'workshop']),
+    })
+  ),
+  tracks: array(object({ title: localised() })),
 })

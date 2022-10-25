@@ -8,24 +8,11 @@ import {
 import { readFile } from 'fs/promises'
 import path from 'path'
 import { checkEnvObject, pluck } from 'valid-env'
-import { ConferenceConfigStruct, BlockedStruct } from '../lib/module.js'
-
-export const CONTENT_KEYS = [
-  'art-filters',
-  'atrium-active',
-  'atrium-public',
-  'conference-over',
-  'fringe-filters',
-  'help',
-  'lightning-talks-filters',
-  'login',
-  'schedule-filters',
-  'spaces',
-  'whats-on-filters',
-  'misinfo-con-filters',
-  'emergent-info',
-  'emergent-filters',
-]
+import {
+  ConferenceConfigStruct,
+  BlockedStruct,
+  loadConfig,
+} from '../lib/module.js'
 
 export interface FetchContentCommandOptions {
   branch: string
@@ -40,13 +27,14 @@ export async function fetchContentCommand(options: FetchContentCommandOptions) {
 
   const store = new RedisService(env.REDIS_URL)
   const contentRepo = new ContentRepository({})
+  const config = await loadConfig()
   const cmd = new ContentService({ store, contentRepo })
 
   const opts: ProcessRepoOptions = {
     remote: env.CONTENT_REPO_REMOTE,
     branch: options.branch,
     reuseDirectory: options.reuse ? 'content' : undefined,
-    contentKeys: CONTENT_KEYS,
+    contentKeys: config.content.keys,
     languages: ['en'],
   }
 
