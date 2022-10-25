@@ -6,7 +6,6 @@
 
 import got, { PaginationOptions, Got } from 'got'
 import { checkEnvObject, pluck } from 'valid-env'
-import createDebug from 'debug'
 import ms from 'ms'
 import qs from 'qs'
 
@@ -21,7 +20,11 @@ import {
   TitoEvent,
   TitoRelease,
 } from '../lib/module.js'
-import { RedisService, SemaphoreService } from '@openlab/deconf-api-toolkit'
+import {
+  createDebug,
+  RedisService,
+  SemaphoreService,
+} from '@openlab/deconf-api-toolkit'
 
 const debug = createDebug('cmd:scrape-tito')
 const LOCK_KEY = 'tito/lock'

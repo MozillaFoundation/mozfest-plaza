@@ -4,6 +4,7 @@
 //
 
 import {
+  createDebug,
   PretalxService,
   PretalxSpeaker,
   PretalxTalk,
@@ -24,7 +25,6 @@ import {
 
 import { checkEnvObject, pluck } from 'valid-env'
 import ms from 'ms'
-import createDebug from 'debug'
 
 // import sessionTypes = require('../data/session-types.json')
 // import languages = require('../data/languages.json')
