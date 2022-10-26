@@ -4,49 +4,49 @@
     "visible": true
   },
   "whatsOn": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "schedule": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "helpDesk": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
 
   "social": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "arts": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "skillShare": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "fringe": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "house": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "misinfoCon": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "emergentInfo": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "emergentSessions": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
 
   "navigation": {

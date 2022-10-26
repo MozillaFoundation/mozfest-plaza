@@ -3,3 +3,5 @@
 # Help
 
 Lorem ipsum sil dor amet ...
+
+%feedback_form%
