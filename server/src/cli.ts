@@ -68,6 +68,7 @@ cli.command(
         default: process.env.CONTENT_REPO_BRANCH ?? 'main',
       })
       .options('reuse', { type: 'boolean', default: false })
+      .options('local', { type: 'boolean', default: false })
       .options('repoPath', { type: 'string', default: null }),
   (args) => fetchContentCommand(args).catch(errorHandler)
 )

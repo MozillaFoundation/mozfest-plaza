@@ -12,12 +12,28 @@ import {
   ConferenceConfigStruct,
   BlockedStruct,
   loadConfig,
+  createDebug,
 } from '../lib/module.js'
+
+const debug = createDebug('cmd:fetch-content')
 
 export interface FetchContentCommandOptions {
   branch: string
   reuse: boolean
   repoPath: string | null
+  local: boolean
+}
+
+// TODO: should this be a deconf config?
+class CustomContentRepo extends ContentRepository {
+  constructor(public local: boolean) {
+    super({})
+  }
+  async updateLocalRepo(dir: string, url: string, branch: string) {
+    if (this.local) return
+    super.updateLocalRepo(dir, url, branch)
+    // Skip pulling from the local repo
+  }
 }
 
 export async function fetchContentCommand(options: FetchContentCommandOptions) {
@@ -26,7 +42,7 @@ export async function fetchContentCommand(options: FetchContentCommandOptions) {
   )
 
   const store = new RedisService(env.REDIS_URL)
-  const contentRepo = new ContentRepository({})
+  const contentRepo = new CustomContentRepo(options.local)
   const config = await loadConfig()
   const cmd = new ContentService({ store, contentRepo })
 
@@ -36,6 +52,11 @@ export async function fetchContentCommand(options: FetchContentCommandOptions) {
     reuseDirectory: options.reuse ? 'content' : undefined,
     contentKeys: config.content.keys,
     languages: ['en'],
+  }
+
+  if (options.local) {
+    debug('local mode')
+    opts.reuseDirectory = '..'
   }
 
   // `repoPath` is the new way, pass an existing repo to fetch from
