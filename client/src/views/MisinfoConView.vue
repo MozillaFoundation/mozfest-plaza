@@ -8,7 +8,6 @@
       :schedule-date="scheduleDate"
       :route-query="$route.query"
       @filter="onFilter"
-      class="appLayout-main"
     >
       <span slot="title">{{ $t('mozfest.misinfoCon.title') }}</span>
       <ApiContent slot="infoText" slug="misinfo-con-filters" />

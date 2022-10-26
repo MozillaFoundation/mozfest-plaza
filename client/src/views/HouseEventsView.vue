@@ -8,7 +8,6 @@
       :schedule-date="scheduleDate"
       :route-query="$route.query"
       @filter="onFilter"
-      class="appLayout-main"
     >
       <p slot="title">{{ $t('mozfest.houseEvents.title') }}</p>
       <p slot="infoText">{{ $t('mozfest.houseEvents.info') }}</p>

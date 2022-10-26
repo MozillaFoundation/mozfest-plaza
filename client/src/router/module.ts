@@ -4,7 +4,7 @@ import i18n from '../i18n/module'
 
 import AtriumView from '../views/AtriumView.vue'
 import TokenCaptureView from '../views/TokenCaptureView.vue'
-import ApiErrorView from '../views/ApiErrorView.vue'
+import ApiMessageView from '../views/ApiMessageView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 import {
@@ -79,12 +79,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/sneak-peek',
     name: Routes.WhatsOn,
-    redirect: { name: Routes.Schedule },
-    // component: () =>
-    //   import(/* webpackChunkName: "schedule" */ '../views/WhatsOnView.vue'),
-    // meta: {
-    //   pageTitle: 'mozfest.pageTitles.whatsOn',
-    // },
+    // redirect: { name: Routes.Schedule },
+    component: () =>
+      import(/* webpackChunkName: "schedule" */ '../views/WhatsOnView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.whatsOn',
+    },
   },
   {
     path: '/session/:sessionId',
@@ -198,11 +198,11 @@ const routes: Array<RouteConfig> = [
     path: '/error/:errorCode',
     props: true,
     name: Routes.Error,
-    component: ApiErrorView,
+    component: ApiMessageView,
   },
   {
     path: '/error',
-    component: ApiErrorView,
+    component: ApiMessageView,
   },
   {
     path: '/not-found',

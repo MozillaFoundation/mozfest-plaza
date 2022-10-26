@@ -15,10 +15,10 @@
       <MozfestSquareLogo />
     </router-link>
 
-    <div slot="main" class="mozAppLayout-main">
+    <template slot="main">
       <slot />
       <MozPageFooter />
-    </div>
+    </template>
   </AppLayout>
 </template>
 
@@ -167,17 +167,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style lang="scss">
-.mozAppLayout-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
-
-  > :not(.pageFooter) {
-    flex: 1;
-  }
-}
-</style>

@@ -30,10 +30,5 @@ export default Vue.extend({
       'https://static.airtable.com/js/embed/embed_snippet_v1.js'
     )
   },
-  methods: {
-    grabScript() {
-      const script = document.getElementById('airtable')
-    },
-  },
 })
 </script>

@@ -212,6 +212,7 @@ export default Vue.extend({
 }
 
 .atriumLayout {
+  flex: 1; // Fill AppLayout
   overflow-x: hidden;
 }
 
