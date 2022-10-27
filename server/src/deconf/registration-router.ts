@@ -23,14 +23,24 @@ import {
   BlockList,
 } from '../lib/module.js'
 
-import { Describe, object, string } from 'superstruct'
+import { Describe, object, optional, string } from 'superstruct'
 
 export interface UserData {}
 const UserDataStruct: Describe<UserData> = object({})
 
 const LoginStartBodyStruct = object({
   email: string(),
+  redirect: optional(string()),
 })
+
+function parseLoginRedirect(input: string | undefined, clientUrl: string) {
+  if (!input || !input.startsWith('/')) return undefined
+  try {
+    return new URL(input, clientUrl).toString()
+  } catch {
+    return undefined
+  }
+}
 
 type Context = AppContext
 
@@ -72,6 +82,10 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
     router.post('registration.startLogin', '/auth/login', async (ctx) => {
       const reqBody = validateStruct(ctx.request.body, LoginStartBodyStruct)
       const emailAddress = trimEmail(reqBody.email)
+      const redirect = parseLoginRedirect(
+        reqBody.redirect,
+        this.#context.env.CLIENT_URL
+      )
 
       await this.#assertNotBlocked(emailAddress)
 
@@ -82,8 +96,18 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
       )
       if (!titoEmails) throw ApiError.internalServerError()
 
-      const matchedRecord = titoEmails.find((r) => r.emailHash === emailHash)
-      if (!matchedRecord) throw ApiError.unauthorized()
+      const facilitatorEmails = await this.#context.store.retrieve<string[]>(
+        'schedule.facilitators'
+      )
+      if (!facilitatorEmails) throw ApiError.internalServerError()
+
+      const titoRecord = titoEmails.find((r) => r.emailHash === emailHash)
+      const isFacilitator = facilitatorEmails.includes(emailHash)
+      const isAdmin = this.#context.env.ADMIN_EMAILS.has(emailAddress)
+
+      if (!titoRecord && !isFacilitator && !isAdmin) {
+        throw ApiError.unauthorized()
+      }
 
       // Get registrations and find the newest one
       const registrations =
@@ -92,7 +116,7 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
 
       if (!registration) {
         await this.#context.registrationRepo.register({
-          name: matchedRecord.name,
+          name: titoRecord?.name ?? 'Facilitator',
           email: emailAddress,
           language: 'en',
           country: '',
@@ -107,15 +131,17 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
 
       if (!registration) throw ApiError.internalServerError()
 
+      const roles = []
+      if (isFacilitator) roles.push('facilitator')
+      if (isAdmin) roles.push('admin')
       const loginToken = this.#context.jwt.signToken<EmailLoginToken>(
         {
           kind: 'email-login',
           sub: registration.id,
-          user_roles: [],
+          user_roles: roles,
+          redirect,
         },
-        {
-          expiresIn: '30m',
-        }
+        { expiresIn: '30m' }
       )
 
       this.sendLoginEmail(registration, loginToken)
@@ -147,20 +173,17 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
 
           await this.#assertNotBlocked(registration.email)
 
-          const roles: string[] = ['attendee']
-          if (this.#context.env.ADMIN_EMAILS.has(registration.email)) {
-            roles.push('admin')
-          }
-
           const authToken = this.#context.jwt.signToken<AuthToken>({
             kind: 'auth',
             sub: registration.id,
             user_lang: registration.language,
-            user_roles: roles,
+            user_roles: loginToken.user_roles,
           })
 
           ctx.redirect(
-            this.#context.url.getClientLoginLink(authToken).toString()
+            this.#context.url
+              .getClientLoginLink(authToken, loginToken.redirect)
+              .toString()
           )
         } catch (error) {
           ctx.redirect(

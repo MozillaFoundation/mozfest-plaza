@@ -21,11 +21,12 @@ export class UrlService implements Readonly<DeconfUrlService> {
     return new URL(`session/${sessionId}`, this.#env.CLIENT_URL)
   }
 
-  getClientLoginLink(token: string): URL {
+  getClientLoginLink(token: string, redirect?: string): URL {
     const url = new URL('_auth', this.#env.CLIENT_URL)
 
     const params = new URLSearchParams()
     params.set('token', token)
+    if (redirect) params.set('redirect', redirect)
     url.hash = params.toString()
 
     return url

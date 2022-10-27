@@ -5,8 +5,8 @@ import { ApiError, VOID_RESPONSE } from '@openlab/deconf-api-toolkit'
 import { AppContext, AppRouter } from '../lib/module.js'
 import {
   PRETALX_LOCK_KEY,
-  scrapePretalxCommand,
-} from '../commands/scrape-pretalx-command.js'
+  fetchScheduleCommand,
+} from '../commands/fetch-schedule-command.js'
 
 type Context = AppContext
 
@@ -44,7 +44,7 @@ export class AdminRouter implements AppRouter {
       }
 
       // Run the scrape but don't wait for completion
-      scrapePretalxCommand({}).catch((error) => {
+      fetchScheduleCommand({}).catch((error) => {
         console.error('Admin Pretalx scrape failed')
         console.error(error)
       })

@@ -16,8 +16,8 @@ import { serveCommand } from './commands/serve-command.js'
 import { hackCommands } from './commands/hack-command.js'
 import {
   pretalxDataCommands,
-  scrapePretalxCommand,
-} from './commands/scrape-pretalx-command.js'
+  fetchScheduleCommand,
+} from './commands/fetch-schedule-command.js'
 import { fetchContentCommand } from './commands/fetch-content-command.js'
 import { fakeTitoCommand } from './commands/fake-tito-command.js'
 import { fakeScheduleCommand } from './commands/fake-schedule-command.js'
@@ -80,7 +80,7 @@ cli.command(
   (yargs) => yargs,
   (args) => {
     deprecatedCommand(args, 'scrape-pretalx', 'fetch-schedule')
-    return scrapePretalxCommand({}).catch(errorHandler)
+    return fetchScheduleCommand({}).catch(errorHandler)
   }
 )
 

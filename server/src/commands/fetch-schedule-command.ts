@@ -9,6 +9,7 @@ import {
   PretalxTax,
   RedisService,
   SemaphoreService,
+  trimEmail,
 } from '@openlab/deconf-api-toolkit'
 import {
   Session,
@@ -28,7 +29,12 @@ import ms from 'ms'
 // import languages = require('../data/languages.json')
 // import tracks = require('../data/tracks.json')
 
-import { AppConfig, createDebug, loadConfig } from '../lib/module.js'
+import {
+  AppConfig,
+  createDebug,
+  loadConfig,
+  sha256Hash,
+} from '../lib/module.js'
 
 export interface ScrapePretalxCommandOptions {}
 
@@ -98,7 +104,7 @@ function speakerOptions(config: AppConfig) {
 }
 
 /** A CLI command to scrape pretalx, format content for deconf and put into redis */
-export async function scrapePretalxCommand(
+export async function fetchScheduleCommand(
   options: ScrapePretalxCommandOptions
 ) {
   debug('start')
@@ -115,6 +121,8 @@ export async function scrapePretalxCommand(
     const submissions = await pretalx.getSubmissions(submissionOptions(config))
     const speakers = await pretalx.getSpeakers(speakerOptions(config))
     const tags = await pretalx.getTags()
+    const activeSpeakers = new Set<string>()
+    const speakerMap = new Map(speakers.map((s) => [s.code, s]))
     // const questions = await pretalx.getQuestions()
     // const speakerMap = new Map(speakers.map((s) => [s.code, s]))
 
@@ -130,6 +138,7 @@ export async function scrapePretalxCommand(
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
+    // TODO: is this still needed?
     // Remove 'null__null' slot
     schedule.slots = schedule.slots.filter((s) => s.id !== 'null__null')
 
@@ -139,14 +148,22 @@ export async function scrapePretalxCommand(
         locale.replace('-mozilla', '')
       )
 
+      // TODO: is this still needed?
       // Unset null__null slot
       if (session.slot === 'null__null') session.slot = undefined
+
+      for (const s of session.speakers) {
+        const speaker = speakerMap.get(s)
+        if (!speaker?.email) continue
+        activeSpeakers.add(sha256Hash(trimEmail(speaker.email)))
+      }
     }
 
     // Save to redis
     for (const [key, value] of Object.entries(schedule)) {
       await store.put(`schedule.${key}`, value)
     }
+    await store.put('schedule.facilitators', Array.from(activeSpeakers))
 
     // Wait a little bit to hold the lock for longer
     // For example, if multiple containers are triggered at the same time

@@ -21,7 +21,11 @@ import {
   TitoRelease,
   createDebug,
 } from '../lib/module.js'
-import { RedisService, SemaphoreService } from '@openlab/deconf-api-toolkit'
+import {
+  RedisService,
+  SemaphoreService,
+  trimEmail,
+} from '@openlab/deconf-api-toolkit'
 
 const debug = createDebug('cmd:scrape-tito')
 const LOCK_KEY = 'tito/lock'
@@ -198,7 +202,7 @@ export async function scrapeTitoCommand(options: ScrapeTitoCommandOptions) {
     // For each new registration merge or append a record
     for (const ticket of newTickets) {
       const email = ticket.email ?? ticket.registration_email
-      const hash = sha256Hash(email.toLowerCase().trim())
+      const hash = sha256Hash(trimEmail(email))
       const matchedRecord = recordMap.get(hash)
 
       // If the record exists, update its name

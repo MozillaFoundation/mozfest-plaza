@@ -16,7 +16,7 @@
     "@godaddy/terminus": "^4.11.2",
     "@koa/cors": "^3.4.3",
     "@koa/router": "^10.1.1",
-    "@openlab/deconf-api-toolkit": "^5.0.0",
+    "@openlab/deconf-api-toolkit": "^5.1.0",
     "@openlab/deconf-shared": "^3.5.0",
     "@sendgrid/mail": "^7.7.0",
     "@socket.io/redis-adapter": "^7.2.0",
