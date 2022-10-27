@@ -24,6 +24,7 @@ export function apiModule(): ApiStoreModule {
     ...createApiStoreModule(),
     getters: {
       apiClient: () => apiClient,
+      userSessions: (store) => store.userSessions ?? [],
     },
     actions: {
       ...baseActions,

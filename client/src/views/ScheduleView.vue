@@ -42,6 +42,7 @@ const options: FilteredScheduleOptions = {
   scheduleConfig: {
     tileHeader: ['type'],
     tileAttributes: ['languages', 'recorded', 'track', 'themes'],
+    tileActions: ['addToMySchedule', 'join'],
   },
   enabledFilters: [
     'query',

@@ -41,6 +41,7 @@ const options: FilteredScheduleOptions = {
   scheduleConfig: {
     tileHeader: ['track'],
     tileAttributes: ['themes'],
+    tileActions: ['addToMySchedule', 'join'],
   },
   languages: getLanguageOptions(),
 }
