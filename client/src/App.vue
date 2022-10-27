@@ -164,6 +164,7 @@ export default Vue.extend({
 
 @import '@openlab/deconf-ui-toolkit/theme.scss';
 @import '@fortawesome/fontawesome-svg-core/styles.css';
+@import './scss/hacks.scss';
 
 //
 // Misc styles
@@ -198,26 +199,5 @@ export default Vue.extend({
   h6 {
     @include title-font;
   }
-}
-
-//
-// Hacks
-//
-.sideTabs {
-  overflow-y: auto;
-}
-
-.addToCalendar {
-  display: none !important;
-}
-
-.atriumLayout {
-  flex: 1; // Fill AppLayout
-  overflow-x: hidden;
-}
-
-.sessionLayout-main {
-  // https://weblog.west-wind.com/posts/2016/Feb/15/Flexbox-Containers-PRE-tags-and-managing-Overflow
-  min-width: 0;
 }
 </style>

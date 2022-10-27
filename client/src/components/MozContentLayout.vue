@@ -40,5 +40,10 @@ export default Vue.extend({
 <style lang="scss">
 .contentLayout {
   background: $background;
+
+  .boxContent {
+    max-width: 720px;
+    margin-inline: auto;
+  }
 }
 </style>

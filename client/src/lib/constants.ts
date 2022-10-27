@@ -21,6 +21,7 @@ export enum ExtraRoutes {
   MisinfoCon = 'misinfoCon',
   EmergentInfo = 'emergentInfo',
   EmergentSessions = 'emergentSessions',
+  Calendar = 'calendar',
 }
 
 export const themeAllowlist = new Set([

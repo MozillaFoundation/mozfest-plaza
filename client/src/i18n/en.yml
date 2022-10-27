@@ -74,6 +74,13 @@ deconf:
   addToCalendar:
     action: Add to calendar
 
+  addUserCalendar:
+    title: Private calendar
+    generate: Generate url
+    info: Use this link to subscribe to "My Schedule" in your own calendar. Your calendar will refresh periodically to fetch the latest information and show you the events you have added to "My Schedule".
+    copy: copy
+    copied: copied
+
   sessionLink:
     copy: copy
     copied: copied
@@ -246,6 +253,7 @@ mozfest:
     houseEvents: HouseEvents
     misinfoCon: MisinfoCon # TODO - new
     emergentSessions: Emergent Sessions # TODO - new
+    calendar: My Calendar # TODO - new
 
   whatsOn:
     title: Sneak Peek
@@ -289,13 +297,6 @@ mozfest:
   notFound:
     title: Page Not Found
     info: We can't find the page you're looking for
-
-  addUserCalendar:
-    title: Private calendar
-    generate: Generate url
-    info: Use this link to subscribe to "My Schedule" in your own calendar. Your calendar will refresh periodically to fetch the latest information and show you the events you have added to "My Schedule".
-    copy: copy
-    copied: copied
 
   appLayout:
     atrium: Plaza

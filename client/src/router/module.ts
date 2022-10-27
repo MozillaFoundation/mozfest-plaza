@@ -190,6 +190,15 @@ const routes: Array<RouteConfig> = [
       pageTitle: 'mozfest.pageTitles.emergentSessions',
     },
   },
+  {
+    path: '/calendar',
+    name: ExtraRoutes.Calendar,
+    component: () =>
+      import(/* webpackChunkName: "static" */ '../views/CalendarView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.calendar',
+    },
+  },
 
   //
   // Errors
