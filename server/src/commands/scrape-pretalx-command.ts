@@ -45,8 +45,7 @@ async function setup() {
   const env = checkEnvObject(
     pluck(process.env, 'PRETALX_API_TOKEN', 'REDIS_URL')
   )
-  const appConfig = await loadConfig()
-  const config = appConfig
+  const config = await loadConfig()
   const store = new RedisService(env.REDIS_URL)
   const pretalx = new PretalxService({ env, store, config: config.pretalx })
   const semaphore = new SemaphoreService({ store })
@@ -73,10 +72,29 @@ function dataCommand<T>(block: (pretalx: PretalxService) => Promise<T>) {
 export const pretalxDataCommands = {
   questions: dataCommand((p) => p.getQuestions()),
   event: dataCommand((p) => p.getEvent()),
-  submissions: dataCommand((p) => p.getSubmissions()),
+  submissions: dataCommand(async (p) =>
+    p.getSubmissions(submissionOptions(await loadConfig()))
+  ),
   talks: dataCommand((p) => p.getTalks()),
-  speakers: dataCommand((p) => p.getSpeakers()),
+  speakers: dataCommand(async (p) =>
+    p.getSpeakers(speakerOptions(await loadConfig()))
+  ),
   tags: dataCommand((p) => p.getTags()),
+}
+
+function submissionOptions(config: AppConfig) {
+  return {
+    questions: [...config.pretalx.questions.links],
+  }
+}
+
+function speakerOptions(config: AppConfig) {
+  return {
+    questions: [
+      config.pretalx.questions.pulsePhoto,
+      config.pretalx.questions.affiliation,
+    ],
+  }
 }
 
 /** A CLI command to scrape pretalx, format content for deconf and put into redis */
@@ -94,16 +112,15 @@ export async function scrapePretalxCommand(
   }
 
   try {
-    const submissions = await pretalx.getSubmissions()
-    const talks = await pretalx.getTalks()
-    const speakers = await pretalx.getSpeakers()
+    const submissions = await pretalx.getSubmissions(submissionOptions(config))
+    const speakers = await pretalx.getSpeakers(speakerOptions(config))
     const tags = await pretalx.getTags()
     // const questions = await pretalx.getQuestions()
     // const speakerMap = new Map(speakers.map((s) => [s.code, s]))
 
     const schedule: Omit<ScheduleRecord, 'settings'> = {
       sessions: helpers.getSessions(submissions),
-      slots: pretalx.getDeconfSlots(talks),
+      slots: pretalx.getDeconfSlots(submissions),
       speakers: pretalx.getDeconfSpeakers(
         speakers,
         config.pretalx.questions.affiliation
