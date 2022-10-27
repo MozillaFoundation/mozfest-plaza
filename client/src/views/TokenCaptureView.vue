@@ -15,9 +15,11 @@ export default Vue.extend({
     return { tokenKey: StorageKey.AuthToken }
   },
   methods: {
-    onSuccess(user: AuthToken) {
+    onSuccess(user: AuthToken, params: URLSearchParams) {
       setLocale(user.user_lang)
-      this.$router.replace({ name: Routes.Atrium })
+      const redir = params.get('redirect')
+      if (!redir) this.$router.replace({ name: Routes.Atrium })
+      else window.location.href = redir
     },
   },
 })
