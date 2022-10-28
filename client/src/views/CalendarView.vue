@@ -21,7 +21,7 @@ export default Vue.extend({
 <style lang="scss">
 .calendarView {
   .calendarWidget {
-    border: 1px solid $border;
+    border: 3px solid $border;
     border-radius: $radius;
     padding: 1rem;
   }
