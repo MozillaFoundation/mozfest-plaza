@@ -193,6 +193,9 @@ deconf:
       info: Your magic link to login has expired, they only last for 30 minutes for security reasons. Use the button below to start again.
       action: Log in again
 
+  tokenCaptureView:
+    message: Processing login...
+
 mozfest:
   general:
     backToAtrium: Back to Plaza
