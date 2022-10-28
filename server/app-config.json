@@ -4,7 +4,7 @@
     "replyToEmail": "festival@mozilla.org"
   },
   "sendgrid": {
-    "loginTemplateId": "d-123456789abcdef"
+    "loginTemplateId": "d-095e893ab93b4ba48e7039b1e070677f"
   },
   "jwt": {
     "issuer": "mozfest-localhost"
@@ -17,6 +17,7 @@
       "conference-over",
       "fringe-filters",
       "help",
+      "register",
       "lightning-talks-filters",
       "login",
       "schedule-filters",
