@@ -29,6 +29,7 @@ import { MetricsBroker } from './deconf/metrics-broker.js'
 import { AuthBroker } from './deconf/auth-broker.js'
 import { AdminRouter } from './deconf/admin-router.js'
 import { CalendarRouter } from './deconf/calendar-router.js'
+import { TitoRouter } from './general/tito-router.js'
 
 const debug = createDebug('server')
 
@@ -123,6 +124,7 @@ export function createServer(context: AppContext) {
     new ContentRouter(context),
     new AdminRouter(context),
     new CalendarRouter(context),
+    new TitoRouter(context),
   ]
 
   const appBrokers: AppBroker[] = [
