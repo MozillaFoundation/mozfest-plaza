@@ -24,10 +24,13 @@ export function getBrowserLocale(input = 'en') {
   return specific ? specific[1] : input
 }
 
-export function setLocale(newLocale: string = getBrowserLocale()): void {
+export function setLocale(newLocale: string): void {
+  const isBrowser = newLocale == getBrowserLocale()
+
   i18n.locale = newLocale
-  updateDocumentDirection(newLocale)
-  localStorage.setItem('locale', newLocale)
+  updateDocumentDirection(i18n.locale)
+  if (isBrowser) localStorage.removeItem('locale')
+  else localStorage.setItem('locale', i18n.locale)
 }
 
 function updateDocumentDirection(locale: string) {

@@ -9,7 +9,7 @@
     <MozfestLogo slot="brandA" />
     <MozillaLogo slot="brandB" />
 
-    <!-- <LanguageControl slot="languageControl" /> -->
+    <LanguageControl slot="languageControl" />
 
     <router-link slot="brandC" :to="atriumRoute">
       <MozfestSquareLogo />
@@ -31,6 +31,7 @@ import MozfestLogo from '@/components/MozfestLogo.vue'
 import MozillaLogo from '@/components/MozillaLogo.vue'
 import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
+import LanguageControl from '@/components/LanguageControl.vue'
 
 import ArtGalleryIcon from '@/icons/ArtGalleryIcon.vue'
 import FringeIcon from '@/icons/FringeIcon.vue'
@@ -60,6 +61,7 @@ export default Vue.extend({
     MozillaLogo,
     MozfestSquareLogo,
     MozPageFooter,
+    LanguageControl,
   },
   computed: {
     ...mapApiState('api', ['schedule', 'user']),

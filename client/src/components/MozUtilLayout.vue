@@ -10,7 +10,7 @@
       </slot>
     </template>
 
-    <!-- <LanguageControl slot="languageControl" /> -->
+    <LanguageControl slot="languageControl" />
 
     <slot slot="main" />
 
@@ -21,13 +21,20 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Location } from 'vue-router'
+import { BackButton, Routes, UtilLayout } from '@openlab/deconf-ui-toolkit'
 
 import MozfestLogo from './MozfestLogo.vue'
 import MozPageFooter from './MozPageFooter.vue'
-import { BackButton, Routes, UtilLayout } from '@openlab/deconf-ui-toolkit'
+import LanguageControl from '@/components/LanguageControl.vue'
 
 export default Vue.extend({
-  components: { UtilLayout, MozfestLogo, MozPageFooter, BackButton },
+  components: {
+    UtilLayout,
+    MozfestLogo,
+    MozPageFooter,
+    BackButton,
+    LanguageControl,
+  },
   props: {
     width: { type: String, default: 'regular' },
   },
