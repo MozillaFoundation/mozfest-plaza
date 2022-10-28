@@ -100,9 +100,7 @@ export default Vue.extend({
       if (token) {
         await this.$store.dispatch('api/authenticate', { token })
 
-        if (this.user) {
-          setLocale(this.user.user_lang)
-        } else {
+        if (!this.user) {
           localStorage.removeItem(StorageKey.AuthToken)
         }
       }
