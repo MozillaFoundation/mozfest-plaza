@@ -53,7 +53,7 @@
     "showInterpret": false,
     "showProfile": true,
     "showLogin": true,
-    "showRegister": false
+    "showRegister": true
   },
 
   "atriumWidgets": {
