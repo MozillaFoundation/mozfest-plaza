@@ -61,5 +61,10 @@ export default Vue.extend({
   created() {
     guardPage(this.schedule?.settings.misinfoCon, this.user, this.$router)
   },
+  methods: {
+    onFilter(query: Record<string, string>) {
+      this.$router.replace({ query })
+    },
+  },
 })
 </script>
