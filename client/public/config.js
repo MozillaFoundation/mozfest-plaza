@@ -6,6 +6,6 @@ window.CONFIG = {
   BUILD_NAME: '',
   // GA_TOKEN: 'G-JRVVR708J7', // development/testing token
   GA_TOKEN: '',
-  JWT_ISSUER: 'mozfest-2022',
+  JWT_ISSUER: 'mozfest-localhost',
   // DISABLE_SOCKETS: false,
 }
