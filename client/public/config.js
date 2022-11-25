@@ -13,6 +13,6 @@ window.CONFIG = {
 //
 // Static mode
 //
-window.CONFIG.SERVER_URL = 'http://localhost:3000/static/schedule/'
-window.CONFIG.STATIC_BUILD = true
-window.CONFIG.DISABLE_SOCKETS = true
+// window.CONFIG.SERVER_URL = 'http://localhost:3000/static/schedule/'
+// window.CONFIG.STATIC_BUILD = true
+// window.CONFIG.DISABLE_SOCKETS = true
