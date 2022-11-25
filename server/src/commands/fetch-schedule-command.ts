@@ -81,7 +81,6 @@ export const pretalxDataCommands = {
   submissions: dataCommand(async (p) =>
     p.getSubmissions(submissionOptions(await loadConfig()))
   ),
-  talks: dataCommand((p) => p.getTalks()),
   speakers: dataCommand(async (p) =>
     p.getSpeakers(speakerOptions(await loadConfig()))
   ),
@@ -134,7 +133,7 @@ export async function fetchScheduleCommand(
         config.pretalx.questions.affiliation
       ),
       themes: helpers.getThemes(tags),
-      tracks: config.tracks.map((t) => helpers.createTrack(t)),
+      tracks: config.tracks as Track[],
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
@@ -187,16 +186,18 @@ class PretalxHelpers {
 
   getSessions(submissions: PretalxTalk[]): Session[] {
     return submissions.map((submission) => {
-      const type = this.pretalx.getIdFromTitle(
-        submission.submission_type,
-        'unknown'
-      )
+      // const type = this.pretalx.getIdFromTitle(
+      //   submission.submission_type,
+      //   'unknown'
+      // )
 
+      // TODO: rework to new slots API
       const slot = submission.slot
         ? this.pretalx.getSlotId(submission.slot)
         : undefined
 
-      const track = this.pretalx.getIdFromTitle(submission.track, 'unknown')
+      const type = submission.submission_type_id
+      const track = submission.track_id
 
       const themes: string[] = (submission.tags ?? []).map((tag) =>
         this.pretalx.getSlug(tag)
@@ -213,6 +214,8 @@ class PretalxHelpers {
         content: {
           en: submission.description,
         },
+
+        // TODO: pull from resources
         links: this.pretalx.getSessionLinks(
           submission,
           this.config.questions.links
@@ -235,6 +238,7 @@ class PretalxHelpers {
   }
 
   getThemes(tags: PretalxTax[]): Theme[] {
+    // TODO: Use ids if they're available?
     return tags.map((tag) => ({
       id: this.pretalx.getSlug(tag.tag),
       title: {
@@ -243,20 +247,22 @@ class PretalxHelpers {
     }))
   }
 
-  createTrack(input: { title: Localised }): Track {
-    return {
-      id: this.pretalx.getSlug(input.title.en as string),
-      title: input.title,
-    }
-  }
+  // createTrack({ id, title }: { id: number; title: Localised }): Track {
+  //   return { id, title }
+  //   return {
+  //     id: input.id,
+  //     title: input.title,
+  //   }
+  // }
 
   createSessionType(input: {
+    id: string
     title: Localised
     icon: [string, string]
     layout: string
   }): SessionType {
     return {
-      id: this.pretalx.getSlug(input.title.en as string),
+      id: input.id,
       title: input.title,
       layout: input.layout,
       iconGroup: input.icon[0],

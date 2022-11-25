@@ -10,6 +10,7 @@ import {
   number,
   tuple,
   enums,
+  coerce,
 } from 'superstruct'
 
 export const localised = () => object({ en: string() })
@@ -67,6 +68,8 @@ export const BlockedStruct = object({
   emails: array(string()),
 })
 
+const numberToString = () => coerce(string(), number(), (v) => v.toString())
+
 export type AppConfig = Infer<typeof AppConfigStruct>
 export const AppConfigStruct = object({
   mail: object({
@@ -97,10 +100,16 @@ export const AppConfigStruct = object({
   }),
   sessionTypes: array(
     object({
+      id: numberToString(),
       title: localised(),
       icon: tuple([string(), string()]),
       layout: enums(['plenary', 'workshop']),
     })
   ),
-  tracks: array(object({ title: localised() })),
+  tracks: array(
+    object({
+      id: numberToString(),
+      title: localised(),
+    })
+  ),
 })

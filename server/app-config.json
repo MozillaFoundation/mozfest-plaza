@@ -30,12 +30,12 @@
     ]
   },
   "pretalx": {
-    "eventSlug": "mozfest-2022",
+    "eventSlug": "mozilla-festival-2023",
     "englishKeys": ["en", "en-mozilla"],
     "questions": {
       "pulsePhoto": 1179,
-      "links": [1183],
-      "affiliation": 1184
+      "links": [],
+      "affiliation": 2038
     }
   },
   "tito": {
@@ -44,78 +44,82 @@
   },
   "sessionTypes": [
     {
-      "title": { "en": "Discussion" },
+      "id": 2425,
+      "title": { "en": "Discussion", "es": "Discusión" },
       "icon": ["fas", "comments"],
       "layout": "workshop"
     },
     {
-      "title": { "en": "Workshop" },
+      "id": 2453,
+      "title": { "en": "Workshop", "es": "Taller" },
       "icon": ["fas", "object-group"],
       "layout": "workshop"
     },
     {
-      "title": { "en": "Extended Workshop" },
-      "icon": ["fas", "object-group"],
-      "layout": "workshop"
-    },
-    {
-      "title": { "en": "Skill Share / Lightning Talk" },
+      "id": 2426,
+      "title": { "en": "Lightning Talk", "es": "Charla relámpago" },
       "icon": ["fas", "people-arrows"],
       "layout": "workshop"
     },
     {
-      "title": { "en": "Social Moments" },
+      "id": 2424,
+      "title": { "en": "Social Moments", "es": "Socialización" },
       "icon": ["fas", "share-alt"],
       "layout": "plenary"
     },
     {
-      "title": { "en": "Art and Media" },
+      "id": 2423,
+      "title": { "en": "Art and Media", "es": "Arte y medios" },
       "icon": ["fas", "palette"],
       "layout": "workshop"
     },
     {
-      "title": { "en": "Broadcast Talk" },
-      "icon": ["fas", "podcast"],
-      "layout": "plenary"
-    },
-    {
-      "title": { "en": "Community Plenary" },
-      "icon": ["fas", "podcast"],
-      "layout": "plenary"
-    },
-    {
-      "title": { "en": "Fringe Events" },
-      "icon": ["fas", "podcast"],
-      "layout": "plenary"
-    },
-    {
-      "title": { "en": "MisinfoCon Discussion" },
-      "icon": ["fas", "comments"],
-      "layout": "plenary"
-    },
-    {
-      "title": { "en": "MisinfoCon Workshop" },
+      "id": 2427,
+      "title": { "en": "Extended Workshop", "es": "Taller extendido" },
       "icon": ["fas", "object-group"],
-      "layout": "plenary"
-    },
-    {
-      "title": { "en": "Emergent Session" },
-      "icon": ["fas", "seedling"],
-      "layout": "plenary"
+      "layout": "workshop"
     }
   ],
   "tracks": [
-    { "title": { "en": "Mozilla" } },
-    { "title": { "en": "Rethinking Power & Ethics" } },
-    { "title": { "en": "Sustainability & Climate Change" } },
-    { "title": { "en": "Gender, Tech & Intersectionality" } },
-    { "title": { "en": "Digitizing Cultures & Languages" } },
-    { "title": { "en": "Digital ID & Privacy" } },
-    { "title": { "en": "Decolonized AI Futures" } },
-    { "title": { "en": "Creating Neurodiverse Wellbeing" } },
-    { "title": { "en": "Youth & Futures" } },
-    { "title": { "en": "Misinformation & Disinformation" } },
-    { "title": { "en": "Trustworthy AI" } },
-    { "title": { "en": "MisinfoCon" } }
+    {
+      "id": 3235,
+      "title": { "en": "Autonomy & Governance", "es": "Autonomía y Gobierno" }
+    },
+    {
+      "id": 3236,
+      "title": { "en": "Youth Zone", "es": "Zona Juvenil" }
+    },
+    {
+      "id": 3239,
+      "title": {
+        "en": "Utility of Transparency",
+        "es": "Utilidad de la Transparencia"
+      }
+    },
+    {
+      "id": 3240,
+      "title": {
+        "en": "Tech & Biodiversity",
+        "es": "Tecnología y biodiversidad"
+      }
+    },
+    {
+      "id": 3242,
+      "title": {
+        "en": "Humans behind the Machine",
+        "es": "Los Humanos Detrás de la Máquina"
+      }
+    },
+    {
+      "id": 3238,
+      "title": { "en": "Cosmos", "es": "Cosmos" }
+    },
+    {
+      "id": 3234,
+      "title": {
+        "en": "Education & Access",
+        "es": "Educación y Acceso"
+      }
+    }
   ]
 }
