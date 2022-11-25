@@ -47,7 +47,7 @@ export interface ServeCommandOptions {
   migrate: boolean
 }
 
-export async function serveCommand(options: ServeCommandOptions) {
+export async function createServerContext() {
   const env = createEnv()
   const config = await loadConfig()
   const pkg = JSON.parse(await fs.readFile('package.json', 'utf8'))
@@ -72,30 +72,20 @@ export async function serveCommand(options: ServeCommandOptions) {
   const metricsRepo = new MetricsRepository({ postgres })
   // const interpreterRepo = new InterpreterRepository({ jwt, conferenceRepo })
 
+  // prettier-ignore
+  return {
+    config, env, pkg, resources, email, i18n, jwt, postgres, semaphore, sockets,
+    store, url, attendanceRepo, conferenceRepo, metricsRepo, registrationRepo
+  }
+}
+
+export async function serveCommand(options: ServeCommandOptions) {
   if (options.migrate) {
     await migrateCommand({})
   }
 
-  const context: AppContext = {
-    config,
-    env,
-    pkg,
-    resources,
-
-    email,
-    i18n,
-    jwt,
-    postgres,
-    semaphore,
-    sockets,
-    store,
-    url,
-
-    attendanceRepo,
-    conferenceRepo,
-    metricsRepo,
-    registrationRepo,
-  }
+  const context: AppContext = await createServerContext()
+  const { env, store, postgres } = context
 
   debug('creating server')
   const { server, io } = createServer(context)

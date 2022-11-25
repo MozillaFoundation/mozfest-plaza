@@ -24,7 +24,10 @@ export const TokenStruct = object({
   token: string(),
 })
 
+export { PageFlagStruct }
+
 /** MozFest custom conference config */
+export type ConferenceConfig = Infer<typeof ConferenceConfigStruct>
 export const ConferenceConfigStruct = object({
   atrium: optional(PageFlagStruct),
   whatsOn: optional(PageFlagStruct),

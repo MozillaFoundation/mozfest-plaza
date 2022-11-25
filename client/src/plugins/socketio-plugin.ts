@@ -19,7 +19,7 @@ export class SocketIoPlugin {
     this.sharedSocket?.emit('deauth')
   }
 
-  constructor(serverUrl: string) {
+  constructor(serverUrl: URL) {
     // Concat the path onto the server url, e.g.
     // "/api/socket.io"
     // "/socket.io"

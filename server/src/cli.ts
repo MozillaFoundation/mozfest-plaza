@@ -22,6 +22,7 @@ import { fetchContentCommand } from './commands/fetch-content-command.js'
 import { fakeTitoCommand } from './commands/fake-tito-command.js'
 import { fakeScheduleCommand } from './commands/fake-schedule-command.js'
 import { logVisitorsCommand } from './commands/log-visitors-command.js'
+import { exportScheduleCommand } from './commands/export-schedule-command.js'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -182,6 +183,18 @@ cli.command(
   'See how many people are on the site and log it to the store',
   (yargs) => yargs,
   (args) => logVisitorsCommand(args).catch(errorHandler)
+)
+
+cli.command(
+  'export-schedule [destination]',
+  'Export a public static version of the schedule',
+  (yargs) =>
+    yargs.positional('destination', {
+      type: 'string',
+      describe: 'Where to put the static files',
+      default: 'static/schedule',
+    }),
+  (args) => exportScheduleCommand(args).catch(errorHandler)
 )
 
 cli.parse()

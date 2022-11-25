@@ -1,7 +1,14 @@
+import { EnvRecord } from '@/plugins/env-plugin'
 import {
   PageFlag,
   ScheduleRecord as DeconfScheduleRecord,
+  Session,
 } from '@openlab/deconf-shared'
+import {
+  DeconfApiClient,
+  DeconfStaticFiles,
+  StaticDeconfApiClient,
+} from '@openlab/deconf-ui-toolkit'
 
 export interface MozConferenceConfig {
   atrium?: PageFlag
@@ -39,4 +46,36 @@ export interface MozConferenceConfig {
 
 export type ScheduleRecord = Omit<DeconfScheduleRecord, 'settings'> & {
   settings: MozConferenceConfig
+}
+
+interface MozApiClient {
+  getWhatsOn(): Promise<Session[]>
+}
+
+export function pickApi(env: EnvRecord) {
+  return env.STATIC_BUILD
+    ? new StaticApiClient(env.SERVER_URL.href)
+    : new LiveApiClient(env.SERVER_URL.href)
+}
+
+type MozStaticFiles = DeconfStaticFiles & {
+  'whats-on.json': Session[]
+}
+
+export class LiveApiClient extends DeconfApiClient implements MozApiClient {
+  async getWhatsOn(): Promise<Session[]> {
+    const response = await this.fetchJson<{ sessions: Session[] }>(
+      'schedule/whats-on'
+    )
+    return response?.sessions ?? []
+  }
+}
+
+export class StaticApiClient
+  extends StaticDeconfApiClient<MozStaticFiles>
+  implements MozApiClient
+{
+  getWhatsOn(): Promise<Session[]> {
+    return this.getStaticFile('whats-on.json')
+  }
 }

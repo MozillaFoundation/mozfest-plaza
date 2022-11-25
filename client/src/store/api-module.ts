@@ -4,19 +4,19 @@ import {
   createApiStoreActions,
   createApiStoreModule,
   decodeJwt,
-  DeconfApiClient,
   FullAuthToken,
 } from '@openlab/deconf-ui-toolkit'
 import { Session } from '@openlab/deconf-shared'
 import { env } from '@/plugins/env-plugin'
 
 import { SocketIoPlugin } from '@/plugins/socketio-plugin'
+import { pickApi } from '@/lib/api'
 
 // TODO: work out how to filter themes again
 // import { StorageKey, themeAllowlist } from '@/lib/module'
 
 export function apiModule(): ApiStoreModule {
-  const apiClient = new DeconfApiClient(env.SERVER_URL)
+  const apiClient = pickApi(env)
 
   const baseActions = createApiStoreActions(apiClient)
 
@@ -60,11 +60,7 @@ export function apiModule(): ApiStoreModule {
       //   return data !== null
       // },
       async fetchWhatsOn() {
-        const response = await apiClient.fetchJson<{ sessions: Session[] }>(
-          'schedule/whats-on'
-        )
-
-        return response?.sessions ?? []
+        return apiClient.getWhatsOn()
       },
     },
   }

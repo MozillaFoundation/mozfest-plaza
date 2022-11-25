@@ -2,7 +2,7 @@ import dedent from 'dedent'
 import KoaRouter from '@koa/router'
 import { ConferenceRoutes, validateStruct } from '@openlab/deconf-api-toolkit'
 import { AppContext, AppRouter, SessionIdStruct } from '../lib/module.js'
-import { SessionState } from '@openlab/deconf-shared'
+import { Session, SessionState } from '@openlab/deconf-shared'
 
 type Context = AppContext
 
@@ -24,20 +24,8 @@ export class ConferenceRouter implements AppRouter {
     })
 
     router.get('conference.whatsOn', '/schedule/whats-on', async (ctx) => {
-      const allSessions = await this.#context.conferenceRepo.getSessions()
-      const states = new Set([SessionState.confirmed])
-
-      const blockedTypes = new Set()
-
-      const sessions = allSessions
-        .filter((s) => states.has(s.state) && !blockedTypes.has(s.type))
-        .map((session) => ({
-          ...session,
-          links: [],
-          slot: undefined,
-        }))
-
-      ctx.body = { sessions }
+      const sessions = await this.#context.conferenceRepo.getSessions()
+      ctx.body = { sessions: ConferenceRouter.filterForWhatsOn(sessions) }
     })
 
     router.get('conference.ics', '/schedule/:sessionId/ics', async (ctx) => {
@@ -103,5 +91,18 @@ export class ConferenceRouter implements AppRouter {
         </html>
       `
     })
+  }
+
+  static filterForWhatsOn(sessions: Session[]) {
+    const states = new Set([SessionState.confirmed])
+    const blockedTypes = new Set()
+
+    return sessions
+      .filter((s) => states.has(s.state) && !blockedTypes.has(s.type))
+      .map((session) => ({
+        ...session,
+        links: [],
+        slot: undefined,
+      }))
   }
 }
