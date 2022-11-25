@@ -65,9 +65,5 @@
     "slack": true,
     "familyResources": false,
     "mozfestBook": false
-  },
-
-  "startDate": "2022-03-07T00:00:00.000Z",
-  "endDate": "2022-03-11T23:59:59.999Z",
-  "isStatic": false
+  }
 }

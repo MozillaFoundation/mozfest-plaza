@@ -15,13 +15,7 @@
               slot="feature_video"
               link="https://vimeo.com/687248853"
             />
-            <div
-              slot="conference_over_message"
-              class="notification is-warning"
-              v-if="conferenceIsOver"
-            >
-              <ApiContent slug="conference-over" />
-            </div>
+            <ApiContent slot="conference_over_message" slug="conference-over" />
             <AnchorFmEmbed
               slot="feature_audio_a"
               src="https://anchor.fm/letsgetlitical/embed/episodes/Google-tell-me-about-gender--AI--Do-the-gender-stereotypes-offline-replicate-themselves-online-featuring-Sapni-GK--Garnett-Achieng-Mozfest-e1d2ivd"
@@ -50,7 +44,7 @@
           :icon="['fas', 'envelope']"
         />
         <ColorWidget
-          v-if="siteVisitorsIsEnabled && widgets.has('siteVisitors')"
+          v-if="widgets.has('siteVisitors')"
           kind="secondary"
           :title="siteVisitorsTitle"
           :subtitle="$t('mozfest.atrium.onlineUsers')"
@@ -170,11 +164,7 @@ export default Vue.extend({
     ...mapApiState('api', ['schedule', 'user']),
     ...mapMetricsState('metrics', ['siteVisitors']),
     settings(): MozConferenceConfig | null {
-      return (this.schedule?.settings as MozConferenceConfig) ?? null
-    },
-    siteVisitorsIsEnabled(): boolean {
-      if (!this.settings) return false
-      return !this.settings.isStatic
+      return this.schedule?.settings ?? null
     },
     siteVisitorsTitle(): string {
       return this.siteVisitors?.toString() ?? '~'
@@ -205,24 +195,12 @@ export default Vue.extend({
         )?.slice(0, 3) ?? null
       )
     },
-    conferenceIsOver(): boolean {
-      if (!this.settings) return false
-      return this.scheduleDate.getTime() > this.settings.endDate.getTime()
-    },
     widgets(): Set<string> {
-      const widgets = new Set<string>()
-      const conf = this.settings?.atriumWidgets
-
-      if (conf?.siteVisitors) widgets.add('siteVisitors')
-      if (conf?.twitter) widgets.add('twitter')
-      if (conf?.login) widgets.add('login')
-      if (conf?.register) widgets.add('register')
-      if (conf?.spatialChat) widgets.add('spatialChat')
-      if (conf?.slack) widgets.add('slack')
-      if (conf?.familyResources) widgets.add('familyResources')
-      if (conf?.mozfestBook) widgets.add('mozfestBook')
-
-      return widgets
+      return new Set(
+        Object.entries(this.settings?.atriumWidgets ?? {})
+          .filter((entry) => entry[1] === true)
+          .map((entry) => entry[0])
+      )
     },
   },
 })

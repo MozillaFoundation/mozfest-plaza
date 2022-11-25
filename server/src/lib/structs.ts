@@ -57,10 +57,6 @@ export const ConferenceConfigStruct = object({
     familyResources: boolean(),
     mozfestBook: boolean(),
   }),
-
-  startDate: date(),
-  endDate: date(),
-  isStatic: boolean(),
 })
 
 export type BlockList = Infer<typeof BlockedStruct>

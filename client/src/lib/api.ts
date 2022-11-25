@@ -35,10 +35,6 @@ export interface MozConferenceConfig {
     familyResources: boolean
     mozfestBook: boolean
   }
-
-  startDate: Date
-  endDate: Date
-  isStatic: boolean
 }
 
 export type ScheduleRecord = Omit<DeconfScheduleRecord, 'settings'> & {
