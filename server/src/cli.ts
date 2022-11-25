@@ -9,9 +9,9 @@ import { hideBin } from 'yargs/helpers'
 import { devAuthCommand } from './commands/dev-auth-command.js'
 import { migrateCommand } from './commands/migrate-command.js'
 import {
-  scrapeTitoCommand,
+  fetchUsersCommand,
   titoDataCommands,
-} from './commands/scrape-tito-command.js'
+} from './commands/fetch-auth-command.js'
 import { serveCommand } from './commands/serve-command.js'
 import { hackCommands } from './commands/hack-command.js'
 import {
@@ -111,7 +111,7 @@ cli.command(
     }),
   (args) => {
     deprecatedCommand(args, 'scrape-tito', 'fetch-users')
-    return scrapeTitoCommand(args).catch(errorHandler)
+    return fetchUsersCommand(args).catch(errorHandler)
   }
 )
 

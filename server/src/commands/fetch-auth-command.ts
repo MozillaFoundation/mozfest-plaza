@@ -27,7 +27,7 @@ import {
   trimEmail,
 } from '@openlab/deconf-api-toolkit'
 
-const debug = createDebug('cmd:scrape-tito')
+const debug = createDebug('cmd:fetch-auth')
 const LOCK_KEY = 'tito/lock'
 const SINCE_KEY = 'tito/lastScrape'
 const LOCK_MAX_DURATION_MS = ms('2m')
@@ -172,11 +172,11 @@ export const titoDataCommands = {
   releases: createOutputCommand((t) => getReleases(t)),
 }
 
-export interface ScrapeTitoCommandOptions {
+export interface FetchUsersCommandOptions {
   noCache: boolean
 }
 
-export async function scrapeTitoCommand(options: ScrapeTitoCommandOptions) {
+export async function fetchUsersCommand(options: FetchUsersCommandOptions) {
   debug('scrape')
   const { store, tito, semaphore } = await setup()
 
