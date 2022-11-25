@@ -8,7 +8,7 @@
     "visible": true
   },
   "schedule": {
-    "enabled": true,
+    "enabled": false,
     "visible": true
   },
   "helpDesk": {
@@ -17,54 +17,54 @@
   },
 
   "social": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "arts": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "skillShare": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "fringe": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "house": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "misinfoCon": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "emergentInfo": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "emergentSessions": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": true,
-    "showRegister": true
+    "showLogin": false,
+    "showRegister": false
   },
 
   "atriumWidgets": {
-    "register": true,
+    "register": false,
     "twitter": true,
     "login": false,
-    "siteVisitors": false,
+    "siteVisitors": true,
     "spatialChat": false,
     "slack": true,
-    "familyResources": true,
-    "mozfestBook": true
+    "familyResources": false,
+    "mozfestBook": false
   },
 
   "startDate": "2022-03-07T00:00:00.000Z",
