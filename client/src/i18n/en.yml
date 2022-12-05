@@ -18,7 +18,7 @@ deconf:
     hideWorkshops: Hide all
 
   general:
-    appName: MozFest 2022 Schedule
+    appName: MozFest 2023 Schedule
     days: days | day | days
     hours: hours | hour | hours
     minutes: minutes | minute | minutes
@@ -211,11 +211,11 @@ mozfest:
     familySubtitle: On-demand activities for attendees ages 3-12.
     familyTitle: MozFest Family Resources
     familyUrl: https://www.mozillafestival.org/family-resources
-    heading: MozFest 2022
+    heading: MozFest 2023
     logIn: Log in
     onlineUsers: Online now
     registerTitle: Secure Your Ticket
-    registerSubtitle: Registration is now available for MozFest 2022.
+    registerSubtitle: Registration is now available for MozFest 2023.
     registerUrl: https://www.mozillafestival.org/tickets
     slackSubtitle: Connect, collaborate, join the conversation.
     slackTitle: MozFest Slack
@@ -223,7 +223,7 @@ mozfest:
     spacialChatSubtitle: Visit our virtual common spaces here
     spacialChatTitle: Spatial Chat
     spacialChatUrl: https://spatial.chat/s/mozilla-festival-2022?guest
-    subtitle: from March 7th - 11th 2022.
+    subtitle: from March 20th - 24th 2023.
     title: Join us for a virtual MozFest
     twitterSubtitle: Share the sessions you’re most excited about attending.
     twitterTitle: 'Tweet #MozFest'
