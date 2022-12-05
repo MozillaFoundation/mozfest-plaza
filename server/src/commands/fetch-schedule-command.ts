@@ -36,7 +36,7 @@ import {
   sha256Hash,
 } from '../lib/module.js'
 
-export interface ScrapePretalxCommandOptions {}
+export interface FetchScheduleCommandOptions {}
 
 //
 // Constants
@@ -104,7 +104,7 @@ function speakerOptions(config: AppConfig) {
 
 /** A CLI command to scrape pretalx, format content for deconf and put into redis */
 export async function fetchScheduleCommand(
-  options: ScrapePretalxCommandOptions
+  options: FetchScheduleCommandOptions
 ) {
   debug('start')
 
@@ -137,19 +137,11 @@ export async function fetchScheduleCommand(
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
-    // TODO: is this still needed?
-    // Remove 'null__null' slot
-    schedule.slots = schedule.slots.filter((s) => s.id !== 'null__null')
-
     for (const session of schedule.sessions) {
       // Remove -mozilla from language names
       session.hostLanguages = session.hostLanguages.map((locale) =>
         locale.replace('-mozilla', '')
       )
-
-      // TODO: is this still needed?
-      // Unset null__null slot
-      if (session.slot === 'null__null') session.slot = undefined
 
       for (const s of session.speakers) {
         const speaker = speakerMap.get(s)
@@ -185,19 +177,16 @@ class PretalxHelpers {
   ) {}
 
   getSessions(submissions: PretalxTalk[]): Session[] {
-    return submissions.map((submission) => {
-      // const type = this.pretalx.getIdFromTitle(
-      //   submission.submission_type,
-      //   'unknown'
-      // )
-
-      // TODO: rework to new slots API
+    const sessions = submissions.map((submission) => {
+      // TODO: slots don't currently have ids
       const slot = submission.slot
         ? this.pretalx.getSlotId(submission.slot)
         : undefined
 
-      const type = submission.submission_type_id
-      const track = submission.track_id
+      const type = submission.submission_type_id?.toString()
+      const track = submission.track_id?.toString()
+
+      if (type === undefined || track === undefined) return null
 
       const themes: string[] = (submission.tags ?? []).map((tag) =>
         this.pretalx.getSlug(tag)
@@ -216,10 +205,7 @@ class PretalxHelpers {
         },
 
         // TODO: pull from resources
-        links: this.pretalx.getSessionLinks(
-          submission,
-          this.config.questions.links
-        ),
+        links: [],
         hostLanguages: [submission.content_locale],
         enableInterpretation: false,
         speakers: submission.speakers.map((s) => s.code),
@@ -235,6 +221,8 @@ class PretalxHelpers {
         hideFromSchedule: false,
       }
     })
+
+    return sessions.filter((s) => Boolean(s)) as Session[]
   }
 
   getThemes(tags: PretalxTax[]): Theme[] {
