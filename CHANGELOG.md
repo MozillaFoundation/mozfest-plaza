@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/digitalinteraction/mozfest/compare/v3.0.0-alpha.4...v3.0.0) (2022-12-05)
+
+
+### Features
+
+* update to new pretalx API ([30fa2a6](https://github.com/digitalinteraction/mozfest/commit/30fa2a602d01fd7c611ffc5c2be13c76e2307e32))
+
+
+### Bug Fixes
+
+* copy updates ([ecf9bbb](https://github.com/digitalinteraction/mozfest/commit/ecf9bbb4a3441e2ba9e8cbdfaddd34f29debf07f))
+* take out static config ([01c0d39](https://github.com/digitalinteraction/mozfest/commit/01c0d3947d5f416a0017e4659afd8d81b258b5f8))
+* update copy ([3a77a9c](https://github.com/digitalinteraction/mozfest/commit/3a77a9cfb6baff18a50406d3d82e5f1fc2ce65ca))
+
 ## [3.0.0-alpha.4](https://github.com/digitalinteraction/mozfest/compare/v3.0.0-alpha.3...v3.0.0-alpha.4) (2022-11-25)
 
 
