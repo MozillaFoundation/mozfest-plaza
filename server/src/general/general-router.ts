@@ -44,7 +44,7 @@ export class GeneralRouter implements AppRouter {
         const { sessionId } = validateStruct(ctx.params, SessionIdStruct)
         const session = await this.#confRepo.findSession(sessionId)
 
-        const appTitle = 'Mozilla Festival 2022'
+        const appTitle = 'Mozilla Festival 2023'
         const pageTitle = session?.title.en
         const pageDescription = session?.content.en || ''
         const sessionImage = this.#url
@@ -67,38 +67,37 @@ export class GeneralRouter implements AppRouter {
         const sessionUrl = this.#url.getSessionLink(session.id)
         sessionUrl.searchParams.set('ref', 'share')
 
+        const shortDesc = pageDescription.substring(0, 200)
+
         const head = dedent`
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>${pageTitle} | ${appTitle}</title>
-        <meta property="og:title" content="${pageTitle}">
-        <meta property="og:description" content="${pageDescription.substring(
-          0,
-          200
-        )}">
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="${appTitle}">
-        <meta property="og:url" content="${sessionUrl}">
-        <meta property="og:image" content="${sessionImage}">
-        <meta http-equiv="refresh" content="0; url='${sessionUrl}'" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@mozillafestival" />
-      `
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>${pageTitle} | ${appTitle}</title>
+          <meta property="og:title" content="${pageTitle}">
+          <meta property="og:description" content="${shortDesc}">
+          <meta property="og:type" content="website">
+          <meta property="og:site_name" content="${appTitle}">
+          <meta property="og:url" content="${sessionUrl}">
+          <meta property="og:image" content="${sessionImage}">
+          <meta http-equiv="refresh" content="0; url='${sessionUrl}'" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@mozillafestival" />
+        `
 
         // Show the headers if ?dev is specified
         if (ctx.request.query.dev !== undefined) {
           ctx.body = dedent`
-          <html>
-          <body><pre>${escapeHtml(head)}</pre></body>
-          </html>
-        `
+            <html>
+            <body><pre>${escapeHtml(head)}</pre></body>
+            </html>
+          `
         } else {
           ctx.body = dedent`
-          <html>
-          <head>${head}</head>
-          <body>Redirecting...</body>
-          </html>
-        `
+            <html>
+            <head>${head}</head>
+            <body>Redirecting...</body>
+            </html>
+          `
         }
 
         // There's no point specifying attendee/socketId as it won't be sent

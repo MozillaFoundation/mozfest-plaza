@@ -17,7 +17,7 @@ import {
 type Context = AppContext
 
 const calendarOptions: CalendarOptions = {
-  calName: 'My MozFest 2022 Schedule',
+  calName: 'My MozFest 2023 Schedule',
 }
 
 export class CalendarRouter implements AppRouter {

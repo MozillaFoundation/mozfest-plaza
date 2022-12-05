@@ -13,7 +13,7 @@ import {
   coerce,
 } from 'superstruct'
 
-export const localised = () => object({ en: string() })
+export const localised = () => object({ en: string(), es: string() })
 
 /** Koa Session URL parameters e.g. /session/:sessionId */
 export const SessionIdStruct = object({
