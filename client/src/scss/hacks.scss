@@ -18,3 +18,7 @@
   // https://weblog.west-wind.com/posts/2016/Feb/15/Flexbox-Containers-PRE-tags-and-managing-Overflow
   min-width: 0;
 }
+
+.content details:not(:last-child) {
+  margin-block-end: 1em;
+}
