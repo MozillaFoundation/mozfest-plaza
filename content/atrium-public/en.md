@@ -13,7 +13,7 @@ Here are some highlights from last year's festival
 
 <br />
 
-Click on the [‘Sneak Peak’](/sneak-peak) tab on the left sidebar for a sneak peek of confirmed sessions taking place at the festival. Our full schedule, with timings, will launch in early 2023.
+Click on the [‘Sneak Peek’](/sneak-peek) tab on the left sidebar for a sneak peek of confirmed sessions taking place at the festival. Our full schedule, with timings, will launch in early 2023.
 
 **[Secure your ticket now for MozFest](https://www.mozillafestival.org/tickets/)** where the brightest minds and most ambitious ideas from the internet health movement will come together for this virtual event.
 
