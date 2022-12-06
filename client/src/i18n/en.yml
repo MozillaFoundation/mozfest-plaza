@@ -257,6 +257,7 @@ mozfest:
     misinfoCon: MisinfoCon # TODO - new
     emergentSessions: Emergent Sessions # TODO - new
     calendar: My Calendar # TODO - new
+    mySchedule: My Schedule # TODO - new
 
   whatsOn:
     title: Sneak Peek
@@ -314,3 +315,8 @@ mozfest:
     house: House Events
     misinfoCon: MisinfoCon # TODO - new
     emergentSessions: Emergent Sessions # TODO - new
+    mySchedule: My Schedule # TODO - new
+
+  mySchedule:
+    title: My Schedule
+    noResults: Add some sessions to My Schedule

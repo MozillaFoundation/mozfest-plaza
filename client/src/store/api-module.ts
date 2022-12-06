@@ -6,7 +6,6 @@ import {
   decodeJwt,
   FullAuthToken,
 } from '@openlab/deconf-ui-toolkit'
-import { Session } from '@openlab/deconf-shared'
 import { env } from '@/plugins/env-plugin'
 
 import { SocketIoPlugin } from '@/plugins/socketio-plugin'

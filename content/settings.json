@@ -48,6 +48,10 @@
     "enabled": false,
     "visible": false
   },
+  "mySchedule": {
+    "enabled": false,
+    "visible": true
+  },
 
   "navigation": {
     "showInterpret": false,

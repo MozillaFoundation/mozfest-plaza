@@ -99,6 +99,12 @@ export default Vue.extend({
           pageFlag: this.settings.schedule,
         },
         {
+          title: this.$t('mozfest.appLayout.mySchedule') as string,
+          name: ExtraRoutes.MySchedule,
+          icon: ScheduleIcon, // TODO: need an icon
+          pageFlag: this.settings.mySchedule,
+        },
+        {
           title: this.$t('mozfest.appLayout.arts') as string,
           name: ExtraRoutes.Arts,
           icon: ArtGalleryIcon,

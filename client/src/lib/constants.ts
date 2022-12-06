@@ -10,6 +10,7 @@ export enum StorageKey {
   FringeEventsFilters = 'fringeEventsFilters',
   WhatsOnFilters = 'whatsOnFilters',
   EmergentSessionsFilters = 'emergentSessionsFilters',
+  MyScheduleFilters = 'myScheduleFilters',
 }
 
 export enum ExtraRoutes {
@@ -22,8 +23,10 @@ export enum ExtraRoutes {
   EmergentInfo = 'emergentInfo',
   EmergentSessions = 'emergentSessions',
   Calendar = 'calendar',
+  MySchedule = 'mySchedule',
 }
 
+// TODO: review this
 export const themeAllowlist = new Set([
   'arts--culture',
   'data-stewardship',

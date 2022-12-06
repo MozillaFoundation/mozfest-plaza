@@ -73,6 +73,15 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
+    path: '/my-schedule',
+    name: ExtraRoutes.MySchedule,
+    component: () =>
+      import(/* webpackChunkName: "schedule" */ '../views/MyScheduleView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.mySchedule',
+    },
+  },
+  {
     path: '/sneak-peak',
     redirect: { name: Routes.Schedule },
   },
