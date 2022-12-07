@@ -50,7 +50,7 @@
   },
   "mySchedule": {
     "enabled": false,
-    "visible": true
+    "visible": false
   },
 
   "navigation": {
