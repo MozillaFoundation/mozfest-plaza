@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/digitalinteraction/mozfest/compare/v3.0.0...v3.1.0) (2022-12-07)
+
+
+### Features
+
+* add MySchedule page ([f433a8a](https://github.com/digitalinteraction/mozfest/commit/f433a8ad45205a1f2e189c32a28b77efedda0db3))
+* style details summary elements ([5f244a8](https://github.com/digitalinteraction/mozfest/commit/5f244a85d0b15726059e7f02a2e7933eec8b1c5a))
+
+
+### Bug Fixes
+
+* add spacing around details elements in "content" ([1d82a41](https://github.com/digitalinteraction/mozfest/commit/1d82a4188a0a9b07974d37150a7986c5ffb9dd42))
+* don't show "Add to My Schedule" when signed out ([3aae286](https://github.com/digitalinteraction/mozfest/commit/3aae286ec6dcd9ccb67fb75d965dac4a5fd5d8c0))
+
 ## [3.0.0](https://github.com/digitalinteraction/mozfest/compare/v3.0.0-alpha.4...v3.0.0) (2022-12-05)
 
 
