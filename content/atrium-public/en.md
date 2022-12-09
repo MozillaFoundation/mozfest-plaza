@@ -13,8 +13,6 @@ Here are some highlights from last year's festival
 
 <br />
 
-Click on the [‘Sneak Peek’](/sneak-peek) tab on the left sidebar for a sneak peek of confirmed sessions taking place at the festival. Our full schedule, with timings, will launch in early 2023.
-
 **[Secure your ticket now for MozFest](https://www.mozillafestival.org/tickets/)** where the brightest minds and most ambitious ideas from the internet health movement will come together for this virtual event.
 
 The **[MozFest 2023 Call for Proposals](https://www.mozillafestival.org/propsosals) is now open**, and closes on December 16th 2022. Learn more about how to submit your session proposal on our website.
