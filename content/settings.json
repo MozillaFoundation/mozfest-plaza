@@ -68,6 +68,8 @@
     "spatialChat": false,
     "slack": true,
     "familyResources": false,
-    "mozfestBook": false
+    "mozfestBook": false,
+    "linkedin": true,
+    "submissions": true
   }
 }

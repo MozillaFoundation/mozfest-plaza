@@ -9,6 +9,7 @@ import {
   faTwitter,
   faSlack,
   faGoogle,
+  faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
 
 //
@@ -57,6 +58,7 @@ import {
   faPodcast,
   faSync,
   faSeedling,
+  faLightbulb,
 } from '@fortawesome/free-solid-svg-icons'
 
 //
@@ -69,7 +71,7 @@ import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons'
 // prettier-ignore
 //
 library.add(
-  farCircle, faTwitter, faSlack, faArrowLeft, faArrowRight, faVideo, faUser, faUsers, faCodeBranch, faTags, faGlobe, faSave, faIdBadge, faCalendarPlus, faSearch, faChevronLeft, faChevronRight, faHeadset, faPuzzlePiece, faBook, faTimes, faUserPlus, faCircle, faExclamationTriangle, faFire, faLongArrowAltRight, faLongArrowAltLeft, faTerminal, faClock, faForward, faFastForward, faBackward, faFastBackward, faPlay, faStop, faEnvelope, faTicketAlt, faComments, faObjectGroup, faPeopleArrows, faShareAlt, faPalette, faPodcast, faSync, faGoogle, faSeedling
+  farCircle, faTwitter, faSlack, faArrowLeft, faArrowRight, faVideo, faUser, faUsers, faCodeBranch, faTags, faGlobe, faSave, faIdBadge, faCalendarPlus, faSearch, faChevronLeft, faChevronRight, faHeadset, faPuzzlePiece, faBook, faTimes, faUserPlus, faCircle, faExclamationTriangle, faFire, faLongArrowAltRight, faLongArrowAltLeft, faTerminal, faClock, faForward, faFastForward, faBackward, faFastBackward, faPlay, faStop, faEnvelope, faTicketAlt, faComments, faObjectGroup, faPeopleArrows, faShareAlt, faPalette, faPodcast, faSync, faGoogle, faSeedling, faLightbulb, faLinkedin
 )
 
 //

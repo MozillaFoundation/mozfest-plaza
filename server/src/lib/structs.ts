@@ -61,6 +61,8 @@ export const ConferenceConfigStruct = object({
     slack: boolean(),
     familyResources: boolean(),
     mozfestBook: boolean(),
+    linkedin: boolean(),
+    submissions: boolean(),
   }),
 })
 

@@ -79,6 +79,25 @@
           :icon="['fab', 'slack']"
           :href="$t('mozfest.atrium.slackUrl')"
         />
+        <!-- Linkedin -->
+        <ColorWidget
+          v-if="widgets.has('linkedin')"
+          class="is-linkedin"
+          kind="custom"
+          :title="$t('mozfest.atrium.linkedinTitle')"
+          :subtitle="$t('mozfest.atrium.linkedinSubtitle')"
+          :icon="['fab', 'linkedin']"
+          :href="$t('mozfest.atrium.linkedinUrl')"
+        />
+        <!-- Submissions -->
+        <ColorWidget
+          v-if="widgets.has('submissions')"
+          kind="secondary"
+          :title="$t('mozfest.atrium.submissionsTitle')"
+          :subtitle="$t('mozfest.atrium.submissionsSubtitle')"
+          :icon="['fas', 'lightbulb']"
+          :href="$t('mozfest.atrium.submissionsUrl')"
+        />
         <!-- Family Resources -->
         <ColorWidget
           v-if="widgets.has('familyResources')"
@@ -211,6 +230,7 @@ $spatialChat: #ff04b1;
 $slack: #b7007e;
 $family: #ff4f5e;
 $book: #a07dff;
+$linkedin: #0a66c2;
 
 .atriumView {
   .hero-body {
@@ -259,6 +279,12 @@ $book: #a07dff;
     background-color: $slack;
     &[href]:hover {
       background-color: darken($slack, 7%);
+    }
+  }
+  .colorWidget.is-linkedin {
+    background-color: $linkedin;
+    &[href]:hover {
+      background-color: darken($linkedin, 7%);
     }
   }
   .colorWidget.is-family {
