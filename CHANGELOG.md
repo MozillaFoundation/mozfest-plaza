@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/digitalinteraction/mozfest/compare/v3.1.0...v3.2.0) (2022-12-14)
+
+
+### Features
+
+* add linkedin and submission widgets ([0d59910](https://github.com/digitalinteraction/mozfest/commit/0d5991018e35cea524c780772d00ef62a18a0075))
+
+
+### Bug Fixes
+
+* disable whats-on page ([25d90bc](https://github.com/digitalinteraction/mozfest/commit/25d90bc8589010ea8ea743ee9fb772d08ada6585))
+* only make facilitators when the session is confirmed ([d311bf5](https://github.com/digitalinteraction/mozfest/commit/d311bf509963bd7cd3f412829a0ef6c80dd89152))
+* remove bad dependency ([5af27a7](https://github.com/digitalinteraction/mozfest/commit/5af27a7f3b9beb945ad938cc110f25bf211fb08d))
+* update widget URLs ([f121c39](https://github.com/digitalinteraction/mozfest/commit/f121c390b73b53f74a0acceb28d86eee4c030f8a))
+
 ## [3.1.0](https://github.com/digitalinteraction/mozfest/compare/v3.0.0...v3.1.0) (2022-12-07)
 
 
