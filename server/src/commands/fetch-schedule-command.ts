@@ -142,6 +142,7 @@ export async function fetchScheduleCommand(
       session.hostLanguages = session.hostLanguages.map((locale) =>
         locale.replace('-mozilla', '')
       )
+      if (session.state !== 'confirmed') continue
 
       for (const s of session.speakers) {
         const speaker = speakerMap.get(s)
