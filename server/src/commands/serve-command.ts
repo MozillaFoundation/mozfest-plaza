@@ -29,6 +29,7 @@ import {
 import { createServer } from '../server.js'
 import { RedisAdapter } from '@socket.io/redis-adapter'
 import { migrateCommand } from './migrate-command.js'
+import { fetchContentCommand } from './fetch-content-command.js'
 
 const debug = createDebug('cmd:serve')
 
@@ -45,6 +46,7 @@ export function pickAStore(redisUrl: string | null) {
 export interface ServeCommandOptions {
   port: number
   migrate: boolean
+  content: boolean
 }
 
 export async function createServerContext() {
@@ -82,6 +84,14 @@ export async function createServerContext() {
 export async function serveCommand(options: ServeCommandOptions) {
   if (options.migrate) {
     await migrateCommand({})
+  }
+  if (options.content) {
+    await fetchContentCommand({
+      branch: 'main',
+      reuse: false,
+      local: true,
+      repoPath: null,
+    })
   }
 
   const context: AppContext = await createServerContext()

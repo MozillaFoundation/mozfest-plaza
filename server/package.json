@@ -10,7 +10,7 @@
     "preversion": "npm run lint",
     "dev": "node --loader ts-node/esm -r dotenv/config src/cli.ts",
     "debug": "node --inspect-brk --loader ts-node/esm -r dotenv/config src/cli.ts",
-    "start": "npm run -s dev -- serve --migrate"
+    "start": "npm run -s dev -- serve --migrate --content"
   },
   "dependencies": {
     "@godaddy/terminus": "^4.11.2",

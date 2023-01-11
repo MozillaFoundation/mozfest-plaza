@@ -54,7 +54,8 @@ cli.command(
   (yargs) =>
     yargs
       .options('port', { type: 'number', default: 3000 })
-      .option('migrate', { type: 'boolean', default: false }),
+      .option('migrate', { type: 'boolean', default: false })
+      .option('content', { type: 'boolean', default: false }),
   (args) => serveCommand(args).catch(errorHandler)
 )
 
