@@ -14,6 +14,11 @@ import { pickApi } from '@/lib/api'
 // TODO: work out how to filter themes again
 // import { StorageKey, themeAllowlist } from '@/lib/module'
 
+export interface LoginPayload {
+  email: string
+  redirect: string
+}
+
 export function apiModule(): ApiStoreModule {
   const apiClient = pickApi(env)
 
@@ -61,6 +66,22 @@ export function apiModule(): ApiStoreModule {
       async fetchWhatsOn() {
         return apiClient.getWhatsOn()
       },
+
+      // TODO: remove this hack + getRedirect if login redirection gets merged upstream
+      login(ctx, email: string) {
+        return apiClient.startEmailLogin(email, { redirect: getRedirect() })
+      },
     },
   }
 }
+
+function getRedirect() {
+  const url = new URL(location.href)
+  const target = url.searchParams.get('redirect')
+  if (typeof target !== 'string' || !target.startsWith('/')) {
+    return undefined
+  }
+  return target
+}
+
+console.log(getRedirect())

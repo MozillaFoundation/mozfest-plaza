@@ -49,11 +49,16 @@ export type ScheduleRecord = Omit<DeconfScheduleRecord, 'settings'> & {
   settings: MozConferenceConfig
 }
 
-interface MozApiClient {
-  getWhatsOn(): Promise<Session[]>
+export interface MozLoginOptions {
+  redirect?: string
 }
 
-export function pickApi(env: EnvRecord) {
+export interface MozApiClient {
+  getWhatsOn(): Promise<Session[]>
+  startEmailLogin(email: string, options?: MozLoginOptions): Promise<boolean>
+}
+
+export function pickApi(env: EnvRecord): DeconfApiClient & MozApiClient {
   return env.STATIC_BUILD
     ? new StaticApiClient(env.SERVER_URL.href)
     : new LiveApiClient(env.SERVER_URL.href)
@@ -69,6 +74,17 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
       'schedule/whats-on'
     )
     return response?.sessions ?? []
+  }
+
+  override async startEmailLogin(
+    email: string,
+    { redirect }: MozLoginOptions = {}
+  ): Promise<boolean> {
+    return this.fetch(this.getEndpoint('RegistrationRoutes.startEmailLogin'), {
+      method: 'POST',
+      body: JSON.stringify({ email, redirect }),
+      headers: { 'Content-Type': 'application/json' },
+    })
   }
 }
 
