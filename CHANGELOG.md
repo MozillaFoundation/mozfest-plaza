@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/digitalinteraction/mozfest/compare/v3.2.0...v3.3.0) (2023-01-11)
+
+
+### Features
+
+* add login parameter for redirection ([49f335c](https://github.com/digitalinteraction/mozfest/commit/49f335cda575896752694cc389c78292ea6bfe75))
+* **atrium:** add calendar-help widget when logged in ([bc9421b](https://github.com/digitalinteraction/mozfest/commit/bc9421b13de465c25958babce87ad55a312c8bef)), closes [#23](https://github.com/digitalinteraction/mozfest/issues/23)
+
+
+### Bug Fixes
+
+* redirect to login on calendar when not signed in ([d0090cc](https://github.com/digitalinteraction/mozfest/commit/d0090cc5b9e4e933ce901161a84c78b43c9a40e0))
+* upgrade away from bad dependencies ([80267af](https://github.com/digitalinteraction/mozfest/commit/80267af5551af9b1d27874d6497204284f57fcbd))
+
 ## [3.2.0](https://github.com/digitalinteraction/mozfest/compare/v3.1.0...v3.2.0) (2022-12-14)
 
 
