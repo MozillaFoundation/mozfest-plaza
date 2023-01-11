@@ -11,10 +11,28 @@
 <script lang="ts">
 import Vue from 'vue'
 import ContentLayout from '@/components/MozContentLayout.vue'
-import { ApiContent, PrivateCalendarCreator } from '@openlab/deconf-ui-toolkit'
+import {
+  ApiContent,
+  mapApiState,
+  PrivateCalendarCreator,
+  Routes,
+} from '@openlab/deconf-ui-toolkit'
+import { ExtraRoutes } from '@/lib/constants'
 
 export default Vue.extend({
   components: { ApiContent, ContentLayout, PrivateCalendarCreator },
+  computed: {
+    ...mapApiState('api', ['user']),
+  },
+  mounted() {
+    if (!this.user) {
+      const redirect = this.$router.resolve({ name: ExtraRoutes.Calendar }).href
+      this.$router.replace({
+        name: Routes.Login,
+        query: { redirect },
+      })
+    }
+  },
 })
 </script>
 
