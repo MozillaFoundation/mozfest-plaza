@@ -70,6 +70,7 @@
     "familyResources": false,
     "mozfestBook": false,
     "linkedin": true,
-    "submissions": true
+    "submissions": true,
+    "calendarHelp": true
   }
 }

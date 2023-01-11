@@ -234,6 +234,9 @@ mozfest:
     twitterSubtitle: Share the sessions you're most excited about attending.
     twitterTitle: 'Tweet #MozFest'
     twitterUrl: https://twitter.com/hashtag/MozFest
+    calendarHelpSubtitle: Get your MozFest sessions in your own calendar
+    calendarHelpTitle: 'Calendar Sync'
+    calendarHelpUrl: /calendar
 
   footer:
     appName: MozFest

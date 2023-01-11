@@ -51,6 +51,14 @@
           :icon="['fas', 'users']"
         />
         <ColorWidget
+          v-if="user && widgets.has('calendarHelp')"
+          kind="secondary"
+          :title="$t('mozfest.atrium.calendarHelpTitle')"
+          :subtitle="$t('mozfest.atrium.calendarHelpSubtitle')"
+          :href="$t('mozfest.atrium.calendarHelpUrl')"
+          :icon="['fas', 'calendar-plus']"
+        />
+        <ColorWidget
           v-if="widgets.has('twitter')"
           kind="twitter"
           :title="$t('mozfest.atrium.twitterTitle')"

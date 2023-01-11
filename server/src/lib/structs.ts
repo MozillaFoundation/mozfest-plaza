@@ -63,6 +63,7 @@ export const ConferenceConfigStruct = object({
     mozfestBook: boolean(),
     linkedin: boolean(),
     submissions: boolean(),
+    calendarHelp: boolean(),
   }),
 })
 
