@@ -14,5 +14,3 @@ Here are some highlights from last year's festival
 <br />
 
 **[Secure your ticket now for MozFest](https://www.mozillafestival.org/tickets/)** where the brightest minds and most ambitious ideas from the internet health movement will come together for this virtual event.
-
-The **[MozFest 2023 Call for Proposals](https://www.mozillafestival.org/propsosals) is now open**, and closes on December 16th 2022. Learn more about how to submit your session proposal on our website.
