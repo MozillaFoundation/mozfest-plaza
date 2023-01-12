@@ -24,6 +24,17 @@
       <template v-if="localeContent" slot="content">
         <div class="content" v-html="localeContent"></div>
       </template>
+
+      <template slot="login">
+        <p>
+          {{ $t('deconf.session.logIn') }}
+        </p>
+        <p class="sessionView-login">
+          <router-link :to="loginLink" class="button is-danger is-outlined">
+            {{ $t('deconf.session.mozfest.logIn') }}
+          </router-link>
+        </p>
+      </template>
     </SessionView>
   </AppLayout>
   <NotFoundView v-else />
@@ -112,6 +123,17 @@ export default Vue.extend({
           this.session && nonTemporalTypes.has(this.session.type),
       }
     },
+    loginLink(): unknown {
+      const redirect = this.$router.resolve({
+        name: Routes.Session,
+        params: { sessionId: this.sessionId },
+      }).href
+
+      return {
+        name: Routes.Login,
+        query: { redirect },
+      }
+    },
   },
   methods: {
     onLinks(links: LocalisedLink[] | null) {
@@ -146,5 +168,10 @@ export default Vue.extend({
   .sessionView-actions {
     display: none;
   }
+}
+
+.sessionView-login {
+  margin-top: 1rem;
+  font-weight: bold;
 }
 </style>

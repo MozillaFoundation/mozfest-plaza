@@ -169,6 +169,7 @@ deconf:
     mozfest:
       backButton: Back to Schedule
       externalLinks: Please be aware the Facilitator for this session is using a third-party service not officially being used at MozFest.
+      logIn: Log in
 
   interestSection:
     message: Register your interest
