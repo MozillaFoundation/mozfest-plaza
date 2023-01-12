@@ -20,6 +20,8 @@ import {
   SessionType,
   Localised,
   Theme,
+  SessionLink,
+  LocalisedLink,
 } from '@openlab/deconf-shared'
 
 import { checkEnvObject, pluck } from 'valid-env'
@@ -204,9 +206,7 @@ class PretalxHelpers {
         content: {
           en: submission.description,
         },
-
-        // TODO: pull from resources
-        links: [],
+        links: this.getLinks(submission),
         hostLanguages: [submission.content_locale],
         enableInterpretation: false,
         speakers: submission.speakers.map((s) => s.code),
@@ -224,6 +224,17 @@ class PretalxHelpers {
     })
 
     return sessions.filter((s) => Boolean(s)) as Session[]
+  }
+
+  getLinks(talk: PretalxTalk): LocalisedLink[] {
+    return talk.resources
+      .filter((r) => /^https?:\/\//.test(r.resource))
+      .map((r) => ({
+        type: 'url',
+        url: r.resource,
+        title: r.description,
+        language: 'en',
+      }))
   }
 
   getThemes(tags: PretalxTax[]): Theme[] {
