@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/digitalinteraction/mozfest/compare/v3.3.0...v3.4.0) (2023-01-12)
+
+
+### Features
+
+* add language filter to WhatsOn ([e0e4c1d](https://github.com/digitalinteraction/mozfest/commit/e0e4c1dcb1bda1d9dac2cce8c28457904b3ba874))
+* fetch session links from pretalx resources ([db37741](https://github.com/digitalinteraction/mozfest/commit/db37741148b592d8f0a1d63308d363c0752e596a))
+* the login button on sessions that brings you back ([905c290](https://github.com/digitalinteraction/mozfest/commit/905c2900c781572313a7071421aa1e6e7b4a9832))
+
 ## [3.3.0](https://github.com/digitalinteraction/mozfest/compare/v3.2.0...v3.3.0) (2023-01-11)
 
 
