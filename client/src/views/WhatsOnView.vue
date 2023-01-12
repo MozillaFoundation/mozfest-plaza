@@ -54,7 +54,7 @@ export default Vue.extend({
   data(): Data {
     return {
       filtersKey: StorageKey.WhatsOnFilters,
-      enabledFilters: ['query', 'sessionType', 'track'],
+      enabledFilters: ['query', 'sessionType', 'track', 'language'],
       config: {
         tileHeader: ['type'],
         tileAttributes: ['track', 'languages'],
