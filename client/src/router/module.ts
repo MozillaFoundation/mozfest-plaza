@@ -200,7 +200,7 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
-    path: '/calendar',
+    path: '/sync-calendar',
     name: ExtraRoutes.Calendar,
     component: () =>
       import(/* webpackChunkName: "static" */ '../views/CalendarView.vue'),

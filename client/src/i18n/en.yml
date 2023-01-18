@@ -237,7 +237,7 @@ mozfest:
     twitterUrl: https://twitter.com/hashtag/MozFest
     calendarHelpSubtitle: Get your MozFest sessions in your own calendar
     calendarHelpTitle: 'Calendar Sync'
-    calendarHelpUrl: /calendar
+    calendarHelpUrl: /sync-calendar
 
   footer:
     appName: MozFest
