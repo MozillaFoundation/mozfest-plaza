@@ -1,5 +1,6 @@
 import { EnvRecord } from '@/plugins/env-plugin'
 import {
+  LocalisedLink,
   PageFlag,
   ScheduleRecord as DeconfScheduleRecord,
   Session,
@@ -95,4 +96,8 @@ export class StaticApiClient
   getWhatsOn(): Promise<Session[]> {
     return this.getStaticFile('whats-on.json')
   }
+}
+
+export interface MozSession extends Session {
+  recommendations?: LocalisedLink[]
 }

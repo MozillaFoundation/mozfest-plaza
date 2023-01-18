@@ -35,6 +35,23 @@
           </router-link>
         </p>
       </template>
+
+      <div
+        slot="afterContent"
+        v-if="recommendations.length > 0"
+        class="sessionView-recommendations"
+      >
+        <h3>{{ $t('deconf.session.mozfest.recommendations') }}</h3>
+        <p>{{ $t('deconf.session.mozfest.recommendationsInfo') }}</p>
+        <ul>
+          <li v-for="r in recommendations" :key="r.title">
+            <router-link v-if="r.route" :to="r.route">{{
+              r.title
+            }}</router-link>
+            <a v-else-if="r.url" :href="r.url">{{ r.title }}</a>
+          </li>
+        </ul>
+      </div>
     </SessionView>
   </AppLayout>
   <NotFoundView v-else />
@@ -54,7 +71,7 @@ import { Location } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
 import { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
-import { getSessionParentRoute } from '@/lib/module'
+import { getSessionParentRoute, MozSession } from '@/lib/module'
 
 const internalDomains = [
   'mozilla.zoom.us',
@@ -96,9 +113,13 @@ export default Vue.extend({
   },
   computed: {
     ...mapApiState('api', ['schedule', 'user']),
-    session(): Session | null {
+    session(): MozSession | null {
       if (!this.schedule) return null
-      return this.schedule.sessions.find((s) => s.id === this.sessionId) ?? null
+      return (
+        (this.schedule.sessions.find(
+          (s) => s.id === this.sessionId
+        ) as MozSession) ?? null
+      )
     },
     backRoute(): Location {
       if (!this.session) return { name: Routes.Schedule }
@@ -134,6 +155,32 @@ export default Vue.extend({
         query: { redirect },
       }
     },
+    recommendations(): unknown {
+      if (
+        !this.session ||
+        !this.schedule ||
+        !this.session.recommendations ||
+        this.session.recommendations.length === 0
+      ) {
+        return []
+      }
+      const sessions = this.schedule.sessions
+
+      return this.session.recommendations.map((l) => {
+        const session = this.parseSessionUrl(l.url, sessions)
+        if (session) {
+          return {
+            title: localiseFromObject(this.$i18n.locale, session.title),
+            route: { name: Routes.Session, params: { sessionId: session.id } },
+          }
+        } else {
+          return {
+            title: l.url,
+            url: l.url,
+          }
+        }
+      })
+    },
   },
   methods: {
     onLinks(links: LocalisedLink[] | null) {
@@ -152,6 +199,34 @@ export default Vue.extend({
       } catch (error) {
         return true
       }
+    },
+    parseSessionUrl(input: string, sessions: Session[]) {
+      try {
+        const url = new URL(input)
+
+        const ids = new Set<string>()
+        const allowed = new Set([
+          'schedule.mozillafestival.org',
+          'mozfest.openlab.dev',
+          'localhost',
+        ])
+        if (allowed.has(url.hostname)) {
+          ids.add(this.trimSlashes(url.pathname.replace('/session/', '')))
+        }
+        if (url.hostname === 'mzf.st') {
+          ids.add(this.trimSlashes(url.pathname))
+        }
+
+        for (const s of sessions) {
+          if (ids.has(s.id)) return s
+        }
+        return null
+      } catch {
+        return null
+      }
+    },
+    trimSlashes(pathname: string) {
+      return pathname.replace(/^\//, '').replace(/\/$/, '')
     },
   },
 })
@@ -173,5 +248,22 @@ export default Vue.extend({
 .sessionView-login {
   margin-top: 1rem;
   font-weight: bold;
+}
+.sessionView-recommendations {
+  h3 {
+    font-family: $family-sans-serif;
+    font-weight: $weight-bold;
+    color: $text-strong;
+    font-size: $size-4;
+    margin-block-start: $block-spacing;
+  }
+  ul {
+    margin-block-start: 0.5em;
+    list-style: disc;
+    margin-left: 1.5em;
+  }
+  li {
+    font-size: $size-5;
+  }
 }
 </style>

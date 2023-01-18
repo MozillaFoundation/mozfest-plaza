@@ -91,7 +91,7 @@ export const pretalxDataCommands = {
 
 function submissionOptions(config: AppConfig) {
   return {
-    questions: [...config.pretalx.questions.links],
+    questions: [config.pretalx.questions.recommendations],
   }
 }
 
@@ -128,7 +128,11 @@ export async function fetchScheduleCommand(
     // const speakerMap = new Map(speakers.map((s) => [s.code, s]))
 
     const schedule: Omit<ScheduleRecord, 'settings'> = {
-      sessions: helpers.getSessions(submissions),
+      sessions: helpers.getSessions(
+        submissions,
+        pretalx,
+        config.pretalx.questions.recommendations
+      ),
       slots: pretalx.getDeconfSlots(submissions),
       speakers: pretalx.getDeconfSpeakers(
         speakers,
@@ -179,7 +183,11 @@ class PretalxHelpers {
     public config: AppConfig['pretalx']
   ) {}
 
-  getSessions(submissions: PretalxTalk[]): Session[] {
+  getSessions(
+    submissions: PretalxTalk[],
+    pretalx: PretalxService,
+    recommendationsQuestion: number
+  ): Session[] {
     const sessions = submissions.map((submission) => {
       // TODO: slots don't currently have ids
       const slot = submission.slot
@@ -194,6 +202,10 @@ class PretalxHelpers {
       const themes: string[] = (submission.tags ?? []).map((tag) =>
         this.pretalx.getSlug(tag)
       )
+
+      const recommendations = pretalx.getSessionLinks(submission, [
+        recommendationsQuestion,
+      ])
 
       return {
         id: this.pretalx.makeUnique(submission.code),
@@ -220,6 +232,8 @@ class PretalxHelpers {
 
         proxyUrl: undefined,
         hideFromSchedule: false,
+
+        recommendations,
       }
     })
 
