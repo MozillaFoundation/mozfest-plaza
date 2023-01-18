@@ -37,20 +37,28 @@
       </template>
 
       <div
-        slot="afterContent"
+        slot="footer"
         v-if="recommendations.length > 0"
         class="sessionView-recommendations"
       >
-        <h3>{{ $t('deconf.session.mozfest.recommendations') }}</h3>
+        <h2>{{ $t('deconf.session.mozfest.recommendations') }}</h2>
         <p>{{ $t('deconf.session.mozfest.recommendationsInfo') }}</p>
-        <ul>
-          <li v-for="r in recommendations" :key="r.title">
-            <router-link v-if="r.route" :to="r.route">{{
-              r.title
-            }}</router-link>
-            <a v-else-if="r.url" :href="r.url">{{ r.title }}</a>
-          </li>
-        </ul>
+
+        <div class="sessionView-recommendationCards">
+          <div
+            class="recommendationCard"
+            v-for="session in recommendations"
+            :key="session.id"
+          >
+            <SessionTile
+              slot-state="future"
+              :session="session"
+              :schedule="schedule"
+              :config="recommendationConfig"
+              :readonly="false"
+            />
+          </div>
+        </div>
       </div>
     </SessionView>
   </AppLayout>
@@ -66,6 +74,8 @@ import {
   mapApiState,
   Routes,
   localiseFromObject,
+  ScheduleConfig,
+  SessionTile,
 } from '@openlab/deconf-ui-toolkit'
 import { Location } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
@@ -89,6 +99,11 @@ const internalDomains = [
   'mozilla.hosted.panopto.com',
 ]
 
+const recommendationConfig: ScheduleConfig = {
+  tileHeader: ['type'],
+  tileAttributes: ['track', 'themes'],
+}
+
 const nonTemporalTypes = new Set([
   'art-and-media',
   'skill-share--lightning-talk',
@@ -96,6 +111,7 @@ const nonTemporalTypes = new Set([
 
 interface Data {
   links: LocalisedLink[] | null
+  recommendationConfig: ScheduleConfig
 }
 
 export default Vue.extend({
@@ -104,12 +120,13 @@ export default Vue.extend({
     SessionView,
     BackButton,
     NotFoundView,
+    SessionTile,
   },
   props: {
     sessionId: { type: String, required: true },
   },
   data(): Data {
-    return { links: null }
+    return { links: null, recommendationConfig }
   },
   computed: {
     ...mapApiState('api', ['schedule', 'user']),
@@ -166,20 +183,9 @@ export default Vue.extend({
       }
       const sessions = this.schedule.sessions
 
-      return this.session.recommendations.map((l) => {
-        const session = this.parseSessionUrl(l.url, sessions)
-        if (session) {
-          return {
-            title: localiseFromObject(this.$i18n.locale, session.title),
-            route: { name: Routes.Session, params: { sessionId: session.id } },
-          }
-        } else {
-          return {
-            title: l.url,
-            url: l.url,
-          }
-        }
-      })
+      return this.session.recommendations
+        .map((l) => this.parseSessionUrl(l.url, sessions) as Session)
+        .filter((s) => s)
     },
   },
   methods: {
@@ -247,23 +253,30 @@ export default Vue.extend({
 
 .sessionView-login {
   margin-top: 1rem;
-  font-weight: bold;
+  font-weight: $weight-bold;
 }
 .sessionView-recommendations {
-  h3 {
+  & > h2 {
     font-family: $family-sans-serif;
     font-weight: $weight-bold;
     color: $text-strong;
     font-size: $size-4;
     margin-block-start: $block-spacing;
   }
-  ul {
-    margin-block-start: 0.5em;
-    list-style: disc;
-    margin-left: 1.5em;
-  }
-  li {
-    font-size: $size-5;
-  }
+}
+
+.sessionView-recommendationCards {
+  display: grid;
+  align-content: start;
+  grid-gap: $block-spacing;
+  grid-template-columns: repeat(auto-fill, minmax(min(25ch, 100%), 1fr));
+}
+
+.recommendationCard {
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 6px;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
+    0 0px 0 1px rgb(10 10 10 / 1%);
+  padding: 1em;
 }
 </style>
