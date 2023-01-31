@@ -1,12 +1,12 @@
-# Private calendar
+# Sync with your Personal Calendar
 
-You can subscribe to your MozFest **My Schedule** using your own calendar app, follow these instructions to get it up.
+You can subscribe to your MozFest **My Schedule** using your own calendar app. Follow these instructions to get it up.
 
-Use the widget below to generate a private calendar URL and copy it to your clipboard. The next step depends on which calendar you use, we have guides for Apple’s Calendar, Google and Outlook.com.
+Use the widget below to generate a private calendar URL and copy it to your clipboard. The next step depends on which calendar you use. You can find instructions below for Apple, Google, and Outlook.com.
 
 %calendar%
 
-> Please note, your **Private Calendar** URL will only be active during the conference and 90 days after, after that it will expire.
+> Please note, your **Private Calendar** URL will expire  90 days after the festival ends.
 
 ---
 
