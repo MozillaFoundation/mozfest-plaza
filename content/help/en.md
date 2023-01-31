@@ -44,11 +44,6 @@ The MozFest Plaza is currently showcasing a selection of sessions that are confi
 </details>
 
 <details>
-<summary>I have a great idea for a MozFest session, how do I sign up to facilitate?</summary>We welcome sessions on a wide range of topics relevant to trustworthy AI and the internet health movement, but all sessions must be participatory, accessible, and inclusive. The deadline to submit your proposal for MozFest 2023 is December 16th 2022 You’ll find all the 
-<a href="https://www.mozillafestival.org/proposals">info you need to propose a session on our website</a>.
-</details>
-
-<details>
 <summary>I've registered on Ti.To but I have not received my ticket confirmation.</summary>
 Ticket confirmations would be sent from support@tito.io. Please check your spam to make sure it's being sent there. If you haven't received your ticket you can check using our self-serve option on TiTo or email
 <a href="mailto:fesitval@mozilla.org">fesitval@mozilla.org</a>.
