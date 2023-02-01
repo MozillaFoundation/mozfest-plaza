@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/digitalinteraction/mozfest/compare/v3.4.0...v3.5.0) (2023-02-01)
+
+
+### Features
+
+* improve session recommendations ([bef0bc4](https://github.com/digitalinteraction/mozfest/commit/bef0bc45ceab9833a28ac984412bc74ce4f069aa))
+* pull recommended sessions ([65f1547](https://github.com/digitalinteraction/mozfest/commit/65f15478faa1e13b2334f49591919f3d10ce242e)), closes [#21](https://github.com/digitalinteraction/mozfest/issues/21)
+
+
+### Bug Fixes
+
+* improve vimeo link parsing ([387d9c3](https://github.com/digitalinteraction/mozfest/commit/387d9c321c022b62d9b611090f3c083b94545113))
+* move calendar page ([94e0f63](https://github.com/digitalinteraction/mozfest/commit/94e0f6360dea472be7264313603e5d1488e2b785))
+* update tito registration embed ([b6795e7](https://github.com/digitalinteraction/mozfest/commit/b6795e77522a88e2c3dd31d5df0a438648494c26))
+
 ## [3.4.0](https://github.com/digitalinteraction/mozfest/compare/v3.3.0...v3.4.0) (2023-01-12)
 
 
