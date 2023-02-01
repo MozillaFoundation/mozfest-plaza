@@ -35,6 +35,31 @@
           </router-link>
         </p>
       </template>
+
+      <div
+        slot="footer"
+        v-if="recommendations.length > 0"
+        class="sessionView-recommendations"
+      >
+        <h2>{{ $t('deconf.session.mozfest.recommendations') }}</h2>
+        <p>{{ $t('deconf.session.mozfest.recommendationsInfo') }}</p>
+
+        <div class="sessionView-recommendationCards">
+          <div
+            class="recommendationCard"
+            v-for="session in recommendations"
+            :key="session.id"
+          >
+            <SessionTile
+              slot-state="future"
+              :session="session"
+              :schedule="schedule"
+              :config="recommendationConfig"
+              :readonly="false"
+            />
+          </div>
+        </div>
+      </div>
     </SessionView>
   </AppLayout>
   <NotFoundView v-else />
@@ -49,12 +74,14 @@ import {
   mapApiState,
   Routes,
   localiseFromObject,
+  ScheduleConfig,
+  SessionTile,
 } from '@openlab/deconf-ui-toolkit'
 import { Location } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
 import { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
-import { getSessionParentRoute } from '@/lib/module'
+import { getSessionParentRoute, MozSession } from '@/lib/module'
 
 const internalDomains = [
   'mozilla.zoom.us',
@@ -72,6 +99,11 @@ const internalDomains = [
   'mozilla.hosted.panopto.com',
 ]
 
+const recommendationConfig: ScheduleConfig = {
+  tileHeader: ['type'],
+  tileAttributes: ['track', 'themes'],
+}
+
 const nonTemporalTypes = new Set([
   'art-and-media',
   'skill-share--lightning-talk',
@@ -79,6 +111,7 @@ const nonTemporalTypes = new Set([
 
 interface Data {
   links: LocalisedLink[] | null
+  recommendationConfig: ScheduleConfig
 }
 
 export default Vue.extend({
@@ -87,18 +120,23 @@ export default Vue.extend({
     SessionView,
     BackButton,
     NotFoundView,
+    SessionTile,
   },
   props: {
     sessionId: { type: String, required: true },
   },
   data(): Data {
-    return { links: null }
+    return { links: null, recommendationConfig }
   },
   computed: {
     ...mapApiState('api', ['schedule', 'user']),
-    session(): Session | null {
+    session(): MozSession | null {
       if (!this.schedule) return null
-      return this.schedule.sessions.find((s) => s.id === this.sessionId) ?? null
+      return (
+        (this.schedule.sessions.find(
+          (s) => s.id === this.sessionId
+        ) as MozSession) ?? null
+      )
     },
     backRoute(): Location {
       if (!this.session) return { name: Routes.Schedule }
@@ -134,6 +172,21 @@ export default Vue.extend({
         query: { redirect },
       }
     },
+    recommendations(): unknown {
+      if (
+        !this.session ||
+        !this.schedule ||
+        !this.session.recommendations ||
+        this.session.recommendations.length === 0
+      ) {
+        return []
+      }
+      const sessions = this.schedule.sessions
+
+      return this.session.recommendations
+        .map((l) => this.parseSessionUrl(l.url, sessions) as Session)
+        .filter((s) => s)
+    },
   },
   methods: {
     onLinks(links: LocalisedLink[] | null) {
@@ -152,6 +205,34 @@ export default Vue.extend({
       } catch (error) {
         return true
       }
+    },
+    parseSessionUrl(input: string, sessions: Session[]) {
+      try {
+        const url = new URL(input)
+
+        const ids = new Set<string>()
+        const allowed = new Set([
+          'schedule.mozillafestival.org',
+          'mozfest.openlab.dev',
+          'localhost',
+        ])
+        if (allowed.has(url.hostname)) {
+          ids.add(this.trimSlashes(url.pathname.replace('/session/', '')))
+        }
+        if (url.hostname === 'mzf.st') {
+          ids.add(this.trimSlashes(url.pathname))
+        }
+
+        for (const s of sessions) {
+          if (ids.has(s.id)) return s
+        }
+        return null
+      } catch {
+        return null
+      }
+    },
+    trimSlashes(pathname: string) {
+      return pathname.replace(/^\//, '').replace(/\/$/, '')
     },
   },
 })
@@ -172,6 +253,30 @@ export default Vue.extend({
 
 .sessionView-login {
   margin-top: 1rem;
-  font-weight: bold;
+  font-weight: $weight-bold;
+}
+.sessionView-recommendations {
+  & > h2 {
+    font-family: $family-sans-serif;
+    font-weight: $weight-bold;
+    color: $text-strong;
+    font-size: $size-4;
+    margin-block-start: $block-spacing;
+  }
+}
+
+.sessionView-recommendationCards {
+  display: grid;
+  align-content: start;
+  grid-gap: $block-spacing;
+  grid-template-columns: repeat(auto-fill, minmax(min(25ch, 100%), 1fr));
+}
+
+.recommendationCard {
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 6px;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
+    0 0px 0 1px rgb(10 10 10 / 1%);
+  padding: 1em;
 }
 </style>

@@ -36,14 +36,33 @@
     "questions": {
       "pulsePhoto": 1179,
       "links": [],
-      "affiliation": 2038
+      "affiliation": 2038,
+      "recommendations": 2247
     }
   },
   "tito": {
     "accountSlug": "mozilla",
-    "eventSlug": "mozilla-festival-2022"
+    "eventSlug": "mozilla-festival-2023"
   },
   "sessionTypes": [
+    {
+      "id": 2427,
+      "title": { "en": "Extended Workshop", "es": "Taller extendido" },
+      "icon": ["fas", "object-group"],
+      "layout": "workshop"
+    },
+    {
+      "id": 2423,
+      "title": { "en": "Art and Media", "es": "Arte y medios" },
+      "icon": ["fas", "palette"],
+      "layout": "workshop"
+    },
+    {
+      "id": 2424,
+      "title": { "en": "Social Moment", "es": "Socialización" },
+      "icon": ["fas", "share-alt"],
+      "layout": "plenary"
+    },
     {
       "id": 2425,
       "title": { "en": "Discussion", "es": "Discusión" },
@@ -59,36 +78,29 @@
     {
       "id": 2426,
       "title": { "en": "Lightning Talk", "es": "Charla relámpago" },
-      "icon": ["fas", "people-arrows"],
+      "icon": ["fas", "object-group"],
       "layout": "workshop"
     },
     {
-      "id": 2424,
-      "title": { "en": "Social Moments", "es": "Socialización" },
-      "icon": ["fas", "share-alt"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2423,
-      "title": { "en": "Art and Media", "es": "Arte y medios" },
-      "icon": ["fas", "palette"],
+      "id": 2620,
+      "title": { "en": "Community Plenary", "es": "Community Plenary" },
+      "icon": ["fas", "object-group"],
       "layout": "workshop"
     },
     {
-      "id": 2427,
-      "title": { "en": "Extended Workshop", "es": "Taller extendido" },
+      "id": 2672,
+      "title": { "en": "Fringe Event", "es": "Fringe Event" },
       "icon": ["fas", "object-group"],
       "layout": "workshop"
     }
   ],
   "tracks": [
     {
-      "id": 3235,
-      "title": { "en": "Autonomy & Governance", "es": "Autonomía y Gobierno" }
-    },
-    {
-      "id": 3236,
-      "title": { "en": "Youth Zone", "es": "Zona Juvenil" }
+      "id": 3243,
+      "title": {
+        "en": "Parable of the Sower work",
+        "es": "Parable of the Sower work"
+      }
     },
     {
       "id": 3239,
@@ -98,11 +110,27 @@
       }
     },
     {
-      "id": 3240,
+      "id": 3238,
+      "title": { "en": "AI Cosmologies", "es": "AI Cosmologies" }
+    },
+    {
+      "id": 3241,
       "title": {
-        "en": "Tech & Biodiversity",
-        "es": "Tecnología y biodiversidad"
+        "en": "Radical Inclusion Experience",
+        "es": "Experiencia de Inclusión Radical"
       }
+    },
+    {
+      "id": 3235,
+      "title": { "en": "Autonomy & Governance", "es": "Autonomía y Gobierno" }
+    },
+    {
+      "id": 3236,
+      "title": { "en": "Youth Zone", "es": "Zona Juvenil" }
+    },
+    {
+      "id": 3237,
+      "title": { "en": "MoZone", "es": "MoZone" }
     },
     {
       "id": 3242,
@@ -112,14 +140,21 @@
       }
     },
     {
-      "id": 3238,
-      "title": { "en": "Cosmos", "es": "Cosmos" }
+      "id": 3265,
+      "title": { "en": "Allies in Practice", "es": "" }
     },
     {
       "id": 3234,
       "title": {
-        "en": "Education & Access",
-        "es": "Educación y Acceso"
+        "en": "Education & Access: You're The Product Of Data",
+        "es": "Educación y Acceso: Eres el Producto de los Datos"
+      }
+    },
+    {
+      "id": 3240,
+      "title": {
+        "en": "Tech & Biodiversity: Legado 2060",
+        "es": "Tecnología y biodiversidad: Legado 2060"
       }
     }
   ]

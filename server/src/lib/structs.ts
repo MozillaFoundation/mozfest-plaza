@@ -96,6 +96,7 @@ export const AppConfigStruct = object({
       pulsePhoto: number(),
       links: array(number()),
       affiliation: number(),
+      recommendations: number(),
     }),
   }),
   tito: object({

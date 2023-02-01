@@ -2,7 +2,7 @@
   <ContentLayout class="registerView">
     <ApiContent slug="register">
       <section v-if="scriptLoaded" slot="tito" class="titoWidget block">
-        <tito-widget event="mozilla/mozilla-festival-2022"></tito-widget>
+        <tito-widget event="mozilla/mozilla-festival-2023"></tito-widget>
       </section>
     </ApiContent>
   </ContentLayout>
