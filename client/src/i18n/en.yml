@@ -270,6 +270,7 @@ mozfest:
     emergentSessions: Emergent Sessions # TODO - new
     calendar: My Calendar # TODO - new
     mySchedule: My Schedule # TODO - new
+    utilities: Utilities
 
   whatsOn:
     title: Sneak Peek

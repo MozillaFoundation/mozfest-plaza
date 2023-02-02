@@ -24,6 +24,7 @@ export enum ExtraRoutes {
   EmergentSessions = 'emergentSessions',
   Calendar = 'calendar',
   MySchedule = 'mySchedule',
+  Utils = 'utils',
 }
 
 // TODO: review this

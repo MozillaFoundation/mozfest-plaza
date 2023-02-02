@@ -210,6 +210,19 @@ const routes: Array<RouteConfig> = [
   },
 
   //
+  // Utils
+  //
+  {
+    path: '/utilities',
+    name: ExtraRoutes.Utils,
+    component: () =>
+      import(/* webpackChunkName: "utilities" */ '../views/UtilsView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.utilities',
+    },
+  },
+
+  //
   // Errors
   //
   {
