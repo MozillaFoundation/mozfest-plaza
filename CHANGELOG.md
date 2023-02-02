@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/digitalinteraction/mozfest/compare/v3.5.0...v3.6.0) (2023-02-02)
+
+
+### Features
+
+* add utils page ([74c31f1](https://github.com/digitalinteraction/mozfest/commit/74c31f17ed00c1c8a5dd9f3ca3fc7dc73ede4042))
+
 ## [3.5.0](https://github.com/digitalinteraction/mozfest/compare/v3.4.0...v3.5.0) (2023-02-01)
 
 
