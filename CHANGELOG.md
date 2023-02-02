@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.0](https://github.com/digitalinteraction/mozfest/compare/v3.6.0...v3.7.0) (2023-02-02)
+
+
+### Features
+
+* pull atrium video from settings.json ([08c0b12](https://github.com/digitalinteraction/mozfest/commit/08c0b123fc20a3dc805a506f271b05b6aeab02d8))
+
 ## [3.6.0](https://github.com/digitalinteraction/mozfest/compare/v3.5.0...v3.6.0) (2023-02-02)
 
 
