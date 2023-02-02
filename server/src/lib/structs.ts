@@ -65,6 +65,10 @@ export const ConferenceConfigStruct = object({
     submissions: boolean(),
     calendarHelp: boolean(),
   }),
+
+  content: object({
+    atriumVideo: string(),
+  }),
 })
 
 export type BlockList = Infer<typeof BlockedStruct>

@@ -13,13 +13,10 @@
           <ApiContent :slug="contentSlug">
             <PrimaryEmbed
               slot="feature_video"
-              link="https://vimeo.com/687248853"
+              v-if="featuredVideoLink"
+              :link="featuredVideoLink"
             />
             <ApiContent slot="conference_over_message" slug="conference-over" />
-            <AnchorFmEmbed
-              slot="feature_audio_a"
-              src="https://anchor.fm/letsgetlitical/embed/episodes/Google-tell-me-about-gender--AI--Do-the-gender-stereotypes-offline-replicate-themselves-online-featuring-Sapni-GK--Garnett-Achieng-Mozfest-e1d2ivd"
-            />
           </ApiContent>
         </div>
       </BoxContent>
@@ -180,7 +177,6 @@ export default Vue.extend({
     ColorWidget,
     SponsorGrid,
     FeaturedSessions,
-    AnchorFmEmbed,
   },
   data(): Data {
     return {
@@ -228,6 +224,15 @@ export default Vue.extend({
           .filter((entry) => entry[1] === true)
           .map((entry) => entry[0])
       )
+    },
+    featuredVideoLink(): string | undefined {
+      try {
+        const raw = this.settings?.content.atriumVideo
+        if (!raw) return undefined
+        return new URL(raw).toString()
+      } catch {
+        return undefined
+      }
     },
   },
 })

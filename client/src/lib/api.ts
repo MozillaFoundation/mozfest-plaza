@@ -44,6 +44,10 @@ export interface MozConferenceConfig {
     familyResources: boolean
     mozfestBook: boolean
   }
+
+  content: {
+    atriumVideo: string
+  }
 }
 
 export type ScheduleRecord = Omit<DeconfScheduleRecord, 'settings'> & {
