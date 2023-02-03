@@ -56,14 +56,14 @@
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": false,
+    "showLogin": true,
     "showRegister": false
   },
 
   "atriumWidgets": {
     "register": false,
     "twitter": true,
-    "login": false,
+    "login": true,
     "siteVisitors": true,
     "spatialChat": false,
     "slack": true,
