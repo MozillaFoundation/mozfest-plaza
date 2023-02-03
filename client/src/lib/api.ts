@@ -19,7 +19,7 @@ export interface MozConferenceConfig {
 
   social?: PageFlag
   arts?: PageFlag
-  skillShare?: PageFlag
+  lightningTalks?: PageFlag
   fringe?: PageFlag
   house?: PageFlag
   misinfoCon?: PageFlag

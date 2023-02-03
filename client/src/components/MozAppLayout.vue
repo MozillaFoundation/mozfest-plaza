@@ -33,11 +33,11 @@ import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
-import ArtGalleryIcon from '@/icons/ArtGalleryIcon.vue'
+import ArtAndMediaIcon from '@/icons/ArtAndMediaIcon.vue'
 import FringeIcon from '@/icons/FringeIcon.vue'
 import HelpDeskIcon from '@/icons/HelpDeskIcon.vue'
 import HouseIcon from '@/icons/HouseIcon.vue'
-import SkillShareIcon from '@/icons/SkillShareIcon.vue'
+import LightningTalksIcon from '@/icons/LightningTalksIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import SpacesIcon from '@/icons/SpacesIcon.vue'
@@ -107,14 +107,14 @@ export default Vue.extend({
         {
           title: this.$t('mozfest.appLayout.arts') as string,
           name: ExtraRoutes.Arts,
-          icon: ArtGalleryIcon,
+          icon: ArtAndMediaIcon,
           pageFlag: this.settings.arts,
         },
         {
           title: this.$t('mozfest.appLayout.skillShare') as string,
-          name: ExtraRoutes.SkillShare,
-          icon: SkillShareIcon,
-          pageFlag: this.settings.skillShare,
+          name: ExtraRoutes.LightningTalks,
+          icon: LightningTalksIcon,
+          pageFlag: this.settings.lightningTalks,
         },
         {
           title: this.$t('mozfest.appLayout.fringe') as string,

@@ -37,7 +37,12 @@ import {
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
 import { Session } from '@openlab/deconf-shared'
-import { getLanguageOptions, mapApiState, StorageKey } from '@/lib/module'
+import {
+  getLanguageOptions,
+  mapApiState,
+  sessionTypeIds,
+  StorageKey,
+} from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 
 interface Data {
@@ -48,13 +53,13 @@ interface Data {
   urlFilters: ScheduleFilterRecord | null
 }
 
-const sessionTypeAllowList = new Set(['skill-share--lightning-talk'])
+const typeAllowList = new Set([sessionTypeIds.lightningTalk])
 
 export default Vue.extend({
   components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {
     return {
-      filtersKey: StorageKey.SkillShareFilters,
+      filtersKey: StorageKey.LightningTalksFilters,
       enabledFilters: ['query', 'track', 'language', 'theme'],
       config: {
         tileHeader: ['track'],
@@ -69,9 +74,7 @@ export default Vue.extend({
     filteredSessions(): Session[] | null {
       if (!this.schedule) return null
 
-      return this.schedule.sessions.filter((s) =>
-        sessionTypeAllowList.has(s.type)
-      )
+      return this.schedule.sessions.filter((s) => typeAllowList.has(s.type))
     },
     filteredSchedule(): unknown | null {
       if (!this.schedule || !this.filteredSessions) return null
@@ -79,7 +82,7 @@ export default Vue.extend({
     },
   },
   created() {
-    guardPage(this.schedule?.settings.skillShare, this.user, this.$router)
+    guardPage(this.schedule?.settings.lightningTalks, this.user, this.$router)
   },
   methods: {
     onFilter(filters: ScheduleFilterRecord) {

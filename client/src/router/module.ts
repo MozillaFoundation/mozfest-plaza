@@ -117,13 +117,15 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/skill-share',
-    redirect: { name: ExtraRoutes.SkillShare },
+    redirect: { name: ExtraRoutes.LightningTalks },
   },
   {
     path: '/lightning-talks',
-    name: ExtraRoutes.SkillShare,
+    name: ExtraRoutes.LightningTalks,
     component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/SkillShareView.vue'),
+      import(
+        /* webpackChunkName: "schedule" */ '../views/LightningTalksView.vue'
+      ),
     meta: {
       pageTitle: 'mozfest.pageTitles.skillShare',
     },
@@ -136,7 +138,7 @@ const routes: Array<RouteConfig> = [
     path: '/art-and-media',
     name: ExtraRoutes.Arts,
     component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/ArtGalleryView.vue'),
+      import(/* webpackChunkName: "schedule" */ '../views/ArtAndMediaView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.artGallery',
     },

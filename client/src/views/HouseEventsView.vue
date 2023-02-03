@@ -25,17 +25,22 @@ import {
   FilteredScheduleView,
   guardPage,
 } from '@openlab/deconf-ui-toolkit'
-import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
+import {
+  StorageKey,
+  getLanguageOptions,
+  mapApiState,
+  trackIds,
+} from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 
-const sessionTypeAllowList = new Set(['mozfest-house'])
+const trackAllowList = new Set(trackIds.mozone)
 
 const options: FilteredScheduleOptions = {
-  predicate: (s) => sessionTypeAllowList.has(s.type),
+  predicate: (s) => trackAllowList.has(s.track),
   filtersKey: StorageKey.HouseEventsFilters,
-  enabledFilters: ['query', 'track', 'language', 'theme'],
+  enabledFilters: ['query', 'sessionType', 'language', 'theme'],
   scheduleConfig: {
-    tileHeader: ['track'],
+    tileHeader: ['type'],
     tileAttributes: ['languages', 'themes'],
     tileActions: ['addToMySchedule', 'join'],
   },

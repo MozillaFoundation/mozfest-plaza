@@ -25,15 +25,20 @@ import {
   FilteredScheduleView,
   guardPage,
 } from '@openlab/deconf-ui-toolkit'
-import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
+import {
+  StorageKey,
+  getLanguageOptions,
+  mapApiState,
+  sessionTypeIds,
+} from '@/lib/module'
 
 const typeAllowList = new Set([
-  'discussion',
-  'workshop',
-  'extended-workshop',
-  'social-moments',
-  'broadcast-talk',
-  'community-plenary',
+  sessionTypeIds.discussion,
+  sessionTypeIds.workshop,
+  sessionTypeIds.communityPlenary,
+  sessionTypeIds.extendedWorkshop,
+  // sessionTypeIds.emergent,
+  sessionTypeIds.socialMoment,
 ])
 
 const options: FilteredScheduleOptions = {

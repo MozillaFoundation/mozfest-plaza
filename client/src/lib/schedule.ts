@@ -9,7 +9,7 @@ export function getSessionParentRoute(session: Session): Location {
   if (session.type === 'fringe-events') return { name: ExtraRoutes.Fringe }
   if (session.type === 'mozfest-house') return { name: ExtraRoutes.House }
   if (session.type === 'skill-share--lightning-talk') {
-    return { name: ExtraRoutes.SkillShare }
+    return { name: ExtraRoutes.LightningTalks }
   }
   if (
     session.type === 'misinfocon-discussion' ||

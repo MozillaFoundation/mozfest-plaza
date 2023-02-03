@@ -37,7 +37,7 @@ export const ConferenceConfigStruct = object({
 
   social: optional(PageFlagStruct),
   arts: optional(PageFlagStruct),
-  skillShare: optional(PageFlagStruct),
+  lightningTalks: optional(PageFlagStruct),
   fringe: optional(PageFlagStruct),
   house: optional(PageFlagStruct),
   misinfoCon: optional(PageFlagStruct),

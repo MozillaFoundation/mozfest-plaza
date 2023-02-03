@@ -41,6 +41,7 @@ import {
   getLanguageOptions,
   mapApiState,
   ScheduleRecord,
+  sessionTypeIds,
   StorageKey,
 } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
@@ -53,7 +54,7 @@ interface Data {
   urlFilters: ScheduleFilterRecord | null
 }
 
-const sessionTypeAllowList = new Set(['art-and-media'])
+const typeAllowList = new Set([sessionTypeIds.artAndMedia])
 
 export default Vue.extend({
   components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
@@ -74,9 +75,7 @@ export default Vue.extend({
     filteredSessions(): Session[] | null {
       if (!this.schedule) return null
 
-      return this.schedule.sessions.filter((s) =>
-        sessionTypeAllowList.has(s.type)
-      )
+      return this.schedule.sessions.filter((s) => typeAllowList.has(s.type))
     },
     filteredSchedule(): ScheduleRecord | null {
       if (!this.schedule || !this.filteredSessions) return null

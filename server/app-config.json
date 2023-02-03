@@ -55,7 +55,7 @@
       "id": 2423,
       "title": { "en": "Art and Media", "es": "Arte y medios" },
       "icon": ["fas", "palette"],
-      "layout": "workshop"
+      "layout": "plenary"
     },
     {
       "id": 2424,
@@ -67,7 +67,7 @@
       "id": 2425,
       "title": { "en": "Discussion", "es": "Discusión" },
       "icon": ["fas", "comments"],
-      "layout": "workshop"
+      "layout": "plenary"
     },
     {
       "id": 2453,
@@ -78,20 +78,20 @@
     {
       "id": 2426,
       "title": { "en": "Lightning Talk", "es": "Charla relámpago" },
-      "icon": ["fas", "object-group"],
-      "layout": "workshop"
+      "icon": ["fas", "bolt"],
+      "layout": "plenary"
     },
     {
       "id": 2620,
       "title": { "en": "Community Plenary", "es": "Community Plenary" },
-      "icon": ["fas", "object-group"],
-      "layout": "workshop"
+      "icon": ["fas", "podcast"],
+      "layout": "plenary"
     },
     {
       "id": 2672,
       "title": { "en": "Fringe Event", "es": "Fringe Event" },
       "icon": ["fas", "object-group"],
-      "layout": "workshop"
+      "layout": "plenary"
     }
   ],
   "tracks": [
