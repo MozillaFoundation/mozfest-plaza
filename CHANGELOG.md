@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.7.1](https://github.com/digitalinteraction/mozfest/compare/v3.7.0...v3.7.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* update pages for 2023 ([399254a](https://github.com/digitalinteraction/mozfest/commit/399254a55ad68f1844757df380b407a5c61a099c))
+
 ## [3.7.0](https://github.com/digitalinteraction/mozfest/compare/v3.6.0...v3.7.0) (2023-02-02)
 
 
