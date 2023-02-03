@@ -12,7 +12,7 @@
     >
       <span slot="title">{{ $t('mozfest.mySchedule.title') }}</span>
       <ApiContent slot="infoText" slug="my-schedule" />
-      <span slot="noResults">{{ $t('mozfest.mySchedule.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </FilteredScheduleView>
   </AppLayout>
 </template>

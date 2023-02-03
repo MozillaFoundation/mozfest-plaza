@@ -11,11 +11,9 @@
     >
       <span slot="title">{{ $t('mozfest.fringeEvents.title') }}</span>
       <ApiContent slot="infoText" slug="fringe-filters" />
-      <span slot="noResults">{{ $t('mozfest.fringeEvents.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </FilteredScheduleView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.fringeEvents.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 

@@ -15,11 +15,9 @@
     >
       <span slot="title">{{ $t('mozfest.skillShare.title') }}</span>
       <ApiContent slot="info" slug="lightning-talks-filters" />
-      <span slot="noResults">{{ $t('mozfest.skillShare.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </WhatsOnView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.skillShare.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 

@@ -103,17 +103,11 @@ deconf:
     message: 'Please note this session is only available in {0}'
 
   navigationBar:
-    profile: My profile # TODO - new
+    profile: My profile
     login: Login
     interpret: Interpret mode
     register: Register
     unavailable: ' (Unavailable)'
-
-  # Slots used instead
-  # whatsOn:
-  #   title: What's On
-  #   infoText: Browse the Schedule before release day
-  #   noResults: Nothing matched your query
 
   login:
     title: Login
@@ -128,7 +122,7 @@ deconf:
     registerAction: Register here
 
   profile:
-    title: My Profile # TODO - new
+    title: My Profile
     actionLabel: Actions
     logoutButton: Log out
     dangerLabel: Danger zone
@@ -206,6 +200,8 @@ mozfest:
     'no': 'No'
     registerUrl: https://www.mozillafestival.org/en/tickets/
     helpDeskUrl: https://www.mozillafestival.org/helpdesk
+    loading: Loading...
+    noResults: We couldn't find any sessions matching that
 
   atrium:
     bookSubtitle: Discover our award-winning book, a celebration of our past and future.
@@ -266,50 +262,34 @@ mozfest:
     whatsOn: Sneak Peek
     helpDesk: Help Desk
     houseEvents: HouseEvents
-    misinfoCon: MisinfoCon # TODO - new
-    emergentSessions: Emergent Sessions # TODO - new
-    calendar: My Calendar # TODO - new
-    mySchedule: My Schedule # TODO - new
+    misinfoCon: MisinfoCon
+    emergentSessions: Emergent Sessions
+    calendar: My Calendar
+    mySchedule: My Schedule
     utilities: Utilities
 
   whatsOn:
     title: Sneak Peek
-    noResults: Nothing matched your query
-    loading: Loading...
 
   artAndMedia:
     title: Art and Media
-    noResults: We couldn't find any sessions matching that
-    loading: Loading...
 
   fringeEvents:
     title: Fringe Events
-    noResults: We couldn't find any sessions matching that
-    loading: Loading...
 
   houseEvents:
     title: House Events
-    noResults: We couldn't find any sessions matching that
-    loading: Loading...
 
-  # TODO - new
   misinfoCon:
     title: MisinfoCon
-    noResults: We couldn't find any sessions matching that
-    loading: Loading...
 
-  # TODO - new
   emergent:
     title: Emergent Sessions
-    noResults: We couldn't find any sessions matching that
-    loading: Loading...
     takePart: Take Part
     caption: A sample of sessions that emerged at MozFest 2021
 
   skillShare:
     title: Lightning Talks
-    noResults: We couldn't find any sessions matching that
-    loading: Loading...
 
   notFound:
     title: Page Not Found
@@ -320,15 +300,14 @@ mozfest:
     whatsOn: Sneak Peek
     schedule: Schedule
     helpDesk: Help Desk
-
     social: Social
     arts: Arts & Media
     skillShare: Lightning Talks
     fringe: Fringe Events
     house: House Events
-    misinfoCon: MisinfoCon # TODO - new
-    emergentSessions: Emergent Sessions # TODO - new
-    mySchedule: My Schedule # TODO - new
+    misinfoCon: MisinfoCon
+    emergentSessions: Emergent Sessions
+    mySchedule: My Schedule
 
   mySchedule:
     title: My Schedule

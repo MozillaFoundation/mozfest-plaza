@@ -100,7 +100,7 @@ const primaryExamples = Object.freeze([
 const secondaryExamples = Object.freeze([
   'https://vimeo.com/live-chat/123456/',
   'https://vimeo.com/event/123456/chat/interaction/',
-  'https://vimeo.com/event/2816447/chat/',
+  'https://vimeo.com/event/123456/chat/',
 ])
 
 export default Vue.extend({
@@ -108,7 +108,7 @@ export default Vue.extend({
   data(): Data {
     return {
       primaryUrl: 'https://zoom.us/my/123456',
-      secondaryUrl: 'https://vimeo.com/event/2816447/chat/',
+      secondaryUrl: 'https://vimeo.com/event/123456/chat/',
       primaryExamples,
       secondaryExamples,
     }

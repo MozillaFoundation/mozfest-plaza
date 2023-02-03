@@ -11,11 +11,9 @@
     >
       <span slot="title">{{ $t('mozfest.misinfoCon.title') }}</span>
       <ApiContent slot="infoText" slug="misinfo-con-filters" />
-      <span slot="noResults">{{ $t('mozfest.misinfoCon.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </FilteredScheduleView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.misinfoCon.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 

@@ -11,11 +11,9 @@
     >
       <p slot="title">{{ $t('mozfest.houseEvents.title') }}</p>
       <p slot="infoText">{{ $t('mozfest.houseEvents.info') }}</p>
-      <p slot="noResults">{{ $t('mozfest.houseEvents.noResults') }}</p>
+      <p slot="noResults">{{ $t('mozfest.general.noResults') }}</p>
     </FilteredScheduleView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.houseEvents.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 

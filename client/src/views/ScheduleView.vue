@@ -11,7 +11,7 @@
     >
       <span slot="title">{{ $t('deconf.schedule.title') }}</span>
       <ApiContent slot="infoText" slug="schedule-filters" />
-      <span slot="noResults">{{ $t('deconf.schedule.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </FilteredScheduleView>
   </AppLayout>
 </template>

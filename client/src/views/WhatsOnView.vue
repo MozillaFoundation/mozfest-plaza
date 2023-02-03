@@ -15,11 +15,9 @@
     >
       <span slot="title">{{ $t('mozfest.whatsOn.title') }}</span>
       <ApiContent slot="info" slug="whats-on-filters" />
-      <span slot="noResults">{{ $t('mozfest.whatsOn.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </WhatsOnView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.whatsOn.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 

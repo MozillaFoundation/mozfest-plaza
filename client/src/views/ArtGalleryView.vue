@@ -15,11 +15,9 @@
     >
       <span slot="title">{{ $t('mozfest.artAndMedia.title') }}</span>
       <ApiContent slot="info" slug="art-filters" />
-      <span slot="noResults">{{ $t('mozfest.artAndMedia.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </WhatsOnView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.artAndMedia.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 

@@ -26,11 +26,9 @@
           />
         </a>
       </ApiContent>
-      <span slot="noResults">{{ $t('mozfest.emergent.noResults') }}</span>
+      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </FilteredScheduleView>
-    <InlineLoading v-else>
-      {{ $t('mozfest.emergent.loading') }}
-    </InlineLoading>
+    <InlineLoading v-else />
   </AppLayout>
 </template>
 
