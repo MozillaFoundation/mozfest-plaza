@@ -16,7 +16,7 @@ Yes, to be able to attend MozFest 2023 you will need to have registered for a ti
 
 <details>
 <summary>I've registered for MozFest but I get an error message when I try to login.</summary>
-Please ensure you are logging in with the same email that you used when registering for MozFest. If you are using the same email address, make sure you have assigned your ticket. Search for your order confirmation email (with the subject line: Your Mozilla Festival 2023 Confirmation) and then press the 'View Order' button. If you are still experiening issues after assigning your ticket, please reach out to support@mozillafestival.org.
+Please ensure you are logging in with the same email that you used when registering for MozFest. If you are using the same email address, make sure you have assigned your ticket. Search for your order confirmation email (with the subject line: Your Mozilla Festival 2023 Confirmation) and then press the 'View Order' button. If you are still experiencing issues after assigning your ticket, please reach out to support@mozillafestival.org.
 </details>
 
 <details>
