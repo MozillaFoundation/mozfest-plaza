@@ -1,5 +1,7 @@
 <!-- This is the Plaza page when the visitor is signed in -->
 
+**Join us for today's MozFest Keynote "No Act of Protest is Too Small by Pussy Riot" from 17:00 UTC (12:00 ET / 22:30 IST) by [accessing the session page here](https://schedule.mozillafestival.org/session/38AZEM-1)**
+
 # Arrive with an idea, leave with a community
 
 Since 2010, MozFest has fueled the movement to ensure the internet benefits humanity, rather than harms it. This year, your part in the story is critical to our community’s mission: a better, healthier internet and more Trustworthy AI. 
