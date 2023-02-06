@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import i18n from '../i18n/module'
+import { env } from '../plugins/env-plugin'
 
 import AtriumView from '../views/AtriumView.vue'
 import TokenCaptureView from '../views/TokenCaptureView.vue'
@@ -262,7 +263,7 @@ const protectedRoutes = new Set<string>([
 const SCROLL_OFFSET = 80
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: env.STATIC_BUILD ? 'hash' : 'history',
   base: process.env.BASE_URL,
   scrollBehavior: getScrollBehaviour(SCROLL_OFFSET),
   routes,

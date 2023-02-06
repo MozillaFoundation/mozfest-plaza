@@ -11,8 +11,21 @@ window.CONFIG = {
 }
 
 //
-// Static mode
+// Static mode live
 //
-// window.CONFIG.SERVER_URL = 'http://localhost:3000/static/schedule/'
+// window.CONFIG.SELF_URL = 'https://mozfest-static.openlab.dev/'
+// window.CONFIG.SERVER_URL = 'https://mozfest-static.openlab.dev/schedule/'
 // window.CONFIG.STATIC_BUILD = true
 // window.CONFIG.DISABLE_SOCKETS = true
+// window.CONFIG.GA_TOKEN = 'UA-87658599-22'
+// window.CONFIG.JWT_ISSUER = 'mozfest-2023-static'
+
+//
+// Static mode local
+//
+// window.CONFIG.SELF_URL = 'http://localhost:8080/'
+// window.CONFIG.SERVER_URL = 'http://localhost:8080/schedule/'
+// window.CONFIG.STATIC_BUILD = true
+// window.CONFIG.DISABLE_SOCKETS = true
+// window.CONFIG.GA_TOKEN = 'UA-87658599-22'
+// window.CONFIG.JWT_ISSUER = 'mozfest-2023-static'

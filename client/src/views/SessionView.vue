@@ -5,7 +5,7 @@
       :class="extraClasses"
       :session="session"
       :schedule="schedule"
-      :logged-in="Boolean(user)"
+      :logged-in="Boolean(user) || isStaticMode"
       :schedule-date="scheduleDate"
       @links="onLinks"
     >
@@ -25,7 +25,8 @@
         <div class="content" v-html="localeContent"></div>
       </template>
 
-      <template slot="login">
+      <!-- TODO: refactor this back to the framework properly -->
+      <template slot="login" v-if="!isStaticMode">
         <p>
           {{ $t('deconf.session.logIn') }}
         </p>
@@ -82,6 +83,7 @@ import AppLayout from '@/components/MozAppLayout.vue'
 import { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
 import { getSessionParentRoute, MozSession } from '@/lib/module'
+import { env } from '@/plugins/env-plugin'
 
 const internalDomains = [
   'mozilla.zoom.us',
@@ -186,6 +188,9 @@ export default Vue.extend({
       return this.session.recommendations
         .map((l) => this.parseSessionUrl(l.url, sessions) as Session)
         .filter((s) => s)
+    },
+    isStaticMode(): boolean {
+      return env.STATIC_BUILD === true
     },
   },
   methods: {
