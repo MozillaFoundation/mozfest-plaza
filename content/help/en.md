@@ -57,9 +57,13 @@ Ticket confirmations would be sent from support@tito.io. Please check your spam 
 
 <details>
 <summary>What are the perks of getting an early bird ticket?</summary> 
+Being one of the first in line to grab your MozFest 2023 tickets grants you exclusive access to pre-festival events on the MozFest Plaza, including a Dialogues & Debates session with some of the tech industry’s most influential leaders, immersive virtual experiences, and more!
 </details>
+
+
 <details>
-<summary>Are there any oppotunies to attend in person?</summary> 
+<summary>Are there any oppotunies to attend in person?</summary>
+MozFest 2023 is our keystone virtual event that takes place right here on the Plaza! All you’ll need is an internet connected device and you should be set, no travel required.  
 </details>
 
 ## Feedback
