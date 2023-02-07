@@ -40,6 +40,7 @@ import HouseIcon from '@/icons/HouseIcon.vue'
 import LightningTalksIcon from '@/icons/LightningTalksIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
+import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
 import SpacesIcon from '@/icons/SpacesIcon.vue'
 import EmergentIcon from '@/icons/EmergentIcon.vue'
 import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
@@ -101,7 +102,7 @@ export default Vue.extend({
         {
           title: this.$t('mozfest.appLayout.mySchedule') as string,
           name: ExtraRoutes.MySchedule,
-          icon: ScheduleIcon, // TODO: need an icon
+          icon: MyScheduleIcon,
           pageFlag: this.settings.mySchedule,
         },
         {
