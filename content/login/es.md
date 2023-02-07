@@ -1,0 +1,3 @@
+Te enviaremos un correo electrónico para confirmar quién eres. Deberás utilizar la misma dirección de correo electrónico con la que registraste tu entrada para el festival. El correo incluirá un enlace con el que podrás acceder a tu perfil. Este enlace caducará a los 30 minutos. Si no recibes nada, revisa tu bandeja de correo no deseado.
+
+[¿Tienes problemas para iniciar sesión?](mailto:support@mozillafestival.org)
