@@ -1,0 +1,1 @@
+¿Tienes toda la disposición para aprender algo nuevo? Distintos facilitadores de todo el mundo compartirán sus conocimientos sobre temas diversos que van desde las artes hasta la ciberseguridad, pasando por las herramientas de fuente abierta y la sustentabilidad. Estos videos cortos pueden verse a la carta en cualquier momento según lo permita tu agenda.
