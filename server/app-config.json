@@ -67,7 +67,7 @@
       "id": 2425,
       "title": { "en": "Discussion", "es": "Discusión" },
       "icon": ["fas", "comments"],
-      "layout": "plenary"
+      "layout": "workshop"
     },
     {
       "id": 2453,
