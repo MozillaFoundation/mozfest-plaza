@@ -36,6 +36,10 @@ export class GeneralRouter implements AppRouter {
       }
     })
 
+    router.get('/share/session', (ctx) => {
+      ctx.redirect(new URL(this.#context.env.CLIENT_URL).toString())
+    })
+
     // NOTE: Create "share-router" if more shares are needed
     router.get(
       'general.shareSession',
