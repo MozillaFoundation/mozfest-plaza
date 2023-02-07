@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.7.2](https://github.com/digitalinteraction/mozfest/compare/v3.7.1...v3.7.2) (2023-02-07)
+
+
+### Bug Fixes
+
+* add fallback share-session route ([4b1eea4](https://github.com/digitalinteraction/mozfest/commit/4b1eea49bfb1e7bba2010110041433aad2469b9f))
+* static-mode tweaks ([edfba12](https://github.com/digitalinteraction/mozfest/commit/edfba1240c7388b636a4b7128daa3a94a845662c))
+
 ### [3.7.1](https://github.com/digitalinteraction/mozfest/compare/v3.7.0...v3.7.1) (2023-02-03)
 
 
