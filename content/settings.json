@@ -22,11 +22,11 @@
   },
   "arts": {
     "enabled": false,
-    "visible": false
+    "visible": true
   },
   "lightningTalks": {
     "enabled": false,
-    "visible": false
+    "visible": true
   },
   "fringe": {
     "enabled": false,
