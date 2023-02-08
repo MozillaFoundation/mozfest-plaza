@@ -27,10 +27,15 @@ import {
   FilteredScheduleView,
   guardPage,
 } from '@openlab/deconf-ui-toolkit'
-import { getLanguageOptions, mapApiState, StorageKey } from '@/lib/module'
+import {
+  getLanguageOptions,
+  mapApiState,
+  sessionTypeIds,
+  StorageKey,
+} from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 
-const typeAllowList = new Set(['fringe-events'])
+const typeAllowList = new Set([sessionTypeIds.fringeEvent])
 
 const options: FilteredScheduleOptions = {
   predicate: (s) => typeAllowList.has(s.type),
