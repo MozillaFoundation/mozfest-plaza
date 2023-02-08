@@ -13,7 +13,7 @@ The MozFest Plaza, also known as the MozFest Schedule is our virtual venue for o
 
 <details>
 <summary>Do I need a ticket to attend MozFest 2023?</summary>
-Yes, to be able to attend MozFest 2023 you will need to have registered for a ticket on our website. Early Bird tickets are now available on our [ticketing page](https://www.mozillafestival.org/tickets).
+Yes, to be able to attend MozFest 2023 you will need to have registered for a ticket on our website. Early Bird tickets are now available on our <a href="https://www.mozillafestival.org/tickets">ticketing page</a>.
 </details>
 
 <details>
@@ -72,12 +72,12 @@ MozFest 2023 is our keystone virtual event that takes place right here on the Pl
 
 <details>
 <summary>Do I need to download Zoom?</summary>
-For sessions being delivered via Zoom, we recommend that you download and install the latest version of the Zoom client to your computer or mobile device. You may be prompted to review and approve permission for the Zoom app during set up, to access your camera and microphone for example, please make sure that you allow that permission when prompted. You can download Zoom directly from the website [HERE](https://zoom.us/).
+For sessions being delivered via Zoom, we recommend that you download and install the latest version of the Zoom client to your computer or mobile device. You may be prompted to review and approve permission for the Zoom app during set up, to access your camera and microphone for example, please make sure that you allow that permission when prompted. You can download Zoom directly from the website <a href="https://zoom.us/">HERE</a>.
 </details>
 
 <details>
 <summary>Do I need to install special software or hardware to use Spatial Chat or Mozilla Hubs?</summary>
-Both Mozilla Hubs and Spatial Chat are designed to run directly within the browser. For the best possible experience, we recommend using a desktop or laptop computer and the latest version of [FireFox](https://www.mozilla.org/en-US/firefox/new/) and that you have as strong an internet connection as possible.
+Both Mozilla Hubs and Spatial Chat are designed to run directly within the browser. For the best possible experience, we recommend using a desktop or laptop computer and the latest version of <a href="https://www.mozilla.org/en-US/firefox/new/">FireFox</a> and that you have as strong an internet connection as possible.
 </details>
 
 <details>
@@ -116,7 +116,7 @@ You should find all the links to any resources or files within the session listi
 
 <details>
 <summary>I’m not familiar with these different apps, where can I learn more?</summary>
-Please feel free to visit the [MozFest Help Desk](https://www.mozillafestival.org/en/helpdesk/) where you’ll find more FAQ’s for each of these apps, tips, and best practices. If you’d have any questions beyond those, please feel free to reach out to us via email at <a href="mailto:support@mozillafestival.org">support@mozillafestival.org</a> or in the #Help MozFest Slack channel.
+Please feel free to visit the <a href="https://www.mozillafestival.org/en/helpdesk/">MozFest Help Desk</a> where you’ll find more FAQ’s for each of these apps, tips, and best practices. If you’d have any questions beyond those, please feel free to reach out to us via email at <a href="mailto:support@mozillafestival.org">support@mozillafestival.org</a> or in the #Help MozFest Slack channel.
 </details>
 
 <details>
