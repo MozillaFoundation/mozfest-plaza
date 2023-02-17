@@ -157,7 +157,6 @@ import {
   getFeaturedSessions,
 } from '@openlab/deconf-ui-toolkit'
 import AppLayout from '@/components/MozAppLayout.vue'
-import AnchorFmEmbed from '@/components/AnchorFmEmbed.vue'
 import { mapApiState, MozConferenceConfig } from '@/lib/module'
 
 import sponsorData from '@/data/sponsors.json'
