@@ -4,8 +4,8 @@
     "visible": true
   },
   "whatsOn": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "schedule": {
     "enabled": true,
@@ -21,11 +21,11 @@
     "visible": false
   },
   "arts": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "lightningTalks": {
-    "enabled": false,
+    "enabled": true,
     "visible": true
   },
   "fringe": {
