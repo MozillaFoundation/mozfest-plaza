@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.7.4](https://github.com/digitalinteraction/mozfest/compare/v3.7.3...v3.7.4) (2023-02-17)
+
+
+### Bug Fixes
+
+* "add to my schedule" not showing on tiles ([ae2c7d3](https://github.com/digitalinteraction/mozfest/commit/ae2c7d3a5c098be3d609a415cd83deb78d12fe51))
+* misaligned recommendation cards ([e2c0ffd](https://github.com/digitalinteraction/mozfest/commit/e2c0ffdb71b73741157d8af90483b7bd5929ff54))
+* remove debug log ([456c052](https://github.com/digitalinteraction/mozfest/commit/456c052c3e8911df3c900fb1f2e2e5b29bf709af))
+* remove unused import ([c1dfbbd](https://github.com/digitalinteraction/mozfest/commit/c1dfbbd177a3c8037041163bc5c1749be07f7fda))
+
 ### [3.7.3](https://github.com/digitalinteraction/mozfest/compare/v3.7.2...v3.7.3) (2023-02-08)
 
 
