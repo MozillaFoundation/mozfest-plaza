@@ -79,5 +79,3 @@ function getRedirect() {
   }
   return target
 }
-
-console.log(getRedirect())
