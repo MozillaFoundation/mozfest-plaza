@@ -49,8 +49,8 @@
     "visible": false
   },
   "mySchedule": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
 
   "navigation": {
@@ -61,7 +61,7 @@
   },
 
   "atriumWidgets": {
-    "register": false,
+    "register": true,
     "twitter": true,
     "login": true,
     "siteVisitors": true,
@@ -71,7 +71,7 @@
     "mozfestBook": false,
     "linkedin": true,
     "submissions": false,
-    "calendarHelp": false
+    "calendarHelp": true
   },
 
   "content": {
