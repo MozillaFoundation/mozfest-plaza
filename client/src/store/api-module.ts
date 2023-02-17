@@ -21,11 +21,13 @@ export interface LoginPayload {
 export function apiModule(): ApiStoreModule {
   const apiClient = pickApi(env)
 
+  const base = createApiStoreModule()
   const baseActions = createApiStoreActions(apiClient)
 
   return {
-    ...createApiStoreModule(),
+    ...base,
     getters: {
+      ...base.getters,
       apiClient: () => apiClient,
       userSessions: (store) => store.userSessions ?? [],
     },
