@@ -1,6 +1,6 @@
 import { ApiError, MetricsSockets } from '@openlab/deconf-api-toolkit'
 import { Socket } from 'socket.io'
-import { any, boolean, object, string, Struct } from 'superstruct'
+import { any, boolean, number, object, string, Struct } from 'superstruct'
 import {
   AppBroker,
   AppContext,
@@ -69,6 +69,14 @@ eventStructs.set(
   'atrium/widget',
   object({
     widget: string(),
+  })
+)
+eventStructs.set(
+  'session/recommendation',
+  object({
+    fromSession: string(),
+    toSession: string(),
+    index: number(),
   })
 )
 eventStructs.set('profile/userCalendar', object({}))

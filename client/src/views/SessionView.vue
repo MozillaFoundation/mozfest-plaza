@@ -48,7 +48,7 @@
         <div class="sessionView-recommendationCards">
           <div
             class="recommendationCard"
-            v-for="session in recommendations"
+            v-for="(session, index) in recommendations"
             :key="session.id"
           >
             <SessionTile
@@ -57,6 +57,7 @@
               :schedule="schedule"
               :config="recommendationConfig"
               :readonly="false"
+              @click="onRecommendation(session, index)"
             />
           </div>
         </div>
@@ -238,6 +239,11 @@ export default Vue.extend({
     },
     trimSlashes(pathname: string) {
       return pathname.replace(/^\//, '').replace(/\/$/, '')
+    },
+    onRecommendation(session: Session, index: number) {
+      if (typeof index !== 'number') index = parseInt(index)
+
+      console.log('RECOMMEND', session, index)
     },
   },
 })
