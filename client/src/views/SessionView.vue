@@ -272,7 +272,7 @@ export default Vue.extend({
 
 .sessionView-recommendationCards {
   display: grid;
-  align-content: start;
+  align-items: flex-start;
   grid-gap: $block-spacing;
   grid-template-columns: repeat(auto-fill, minmax(min(25ch, 100%), 1fr));
 }
