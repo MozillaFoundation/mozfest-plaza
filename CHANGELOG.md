@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.8.1](https://github.com/digitalinteraction/mozfest/compare/v3.8.0...v3.8.1) (2023-02-27)
+
+
+### Bug Fixes
+
+* bad deconf patch ([fc17f5d](https://github.com/digitalinteraction/mozfest/commit/fc17f5d7a7d864bec8ba95d212468e5aaacf641f))
+
 ## [3.8.0](https://github.com/digitalinteraction/mozfest/compare/v3.7.4...v3.8.0) (2023-02-27)
 
 
