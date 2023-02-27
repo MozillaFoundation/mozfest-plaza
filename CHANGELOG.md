@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.0](https://github.com/digitalinteraction/mozfest/compare/v3.7.4...v3.8.0) (2023-02-27)
+
+
+### Features
+
+* add cloudinary share URLs ([ac61be6](https://github.com/digitalinteraction/mozfest/commit/ac61be6ea43dacae7e1633ba3ee8949a9106ecf3))
+* support hyperaudio embeds ([25317b0](https://github.com/digitalinteraction/mozfest/commit/25317b05f6cd4121dad16b49ad387443b503fd02))
+
+
+### Bug Fixes
+
+* hide session back button ([5ff8a22](https://github.com/digitalinteraction/mozfest/commit/5ff8a22fec905fea49a0c70d05434b1371de2a01))
+* refactor to GA4 ([6c2bc94](https://github.com/digitalinteraction/mozfest/commit/6c2bc947d2058a1b05deae0a451dff7ea51b1b76))
+
 ### [3.7.4](https://github.com/digitalinteraction/mozfest/compare/v3.7.3...v3.7.4) (2023-02-17)
 
 
