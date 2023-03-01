@@ -2,20 +2,33 @@ import fs from 'fs/promises'
 import crypto from 'crypto'
 
 import debug from 'debug'
-import { createEnv as createDeconfEnv } from '@openlab/deconf-api-toolkit'
+import {
+  ApiError,
+  createEnv as createDeconfEnv,
+  EmailService,
+  JwtService,
+  RegistrationRepository,
+} from '@openlab/deconf-api-toolkit'
 import { create } from 'superstruct'
 
 import { AppConfigStruct } from './structs.js'
+import { EmailLoginToken, Registration } from '@openlab/deconf-shared'
+import { AppContext } from './types.js'
 
 export type EnvRecord = ReturnType<typeof createEnv>
 
 /** Validate environment variables and return them with typed */
 export function createEnv(processEnv = process.env) {
-  const { REDIS_URL = null, ADMIN_EMAILS = null } = processEnv
+  const {
+    REDIS_URL = null,
+    ADMIN_EMAILS = null,
+    TITO_SECURITY_TOKEN = null,
+  } = processEnv
 
   return Object.assign(createDeconfEnv(processEnv), {
     REDIS_URL,
     ADMIN_EMAILS: new Set(ADMIN_EMAILS?.split(/\s*,\s*/)),
+    TITO_SECURITY_TOKEN,
   })
 }
 
@@ -32,4 +45,40 @@ export function createDebug(namespace: string) {
 
 export function sha256Hash(input: string) {
   return crypto.createHash('sha256').update(input).digest('base64')
+}
+
+export async function upsertRegistration(
+  repo: Readonly<RegistrationRepository>,
+  emailAddress: string,
+  name: string
+): Promise<Registration> {
+  // Get registrations and find the newest one
+  const registrations = await repo.getRegistrations(emailAddress)
+  let [registration] = registrations.sort((a, b) => b.id - a.id)
+
+  if (!registration) {
+    await repo.register({
+      name: name,
+      email: emailAddress,
+      language: 'en',
+      country: '',
+      affiliation: '',
+      userData: {},
+    })
+
+    const registrations = await repo.getRegistrations(emailAddress)
+    registration = registrations.sort((a, b) => b.id - a.id)[0]
+  }
+
+  if (!registration) throw ApiError.internalServerError()
+
+  return registration
+}
+
+export interface SendLoginEmailOptions {
+  subject: string
+  duration: string
+  templateId: string
+  roles: string[]
+  redirect?: string
 }

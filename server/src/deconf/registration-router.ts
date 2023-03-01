@@ -21,9 +21,11 @@ import {
   sha256Hash,
   TitoRecord,
   BlockList,
+  upsertRegistration,
 } from '../lib/module.js'
 
 import { Describe, object, optional, string } from 'superstruct'
+import { MozRegistrationMailer } from '../lib/mailer.js'
 
 export interface UserData {}
 const UserDataStruct: Describe<UserData> = object({})
@@ -44,14 +46,19 @@ function parseLoginRedirect(input: string | undefined, clientUrl: string) {
 
 type Context = AppContext
 
-export class RegistrationRouter implements AppRouter, RegistrationMailer {
+export class RegistrationRouter implements AppRouter {
   #context: Context
   #routes: RegistrationRoutes<any>
+  #mailer: MozRegistrationMailer
   constructor(context: Context) {
     this.#context = context
+    this.#mailer = new MozRegistrationMailer(context, {
+      subjectKey: 'email.login.subject',
+      templateId: this.#context.config.sendgrid.loginTemplateId,
+    })
     this.#routes = new RegistrationRoutes({
       ...context,
-      mailer: this,
+      mailer: this.#mailer,
       userDataStruct: UserDataStruct as any,
       config: undefined,
     })
@@ -109,27 +116,11 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
         throw ApiError.unauthorized()
       }
 
-      // Get registrations and find the newest one
-      const registrations =
-        await this.#context.registrationRepo.getRegistrations(emailAddress)
-      let [registration] = registrations.sort((a, b) => b.id - a.id)
-
-      if (!registration) {
-        await this.#context.registrationRepo.register({
-          name: titoRecord?.name ?? 'Facilitator',
-          email: emailAddress,
-          language: 'en',
-          country: '',
-          affiliation: '',
-          userData: {},
-        })
-
-        const registrations =
-          await this.#context.registrationRepo.getRegistrations(emailAddress)
-        registration = registrations.sort((a, b) => b.id - a.id)[0]
-      }
-
-      if (!registration) throw ApiError.internalServerError()
+      const registration = await upsertRegistration(
+        this.#context.registrationRepo,
+        emailAddress,
+        titoRecord?.name ?? 'Facilitator'
+      )
 
       const roles = []
       if (isFacilitator) roles.push('facilitator')
@@ -144,7 +135,7 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
         { expiresIn: '30m' }
       )
 
-      this.sendLoginEmail(registration, loginToken)
+      this.#mailer.sendLoginEmail(registration, loginToken)
 
       ctx.body = VOID_RESPONSE
     })
@@ -204,33 +195,4 @@ export class RegistrationRouter implements AppRouter, RegistrationMailer {
   //
   // RegistrationMailer
   //
-  async sendLoginEmail(
-    registration: Registration,
-    token: string
-  ): Promise<void> {
-    const t = (k: string) =>
-      this.#context.i18n.translate(registration.language, k)
-
-    this.#context.email.sendTransactional(
-      registration.email,
-      t('email.login.subject'),
-      this.#context.config.sendgrid.loginTemplateId,
-      {
-        subject: t('email.login.subject'),
-        url: this.#context.url.getServerLoginLink(token).toString(),
-      }
-    )
-  }
-  async sendVerifyEmail(
-    registration: Registration,
-    token: string
-  ): Promise<void> {
-    // This shouldn't be triggered with a ti.to login
-  }
-  async sendAlreadyRegisteredEmail(
-    registration: Registration,
-    authToken: string
-  ): Promise<void> {
-    // This shouldn't be triggered with a ti.to login
-  }
 }
