@@ -151,7 +151,9 @@ cli.command(
       demandOption: true,
     }),
   (args) =>
-    hackCommands[args.hack as keyof typeof hackCommands]().catch(errorHandler)
+    hackCommands[args.hack as keyof typeof hackCommands](args).catch(
+      errorHandler
+    )
 )
 
 cli.command(

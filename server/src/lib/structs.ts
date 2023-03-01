@@ -107,6 +107,13 @@ export const AppConfigStruct = object({
     accountSlug: string(),
     eventSlug: string(),
   }),
+  cloudinary: optional(
+    object({
+      publicId: string(),
+      sessionImage: string(),
+      font: string(),
+    })
+  ),
   sessionTypes: array(
     object({
       id: numberToString(),

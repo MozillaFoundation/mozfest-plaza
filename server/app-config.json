@@ -44,6 +44,11 @@
     "accountSlug": "mozilla",
     "eventSlug": "mozilla-festival-2023"
   },
+  "cloudinary": {
+    "publicId": "djjkljkg7",
+    "sessionImage": "mozfest_og_bg_cm5nxq.jpg",
+    "font": "mlilnejuqzzv1rz4wlkh.ttf"
+  },
   "sessionTypes": [
     {
       "id": 2427,

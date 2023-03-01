@@ -1,6 +1,7 @@
 import { RedisService } from '@openlab/deconf-api-toolkit'
 import { Session } from '@openlab/deconf-shared'
 import ipRegex from 'ip-regex'
+import { generateSessionOpengraphImage } from '../general/general-router.js'
 import { createEnv, loadConfig } from '../lib/module.js'
 
 //
@@ -27,10 +28,11 @@ async function teardown(store: RedisService) {
 //
 
 export const hackCommands = {
-  'recorded-sessions': () => recordedSessions(),
-  ips: () => parseIps(),
-  'load-io': () => loadIo(),
-}
+  'recorded-sessions': recordedSessions,
+  ips: parseIps,
+  'load-io': loadIo,
+  opengraph: opengraphImage,
+} satisfies Record<string, (args: any) => void>
 
 //
 // Hacks
@@ -137,4 +139,17 @@ export async function loadIo() {
     console.clear()
     console.log(count++)
   }
+}
+
+export async function opengraphImage(args: any) {
+  const [name = 'My test session'] = args._.slice(1)
+
+  const config = await loadConfig()
+
+  if (!config.cloudinary) throw new Error('Not configured')
+
+  console.log()
+  console.log(
+    generateSessionOpengraphImage(name, new Date(), config.cloudinary)
+  )
 }
