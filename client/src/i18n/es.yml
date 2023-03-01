@@ -1,1 +1,314 @@
-{}
+deconf:
+  sideTabs:
+    unavailable: No disponible
+
+  apiError:
+    title: Ocurrió un problema
+    content: Estamos teniendo algunos problemas; intenta volver a cargar la página o regresa más tarde.
+    retry: 'Reintentando en {0}'
+
+  appLoading:
+    message: Cargando…
+
+  scheduleBlock:
+    workshopTitle: Sesiones interactivas
+    workshopDescription: Para ver todas las emocionantes sesiones interactivas que tienen lugar en MozFest durante este periodo de tiempo, haz clic en mostrar todo.
+    workshops: 'Ninguna | 1 sesión | {n} sesiones'
+    showWorkshops: Mostrar todas
+    hideWorkshops: Ocultar todas
+
+  general:
+    appName: Calendario del MozFest 2023
+    days: días | día | días
+    hours: horas | hora | horas
+    minutes: minutos | minuto | minutos
+    seconds: segundos | segundo | segundos
+    genericError: Ocurrió un problema; inténtalo nuevamente
+    closeDialog: Cerrar
+
+  miniSession:
+    view: Ver
+    live: En vivo
+
+  featuredSessions:
+    title: Sesiones destacadas
+    action: Explorar todas las sesiones
+
+  scheduleFilters:
+    query: Buscar
+    showFilters: Mostrar filtros
+    hideFilters: Ocultar filtros
+    clearFilters: Borrar filtros
+    dateFilter: Fecha
+    typeFilter: Tipo
+    trackFilter: Espacio
+    themeFilter: Tema
+    recordedFilter: Grabada
+    languageFilter: Idioma
+    offLabel: Todo
+    'yes': 'Sí'
+    'no': 'No'
+
+  attendanceSection:
+    loading: Cálculo de asistencia
+    processing: Procesando
+    registered: Estás registrado a esta sesión
+    full: Esta sesión está llena
+    spacesLeft: 'Quedan {0}/{1} asientos.'
+    registerButton: Regístrate ahora
+    unregisterButton: Liberar mi lugar
+
+  timeSlot:
+    past: Anterior
+    live: En vivo
+
+  joinSession:
+    future: Previsualizar la sesión
+    present: Unirse a la sesión
+    past: Ver la sesión
+
+  sessionAttributes:
+    isRecorded: Grabada
+    notRecorded: No grabada
+
+  addToCalendar:
+    action: Añadir al calendario
+
+  addUserCalendar:
+    title: Calendario privado
+    generate: Generar url
+    info: Usa este enlace para suscribirte a "Mi programa" en tu calendario. Tu calendario se actualizará periódicamente para obtener la información más reciente y mostrarte los eventos que hayas añadido a "Mi programa".
+    copy: copiar
+    copied: copiado
+
+  sessionLink:
+    copy: copiar
+    copied: copiado
+
+  sessionState:
+    liveNow: En vivo ahora
+    sessionOver: Sesión terminada
+    interest: 'Sin actividad | añadido a 1 programa | añadido a {n} programas'
+
+  sessionEmbed:
+    noEmbed: Ocurrió un problema. No hay nada para mostrar aquí
+    openTeams: Abrir reunión de Teams
+    openZoom: Abrir reunión de Zoom
+    openZoomRegister: Registrarse a reunión de Zoom
+    openGoogleMeet: Abrir Google Meet
+    openHubs: Abrir Mozilla Hub
+    openSpatial: Abrir Spatial Chat
+
+  languageWarning:
+    message: 'Toma en cuenta que esta sesión solamente está disponible en {0}'
+
+  navigationBar:
+    profile: Mi perfil
+    login: Inicio de sesión
+    interpret: Modo de intérprete
+    register: Regístrate
+    unavailable: ' (No disponible)'
+
+  login:
+    title: Inicio de sesión
+    email:
+      label: Correo electrónico
+      placeholder: por ejemplo geoff@example.com
+      help: Dirección de correo electrónico con la que te registraste en ti.to
+    badEmail: Dirección de correo electrónico incorrecta
+    doneText: Código para ingresar enviado
+    submitButton: Solicita un enlace mágico
+    registerLabel: ¿Aún no te registras?
+    registerAction: Regístrate aquí
+
+  profile:
+    title: Mi perfil
+    actionLabel: Acciones
+    logoutButton: Cerrar sesión
+    dangerLabel: Zona de peligro
+    deleteButton: Eliminar cuenta
+    deleteText: Es permanente, ¿de verdad quieres eliminar la cuenta?
+    mozfest:
+      emailText: Correo electrónico
+      localeText: Elegir idioma
+      whenText: Sesión iniciada
+      registeredText: Registrado
+      nameText: Nombre
+      countryText: País
+      affiliationText: Afiliación
+      marketingText: Difusión
+
+  schedule:
+    title: Programa
+    description: ''
+    noResults: No hay resultados para tu búsqueda
+    allSessions: Programa lleno
+    userSessions: Mi programa
+    hidePast: Ocultar sesiones previas
+    showPast: Mostrar sesiones previas
+    resultHeading: 'Resultados de búsqueda — {0}'
+
+  session:
+    slot: Programa
+    countdown: Cuenta regresiva
+    links: Enlaces
+    linkPreview: Los enlaces para las sesiones estarán disponibles 15 minutos antes de que comiencen
+    actions: Acciones
+    logIn: Si deseas asistir a esta sesión, inicia sesión y presiona el botón "Añadir a Mi programa". Los enlaces para unirse a la sesión aparecerán 15 minutos antes de que la sesión comience.
+    speakers: Facilitadores
+    zoomLink: Zoom Room
+    teamsLink: Reunión de Teams
+    miroLink: Pizarra de Miro
+    generalLink: Enlace
+    mozfest:
+      backButton: Regresar a Programa
+      externalLinks: Toma en cuenta que el Facilitador para esta sesión usa un servicio de terceros que no forma parte oficial de MozFest.
+      logIn: Iniciar sesión
+      recommendations: 'Recomendaciones:'
+      recommendationsInfo: ''
+
+  interestSection:
+    message: Regístrate si te interesa
+    unregisterButton: Eliminar de Mi programa
+    registerButton: Añadir a Mi programa
+
+  addToCalendarDialog:
+    title: Añadir sesión a calendario
+    # información: También puedes obtener un enlace personalizado para el calendario en la página de perfil.
+    info: Usa los botones abajo para añadir esta sesión al calendario que prefieras.
+    ical: Descargar evento
+    google: Calendario de Google
+    cancel: Cancelar
+
+  apiMessage:
+    unknown:
+      title: Ocurrió un problema
+      info: Ocurrió un error desconocido. Inténtalo de nuevo. Si el problema persiste, comunícate con nosotros.
+      email: festival@mozilla.org
+    loginExpired:
+      title: El enlace mágico expiró
+      info: Tu enlace mágico para ingresar expiró. Por razones de seguridad, solo dura 30 minutos. Usa el botón a continuación para empezar de nuevo.
+      action: Iniciar sesión de nuevo
+
+  tokenCaptureView:
+    message: Procesando inicio de sesión…
+
+mozfest:
+  general:
+    backToAtrium: Regresar a Plaza
+    'yes': 'Sí'
+    'no': 'No'
+    registerUrl: https://www.mozillafestival.org/es/tickets/
+    helpDeskUrl: https://www.mozillafestival.org/helpdesk
+    loading: Cargando…
+    noResults: No encontramos ninguna sesión que concuerde con eso
+
+  atrium:
+    bookSubtitle: Descubre nuestro libro galardonado, una celebración de nuestro pasado y futuro.
+    bookTitle: Cómo ir a MozFest
+    bookUrl: https://book.mozillafestival.org
+    familySubtitle: Actividades bajo demanda para asistentes de 3 a 12 años.
+    familyTitle: Recursos para familias en MozFest
+    familyUrl: https://www.mozillafestival.org/family-resources
+    heading: MozFest 2023
+    linkedinSubtitle: Añade tu asistencia al Evento LinkedIn de MozFest para que otros sepan que asistirás.
+    linkedinTitle: Comparte en LinkedIn
+    linkedinUrl: https://www.linkedin.com/events/6960951053789863936/
+    logIn: Iniciar sesión
+    onlineUsers: En este momento en línea
+    registerSubtitle: El registro a MozFest 2023 ya está disponible.
+    registerTitle: Asegura tu boleto de entrada
+    registerUrl: https://www.mozillafestival.org/tickets
+    slackSubtitle: Conectáte, colabora y únete a la conversación.
+    slackTitle: Slack de MozFest
+    slackUrl: https://www.mozillafestival.org/slack
+    spacialChatSubtitle: Visita nuestros espacios comunitarios virtuales aquí
+    spacialChatTitle: Spatial Chat
+    spacialChatUrl: https://spatial.chat/s/mozilla-festival-2022?guest
+    submissionsSubtitle: ¿Te interesa ser Facilitador en el MozFest? La convocatoria para presentar propuestas cierra el 16 de diciembre.
+    submissionsTitle: Presenta tu idea de Sesión
+    submissionsUrl: https://www.mozillafestival.org/proposals/
+    subtitle: Del 20 al 24 de marzo de 2023.
+    title: Únete al MozFest virtual
+    twitterSubtitle: Comparte las sesiones a las que más ganas tienes de asistir.
+    twitterTitle: 'Tuitea #MozFest'
+    twitterUrl: https://twitter.com/hashtag/MozFest
+    calendarHelpSubtitle: Añade tus sesiones de MozFest a tu calendario
+    calendarHelpTitle: 'Sincronizar calendario'
+    calendarHelpUrl: /sync-calendar
+
+  footer:
+    appName: MozFest
+    guidelines: Pautas para la participación en la comunidad
+    guidelinesUrl: https://www.mozillafestival.org/guidelines/
+    privacy: Privacidad
+    privacyUrl: https://www.mozilla.org/privacy/websites/
+    terms: Términos y condiciones
+    termsUrl: https://www.mozillafestival.org/tickets/terms/
+
+  pageTitles:
+    atrium: Plaza
+    login: Iniciar sesión
+    profile: Tu Perfil
+    schedule: Programa
+    session: Ver la sesión
+    spaces: Redes sociales
+    skillShare: Pláticas relámpago
+    artGallery: Arte y Medios
+    terms: Términos & Condiciones
+    guidelines: Pautas
+    privacy: Privacidad
+    fringeEvents: Eventos paralelos
+    whatsOn: Adelanto
+    helpDesk: Servicio de Asistencia
+    houseEvents: Eventos de la casa
+    misinfoCon: MisinfoCon
+    emergentSessions: Sesiones emergentes
+    calendar: Mi calendario
+    mySchedule: Mi programa
+    utilities: Servicios públicos
+
+  whatsOn:
+    title: Adelanto
+
+  artAndMedia:
+    title: Arte y medios
+
+  fringeEvents:
+    title: Eventos paralelos
+
+  houseEvents:
+    title: Eventos de casa
+
+  misinfoCon:
+    title: MisinfoCon
+
+  emergent:
+    title: Sesiones emergentes
+    takePart: Participa
+    caption: Una muestra de sesiones que se presentaron en MozFest 2021
+
+  skillShare:
+    title: Pláticas relámpago
+
+  notFound:
+    title: Página no encontrada
+    info: No encontramos la página que buscas
+
+  appLayout:
+    atrium: Plaza
+    whatsOn: Adelanto
+    schedule: Programa
+    helpDesk: Servicio de Asistencia
+    social: Información social
+    arts: Arte y Medios
+    skillShare: Pláticas relámpago
+    fringe: Eventos paralelos
+    house: Eventos de casa
+    misinfoCon: MisinfoCon
+    emergentSessions: Sesiones emergentes
+    mySchedule: Mi programa
+
+  mySchedule:
+    title: Mi programa
+    noResults: Añade algunas sesiones a Mi programa
