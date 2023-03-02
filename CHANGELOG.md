@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.9.0](https://github.com/digitalinteraction/mozfest/compare/v3.8.1...v3.9.0) (2023-03-02)
+
+
+### Features
+
+* implement tito webhook login ([cb4fb3b](https://github.com/digitalinteraction/mozfest/commit/cb4fb3bf7fc8e7b9c5e2b4f75420ae03974b5245))
+
+
+### Bug Fixes
+
+* improve og image generation and make configurable ([33dcadd](https://github.com/digitalinteraction/mozfest/commit/33dcadda3c3904972fe19d4fe86c7398c71fef85))
+* parse spanish content files ([cb0f1e2](https://github.com/digitalinteraction/mozfest/commit/cb0f1e2d413530cb3bd89fe7179341b9ffd72c64))
+* show themes ([38d58d1](https://github.com/digitalinteraction/mozfest/commit/38d58d175c3a9de8c258929d4d0affffb03e79ee))
+
 ### [3.8.1](https://github.com/digitalinteraction/mozfest/compare/v3.8.0...v3.8.1) (2023-02-27)
 
 
