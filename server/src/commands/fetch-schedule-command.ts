@@ -6,7 +6,6 @@
 import {
   PretalxService,
   PretalxTalk,
-  PretalxTax,
   RedisService,
   SemaphoreService,
   trimEmail,
@@ -37,6 +36,14 @@ import {
   loadConfig,
   sha256Hash,
 } from '../lib/module.js'
+
+// TODO: migrate back to deconf version once updated
+interface PretalxTax {
+  id: number
+  tag: string
+  description: Localised
+  color: string
+}
 
 export interface FetchScheduleCommandOptions {}
 
@@ -138,7 +145,7 @@ export async function fetchScheduleCommand(
         speakers,
         config.pretalx.questions.affiliation
       ),
-      themes: helpers.getThemes(tags),
+      themes: helpers.getThemes(tags as any[]),
       tracks: config.tracks as Track[],
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
@@ -252,9 +259,8 @@ class PretalxHelpers {
   }
 
   getThemes(tags: PretalxTax[]): Theme[] {
-    // TODO: Use ids if they're available?
     return tags.map((tag) => ({
-      id: this.pretalx.getSlug(tag.tag),
+      id: tag.id.toString(),
       title: {
         en: tag.tag,
       },
