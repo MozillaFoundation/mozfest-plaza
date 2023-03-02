@@ -51,7 +51,7 @@ export async function fetchContentCommand(options: FetchContentCommandOptions) {
     branch: options.branch,
     reuseDirectory: options.reuse ? 'content' : undefined,
     contentKeys: config.content.keys,
-    languages: ['en'],
+    languages: ['en', 'es'],
   }
 
   if (options.local) {
