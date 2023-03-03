@@ -6,6 +6,7 @@
 import {
   PretalxService,
   PretalxTalk,
+  PretalxTax,
   RedisService,
   SemaphoreService,
   trimEmail,
@@ -38,11 +39,11 @@ import {
 } from '../lib/module.js'
 
 // TODO: migrate back to deconf version once updated
-interface PretalxTax {
+interface PretalxTax2 extends PretalxTax {
   id: number
-  tag: string
-  description: Localised
-  color: string
+}
+interface PretalxTalk2 extends PretalxTalk {
+  tag_ids?: string[]
 }
 
 export interface FetchScheduleCommandOptions {}
@@ -191,7 +192,7 @@ class PretalxHelpers {
   ) {}
 
   getSessions(
-    submissions: PretalxTalk[],
+    submissions: PretalxTalk2[],
     pretalx: PretalxService,
     recommendationsQuestion: number
   ): Session[] {
@@ -206,8 +207,8 @@ class PretalxHelpers {
 
       if (type === undefined || track === undefined) return null
 
-      const themes: string[] = (submission.tags ?? []).map((tag) =>
-        this.pretalx.getSlug(tag)
+      const themes: string[] = (submission.tag_ids ?? []).map((t) =>
+        t.toString()
       )
 
       const recommendations = pretalx.getSessionLinks(submission, [
@@ -258,7 +259,7 @@ class PretalxHelpers {
       }))
   }
 
-  getThemes(tags: PretalxTax[]): Theme[] {
+  getThemes(tags: PretalxTax2[]): Theme[] {
     return tags.map((tag) => ({
       id: tag.id.toString(),
       title: {
