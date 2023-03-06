@@ -2,7 +2,10 @@
   <ContentLayout class="registerView">
     <ApiContent slug="register">
       <section v-if="scriptLoaded" slot="tito" class="titoWidget block">
-        <tito-widget event="mozilla/mozilla-festival-2023"></tito-widget>
+        <tito-widget
+          event="mozilla/mozilla-festival-2023"
+          :locale="$i18n.locale"
+        ></tito-widget>
       </section>
     </ApiContent>
   </ContentLayout>
