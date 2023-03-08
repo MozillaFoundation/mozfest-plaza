@@ -4,7 +4,7 @@ You’re invited to Mozilla Festival 2023, the premiere gathering for activists,
 
 For the third year in a row, festival tickets are pay-what-you-can in order to offer access to everyone, regardless of financial means.
 
-**Register for tickets on our website: https://www.mozillafestival.org/tickets**
+**[Register for tickets on our website:](https://www.mozillafestival.org/tickets)**
 
 %tito%
 
