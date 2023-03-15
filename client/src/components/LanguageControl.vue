@@ -22,10 +22,14 @@ interface Data {
   options: SelectOption[]
 }
 
+const hiddenLanguages = new Set(['asl', 'cc'])
+
 export default Vue.extend({
   data(): Data {
     return {
-      options: getLanguageOptions(),
+      options: getLanguageOptions().filter(
+        (l) => !hiddenLanguages.has(l.value as string)
+      ),
     }
   },
   methods: {

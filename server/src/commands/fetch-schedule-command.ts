@@ -43,7 +43,7 @@ interface PretalxTax2 extends PretalxTax {
   id: number
 }
 interface PretalxTalk2 extends PretalxTalk {
-  tag_ids?: string[]
+  tag_ids?: number[]
 }
 
 export interface FetchScheduleCommandOptions {}
@@ -215,6 +215,20 @@ class PretalxHelpers {
         recommendationsQuestion,
       ])
 
+      const hostLanguages = [submission.content_locale]
+      if (
+        this.config.aslTagId &&
+        submission.tag_ids?.includes(this.config.aslTagId)
+      ) {
+        hostLanguages.push('asl')
+      }
+      if (
+        this.config.ccTagId &&
+        submission.tag_ids?.includes(this.config.ccTagId)
+      ) {
+        hostLanguages.push('cc')
+      }
+
       return {
         id: this.pretalx.makeUnique(submission.code),
         type,
@@ -227,7 +241,7 @@ class PretalxHelpers {
           en: submission.description,
         },
         links: this.getLinks(submission),
-        hostLanguages: [submission.content_locale],
+        hostLanguages,
         enableInterpretation: false,
         speakers: submission.speakers.map((s) => s.code),
         hostOrganisation: { en: '' },

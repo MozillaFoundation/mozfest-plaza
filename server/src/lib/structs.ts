@@ -102,6 +102,8 @@ export const AppConfigStruct = object({
       affiliation: number(),
       recommendations: number(),
     }),
+    aslTagId: optional(number()),
+    ccTagId: optional(number()),
   }),
   tito: object({
     accountSlug: string(),

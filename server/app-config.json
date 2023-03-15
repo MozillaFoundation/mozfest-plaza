@@ -38,7 +38,9 @@
       "links": [],
       "affiliation": 2038,
       "recommendations": 2247
-    }
+    },
+    "aslTagId": 632,
+    "ccTagId": 633
   },
   "tito": {
     "accountSlug": "mozilla",
