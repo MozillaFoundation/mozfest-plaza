@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.0](https://github.com/digitalinteraction/mozfest/compare/v3.9.1...v3.10.0) (2023-03-16)
+
+
+### Features
+
+* add ASL/CC langs ([80e2018](https://github.com/digitalinteraction/mozfest/commit/80e20181e7f601bf5d31186046cbf22fb4e87c64))
+* new opengraph image ([0bc7287](https://github.com/digitalinteraction/mozfest/commit/0bc7287133320da8edb86edbc5a9e8258977dbe6))
+
+
+### Bug Fixes
+
+* merge links from questions and resources ([01c29d2](https://github.com/digitalinteraction/mozfest/commit/01c29d2648a04574a5c24dae09d03948ee4db228))
+* pass locale to tito widget ([7600aa8](https://github.com/digitalinteraction/mozfest/commit/7600aa8ccf4cca461d88ffe513e609a278234076))
+
 ### [3.9.1](https://github.com/digitalinteraction/mozfest/compare/v3.9.0...v3.9.1) (2023-03-03)
 
 
