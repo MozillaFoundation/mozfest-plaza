@@ -136,11 +136,7 @@ export async function fetchScheduleCommand(
     // const speakerMap = new Map(speakers.map((s) => [s.code, s]))
 
     const schedule: Omit<ScheduleRecord, 'settings'> = {
-      sessions: helpers.getSessions(
-        submissions,
-        pretalx,
-        config.pretalx.questions.recommendations
-      ),
+      sessions: helpers.getSessions(submissions, pretalx),
       slots: pretalx.getDeconfSlots(submissions),
       speakers: pretalx.getDeconfSpeakers(
         speakers,
@@ -191,11 +187,7 @@ class PretalxHelpers {
     public config: AppConfig['pretalx']
   ) {}
 
-  getSessions(
-    submissions: PretalxTalk2[],
-    pretalx: PretalxService,
-    recommendationsQuestion: number
-  ): Session[] {
+  getSessions(submissions: PretalxTalk2[], pretalx: PretalxService): Session[] {
     const sessions = submissions.map((submission) => {
       // TODO: slots don't currently have ids
       const slot = submission.slot
@@ -212,8 +204,13 @@ class PretalxHelpers {
       )
 
       const recommendations = pretalx.getSessionLinks(submission, [
-        recommendationsQuestion,
+        this.config.questions.recommendations,
       ])
+
+      const links = [
+        ...pretalx.getSessionLinks(submission, this.config.questions.links),
+        ...this.getLinks(submission),
+      ]
 
       const hostLanguages = [submission.content_locale]
       if (
@@ -240,7 +237,7 @@ class PretalxHelpers {
         content: {
           en: submission.description,
         },
-        links: this.getLinks(submission),
+        links,
         hostLanguages,
         enableInterpretation: false,
         speakers: submission.speakers.map((s) => s.code),
