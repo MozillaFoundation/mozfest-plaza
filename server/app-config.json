@@ -35,7 +35,7 @@
     "englishKeys": ["en", "en-mozilla"],
     "questions": {
       "pulsePhoto": 1179,
-      "links": [],
+      "links": [2396],
       "affiliation": 2038,
       "recommendations": 2247
     },
@@ -148,7 +148,7 @@
     },
     {
       "id": 3265,
-      "title": { "en": "Allies in Practice", "es": "" }
+      "title": { "en": "Allies in Practice", "es": "Allies in Practice" }
     },
     {
       "id": 3234,
