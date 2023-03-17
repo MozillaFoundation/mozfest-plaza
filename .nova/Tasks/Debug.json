@@ -1,0 +1,17 @@
+{
+  "extension" : {
+    "identifier" : "panic.JavaScript",
+    "name" : "JavaScript"
+  },
+  "extensionTemplate" : "nodeDebug",
+  "extensionValues" : {
+    "launchArgs" : [
+
+    ],
+    "port" : 9229,
+    "request" : "attach",
+    "runtimeArgs" : [
+
+    ]
+  }
+}
