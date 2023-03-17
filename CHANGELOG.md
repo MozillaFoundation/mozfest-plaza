@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.10.1](https://github.com/digitalinteraction/mozfest/compare/v3.10.0...v3.10.1) (2023-03-17)
+
+
+### Bug Fixes
+
+* pull links question while fetching from pretalx ([d9ba8d4](https://github.com/digitalinteraction/mozfest/commit/d9ba8d496a34d60a7e7b7560c860ab093aac280e))
+
 ## [3.10.0](https://github.com/digitalinteraction/mozfest/compare/v3.9.1...v3.10.0) (2023-03-16)
 
 
