@@ -99,7 +99,10 @@ export const pretalxDataCommands = {
 
 function submissionOptions(config: AppConfig) {
   return {
-    questions: [config.pretalx.questions.recommendations],
+    questions: [
+      config.pretalx.questions.recommendations,
+      ...config.pretalx.questions.links,
+    ],
   }
 }
 
