@@ -57,8 +57,6 @@ export class TitoRouter implements AppRouter {
 
       const ticket = validateStruct(ctx.request.body, TicketWebhookStruct)
 
-      console.log(ticket)
-
       // Create registration record
       const registration = await upsertRegistration(
         this.#context.registrationRepo,
