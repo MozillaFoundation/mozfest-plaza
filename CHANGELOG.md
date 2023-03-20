@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.10.2](https://github.com/digitalinteraction/mozfest/compare/v3.10.1...v3.10.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* update deconf-ui ([61c194c](https://github.com/digitalinteraction/mozfest/commit/61c194c3c6fd413b35b95e7fcf2691ba74f044fc))
+* update i18n ([a8220e7](https://github.com/digitalinteraction/mozfest/commit/a8220e71e52d015c39823c30fc4bae9af4e1e093))
+
 ### [3.10.1](https://github.com/digitalinteraction/mozfest/compare/v3.10.0...v3.10.1) (2023-03-17)
 
 
