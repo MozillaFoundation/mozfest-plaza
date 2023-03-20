@@ -222,9 +222,9 @@ mozfest:
     slackSubtitle: Conectáte, colabora y únete a la conversación.
     slackTitle: Slack de MozFest
     slackUrl: https://www.mozillafestival.org/slack
-    spacialChatSubtitle: Visita nuestros espacios comunitarios virtuales aquí
-    spacialChatTitle: Spatial Chat
-    spacialChatUrl: https://spatial.chat/s/mozilla-festival-2022?guest
+    spacialChatSubtitle: ''
+    spacialChatTitle: Common Spaces
+    spacialChatUrl: https://app.spatial.chat/s/mozilla-festival?guest
     submissionsSubtitle: ¿Te interesa ser Facilitador en el MozFest? La convocatoria para presentar propuestas cierra el 16 de diciembre.
     submissionsTitle: Presenta tu idea de Sesión
     submissionsUrl: https://www.mozillafestival.org/proposals/
