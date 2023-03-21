@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.10.5](https://github.com/digitalinteraction/mozfest/compare/v3.10.4...v3.10.5) (2023-03-21)
+
+
+### Bug Fixes
+
+* cache opengraph pages in redis ([0d71e96](https://github.com/digitalinteraction/mozfest/commit/0d71e96a4559189a4da40718c4ed4e79f7add281))
+
 ### [3.10.4](https://github.com/digitalinteraction/mozfest/compare/v3.10.2...v3.10.4) (2023-03-21)
 
 
