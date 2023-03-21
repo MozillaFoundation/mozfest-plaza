@@ -8,7 +8,7 @@ import { SessionState } from '@openlab/deconf-shared'
 
 import { AppRouter, AppContext, SessionIdStruct } from '../lib/module.js'
 
-type Context = AppContext
+const SESSION_OG_DURATION = 1 * 60 * 60
 
 const shareDateFmt = new Intl.DateTimeFormat('en', {
   day: 'numeric',
@@ -85,6 +85,8 @@ export function generateSessionOpengraphImage(
   })
 }
 
+type Context = AppContext
+
 export class GeneralRouter implements AppRouter {
   get #confRepo() {
     return this.#context.conferenceRepo
@@ -122,6 +124,15 @@ export class GeneralRouter implements AppRouter {
       '/share/session/:sessionId',
       async (ctx) => {
         const { sessionId } = validateStruct(ctx.params, SessionIdStruct)
+
+        const cacheKey = `opengraph.session.${sessionId}`
+        const cachedHtml = await this.#context.store.retrieve<string>(cacheKey)
+        if (cachedHtml) {
+          ctx.body = cachedHtml
+          this.#trackShareVisit(sessionId, ctx.request.header.referer)
+          return
+        }
+
         const session = await this.#confRepo.findSession(sessionId)
         const slots = await this.#confRepo.getSlots()
 
@@ -172,7 +183,7 @@ export class GeneralRouter implements AppRouter {
           <meta name="twitter:site" content="@mozillafestival" />
         `
 
-        // Show the headers if ?dev is specified
+        // Show the meta tags if ?dev is specified
         if (ctx.request.query.dev !== undefined) {
           ctx.body = dedent`
             <html>
@@ -188,14 +199,28 @@ export class GeneralRouter implements AppRouter {
           `
         }
 
-        // There's no point specifying attendee/socketId as it won't be sent
-        this.#metricsRepo
-          .trackEvent('session/shareVisit', {
-            sessionId: session.id,
-            referer: ctx.request.headers.referer,
-          })
-          .catch((e) => console.error('Failed to track session/shareVisit', e))
+        // Cache the response
+        // + Don't hold up the request doing this
+        this.#context.store
+          .put(cacheKey, ctx.body)
+          .then(() =>
+            this.#context.store.setExpiry(cacheKey, SESSION_OG_DURATION)
+          )
+          .catch((e) => console.error('Failed to cache session opengraph', e))
+
+        // There's no point specifying attendee/socketId as it won't be set
+        // + Don't hold up the request doing this
+        this.#trackShareVisit(sessionId, ctx.request.header.referer)
       }
     )
+  }
+
+  async #trackShareVisit(sessionId: string, referer?: string) {
+    await this.#metricsRepo
+      .trackEvent('session/shareVisit', {
+        sessionId: sessionId,
+        referer: referer,
+      })
+      .catch((e) => console.error('Failed to track session/shareVisit', e))
   }
 }
