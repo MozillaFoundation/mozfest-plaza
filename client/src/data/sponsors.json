@@ -1,39 +1,12 @@
 [
   {
-    "size": "large",
-    "title": "Presenting Sponsor",
-    "sponsors": [
-      {
-        "title": "Coil",
-        "image": "/sponsors/coil.png",
-        "href": "https://coil.com/"
-      },
-      {
-        "title": "Interledger",
-        "image": "/sponsors/horz.svg",
-        "href": "https://interledger.org/"
-      }
-    ]
-  },
-  {
     "size": "medium",
-    "title": "Guardian Sponsor",
+    "title": "Sponsored by",
     "sponsors": [
       {
         "title": "Vero",
-        "image": "/sponsors/vero.png",
-        "href": "https://vero.co/"
-      }
-    ]
-  },
-  {
-    "size": "regular",
-    "title": "Champion Sponsor",
-    "sponsors": [
-      {
-        "title": "Private Storage",
-        "image": "/sponsors/private-storage.svg",
-        "href": "https://private.storage/"
+        "image": "/sponsors/horz.svg",
+        "href": "https://interledger.org"
       }
     ]
   }
