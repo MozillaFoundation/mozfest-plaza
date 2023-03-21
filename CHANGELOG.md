@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.10.3](https://github.com/digitalinteraction/mozfest/compare/v3.10.2...v3.10.3) (2023-03-21)
+
+
+### Bug Fixes
+
+* remove debug log ([c76b725](https://github.com/digitalinteraction/mozfest/commit/c76b725817226816ca4e7794d9057df854b7f640))
+* update settings ([6c1bfde](https://github.com/digitalinteraction/mozfest/commit/6c1bfde7166c49887149111d40a7f1bdc2fbc10c))
+* update sponsors ([8ba4086](https://github.com/digitalinteraction/mozfest/commit/8ba40860c6c17a95767d1e56e1c43d54c61332d3))
+* verify myhubs.net ([7bb94d8](https://github.com/digitalinteraction/mozfest/commit/7bb94d87460a3edf6e6fc7bd59c78248890b426d))
+
 ### [3.10.2](https://github.com/digitalinteraction/mozfest/compare/v3.10.1...v3.10.2) (2023-03-20)
 
 
