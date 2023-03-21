@@ -100,6 +100,7 @@ const internalDomains = [
   'mozfest.slack.com',
   'mozfest.gradu.al',
   'mozilla.hosted.panopto.com',
+  'mozfest.myhubs.net',
 ]
 
 const recommendationConfig: ScheduleConfig = {
