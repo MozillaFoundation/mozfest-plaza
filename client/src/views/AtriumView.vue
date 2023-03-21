@@ -131,7 +131,7 @@
       </div>
 
       <div slot="bottom">
-        <SponsorGrid :groups="[]" />
+        <SponsorGrid :groups="sponsors" />
       </div>
     </AtriumLayout>
   </AppLayout>
