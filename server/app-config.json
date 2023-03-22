@@ -9,6 +9,7 @@
   "jwt": {
     "issuer": "mozfest-localhost"
   },
+  "opengraphImage": "https://assets.mofoprod.net/network/images/Mozilla_Festival_2023_Banner_Graphic_1920x1080.original.png",
   "content": {
     "keys": [
       "art-filters",
@@ -46,11 +47,7 @@
     "accountSlug": "mozilla",
     "eventSlug": "mozilla-festival-2023"
   },
-  "cloudinary": {
-    "publicId": "djjkljkg7",
-    "sessionImage": "mozfest_og_bg_cm5nxq.jpg",
-    "font": "mlilnejuqzzv1rz4wlkh.ttf"
-  },
+
   "sessionTypes": [
     {
       "id": 2427,

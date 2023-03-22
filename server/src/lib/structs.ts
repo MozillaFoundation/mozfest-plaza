@@ -130,4 +130,5 @@ export const AppConfigStruct = object({
       title: localised(),
     })
   ),
+  opengraphImage: optional(string()),
 })

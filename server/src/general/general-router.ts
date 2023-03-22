@@ -164,9 +164,12 @@ export class GeneralRouter implements AppRouter {
 
         const { cloudinary } = this.#context.config
 
-        const imageUrl = cloudinary
-          ? generateSessionOpengraphImage(shortTitle, slot?.start, cloudinary)
-          : this.#url.getClientAsset('opengraph-session.png').toString()
+        const imageUrl =
+          (cloudinary
+            ? generateSessionOpengraphImage(shortTitle, slot?.start, cloudinary)
+            : null) ??
+          this.#context.config.opengraphImage ??
+          this.#url.getClientAsset('opengraph-session.png').toString()
 
         const head = dedent`
           <meta charset="utf-8">
