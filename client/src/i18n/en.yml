@@ -208,7 +208,7 @@ mozfest:
     bookTitle: How To MozFest
     bookUrl: https://book.mozillafestival.org
     familySubtitle: On-demand activities for attendees ages 3-12.
-    familyTitle: MozFest Family Resources
+    familyTitle: Family Resources
     familyUrl: https://www.mozillafestival.org/family-resources
     heading: MozFest 2023
     linkedinSubtitle: Add yourself to MozFest's LinkedIn Event to let others know you'll be attending.
@@ -219,10 +219,10 @@ mozfest:
     registerSubtitle: Registration is now available for MozFest 2023.
     registerTitle: Secure Your Ticket
     registerUrl: https://www.mozillafestival.org/tickets
-    slackSubtitle: Connect, collaborate, join the conversation.
-    slackTitle: MozFest Slack
+    slackSubtitle: Connect, collaborate, join the conversation on the MozFest slack
+    slackTitle: Slack
     slackUrl: https://www.mozillafestival.org/slack
-    spacialChatSubtitle: ''
+    spacialChatSubtitle: Join the MozFest Common Spaces
     spacialChatTitle: Common Spaces
     spacialChatUrl: https://app.spatial.chat/s/mozilla-festival?guest
     submissionsSubtitle: Interested in Facilitating at MozFest? The call for proposals closes on December 16th.
@@ -236,6 +236,9 @@ mozfest:
     calendarHelpSubtitle: Get your MozFest sessions in your own calendar
     calendarHelpTitle: 'Calendar Sync'
     calendarHelpUrl: /sync-calendar
+    hubsSubtitle: Explore MozFest on Mozilla Hubs
+    hubsTitle: Mozilla Hubs
+    hubsUrl: https://mozfest.myhubs.net/
 
   footer:
     appName: MozFest

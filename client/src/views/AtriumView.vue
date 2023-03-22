@@ -47,82 +47,18 @@
           :subtitle="$t('mozfest.atrium.onlineUsers')"
           :icon="['fas', 'users']"
         />
+
         <ColorWidget
-          v-if="user && widgets.has('calendarHelp')"
-          kind="secondary"
-          :title="$t('mozfest.atrium.calendarHelpTitle')"
-          :subtitle="$t('mozfest.atrium.calendarHelpSubtitle')"
-          :href="$t('mozfest.atrium.calendarHelpUrl')"
-          :icon="['fas', 'calendar-plus']"
-        />
-        <ColorWidget
-          v-if="widgets.has('twitter')"
-          kind="twitter"
-          :title="$t('mozfest.atrium.twitterTitle')"
-          :subtitle="$t('mozfest.atrium.twitterSubtitle')"
-          :href="$t('mozfest.atrium.twitterUrl')"
-          :icon="['fab', 'twitter']"
+          v-for="widget in activeStaticWidgets"
+          :key="widget.key"
+          :kind="widget.kind"
+          :class="widget.classes"
+          :title="$t(widget.title)"
+          :subtitle="$t(widget.subtitle)"
+          :icon="widget.icon"
+          :href="$t(widget.href)"
         />
 
-        <!-- Spatial chat -->
-        <ColorWidget
-          v-if="widgets.has('spatialChat')"
-          class="is-spatialChat"
-          kind="custom"
-          :title="$t('mozfest.atrium.spacialChatTitle')"
-          :subtitle="$t('mozfest.atrium.spacialChatSubtitle')"
-          :icon="['fas', 'headset']"
-          :href="$t('mozfest.atrium.spacialChatUrl')"
-        />
-        <!-- Slack -->
-        <ColorWidget
-          v-if="widgets.has('slack')"
-          class="is-slack"
-          kind="custom"
-          :title="$t('mozfest.atrium.slackTitle')"
-          :subtitle="$t('mozfest.atrium.slackSubtitle')"
-          :icon="['fab', 'slack']"
-          :href="$t('mozfest.atrium.slackUrl')"
-        />
-        <!-- Linkedin -->
-        <ColorWidget
-          v-if="widgets.has('linkedin')"
-          class="is-linkedin"
-          kind="custom"
-          :title="$t('mozfest.atrium.linkedinTitle')"
-          :subtitle="$t('mozfest.atrium.linkedinSubtitle')"
-          :icon="['fab', 'linkedin']"
-          :href="$t('mozfest.atrium.linkedinUrl')"
-        />
-        <!-- Submissions -->
-        <ColorWidget
-          v-if="widgets.has('submissions')"
-          kind="secondary"
-          :title="$t('mozfest.atrium.submissionsTitle')"
-          :subtitle="$t('mozfest.atrium.submissionsSubtitle')"
-          :icon="['fas', 'lightbulb']"
-          :href="$t('mozfest.atrium.submissionsUrl')"
-        />
-        <!-- Family Resources -->
-        <ColorWidget
-          v-if="widgets.has('familyResources')"
-          class="is-family"
-          kind="custom"
-          :title="$t('mozfest.atrium.familyTitle')"
-          :subtitle="$t('mozfest.atrium.familySubtitle')"
-          :icon="['fas', 'puzzle-piece']"
-          :href="$t('mozfest.atrium.familyUrl')"
-        />
-        <!-- Book -->
-        <ColorWidget
-          v-if="widgets.has('mozfestBook')"
-          class="is-book"
-          kind="custom"
-          :title="$t('mozfest.atrium.bookTitle')"
-          :subtitle="$t('mozfest.atrium.bookSubtitle')"
-          :icon="['fas', 'book']"
-          :href="$t('mozfest.atrium.bookUrl')"
-        />
         <FeaturedSessions
           v-if="user && featuredSessions && featuredSessions.length > 0"
           :featured="featuredSessions"
@@ -161,8 +97,110 @@ import { mapApiState, MozConferenceConfig } from '@/lib/module'
 
 import sponsorData from '@/data/sponsors.json'
 
+interface StaticWidget {
+  public: boolean
+  key: string
+  title: string
+  subtitle?: string
+  href?: string
+  kind: string
+  icon: [string, string]
+  classes?: string
+}
+
+const staticWidgets: StaticWidget[] = deepSeal([
+  {
+    key: 'calendarHelp',
+    public: false,
+    kind: 'secondary',
+    title: 'mozfest.atrium.calendarHelpTitle',
+    subtitle: 'mozfest.atrium.calendarHelpSubtitle',
+    href: 'mozfest.atrium.calendarHelpUrl',
+    icon: ['fas', 'calendar-plus'],
+  },
+  {
+    key: 'twitter',
+    public: true,
+    kind: 'twitter',
+    title: 'mozfest.atrium.twitterTitle',
+    subtitle: 'mozfest.atrium.twitterSubtitle',
+    icon: ['fab', 'twitter'],
+    href: 'mozfest.atrium.twitterUrl',
+  },
+  {
+    key: 'spatialChat',
+    public: false,
+    kind: 'custom',
+    classes: 'is-spatialChat',
+    title: 'mozfest.atrium.spacialChatTitle',
+    subtitle: 'mozfest.atrium.spacialChatSubtitle',
+    icon: ['fas', 'headset'],
+    href: 'mozfest.atrium.spacialChatUrl',
+  },
+  {
+    key: 'hubs',
+    public: false,
+    kind: 'custom',
+    classes: 'is-spatialChat',
+    title: 'mozfest.atrium.hubsTitle',
+    subtitle: 'mozfest.atrium.hubsSubtitle',
+    icon: ['fas', 'cubes'],
+    href: 'mozfest.atrium.hubsUrl',
+  },
+  {
+    key: 'slack',
+    public: true,
+    kind: 'custom',
+    classes: 'is-slack',
+    title: 'mozfest.atrium.slackTitle',
+    subtitle: 'mozfest.atrium.slackSubtitle',
+    icon: ['fab', 'slack'],
+    href: 'mozfest.atrium.slackUrl',
+  },
+  {
+    key: 'linkedin',
+    public: true,
+    kind: 'custom',
+    classes: 'is-linkedin',
+    title: 'mozfest.atrium.linkedinTitle',
+    subtitle: 'mozfest.atrium.linkedinSubtitle',
+    icon: ['fab', 'linkedin'],
+    href: 'mozfest.atrium.linkedinUrl',
+  },
+  {
+    key: 'submissions',
+    public: true,
+    kind: 'secondary',
+    title: 'mozfest.atrium.submissionsTitle',
+    subtitle: 'mozfest.atrium.submissionsSubtitle',
+    icon: ['fas', 'lightbulb'],
+    href: 'mozfest.atrium.submissionsUrl',
+  },
+  {
+    key: 'familyResources',
+    public: false,
+    kind: 'custom',
+    classes: 'is-family',
+    title: 'mozfest.atrium.familyTitle',
+    subtitle: 'mozfest.atrium.familySubtitle',
+    icon: ['fas', 'puzzle-piece'],
+    href: 'mozfest.atrium.familyUrl',
+  },
+  {
+    key: 'mozfestBook',
+    public: true,
+    kind: 'custom',
+    classes: 'is-book',
+    title: 'mozfest.atrium.bookTitle',
+    subtitle: 'mozfest.atrium.bookSubtitle',
+    icon: ['fas', 'book'],
+    href: 'mozfest.atrium.bookUrl',
+  },
+])
+
 interface Data {
   sponsors: SponsorGroup[]
+  staticWidgets: StaticWidget[]
 }
 
 export default Vue.extend({
@@ -180,6 +218,7 @@ export default Vue.extend({
   data(): Data {
     return {
       sponsors: deepSeal(sponsorData),
+      staticWidgets,
     }
   },
   computed: {
@@ -232,6 +271,15 @@ export default Vue.extend({
       } catch {
         return undefined
       }
+    },
+    activeStaticWidgets(): StaticWidget[] {
+      return this.staticWidgets.filter((w) => this.showStaticWidget(w))
+    },
+  },
+  methods: {
+    showStaticWidget(widget: StaticWidget): boolean {
+      if (!this.widgets.has(widget.key)) return false
+      return widget.public ? true : Boolean(this.user)
     },
   },
 })

@@ -11,6 +11,7 @@ import {
   tuple,
   enums,
   coerce,
+  defaulted,
 } from 'superstruct'
 
 export const localised = () => object({ en: string(), es: string() })
@@ -64,6 +65,7 @@ export const ConferenceConfigStruct = object({
     linkedin: boolean(),
     submissions: boolean(),
     calendarHelp: boolean(),
+    hubs: defaulted(boolean(), false),
   }),
 
   content: object({
