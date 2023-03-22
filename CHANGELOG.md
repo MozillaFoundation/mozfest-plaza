@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.11.0](https://github.com/digitalinteraction/mozfest/compare/v3.10.5...v3.11.0) (2023-03-22)
+
+
+### Features
+
+* add configurable opengraph image ([e8b7744](https://github.com/digitalinteraction/mozfest/commit/e8b77447971623f4ab749a34b285c22173589a52))
+* add hubs widget ([04d2b0b](https://github.com/digitalinteraction/mozfest/commit/04d2b0b23d760f4601f3c02041010b808ca6f1d8))
+
 ### [3.10.5](https://github.com/digitalinteraction/mozfest/compare/v3.10.4...v3.10.5) (2023-03-21)
 
 
