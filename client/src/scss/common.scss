@@ -37,6 +37,13 @@ $sponsorRow-smallHeight: 60px !default;
 $whatsOn-titleFamily: $title-family;
 $scheduleView-titleFamily: $title-family;
 
+$spatialChat: #ff04b1;
+$slack: #b7007e;
+$family: #ff4f5e;
+$book: #a07dff;
+$linkedin: #0a66c2;
+$twitter: #1da1f2;
+
 @mixin title-font() {
   font-family: $title-family;
   font-weight: $title-weight;

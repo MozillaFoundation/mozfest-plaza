@@ -37,3 +37,19 @@
 .sessionLayout-back > * {
   display: none;
 }
+
+.button.is-twitter {
+  background-color: $twitter;
+  color: $white;
+  border-color: $twitter;
+}
+.button.is-slack {
+  background-color: $slack;
+  color: $white;
+  border-color: $slack;
+}
+.button.is-secondary {
+  background-color: $secondary;
+  color: $white;
+  border-color: $secondary;
+}

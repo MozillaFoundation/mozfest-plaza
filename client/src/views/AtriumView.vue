@@ -286,12 +286,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-$spatialChat: #ff04b1;
-$slack: #b7007e;
-$family: #ff4f5e;
-$book: #a07dff;
-$linkedin: #0a66c2;
-
 .atriumView {
   .hero-body {
     display: flex;
