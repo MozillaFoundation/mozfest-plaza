@@ -120,6 +120,11 @@ Please feel free to visit the <a href="https://www.mozillafestival.org/en/helpde
 </details>
 
 <details>
+<summary>Live streams are not loading for me on the Plaza</summary>
+MozFest uses Vimeo for live streaming various sessions, if you're seeing an error message that may be due to your specific 'privacy settings'. Other participants have reported disabling uBlock Origin or adding Vimeo to the allow list may help.
+</details>
+
+<details>
 <summary>Help! I’m having issues and need help!</summary>
 MozFest Staff and our incredible cohort of volunteers will be available throughout the course of the festival to help with those additional questions or issues you might have. Please reach out to us in the #Help MozFest Slack channel or email in at <a href="mailto:support@mozillafestival.org">support@mozillafestival.org</a>.
 </details>
