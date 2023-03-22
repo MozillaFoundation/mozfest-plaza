@@ -71,7 +71,8 @@
     "mozfestBook": false,
     "linkedin": false,
     "submissions": false,
-    "calendarHelp": true
+    "calendarHelp": true,
+    "hubs": true
   },
 
   "content": {
