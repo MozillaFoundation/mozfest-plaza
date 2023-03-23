@@ -2,6 +2,12 @@
 
 # Help
 
+## Support Channels
+
+If you need assistance during MozFest there's a variety of ways our team of volunteers can support you!
+
+%callouts%
+
 ## Frequently Asked Questions
 
 #### Attending MozFest 2023 
