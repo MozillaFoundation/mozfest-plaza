@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.13.0](https://github.com/digitalinteraction/mozfest/compare/v3.12.0...v3.13.0) (2023-03-24)
+
+
+### Features
+
+* add house-info paeg ([e27cbc0](https://github.com/digitalinteraction/mozfest/commit/e27cbc078b8e0acc431fd302a118d799cd44fd66))
+
 ## [3.12.0](https://github.com/digitalinteraction/mozfest/compare/v3.11.0...v3.12.0) (2023-03-23)
 
 
