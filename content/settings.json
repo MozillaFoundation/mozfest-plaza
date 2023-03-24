@@ -36,6 +36,10 @@
     "enabled": false,
     "visible": false
   },
+  "houseInfo": {
+    "enabled": false,
+    "visible": false
+  },
   "misinfoCon": {
     "enabled": false,
     "visible": false
