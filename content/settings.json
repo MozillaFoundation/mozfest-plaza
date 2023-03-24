@@ -37,8 +37,8 @@
     "visible": false
   },
   "houseInfo": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "misinfoCon": {
     "enabled": false,
@@ -69,17 +69,17 @@
     "twitter": true,
     "login": true,
     "siteVisitors": true,
-    "spatialChat": true,
+    "spatialChat": false,
     "slack": true,
     "familyResources": true,
     "mozfestBook": false,
     "linkedin": false,
     "submissions": false,
-    "calendarHelp": true,
+    "calendarHelp": false,
     "hubs": true
   },
 
   "content": {
-    "atriumVideo": "https://www.youtube.com/watch?v=KmlC_cuF4K8"
+    "atriumVideo": "https://vimeo.com/811383613"
   }
 }
