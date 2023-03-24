@@ -174,6 +174,15 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
+    path: '/house-info',
+    name: ExtraRoutes.HouseInfo,
+    component: () =>
+      import(/* webpackChunkName: "schedule" */ '../views/HouseInfoView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.houseEvents',
+    },
+  },
+  {
     path: '/misinfocon',
     name: ExtraRoutes.MisinfoCon,
     component: () =>

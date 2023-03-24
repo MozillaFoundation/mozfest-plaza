@@ -41,6 +41,7 @@ export const ConferenceConfigStruct = object({
   lightningTalks: optional(PageFlagStruct),
   fringe: optional(PageFlagStruct),
   house: optional(PageFlagStruct),
+  houseInfo: optional(PageFlagStruct),
   misinfoCon: optional(PageFlagStruct),
   emergentInfo: optional(PageFlagStruct),
   emergentSessions: optional(PageFlagStruct),

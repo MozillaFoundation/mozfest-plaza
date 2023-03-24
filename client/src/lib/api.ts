@@ -22,6 +22,7 @@ export interface MozConferenceConfig {
   lightningTalks?: PageFlag
   fringe?: PageFlag
   house?: PageFlag
+  houseInfo?: PageFlag
   misinfoCon?: PageFlag
   emergentInfo?: PageFlag
   emergentSessions?: PageFlag

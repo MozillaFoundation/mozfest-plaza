@@ -33,6 +33,10 @@
     "visible": true
   },
   "house": {
+    "enabled": true,
+    "visible": true
+  },
+  "houseInfo": {
     "enabled": false,
     "visible": false
   },

@@ -19,6 +19,7 @@ export enum ExtraRoutes {
   Arts = 'art-gallery',
   Fringe = 'fringe',
   House = 'house',
+  HouseInfo = 'houseInfo',
   MisinfoCon = 'misinfoCon',
   EmergentInfo = 'emergentInfo',
   EmergentSessions = 'emergentSessions',

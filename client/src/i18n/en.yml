@@ -282,6 +282,7 @@ mozfest:
 
   houseEvents:
     title: House Events
+    info: ''
 
   misinfoCon:
     title: MisinfoCon
