@@ -10,7 +10,7 @@ MozFest House is an extension of MozFest, the premiere gathering for activists i
 
 MozFest House: Amsterdam will take place in Tolhuistuin, a cultural center in the North of the City, a few mins ferry ride from Amsterdam Central station with views over the Ij River.
 
-### When?
+### When?
 
 MozFest House: Amsterdam takes place from Monday, June 19th - Wednesday, June 21st, 2023.
 
