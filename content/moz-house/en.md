@@ -22,7 +22,7 @@ In 2023, MozFest House is harnessing our collective power to better our digital 
 
 Are you a local individual or organization who is working towards making the internet a more digitally humane and open place for all? Do you have projects that are looking into bias, transparency, data stewardship, or movement building? MozFest House is now accepting session ideas.
 
-[Submit your session ideas](mailto:festival@mozilla.org)
+[Submit your session ideas](https://www.pretalx.com/mozilla-festival-2023/cfp)
 
 As space is limited, MozFest is eager to hear from folks who will be local to Amsterdam at the time of the event, and who are open to collaborating on their proposals with others.
 
