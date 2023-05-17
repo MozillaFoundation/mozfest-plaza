@@ -4,7 +4,7 @@
 
 **MozFest House is a regional event with small in-person sessions, workshops, discussions**. Join us in Amsterdam, from 19-21 June, 2023.
 
-<button name="button" onclick="https://www.mozillafestival.org/tickets/#mozfest-house-amsterdam">Secure Your House Ticket</button>
+**[Secure Your House Ticket here](https://www.mozillafestival.org/tickets#mozfest-house-amsterdam)**
 
 This year, MozFest House is harnessing our collective power to better our digital landscape, build transformative systems, and sustain momentum within our community towards positive human and digital rights progress.
 
