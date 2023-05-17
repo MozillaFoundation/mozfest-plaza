@@ -10,11 +10,12 @@ This year, MozFest House is harnessing our collective power to better our digita
 
 It is through the collective power of the people that we can actualize Trustworthy AI and move the needle on important issues such as bias, transparency, data stewardship, and movement building.
 
-|Where  | When  | Benefits |
-|--|--|--|
-| MozFest House: Amsterdam will take place in Tolhuistuin, a cultural center in the North of the City, a few mins ferry ride from Amsterdam Central station with views over the Ij River. |MozFest House: Amsterdam opens at 17:00 with a garden party on Monday 19th June, and follows with two full days of workshops, art installations and talks. You can secure a single day ticket or a full festival pass.  |Full festival passes provide access to all MozFest House happenings for the entire event and the garden party. Single day tickets provide access sessions for that day. Both tickets also grant access to On-Demand sessions, Art & Media content, and Lighting Talks from earlier in the year. |
+|Where  | When  |
+|--|--|
+| MozFest House: Amsterdam will take place in Tolhuistuin, a cultural center in the North of the City, a few mins ferry ride from Amsterdam Central station with views over the Ij River. |MozFest House: Amsterdam opens at 17:00 with a garden party on Monday 19th June, and follows with two full days of workshops, art installations and talks. You can secure a single day ticket or a full festival pass.  |
 
-
+### Benefits
+Full festival passes provide access to all MozFest House happenings for the entire event and the garden party. Single day tickets provide access sessions for that day. Both tickets also grant access to On-Demand sessions, Art & Media content, and Lighting Talks from earlier in the year.
 
 ### Schedule at a Glance
 19th June opens with a garden party from 17:00 to 19:00, giving you a chance to pre register for your lanyard and meet some of the other participants you will meet over the following days
