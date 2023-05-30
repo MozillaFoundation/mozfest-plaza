@@ -98,6 +98,27 @@
       "title": { "en": "Fringe Event", "es": "Fringe Event" },
       "icon": ["fas", "object-group"],
       "layout": "plenary"
+    },
+    {
+      "id": 2829,
+      "title": { "en": "In-Person Round Table", "es": "In-Person Round Table" },
+      "icon": ["fas", "comments"],
+      "layout": "plenary"
+    },
+    {
+      "id": 2987,
+      "title": {
+        "en": "In-Person Community Plenary",
+        "es": "In-Person Community Plenary"
+      },
+      "icon": ["fas", "podcast"],
+      "layout": "plenary"
+    },
+    {
+      "id": 2960,
+      "title": { "en": "In-Person Workshop", "es": "In-Person Workshop" },
+      "icon": ["fas", "object-group"],
+      "layout": "plenary"
     }
   ],
   "tracks": [
