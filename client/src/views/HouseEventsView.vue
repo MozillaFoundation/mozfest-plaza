@@ -10,7 +10,7 @@
       @filter="onFilter"
     >
       <p slot="title">{{ $t('mozfest.houseEvents.title') }}</p>
-      <p slot="infoText">{{ $t('mozfest.houseEvents.info') }}</p>
+      <ApiContent slot="infoText" slug="moz-house-filters" />
       <p slot="noResults">{{ $t('mozfest.general.noResults') }}</p>
     </FilteredScheduleView>
     <InlineLoading v-else />
@@ -21,6 +21,7 @@
 import Vue from 'vue'
 import AppLayout from '@/components/MozAppLayout.vue'
 import {
+  ApiContent,
   FilteredScheduleOptions,
   FilteredScheduleView,
   guardPage,
@@ -33,7 +34,7 @@ import {
 } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 
-const trackAllowList = new Set(trackIds.mozone)
+const trackAllowList = new Set([trackIds.mozHouse])
 
 const options: FilteredScheduleOptions = {
   predicate: (s) => trackAllowList.has(s.track),
@@ -52,7 +53,7 @@ interface Data {
 }
 
 export default Vue.extend({
-  components: { AppLayout, FilteredScheduleView, InlineLoading },
+  components: { ApiContent, AppLayout, FilteredScheduleView, InlineLoading },
   data: (): Data => ({ options }),
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),

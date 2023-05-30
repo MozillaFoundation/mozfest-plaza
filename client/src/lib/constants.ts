@@ -61,5 +61,5 @@ export const sessionTypeIds = {
 }
 
 export const trackIds = {
-  mozone: '3237',
+  mozHouse: '3623',
 }
