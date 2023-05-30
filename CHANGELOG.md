@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.14.0](https://github.com/digitalinteraction/mozfest/compare/v3.13.0...v3.14.0) (2023-05-30)
+
+
+### Features
+
+* add configurable moz-house-filters ([d2fc374](https://github.com/digitalinteraction/mozfest/commit/d2fc374e491a2e8d23c72cf3c8299c4bd7b87035))
+
+
+### Bug Fixes
+
+* house events show as expected ([12a1b4e](https://github.com/digitalinteraction/mozfest/commit/12a1b4e64f6dcf77d5b0a305685adfb5fb3bb69d))
+
 ## [3.13.0](https://github.com/digitalinteraction/mozfest/compare/v3.12.0...v3.13.0) (2023-03-24)
 
 
