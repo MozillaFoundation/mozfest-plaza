@@ -29,7 +29,8 @@
       "emergent-filters",
       "calendar",
       "my-schedule",
-      "moz-house"
+      "moz-house",
+      "moz-house-filters"
     ]
   },
   "pretalx": {

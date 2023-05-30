@@ -1,0 +1,3 @@
+<!-- This is text above the filters on the house events page -->
+
+...
