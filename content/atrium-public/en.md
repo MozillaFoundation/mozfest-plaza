@@ -1,7 +1,5 @@
 <!-- This is the Plaza page when the visitor is signed out -->
 
-**Watch the recording of the MozFest Keynote "No Act of Protest is Too Small by Pussy Riot" by [accessing the session page here](https://schedule.mozillafestival.org/session/38AZEM-1)**
-
 # Arrive with an idea, leave with a community
 
 Arrive with an idea, leave with a community
