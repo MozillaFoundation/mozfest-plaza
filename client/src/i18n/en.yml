@@ -228,8 +228,8 @@ mozfest:
     submissionsSubtitle: Interested in Facilitating at MozFest? The call for proposals closes on December 16th.
     submissionsTitle: Submit Your Session Idea
     submissionsUrl: https://www.mozillafestival.org/proposals/
-    subtitle: from March 20th - 24th 2023.
-    title: Join us for a virtual MozFest
+    subtitle: from 19th - 21st June 2023.
+    title: 'Join us at MozFest House: Amsterdam'
     twitterSubtitle: Share the sessions you're most excited about attending.
     twitterTitle: 'Tweet #MozFest'
     twitterUrl: https://twitter.com/hashtag/MozFest
@@ -302,7 +302,7 @@ mozfest:
   appLayout:
     atrium: Plaza
     whatsOn: Sneak Peek
-    schedule: Schedule
+    schedule: On-Demand Sessions
     helpDesk: Help Desk
     social: Social
     arts: Arts & Media
