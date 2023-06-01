@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.14.1](https://github.com/digitalinteraction/mozfest/compare/v3.14.0...v3.14.1) (2023-06-01)
+
+
+### Bug Fixes
+
+* move moz-house higher ([ce74000](https://github.com/digitalinteraction/mozfest/commit/ce740002d0d9d240fe7a5fe8f1b27d9a66ec149b))
+* update copy ([7ac2646](https://github.com/digitalinteraction/mozfest/commit/7ac2646d4de2d18afd63a891d74a6cfa3b7a91bb))
+* update session types ([3a8ea47](https://github.com/digitalinteraction/mozfest/commit/3a8ea47f7977c5fa8ab7ef96b847932e7090063c))
+
 ## [3.14.0](https://github.com/digitalinteraction/mozfest/compare/v3.13.0...v3.14.0) (2023-05-30)
 
 
