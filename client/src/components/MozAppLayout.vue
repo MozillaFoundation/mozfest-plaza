@@ -94,6 +94,12 @@ export default Vue.extend({
           pageFlag: this.settings.whatsOn,
         },
         {
+          title: this.$t('mozfest.appLayout.house') as string,
+          name: ExtraRoutes.House,
+          icon: HouseIcon,
+          pageFlag: this.settings.house,
+        },
+        {
           title: this.$t('mozfest.appLayout.schedule') as string,
           name: Routes.Schedule,
           icon: ScheduleIcon,
@@ -122,12 +128,6 @@ export default Vue.extend({
           name: ExtraRoutes.Fringe,
           icon: FringeIcon,
           pageFlag: this.settings.fringe,
-        },
-        {
-          title: this.$t('mozfest.appLayout.house') as string,
-          name: ExtraRoutes.House,
-          icon: HouseIcon,
-          pageFlag: this.settings.house,
         },
         {
           title: this.$t('mozfest.appLayout.house') as string,
