@@ -33,12 +33,12 @@
     "visible": true
   },
   "house": {
-    "enabled": false,
-    "visible": false
-  },
-  "houseInfo": {
     "enabled": true,
     "visible": true
+  },
+  "houseInfo": {
+    "enabled": false,
+    "visible": false
   },
   "misinfoCon": {
     "enabled": false,
