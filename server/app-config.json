@@ -119,6 +119,12 @@
       "title": { "en": "In-Person Workshop", "es": "In-Person Workshop" },
       "icon": ["fas", "object-group"],
       "layout": "plenary"
+    },
+    {
+      "id": 2830,
+      "title": { "en": "Installation", "es": "Installation" },
+      "icon": ["fas", "palette"],
+      "layout": "plenary"
     }
   ],
   "tracks": [
