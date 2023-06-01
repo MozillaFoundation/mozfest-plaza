@@ -8,17 +8,12 @@ Since 2010, MozFest has fueled the movement to ensure the internet benefits huma
 
 This is the MozFest Plaza, the central hub for all things Mozilla Festival, where you can register for the latest local events near you or catch up on on-demand sessions and art projects
 
-MozFest 2023 can now be experienced On-Demand. Catch up on the events, and sessions that took place at MozFest. It’s not too late to  join in on the important and critical work towards Trustworthy AI. 
-
-%feature_video%
-
-### Browse On-Demand
-You can access hundreds of sessions that took place at our virtual festival earlier this year under the Schedule Tab. Browse recorded workshops, focused skills shares, and art installations that are sorted by Spaces.
-
-Spaces at MozFest as mini-festivals each with their own unique theme. As you browse the On-Demand content, filter sessions by Space, session format, or by tag, as well as add sessions to your schedule to bookmark it for later. Once a session is added to your schedule, you will be able to see the sessions you’ve shortlisted by pressing the ‘My Schedule’ on the left navigation bar.
-
 ### MozFest House
 MozFest House is a local event that manifests the essence of MozFest in a regional setting, through small in-person sessions, workshops, discussions. Join us in-person in Amsterdam, the Netherlands from 19-21 June, 2023.
+
+[Purchase your MozFest House Ticket](https://www.mozillafestival.org/house)
+
+%feature_video%
 
 #### Where?
 MozFest House: Amsterdam will take place in Tolhuistuin, a cultural center in the North of the City, a few mins ferry ride from Amsterdam Central station with views over the Ij River.
@@ -39,4 +34,12 @@ For youth in attendance, there will be youth activities on Wednesday afternoon i
 
 View the in-person MozFest House schedule on the House Events Tab on the left hand side of the Plaza. 
 
-You must purchase a ticket to MozFest House and travel to Amsterdam in order to attend.
+[You must purchase a ticket to MozFest House and travel to Amsterdam in order to attend.](https://www.mozillafestival.org/house)
+
+MozFest 2023 can now be experienced On-Demand. Catch up on the events, and sessions that took place at MozFest. It’s not too late to  join in on the important and critical work towards Trustworthy AI. 
+
+### Browse On-Demand
+You can access hundreds of sessions that took place at our virtual festival earlier this year under the Schedule Tab. Browse recorded workshops, focused skills shares, and art installations that are sorted by Spaces.
+
+Spaces at MozFest as mini-festivals each with their own unique theme. As you browse the On-Demand content, filter sessions by Space, session format, or by tag, as well as add sessions to your schedule to bookmark it for later. Once a session is added to your schedule, you will be able to see the sessions you’ve shortlisted by pressing the ‘My Schedule’ on the left navigation bar.
+
