@@ -4,30 +4,41 @@
 
 # Arrive with an idea, leave with a community
 
-Since 2010, MozFest has fueled the movement to ensure the internet benefits humanity, rather than harms it. This year, your part in the story is critical to our community’s mission: a better, healthier internet and more Trustworthy AI. 
+Arrive with an idea, leave with a community
 
-This is the MozFest Plaza, the central hub for all things Mozilla Festival.
+Since 2010, MozFest has fueled the movement to ensure the internet benefits humanity, rather than harms it. This year, your part in the story is critical to our community’s mission: a better, healthier internet and more Trustworthy AI.
+
+This is the MozFest Plaza, the central hub for all things Mozilla Festival, where you can register for the latest local events near you or catch up on on-demand sessions and art projects
+
+MozFest 2023 can now be experienced On-Demand. Catch up on the events, and sessions that took place at MozFest. It’s not too late to  join in on the important and critical work towards Trustworthy AI. 
 
 %feature_video%
 
-Come and go as your schedule allows - the events, and sessions taking place at MozFest include important and critical work towards Trustworthy AI, alongside moments to reset, refocus, and refresh. Important work will be intertwined between a diversity of sessions (some away from Zoom), coffee breaks, self care, and tons of fun. Instructions for navigating around the festival can be found below. 
+### Browse On-Demand
+You can access hundreds of sessions that took place at our virtual festival earlier this year under the Schedule Tab. Browse recorded workshops, focused skills shares, and art installations that are sorted by Spaces.
 
-Here are a few pointers to help you navigate your way through the festival.
+Spaces at MozFest as mini-festivals each with their own unique theme. As you browse the On-Demand content, filter sessions by Space, session format, or by tag, as well as add sessions to your schedule to bookmark it for later. Once a session is added to your schedule, you will be able to see the sessions you’ve shortlisted by pressing the ‘My Schedule’ on the left navigation bar.
 
-### Browse The Schedule
-We have hundreds of sessions being hosted over the span of our virtual festival! 
+### MozFest House
+MozFest House is a local event that manifests the essence of MozFest in a regional setting, through small in-person sessions, workshops, discussions. Join us in-person in Amsterdam, the Netherlands from 19-21 June, 2023.
 
-**Sessions** are interactive, community-led workshops, skills shares, engaging conversations, and hands-on activities that are sorted by Spaces. 
+#### Where?
+MozFest House: Amsterdam will take place in Tolhuistuin, a cultural center in the North of the City, a few mins ferry ride from Amsterdam Central station with views over the Ij River.
+#### When?
+MozFest House: Amsterdam opens at 17:00 with a garden party on Monday 19th June, and follows with two full days of workshops, art installations and talks. You can secure a single day ticket or a full festival pass.
+#### Benefits?
+Full festival passes provide access to all MozFest House happenings for the entire event and the garden party. Single day tickets provide access to sessions for that day. 
 
-**Spaces** at MozFest as mini-festivals each with their own unique theme. Multiple activities are scheduled at any one time so that even within a Space, attendees can choose their own adventure. 
+As an added bonus, both tickets also grant access to On-Demand sessions, Art & Media content, and Lighting Talks from earlier in the year.
 
-As you browse the schedule, you can filter sessions by Space, session format, or by tag, as well as add sessions to your schedule that you find most interesting. 
+#### What to Expect?
 
-### Create Your Own Schedule
-Once you’ve found a session that you would like to attend, click the ‘Add to My Schedule’ button to shortlist this session. To be able to access a session, you will need to add it to your schedule. Once a session is added to your schedule, you will be able to see the sessions you’ve shortlisted by pressing the ‘My Schedule’ on the left navigation bar.
+19th June opens with a casual garden party from 17:00 to 19:00, giving you a chance to receive your House access lanyard and grab a drink while networking with other attendees.
 
-### Access Sessions 
-To access links to sessions, first you will need to have added the session you want to attend to your schedule by pressing the ‘Add to My Schedule’ button on the session page. Once you’ve added the session to your schedule, the link to join will appear automatically 15 minutes before the session is due to begin. 
+From 10:00 to 17:30 on 20 - 21st June you can attend workshops, Dialogues and Debates panels, lo-fi sessions in our garden, and a lounge room to relax, co-work, or network. You’ll also have a chance to stop by the Ethical Dilemma Cafe for a free hot drink and to explore installations, listen to talks, and join workshops that raise critical issues we face with data on a daily basis. 
 
-### Complete Activities On Your Own Time
-You aren’t expected to participate in every hour of MozFest, which spans 12 hours each day over 4 days. Attend live sessions that work for your calendar and then choose on-demand activities that you can do in your own time. Go at your own pace and take time to enjoy each activity. The MozFest program will be available for 90 days after March 24, 2023 for all ticket holders, giving you plenty of time to catch up on what you may have missed. 
+For youth in attendance, there will be youth activities on Wednesday afternoon in the garden.
+
+View the in-person MozFest House schedule on the House Events Tab on the left hand side of the Plaza. 
+
+You must purchase a ticket to MozFest House and travel to Amsterdam in order to attend.
