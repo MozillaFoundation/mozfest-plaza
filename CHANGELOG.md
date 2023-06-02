@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.14.2](https://github.com/digitalinteraction/mozfest/compare/v3.14.1...v3.14.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* update opengraph & favicon ([6678692](https://github.com/digitalinteraction/mozfest/commit/66786923e0f9b1b04c1023bdab9089e4683b4dab))
+
 ### [3.14.1](https://github.com/digitalinteraction/mozfest/compare/v3.14.0...v3.14.1) (2023-06-01)
 
 
