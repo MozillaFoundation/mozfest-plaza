@@ -1,6 +1,9 @@
-import { RedisService } from '@openlab/deconf-api-toolkit'
+import { I18nService, RedisService } from '@openlab/deconf-api-toolkit'
 import { Session } from '@openlab/deconf-shared'
 import ipRegex from 'ip-regex'
+import yaml from 'yaml'
+import fs from 'fs/promises'
+
 import { generateSessionOpengraphImage } from '../general/general-router.js'
 import { createEnv, loadConfig } from '../lib/module.js'
 
@@ -32,6 +35,7 @@ export const hackCommands = {
   ips: parseIps,
   'load-io': loadIo,
   opengraph: opengraphImage,
+  i18n: missingI18n,
 } satisfies Record<string, (args: any) => void>
 
 //
@@ -152,4 +156,23 @@ export async function opengraphImage(args: any) {
   console.log(
     generateSessionOpengraphImage(name, new Date(), config.cloudinary)
   )
+}
+
+export async function missingI18n() {
+  const en = yaml.parse(
+    await fs.readFile(
+      new URL('../../../client/src/i18n/en.yml', import.meta.url),
+      'utf8'
+    )
+  )
+  const es = yaml.parse(
+    await fs.readFile(
+      new URL('../../../client/src/i18n/es.yml', import.meta.url),
+      'utf8'
+    )
+  )
+
+  const some = I18nService.findMissingKeys({ en, es })
+
+  console.log(some)
 }
