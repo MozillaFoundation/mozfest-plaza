@@ -29,8 +29,8 @@
     "visible": true
   },
   "fringe": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "house": {
     "enabled": true,
