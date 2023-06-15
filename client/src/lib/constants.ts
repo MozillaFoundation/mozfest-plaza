@@ -47,6 +47,19 @@ export const themeAllowlist = new Set([
   '606', // Speech & Language
   '607', // Web Literacy
   '585', // MozFest Funder Track
+
+  '701', // Room A - THT Kamer
+  '702', // Room B - Arthur Staal
+  '703', // Room C - Boardroom
+  '704', // Room D - Zonzij
+  '705', // Room E - Flexruimte
+  '706', // Room F - Water Studio
+  '707', // Garden - House
+  '708', // Garden - Tent
+  '709', // Lounge
+  '710', // Small Lounge
+  '724', // Online Only
+  '671', // Ethical Dilemma Cafe
 ])
 
 export const sessionTypeIds = {
