@@ -98,6 +98,7 @@ deconf:
     openGoogleMeet: Open Google Meet
     openHubs: Open Mozilla Hub
     openSpatial: Open Spatial Chat
+    openDiscord: Open Discord
 
   languageWarning:
     message: 'Please note this session is only available in {0}'
@@ -309,6 +310,7 @@ mozfest:
     skillShare: Lightning Talks
     fringe: Fringe Events
     house: House Events
+    houseInfo: House Info
     misinfoCon: MisinfoCon
     emergentSessions: Emergent Sessions
     mySchedule: My Schedule

@@ -130,7 +130,7 @@ export default Vue.extend({
           pageFlag: this.settings.fringe,
         },
         {
-          title: this.$t('mozfest.appLayout.house') as string,
+          title: this.$t('mozfest.appLayout.houseInfo') as string,
           name: ExtraRoutes.HouseInfo,
           icon: HouseIcon,
           pageFlag: this.settings.houseInfo,
