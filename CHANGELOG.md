@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.15.0](https://github.com/digitalinteraction/mozfest/compare/v3.14.1...v3.15.0) (2023-06-15)
+
+
+### Features
+
+* add hack command to find missing i18n strings ([11da8b5](https://github.com/digitalinteraction/mozfest/commit/11da8b57d782768e59244cd4cafd282daeec7004))
+* show discord links big ([ede3713](https://github.com/digitalinteraction/mozfest/commit/ede3713230b17c51fb6d37c5ec381a8b1bb3d034))
+
+
+### Bug Fixes
+
+* add discord as internal links ([1f03bdd](https://github.com/digitalinteraction/mozfest/commit/1f03bdd1c1b8241853385f92c503d14dd585549e))
+* add missing i18n ([e8e6785](https://github.com/digitalinteraction/mozfest/commit/e8e6785a035cf15fe276c0e6c115c9a155060693))
+* remove house-info gate ([5b97dbe](https://github.com/digitalinteraction/mozfest/commit/5b97dbe14020ed4fecd60557c9e41c5eced704e6))
+* update opengraph & favicon ([bb4dde6](https://github.com/digitalinteraction/mozfest/commit/bb4dde631d4c8962882d153027a06ff37f5340f5))
+* update theme allow list ([72107d3](https://github.com/digitalinteraction/mozfest/commit/72107d3e64684c3dc38ccc95eefac8b85f813d92))
+* view house-info w/o auth ([f115d53](https://github.com/digitalinteraction/mozfest/commit/f115d5370a38433373320b9144ce77fa539e131e))
+
 ### [3.14.2](https://github.com/digitalinteraction/mozfest/compare/v3.14.1...v3.14.2) (2023-06-02)
 
 
