@@ -101,6 +101,8 @@ const internalDomains = [
   'mozfest.gradu.al',
   'mozilla.hosted.panopto.com',
   'mozfest.myhubs.net',
+  'discord.gg',
+  'discord.com',
 ]
 
 const recommendationConfig: ScheduleConfig = {
