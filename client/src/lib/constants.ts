@@ -60,6 +60,7 @@ export const themeAllowlist = new Set([
   '710', // Small Lounge
   '724', // Online Only
   '671', // Ethical Dilemma Cafe
+  '760', // Restaurant
 ])
 
 export const sessionTypeIds = {
