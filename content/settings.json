@@ -8,12 +8,12 @@
     "visible": false
   },
   "schedule": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "helpDesk": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "social": {
@@ -21,20 +21,20 @@
     "visible": false
   },
   "arts": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "lightningTalks": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "fringe": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "house": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "houseInfo": {
     "enabled": false,
@@ -53,26 +53,26 @@
     "visible": false
   },
   "mySchedule": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": true,
-    "showRegister": true
+    "showLogin": false,
+    "showRegister": false
   },
 
   "atriumWidgets": {
-    "register": true,
+    "register": false,
     "twitter": true,
-    "login": true,
-    "siteVisitors": true,
+    "login": false,
+    "siteVisitors": false,
     "spatialChat": false,
     "slack": false,
-    "familyResources": true,
-    "mozfestBook": false,
+    "familyResources": false,
+    "mozfestBook": true,
     "linkedin": false,
     "submissions": false,
     "calendarHelp": false,
