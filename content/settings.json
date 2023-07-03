@@ -8,7 +8,7 @@
     "visible": false
   },
   "schedule": {
-    "enabled": false,
+    "enabled": true,
     "visible": false
   },
   "helpDesk": {
