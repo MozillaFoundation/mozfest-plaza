@@ -21,7 +21,7 @@
     "visible": false
   },
   "arts": {
-    "enabled": false,
+    "enabled": true,
     "visible": false
   },
   "lightningTalks": {
@@ -29,11 +29,11 @@
     "visible": false
   },
   "fringe": {
-    "enabled": false,
+    "enabled": true,
     "visible": false
   },
   "house": {
-    "enabled": false,
+    "enabled": true,
     "visible": false
   },
   "houseInfo": {
