@@ -1,26 +1,45 @@
 # mozfest-server
 
-Coming soon...
+This is the server-side component of the Plaza.
 
-## configs
+## development
 
-**staging**
+### setup
 
-```json
-{
-  "pretalx": {
-    "eventSlug": "mozfest-schedule-link-test-2021",
-    "localeKeys": ["en", "en-mozilla"],
-    "questions": {
-      "pulsePhoto": 664,
-      "space": 646,
-      "links": [671],
-      "affiliation": 660
-    }
-  }
-}
+> First make sure you have the [root setup](../README.md#setup)
+
+```bash
+# cd to/this/folder
+
+npm install
+
+# Run the docker stack
+# -> Stop with "docker-compose down"
+# -> Runs redis on localhost:6379 with persistence
+# -> Runs postgres on localhost:5432 with persistence
+#    (username: user, password: secret, database: user)
+docker-compose up -d
 ```
 
----
+### regular use
 
-> This project was set up by [puggle](https://npm.im/puggle)
+```bash
+# cd to/this/folder
+
+# Run the development server
+# -> Runs on localhost:3000
+# -> Runs database migrations on start up
+# -> Fetchs content from ../content on startup
+npm run start
+
+# Run the CLI
+npm run dev -- --help
+
+# Run the CLI (then server) with debugging
+# -> It will break on the first line of code to allow an inspector to connect
+npm run debug -- serve
+```
+
+## Releasing
+
+Following [release process](../README.md#releasing), a container for the server is built using the [Dockerfile](./Dockerfile).
