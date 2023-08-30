@@ -5,6 +5,7 @@
 
 import {
   PretalxService,
+  PretalxSlot,
   PretalxTalk,
   PretalxTax,
   RedisService,
@@ -20,16 +21,11 @@ import {
   SessionType,
   Localised,
   Theme,
-  SessionLink,
   LocalisedLink,
 } from '@openlab/deconf-shared'
 
 import { checkEnvObject, pluck } from 'valid-env'
 import ms from 'ms'
-
-// import sessionTypes = require('../data/session-types.json')
-// import languages = require('../data/languages.json')
-// import tracks = require('../data/tracks.json')
 
 import {
   AppConfig,
@@ -44,6 +40,10 @@ interface PretalxTax2 extends PretalxTax {
 }
 interface PretalxTalk2 extends PretalxTalk {
   tag_ids?: number[]
+  slot: PretalxSlot2 | null
+}
+interface PretalxSlot2 extends PretalxSlot {
+  room_id: number
 }
 
 export interface FetchScheduleCommandOptions {}
@@ -139,14 +139,15 @@ export async function fetchScheduleCommand(
     // const speakerMap = new Map(speakers.map((s) => [s.code, s]))
 
     const schedule: Omit<ScheduleRecord, 'settings'> = {
-      sessions: helpers.getSessions(submissions, pretalx),
+      sessions: helpers.getSessions(submissions as any, pretalx),
       slots: pretalx.getDeconfSlots(submissions),
       speakers: pretalx.getDeconfSpeakers(
         speakers,
         config.pretalx.questions.affiliation
       ),
       themes: helpers.getThemes(tags as any[]),
-      tracks: config.tracks as Track[],
+      // tracks: config.tracks as Track[],
+      tracks: helpers.getTracksFromRooms(submissions as any),
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
@@ -198,7 +199,7 @@ class PretalxHelpers {
         : undefined
 
       const type = submission.submission_type_id?.toString()
-      const track = submission.track_id?.toString()
+      const track = submission.slot?.room_id?.toString()
 
       if (type === undefined || track === undefined) return null
 
@@ -280,6 +281,24 @@ class PretalxHelpers {
         en: tag.tag,
       },
     }))
+  }
+
+  getTracksFromRooms(submissions: PretalxTalk2[]) {
+    const tracks = new Map<number, Track>()
+
+    for (const submission of submissions) {
+      if (!submission.slot?.room_id || tracks.has(submission.slot.room_id)) {
+        continue
+      }
+
+      // TODO: check L10N when there is some data
+      tracks.set(submission.slot.room_id, {
+        id: submission.slot.room_id.toString(),
+        title: submission.slot.room,
+      })
+    }
+
+    return Array.from(tracks.values())
   }
 
   // createTrack({ id, title }: { id: number; title: Localised }): Track {

@@ -34,161 +34,62 @@
     ]
   },
   "pretalx": {
-    "eventSlug": "mozilla-festival-2023",
+    "eventSlug": "mozfest-house-kenya-2023",
     "englishKeys": ["en", "en-mozilla"],
     "questions": {
       "pulsePhoto": 1179,
       "links": [2396],
       "affiliation": 2038,
-      "recommendations": 2247
+      "recommendations": 2719
     },
     "aslTagId": 632,
     "ccTagId": 633
   },
   "tito": {
     "accountSlug": "mozilla",
-    "eventSlug": "mozilla-festival-2023"
+    "eventSlug": "mozfest-house-kenya"
   },
 
   "sessionTypes": [
     {
-      "id": 2427,
+      "id": 3229,
       "title": { "en": "Extended Workshop", "es": "Taller extendido" },
       "icon": ["fas", "object-group"],
       "layout": "workshop"
     },
     {
-      "id": 2423,
+      "id": 3230,
       "title": { "en": "Art and Media", "es": "Arte y medios" },
       "icon": ["fas", "palette"],
       "layout": "plenary"
     },
     {
-      "id": 2424,
-      "title": { "en": "Social Moment", "es": "Socialización" },
-      "icon": ["fas", "share-alt"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2425,
+      "id": 3227,
       "title": { "en": "Discussion", "es": "Discusión" },
       "icon": ["fas", "comments"],
       "layout": "workshop"
     },
     {
-      "id": 2453,
+      "id": 3228,
       "title": { "en": "Workshop", "es": "Taller" },
       "icon": ["fas", "object-group"],
       "layout": "workshop"
     },
     {
-      "id": 2426,
-      "title": { "en": "Lightning Talk", "es": "Charla relámpago" },
-      "icon": ["fas", "bolt"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2620,
-      "title": { "en": "Community Plenary", "es": "Community Plenary" },
-      "icon": ["fas", "podcast"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2672,
-      "title": { "en": "Fringe Event", "es": "Fringe Event" },
-      "icon": ["fas", "object-group"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2829,
-      "title": { "en": "In-Person Round Table", "es": "In-Person Round Table" },
-      "icon": ["fas", "comments"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2987,
+      "id": 3201,
       "title": {
-        "en": "In-Person Community Plenary",
-        "es": "In-Person Community Plenary"
+        "en": "In-Person Workshop",
+        "es": "In-Person Workshop"
       },
       "icon": ["fas", "podcast"],
       "layout": "plenary"
     },
     {
-      "id": 2960,
-      "title": { "en": "In-Person Workshop", "es": "In-Person Workshop" },
+      "id": 3333,
+      "title": { "en": "Community Plenary", "es": "Community Plenary" },
       "icon": ["fas", "object-group"],
-      "layout": "plenary"
-    },
-    {
-      "id": 2830,
-      "title": { "en": "Installation", "es": "Installation" },
-      "icon": ["fas", "palette"],
       "layout": "plenary"
     }
   ],
-  "tracks": [
-    {
-      "id": 3243,
-      "title": {
-        "en": "Parables Experience",
-        "es": "Parables Experience"
-      }
-    },
-    {
-      "id": 3239,
-      "title": {
-        "en": "Utility of Transparency",
-        "es": "Utilidad de la Transparencia"
-      }
-    },
-    {
-      "id": 3238,
-      "title": { "en": "AI Cosmologies", "es": "AI Cosmologies" }
-    },
-    {
-      "id": 3241,
-      "title": {
-        "en": "Radical Inclusion Experience",
-        "es": "Experiencia de Inclusión Radical"
-      }
-    },
-    {
-      "id": 3235,
-      "title": { "en": "Autonomy & Governance", "es": "Autonomía y Gobierno" }
-    },
-    {
-      "id": 3236,
-      "title": { "en": "Youth Zone", "es": "Zona Juvenil" }
-    },
-    {
-      "id": 3237,
-      "title": { "en": "MoZone", "es": "MoZone" }
-    },
-    {
-      "id": 3242,
-      "title": {
-        "en": "Humans behind the Machine",
-        "es": "Los Humanos Detrás de la Máquina"
-      }
-    },
-    {
-      "id": 3265,
-      "title": { "en": "Allies in Practice", "es": "Allies in Practice" }
-    },
-    {
-      "id": 3234,
-      "title": {
-        "en": "Education & Access: You're The Product Of Data",
-        "es": "Educación y Acceso: Eres el Producto de los Datos"
-      }
-    },
-    {
-      "id": 3240,
-      "title": {
-        "en": "Tech & Biodiversity: Legado 2060",
-        "es": "Tecnología y biodiversidad: Legado 2060"
-      }
-    }
-  ]
+  "tracks": []
 }
