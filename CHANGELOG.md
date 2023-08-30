@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.15.3](https://github.com/digitalinteraction/mozfest/compare/v3.15.2...v3.15.3) (2023-08-30)
+
 ### [3.15.2](https://github.com/digitalinteraction/mozfest/compare/v3.15.0...v3.15.2) (2023-06-21)
 
 ### [3.15.1](https://github.com/digitalinteraction/mozfest/compare/v3.15.0...v3.15.1) (2023-06-21)
