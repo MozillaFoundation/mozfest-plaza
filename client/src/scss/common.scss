@@ -9,15 +9,50 @@ $title-color: #000;
 
 $text-light: #757a8a;
 
-// $primary: #b35ffc;
+$mradi-red: #b5000f;
+$mradi-orange: #e24623;
+$mradi-yellow: #ffaa01;
+$mradi-blue: #01a9a9;
+
+//
+// ORIGINAL
+//
+$primary: #b35ffc;
 $primary: #b7007e;
 $secondary: #8f14fb;
 $green: #00cccc;
-
 $link: #6703bf;
 
+//
+// A
+//
+// $primary: $mradi-red;
+// $secondary: $mradi-orange;
+// $green: $mradi-orange;
+// $link: $mradi-blue;
+
+//
+// B
+//
+// $primary: $mradi-blue;
+// $secondary: $mradi-orange;
+// $green: $mradi-yellow;
+// $link: $mradi-red;
+
+//
+// C
+//
+// $primary: $mradi-orange;
+// $secondary: $mradi-yellow;
+// $green: $mradi-blue;
+// $link: $mradi-red;
+
+//
+// ...
+//
 $sideTabs-background: $link;
 $sideTabs-active: #954fd2;
+$sideTabs-active: $link;
 
 $countdown-background: $link;
 
