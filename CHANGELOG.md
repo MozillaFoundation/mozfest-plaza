@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.16.0](https://github.com/digitalinteraction/mozfest/compare/v3.15.3...v3.16.0) (2023-09-06)
+
+
+### Features
+
+* kenya theming + prep ([342edd7](https://github.com/digitalinteraction/mozfest/commit/342edd716e54feea5b0f94adb68ec27753b81d64))
+
+
+### Bug Fixes
+
+* upgrade bad deps ([5e8e456](https://github.com/digitalinteraction/mozfest/commit/5e8e456a07d0a3f2bedbf94972e11e95740e39db))
+* upgrade more bad deps ([740e09f](https://github.com/digitalinteraction/mozfest/commit/740e09f2dca82a987d0379ab0eb65871c61fee84))
+
 ### [3.15.3](https://github.com/digitalinteraction/mozfest/compare/v3.15.2...v3.15.3) (2023-08-30)
 
 ### [3.15.2](https://github.com/digitalinteraction/mozfest/compare/v3.15.0...v3.15.2) (2023-06-21)
