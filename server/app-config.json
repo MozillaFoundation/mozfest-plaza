@@ -89,6 +89,12 @@
       "title": { "en": "Community Plenary", "es": "Community Plenary" },
       "icon": ["fas", "object-group"],
       "layout": "plenary"
+    },
+    {
+      "id": 3411,
+      "title": { "en": "Virtual Event", "es": "Virtual Event" },
+      "icon": ["fas", "object-group"],
+      "layout": "plenary"
     }
   ],
   "tracks": []

@@ -33,12 +33,11 @@ import {
 } from '@/lib/module'
 
 const typeAllowList = new Set([
-  sessionTypeIds.discussion,
   sessionTypeIds.workshop,
-  sessionTypeIds.communityPlenary,
+  sessionTypeIds.discussion,
   sessionTypeIds.extendedWorkshop,
-  // sessionTypeIds.emergent,
-  sessionTypeIds.socialMoment,
+  sessionTypeIds.virtualEvent,
+  sessionTypeIds.communityPlenary,
 ])
 
 const options: FilteredScheduleOptions = {

@@ -64,14 +64,18 @@ export const themeAllowlist = new Set([
 ])
 
 export const sessionTypeIds = {
-  extendedWorkshop: '2427',
-  artAndMedia: '2423',
-  socialMoment: '2424',
-  discussion: '2425',
-  workshop: '2453',
-  lightningTalk: '2426',
-  communityPlenary: '2620',
-  fringeEvent: '2672',
+  extendedWorkshop: '3229',
+  artAndMedia: '3230',
+  discussion: '3227',
+  workshop: '3228',
+  inPersonWorkshop: '3201',
+  communityPlenary: '3333',
+  virtualEvent: '3411',
+
+  // Not setup for Kenya
+  socialMoment: '_',
+  lightningTalk: '_',
+  fringeEvent: '_',
 }
 
 export const trackIds = {

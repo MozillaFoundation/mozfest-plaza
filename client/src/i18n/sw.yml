@@ -1,0 +1,320 @@
+deconf:
+  sideTabs:
+    unavailable: Haipatikani
+
+  apiError:
+    title: Tatizo limetokea
+    content: Kuna tatizo dogo, bofya kitufe cha kuonyesha upya au urudi baadaye.
+    retry: 'Jaribu tena baada ya {0}'
+
+  appLoading:
+    message: Inapakia...
+
+  scheduleBlock:
+    workshopTitle: Vipindi vya majadiliano
+    workshopDescription: Ili uweze kutazama vipindi vyote vya kusisimua, vya majadiliano yatakayofanyika kwenye MozFest msimu huu, bofya kwenye "onyesha yote".
+    workshops: 'Hakuna | kipindi kimoja | {n} vipindi'
+    showWorkshops: Onyesha vyote
+    hideWorkshops: Ficha vyote
+
+  general:
+    appName: Ratiba ya MozFest 2023
+    days: siku | siku | siku
+    hours: saa | saa | saa
+    minutes: dakika | dakika | dakika
+    seconds: sekunde | sekunde | sekunde
+    genericError: Kuna tatizo limetokea, tafadhali jaribu tena.
+    closeDialog: Funga
+
+  miniSession:
+    view: Tazama
+    live: Moja kwa moja
+
+  featuredSessions:
+    title: Vipindi Vilivyoangaziwa
+    action: Tazama vipindi vyote
+
+  scheduleFilters:
+    query: Tafuta
+    showFilters: Onyesha Vichujio
+    hideFilters: Ficha Vichujio
+    clearFilters: Futa vichujio
+    dateFilter: Tarehe
+    typeFilter: Aina
+    trackFilter: Nafasi
+    themeFilter: Ujumbe
+    recordedFilter: Imerekodiwa
+    languageFilter: Lugha
+    offLabel: Zote
+    'yes': 'Ndio'
+    'no': 'Hapana'
+
+  attendanceSection:
+    loading: Inatafuta hudhurio
+    processing: Agizo linatekelezwa
+    registered: Umesajiliwa kwa kipindi hiki
+    full: Kipindi hiki kimejaa
+    spacesLeft: '{0}/{1} viti vilivyosalia.'
+    registerButton: Jiandikishe sasa
+    unregisterButton: Nipe nafasi yangu
+
+  timeSlot:
+    past: Awali
+    live: Moja kwa moja
+
+  joinSession:
+    future: Kipindi cha awali
+    present: Jiunge na kipindi
+    past: Tazama kipindi
+
+  sessionAttributes:
+    isRecorded: Vilivyorekodiwa
+    notRecorded: Visivyorekodiwa
+
+  addToCalendar:
+    action: Ongeza kwenye kalenda
+
+  addUserCalendar:
+    title: Kalenda binafsi
+    generate: Tengeneza url
+    info: Tumia kiunganishi hiki kujisajili kwenye "Ratiba Yangu" katika kalenda yako mwenyewe. Kalenda yako itajisasisha mara kwa mara ili kupata taarifa za hivi karibuni na kukuonyesha matukio ambayo umeongeza kwenye "Ratiba Yangu".
+    copy: nakili
+    copied: Imenakiliwa
+
+  sessionLink:
+    copy: nakili
+    copied: Imenakiliwa
+
+  sessionState:
+    liveNow: Kipindi kilicho moja kwa moja
+    sessionOver: Kipindi kimeisha
+    interest: 'hakuna vikao | imeongezwa kwenye ratiba 1 | imeongezwa kwenye ratiba {n}'
+
+  sessionEmbed:
+    noEmbed: Tatizo limetokea, hakuna chochote cha kuonyeshwa hapa
+    openTeams: Fungua mkutano wa Teams
+    openZoom: Fungua mkutano wa Zoom
+    openZoomRegister: Jisajili kwenye mkutano wa Zoom
+    openGoogleMeet: Fungua mkutano kwenye Google Meet
+    openHubs: Fungua mkutano kwenye Mozilla Hub
+    openSpatial: Fungua Spatial Chat
+    openDiscord: Fungua Discord
+
+  languageWarning:
+    message: 'Tafadhali kumbuka kuwa kipindi hiki kinapatikana tu katika {0}'
+
+  navigationBar:
+    profile: Wasifu wangu
+    login: Ingia
+    interpret: Mwonekano wa ukalimani
+    register: Jisajili
+    unavailable: '(Haipatikani)'
+
+  login:
+    title: Ingia
+    email:
+      label: Anwani ya barua pepe
+      placeholder: k.m. geoff@example.com
+      help: Barua pepe uliyosajili kwenye ti.to
+    badEmail: Barua pepe mbaya
+    doneText: Msimbo wa kuingia umetumwa
+    submitButton: Omba kiunganishi cha kujiunga bila neno siri
+    registerLabel: Bado hujajisajili?
+    registerAction: Jisajili hapa.
+
+  profile:
+    title: Wasifu Wangu
+    actionLabel: Vitendo
+    logoutButton: Toka
+    dangerLabel: Eneo la Hatari
+    deleteButton: Futa akaunti
+    deleteText: Kufanya hivi ni kwa kudumu, je, una uhakika?
+    mozfest:
+      emailText: Anwani ya barua pepe
+      localeText: Lugha iliyochaguliwa
+      whenText: Umeingia
+      registeredText: Umesajiliwa
+      nameText: Jina
+      countryText: Nchi
+      affiliationText: Ushirika
+      marketingText: Mauzo
+
+  schedule:
+    title: Ratiba
+    description: ''
+    noResults: Hakuna kilicholingana na swali lako
+    allSessions: Ratiba Kamili
+    userSessions: Ratiba Yangu
+    hidePast: Ficha vipindi vya awali
+    showPast: Onyesha vipindi vya awali
+    resultHeading: 'Tafuta matokeo — {0}'
+
+  session:
+    slot: Ratiba
+    countdown: Hesabu kurudi nyuma
+    links: Viunganishi
+    linkPreview: Viunganishi vya kipindi vitapatikana dakika 15 kabla ya wakati wa kuanza
+    actions: Vitendo
+    logIn: Ikiwa ungependa kuhudhuria kipindi hiki tafadhali ingia na ubonyeze kitufe cha "Ongeza kwenye Ratiba Yangu". Viunganishi vya kujiunga na kikao vitaonekana dakika 15 kabla ya kikao kuanza.
+    speakers: Wawezeshaji
+    zoomLink: Chumba cha vikao vya Zoom
+    teamsLink: Kikao cha Teams
+    miroLink: Ubao wa Miro
+    generalLink: Kiunganishi
+    mozfest:
+      backButton: Rudi kwenye Ratiba
+      externalLinks: Tafadhali fahamu kuwa Mwezeshaji wa kipindi hiki anatumia mfumo mwingine wa kuandaa kikao ambao hautumiwi rasmi kwenye MozFest.
+      logIn: Ingia
+      recommendations: 'Mapendekezo:'
+      recommendationsInfo: ''
+
+  interestSection:
+    message: Sajili upendezi wako
+    unregisterButton: Ondoa kwenye Ratiba Yangu
+    registerButton: Ongeza kwenye Ratiba Yangu
+
+  addToCalendarDialog:
+    title: Ongeza kikao kwenye kalenda
+    # info: You can also get a personalised calendar link on the profile page.
+    info: Tumia vitufe vilivyo hapa chini ili kuongeza kikao hiki kwenye kalenda unayopendelea.
+    ical: Pakua tukio
+    google: Kalenda ya Google
+    cancel: Batilisha
+
+  apiMessage:
+    unknown:
+      title: Tatizo limetokea
+      info: Tatizo lisilojulikana limetokea, tafadhali jaribu tena. Ikiwa tatizo litaendelea, tafadhali wasiliana nasi.
+      email: festival@mozilla.org
+    loginExpired:
+      title: Kiunganishi cha kujiunga bila neno-siri limepitwa na muda
+      info: Kiunganishi chako cha kuingia bila neno-siri kimepitwa na muda, kinadumu kwa dakika 30 tu kwa sababu za usalama wa kimtandao. Tumia kitufe kilicho hapa chini ili uanze tena.
+      action: Ingia tena
+
+  tokenCaptureView:
+    message: Mchakato wa kuingia unaendelea...
+
+mozfest:
+  general:
+    backToAtrium: Rudi kwenye Plaza
+    'yes': 'Ndio'
+    'no': 'Hapana'
+    registerUrl: https://www.mozillafestival.org/en/tickets/
+    helpDeskUrl: https://www.mozillafestival.org/helpdesk
+    loading: Inapakia...
+    noResults: Hatukuweza kupata vikao vyovyote vinavyolingana na hilo
+
+  atrium:
+    bookSubtitle: Pata kujua juu ya kitabu chetu kilichoshinda tuzo, adhimisho letu la zamani na la baadaye.
+    bookTitle: Kitabu cha "How to MozFest"
+    bookUrl: https://book.mozillafestival.org
+    familySubtitle: Shughuli zinazohitajika kwa wahudhuriaji wenye umri wa miaka 3-12.
+    familyTitle: Rasilimali za Familia
+    familyUrl: https://www.mozillafestival.org/family-resources
+    heading: MozFest ya 2023
+    linkedinSubtitle: Jiweke kwenye Tukio la LinkedIn la MozFest ili kuwajulisha wengine kwamba utahudhuria.
+    linkedinTitle: Shiriki kwenye LinkedIn
+    linkedinUrl: https://www.linkedin.com/events/6960951053789863936/
+    logIn: Ingia
+    onlineUsers: Moja kwa moja wakati huu
+    registerSubtitle: Usajili kwa ajili ya hudhurio la MozFest 2023 unaendelea.
+    registerTitle: Jinyakulie tiketi yako
+    registerUrl: https://www.mozillafestival.org/en/tickets
+    slackSubtitle: Jiunganishe, jishirikishe na ujiunge na mazungumzo kwenye mtandao wa Slack wa MozFest
+    slackTitle: Slack
+    slackUrl: https://www.mozillafestival.org/slack
+    spacialChatSubtitle: Jiunge na vikao vya MozFest Common Spaces
+    spacialChatTitle: Kikao cha Common Spaces
+    spacialChatUrl: https://app.spatial.chat/s/mozilla-festival?guest
+    submissionsSubtitle: Je, ungependa kusahilisha katika MozFest? Wito wa mapendekezo unamalizika tarehe 16 Desemba.
+    submissionsTitle: Wasilisha wazo lako la Kipindi
+    submissionsUrl: https://www.mozillafestival.org/proposals/
+    subtitle: kuanzia tarehe 19 hadi 21 Juni 2023.
+    title: 'Jiunge nasi kwenye MozFest House: Kenya'
+    twitterSubtitle: Tuambie vipindi utakavyofurahia zaidi kuhudhuria.
+    twitterTitle: 'Tweet #MozFest'
+    twitterUrl: https://twitter.com/hashtag/MozFest
+    calendarHelpSubtitle: Pata vipindi vyako vya MozFest katika kalenda yako binafsi
+    calendarHelpTitle: 'Ulandanishaji wa Kalenda'
+    calendarHelpUrl: /landanisha-kalenda
+    hubsSubtitle: Chunguza MozFest kwenye Vituo vya Mozilla
+    hubsTitle: Vituo vya Mozilla
+    hubsUrl: https://mozfest.myhubs.net/
+
+  footer:
+    appName: MozFest
+    guidelines: Miongozo ya Jumuiya
+    guidelinesUrl: https://www.mozillafestival.org/guidelines/
+    privacy: Faragha
+    privacyUrl: https://www.mozilla.org/privacy/websites/
+    terms: Vigezo na Masharti
+    termsUrl: https://www.mozillafestival.org/tickets/terms/
+
+  pageTitles:
+    atrium: Plaza
+    login: Ingia
+    profile: Wasifu Wako
+    schedule: Ratiba
+    session: Tazama kipindi
+    spaces: Kijamii
+    skillShare: Mazungumzo ya Kusisimua
+    artGallery: Sanaa na Vyombo vya Habari
+    terms: Vigezo na Masharti
+    guidelines: Miongozo
+    privacy: Faragha
+    fringeEvents: Matukio ya Fringe
+    whatsOn: Kuona kabla ya toleo rasmi
+    helpDesk: Kituo cha Msaada
+    houseEvents: Matukio ya Nyumba
+    misinfoCon: MisinfoCon
+    emergentSessions: Vipindi vya Dharura
+    calendar: Kalenda Yangu
+    mySchedule: Ratiba Yangu
+    utilities: Matumizi
+
+  whatsOn:
+    title: Kuona kabla ya toleo rasmi
+
+  artAndMedia:
+    title: Sanaa na Vyombo vya Habari
+
+  fringeEvents:
+    title: Matukio ya Fringe
+
+  houseEvents:
+    title: Matukio ya Nyumba
+    info: ''
+
+  misinfoCon:
+    title: MisinfoCon
+
+  emergent:
+    title: Vipindi vya Dharura
+    takePart: Shiriki
+    caption: Sampuli ya vipindi vilivyojitokeza kwenye MozFest 2021
+
+  skillShare:
+    title: Mazungumzo ya Kusisimua
+
+  notFound:
+    title: Ukurasa Haupatikani
+    info: Hatuwezi kupata ukurasa unaotafuta
+
+  appLayout:
+    atrium: Plaza
+    whatsOn: Kuona kabla ya toleo rasmi
+    schedule: Vipindi vinapohitajika
+    helpDesk: Kituo cha Msaada
+    social: Kijamii
+    arts: Sanaa na Vyombo vya Habari
+    skillShare: Mazungumzo ya Kusisimua
+    fringe: Matukio ya Fringe
+    house: Matukio ya Nyumba
+    houseInfo: Habari kuhusu Nyumba
+    misinfoCon: MisinfoCon
+    emergentSessions: Vipindi vya Dharura
+    mySchedule: Ratiba Yangu
+
+  mySchedule:
+    title: Ratiba Yangu
+    noResults: Ongeza baadhi ya vipindi kwenye Ratiba Yangu
