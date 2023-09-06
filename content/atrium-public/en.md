@@ -1,12 +1,18 @@
-<!-- This is the Plaza page when the visitor is signed out -->
+<!-- This is the Plaza page when the visitor is signed in -->
 
-# Thank you for joining us!
+# Arrive with an idea, leave with a community.
 
-Whether you joined us at MozFest Virtual or took part in MozFest House: Amsterdam, we want to say a massive thanks to you all - MozFest wouldn't be the same without the incredible community who brings it to life.
+MozFest House: Kenya is a regional gathering that will bring together builders, researchers, policymakers, activists, civil society organizations, and philanthropy to connect and explore critical issues related to a healthy internet and trustworthy AI. Join us in Nairobi, 21 - 22 September 2023.
 
-We hope you had a great time exploring the hundreds of sessions, art pieces, and lightning talks brought to you by our international community. For now, we're taking a short break as we close the Plaza. But, stay tuned – we'll be back for MozFest House: Kenya coming up in September 2023.
+## What is MozFest House?
+This year, MozFest House is harnessing our collective power to better our digital landscape, build transformative systems, and sustain momentum within our community towards positive human and digital rights progress.
 
-%feature_video%
+It is through the collective power of people that we can actualize Trustworthy AI and move the needle on important issues such as bias, transparency, data stewardship, and movement building.
+
+## What To Expect
+MozFest House: Kenya is the embodiment of Mozilla’s Africa Innovation Mradi convening strategy, facilitating spaces for diverse communities to come together to share knowledge, debate and build partnerships focused on the development and governance of digital technologies in Eastern and Southern Africa.
+
+MozFest House: Kenya aims to speak truth to power around digital safety, digital rights, tech accountability and the need for internet governance. House is hyper local: we come together with regional partners and new voices in the space to explore these issues from various perspectives. It is truly an event for everyone in the local community, so whether you're a technologist, educator, activist, artist or policy maker, all are welcome!
 
 # Keep Connected
 
@@ -17,4 +23,3 @@ We hope you had a great time exploring the hundreds of sessions, art pieces, and
 ## MozFest Blog and Newsletter
 
 Keep an eye on the [MozFest blog](http://mozillafestival.org/newsletter) and be sure to [subscribe to our emails](http://mozillafestival.org/newsletter) to be the first to know about upcoming opportunities, resources, and news about MozFest all-year-round. 
-
