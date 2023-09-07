@@ -41,7 +41,7 @@ deconf:
     clearFilters: Futa vichujio
     dateFilter: Tarehe
     typeFilter: Aina
-    trackFilter: Nafasi
+    trackFilter: Chumba
     themeFilter: Ujumbe
     recordedFilter: Imerekodiwa
     languageFilter: Lugha
@@ -303,7 +303,7 @@ mozfest:
   appLayout:
     atrium: Plaza
     whatsOn: Kuona kabla ya toleo rasmi
-    schedule: Vipindi vinapohitajika
+    schedule: Ratiba
     helpDesk: Kituo cha Msaada
     social: Kijamii
     arts: Sanaa na Vyombo vya Habari

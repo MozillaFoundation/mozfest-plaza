@@ -41,7 +41,7 @@ deconf:
     clearFilters: Clear filters
     dateFilter: Date
     typeFilter: Type
-    trackFilter: Space
+    trackFilter: Room
     themeFilter: Theme
     recordedFilter: Is Recorded
     languageFilter: Language
@@ -303,7 +303,7 @@ mozfest:
   appLayout:
     atrium: Plaza
     whatsOn: Sneak Peek
-    schedule: On-Demand Sessions
+    schedule: Schedule
     helpDesk: Help Desk
     social: Social
     arts: Arts & Media

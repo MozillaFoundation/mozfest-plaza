@@ -1,13 +1,1 @@
-[
-  {
-    "size": "medium",
-    "title": "Sponsored by",
-    "sponsors": [
-      {
-        "title": "Vero",
-        "image": "/sponsors/horz.svg",
-        "href": "https://interledger.org"
-      }
-    ]
-  }
-]
+[]
