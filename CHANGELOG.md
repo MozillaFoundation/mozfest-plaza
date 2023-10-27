@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.17.0](https://github.com/digitalinteraction/mozfest/compare/v3.16.2...v3.17.0) (2023-10-27)
+
+
+### Features
+
+* migrate to GTM ([bf56f55](https://github.com/digitalinteraction/mozfest/commit/bf56f555fa051d67976859d8ea4f98974743a69a))
+
 ### [3.16.2](https://github.com/digitalinteraction/mozfest/compare/v3.16.1...v3.16.2) (2023-09-07)
 
 ### [3.16.1](https://github.com/digitalinteraction/mozfest/compare/v3.16.0...v3.16.1) (2023-09-07)
