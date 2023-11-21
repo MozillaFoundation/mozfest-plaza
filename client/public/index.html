@@ -23,15 +23,7 @@
       content="Mozilla Festival 2023 Schedule. Activists in the internet health movement will gather at MozFest to move the needle in tech, art, social responsibility, ethics, and AI. Will you join us?"
     />
     <script src="<%= BASE_URL %>config.js"></script>
-  </head>
-  <body>
-    <noscript>
-      <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
-        without JavaScript enabled. Please enable it to continue.</strong
-      >
-    </noscript>
-    <div id="app"></div>
+    <!-- Google Tag Manager -->
     <script>
       ;(function (w, d, s, l, i) {
         w[l] = w[l] || []
@@ -45,15 +37,25 @@
       })(window, document, 'script', 'dataLayer', 'GTM-PB5FRTL')
     </script>
     <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <noscript>
+      <strong>
+        We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        without JavaScript enabled. Please enable it to continue.
+      </strong>
+    </noscript>
+    <div id="app"></div>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
+    <noscript>
+      <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-PB5FRTL"
         height="0"
         width="0"
         style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+      >
+      </iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
