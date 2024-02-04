@@ -250,3 +250,50 @@ This means all configuration for instances can be defined in the.
 [Cert Manager](https://cert-manager.io) is expected to be installed and if so it will automatically create Let's Encrypt certificates to satisfy the Ingress resources.
 
 HorizontalPodAutoscalers only work if there is something to provide metrics to the Kubernetes scheduler, we use [metrics-server](https://github.com/kubernetes-sigs/metrics-server) to provide them.
+
+## Data integrations
+
+The plaza pulls information from two external sources: [Pretalx](https://docs.pretalx.org/api/fundamentals.html) and [Tito](https://ti.to/docs/api/admin/3.0#version-3-0).
+
+### Pretalx
+
+The plaza pulls the schedule from pretalx, effectively using it as the content CMS.
+Deconf provides [PretalxService](https://deconf-api.openlab.dev/modules/pretalx.html) which is used to query the Pretalx API with a configured `PRETALX_API_TOKEN` environment variable.
+
+The plaza currently uses these endpoints:
+
+- [submissions](https://docs.pretalx.org/api/resources/submissions.html)
+- [speakers](https://docs.pretalx.org/api/resources/speakers.html)
+- [tags](https://docs.pretalx.org/api/resources/tags.html)
+
+This whole process is run through the CLI's [fetch-schedule](#fetch-schedule) command which itself is ran as a Kubernetes CronJob.
+The frequency of the cronjob is often changed to be more-frequent during a live event and less frequent when not.
+
+There is also an administration tool to force the schedule to update that can be ran by allow-listed people on the Plaza.
+This list of people is based on a list of email addresses defined in the JSON configuration that gives them an `admin` role when they sign in.
+As an admin, you can visit the plaza with `?dev` on the end of the URL and there are special controls including a button to run the [fetch-schedule](#fetch-schedule) command.
+
+### Tito
+
+The plaza pulls the people that are registered for the live event from Tito using it's API.
+There is also a webhook that is configured through Tito to notify the plaza of new registrations.
+
+**API**
+
+Through the CLI, like with Pretalx registrations are fetched with [fetch-users](#fetch-users) which is ran as a Kubernetes CronJob.
+
+The fetch is differential so only tickets are fetched since the last fetch occured.
+This is to speed everything up as this job is designed to run very frequently, e.g. up to every 2 minutes.
+
+These endpoints are used:
+
+- [tickets](https://ti.to/docs/api/admin/3.0#tickets-get-all-tickets)
+
+**Webhook**
+
+The webhook is a newer integration which was added for MozFest 2023. It runs alongside the regular scrape to speed up the registration-to-sign-in flow.
+When the webhook is triggered it automatically sends the participant the magic link email to get them straight into the Plaza.
+
+Webhooks:
+
+- `https://schedule.mozillafestival.org/api/tito/webhook/` for `ticket.completed`
