@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.18.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.17.1...v3.18.0) (2024-03-24)
+
+
+### Features
+
+* push metrics & page views to the data layer ([fd00a51](https://github.com/MozillaFoundation/mozfest-plaza/commit/fd00a5183692e6490ff665f5763962902a45ff01))
+* update colour palette ([1b821db](https://github.com/MozillaFoundation/mozfest-plaza/commit/1b821db91e5968234388984a992911651a810bca))
+
+
+### Bug Fixes
+
+* use gaTrack method rather than manipulating the dataLayer ([2e8b76a](https://github.com/MozillaFoundation/mozfest-plaza/commit/2e8b76a252c0de3188ca18444e093591f741cfc0))
+
 ### [3.17.1](https://github.com/digitalinteraction/mozfest/compare/v3.17.0...v3.17.1) (2023-11-21)
 
 ## [3.17.0](https://github.com/digitalinteraction/mozfest/compare/v3.16.2...v3.17.0) (2023-10-27)
