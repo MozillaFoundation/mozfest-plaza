@@ -2,6 +2,8 @@ import { MetricsEvent } from '@openlab/deconf-ui-toolkit'
 import _Vue from 'vue'
 import { SocketIoPlugin } from './socketio-plugin'
 
+const gaExcluded = new Set(['general/pageView'])
+
 export class MetricsPlugin {
   static shared: MetricsPlugin | null = null
 
@@ -28,9 +30,15 @@ export class MetricsPlugin {
       metric.eventName,
       metric.payload
     )
+    if (!gaExcluded.has(metric.eventName)) gaTrack({ event: metric.eventName })
   }
 
   error(error: unknown): void {
     SocketIoPlugin.sharedSocket?.emit('trackError', error)
   }
+}
+
+export function gaTrack(event: Record<string, string>) {
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push(event)
 }

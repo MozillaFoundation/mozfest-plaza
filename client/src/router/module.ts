@@ -15,7 +15,7 @@ import {
   Routes,
 } from '@openlab/deconf-ui-toolkit'
 import { ExtraRoutes, StorageKey } from '@/lib/module'
-import { MetricsPlugin } from '@/plugins/metrics-plugin'
+import { gaTrack, MetricsPlugin } from '@/plugins/metrics-plugin'
 
 Vue.use(VueRouter)
 
@@ -286,6 +286,14 @@ router.beforeEach((to, from, next) => {
   MetricsPlugin.shared?.track(
     createPageViewEvent(to.name ?? to.path, to.params)
   )
+
+  const url = new URL(to.fullPath, location.origin)
+
+  window.dataLayer.push({
+    event: 'virtualPageview',
+    pageUrl: url.toString(),
+    pageTitle: document.title,
+  })
 
   if (!loggedIn && to.name && protectedRoutes.has(to.name)) {
     next({ name: Routes.Atrium })
