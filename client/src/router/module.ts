@@ -289,7 +289,7 @@ router.beforeEach((to, from, next) => {
 
   const url = new URL(to.fullPath, location.origin)
 
-  window.dataLayer.push({
+  gaTrack({
     event: 'virtualPageview',
     pageUrl: url.toString(),
     pageTitle: document.title,
