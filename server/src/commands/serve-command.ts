@@ -1,5 +1,4 @@
 import fs from 'fs/promises'
-import Yaml from 'yaml'
 
 import { createTerminus } from '@godaddy/terminus'
 import {
@@ -15,7 +14,6 @@ import {
   closeRedisClients,
   ConferenceRepository,
   createMemoryStore,
-  EmailService,
   I18nService,
   JwtService,
   loadI18nLocales,
@@ -30,6 +28,7 @@ import { createServer } from '../server.js'
 import { RedisAdapter } from '@socket.io/redis-adapter'
 import { migrateCommand } from './migrate-command.js'
 import { fetchContentCommand } from './fetch-content-command.js'
+import { CaMoEmailService } from '../lib/email-service.js'
 
 const debug = createDebug('cmd:serve')
 
@@ -64,7 +63,7 @@ export async function createServerContext() {
   const jwt = new JwtService({ env, store, config })
   const i18n = new I18nService(loadI18nLocales(resources, ['en']))
   const semaphore = new SemaphoreService({ store })
-  const email = new EmailService({ env, config })
+  const email = new CaMoEmailService({ env })
   const sockets = new SocketService()
 
   const attendanceRepo = new AttendanceRepository({ postgres })

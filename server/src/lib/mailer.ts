@@ -1,6 +1,7 @@
 import { RegistrationMailer } from '@openlab/deconf-api-toolkit'
 import { Registration } from '@openlab/deconf-shared'
 import { AppContext } from './types'
+import got from 'got'
 
 interface MozMailerOptions {
   subjectKey: string
@@ -25,27 +26,25 @@ export class MozRegistrationMailer implements RegistrationMailer {
       registration.language,
       this.#options.subjectKey
     )
+    const url = this.#context.url.getServerLoginLink(token).toString()
 
     this.#context.email.sendTransactional(
       registration.email,
       subject,
       this.#options.templateId,
-      {
-        subject: subject,
-        url: this.#context.url.getServerLoginLink(token).toString(),
-      }
+      { subject, url }
     )
   }
   async sendVerifyEmail(
     registration: Registration,
     token: string
   ): Promise<void> {
-    // This shouldn't be triggered with a ti.to login
+    // This isn't triggered from a ti.to login
   }
   async sendAlreadyRegisteredEmail(
     registration: Registration,
     authToken: string
   ): Promise<void> {
-    // This shouldn't be triggered with a ti.to login
+    // This isn't triggered from a ti.to login
   }
 }
