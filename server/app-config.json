@@ -1,10 +1,10 @@
 {
   "mail": {
-    "fromEmail": "noreply@openlab.dev",
+    "fromEmail": "noreply@r0b.tech",
     "replyToEmail": "festival@mozilla.org"
   },
   "sendgrid": {
-    "loginTemplateId": "d-095e893ab93b4ba48e7039b1e070677f"
+    "loginTemplateId": "2560db55-d1d0-4491-8541-a68524f90662"
   },
   "jwt": {
     "issuer": "mozfest-localhost"
@@ -34,68 +34,110 @@
     ]
   },
   "pretalx": {
-    "eventSlug": "mozfest-house-kenya-2023",
+    "eventSlug": "mozfest-house-amsterdam-2024",
     "englishKeys": ["en", "en-mozilla"],
     "questions": {
       "pulsePhoto": 1179,
-      "links": [2396],
-      "affiliation": 2038,
-      "recommendations": 2719
+      "links": [],
+      "affiliation": 3593,
+      "recommendations": 3595
     },
     "aslTagId": 632,
     "ccTagId": 633
   },
   "tito": {
     "accountSlug": "mozilla",
-    "eventSlug": "mozfest-house-kenya"
+    "eventSlug": "mozfest-house-amsterdam-2024"
   },
-
   "sessionTypes": [
     {
-      "id": 3229,
-      "title": { "en": "Extended Workshop", "es": "Taller extendido" },
-      "icon": ["fas", "object-group"],
-      "layout": "workshop"
-    },
-    {
-      "id": 3230,
-      "title": { "en": "Art and Media", "es": "Arte y medios" },
-      "icon": ["fas", "palette"],
-      "layout": "plenary"
-    },
-    {
-      "id": 3227,
-      "title": { "en": "Discussion", "es": "Discusión" },
-      "icon": ["fas", "comments"],
-      "layout": "workshop"
-    },
-    {
-      "id": 3228,
+      "id": 4046,
       "title": { "en": "Workshop", "es": "Taller" },
       "icon": ["fas", "object-group"],
       "layout": "workshop"
     },
     {
-      "id": 3201,
-      "title": {
-        "en": "In-Person Workshop",
-        "es": "In-Person Workshop"
-      },
-      "icon": ["fas", "podcast"],
-      "layout": "plenary"
+      "id": 4048,
+      "title": { "en": "Extended Workshop", "es": "Taller extendido" },
+      "icon": ["fas", "object-group"],
+      "layout": "workshop"
     },
     {
-      "id": 3333,
-      "title": { "en": "Community Plenary", "es": "Community Plenary" },
+      "id": 4047,
+      "title": { "en": "Discussion", "es": "Discusión" },
+      "icon": ["fas", "comments"],
+      "layout": "workshop"
+    },
+    {
+      "id": 4045,
+      "title": {
+        "en": "Installation",
+        "es": "Installation"
+      },
       "icon": ["fas", "object-group"],
       "layout": "plenary"
     },
     {
-      "id": 3411,
-      "title": { "en": "Virtual Event", "es": "Virtual Event" },
+      "id": 4050,
+      "title": {
+        "en": "Social Moment",
+        "es": "Social Moment"
+      },
+      "icon": ["fas", "object-group"],
+      "layout": "plenary"
+    },
+    {
+      "id": 4049,
+      "title": {
+        "en": "Community Plenary",
+        "es": "Community Plenary"
+      },
       "icon": ["fas", "object-group"],
       "layout": "plenary"
     }
   ],
-  "tracks": []
+  "tracks": [
+    {
+      "id": 4498,
+      "title": {
+        "en": "Democracies and Elections",
+        "es": "Democracies and Elections"
+      }
+    },
+    {
+      "id": 4500,
+      "title": {
+        "en": "Mozilla Internal",
+        "es": "Mozilla Internal"
+      }
+    },
+    {
+      "id": 4501,
+      "title": {
+        "en": "Allies & Partners",
+        "es": "Allies & Partners"
+      }
+    },
+    {
+      "id": 4497,
+      "title": {
+        "en": "Planetary Justice",
+        "es": "Planetary Justice"
+      }
+    },
+    {
+      "id": 4499,
+      "title": {
+        "en": "Digital UniversalISM",
+        "es": "Digital UniversalISM"
+      }
+    },
+    {
+      "id": 4644,
+      "title": {
+        "en": "Dialogues for Unity",
+        "es": "Dialogues for Unity"
+      }
+    }
+  ]
 }
