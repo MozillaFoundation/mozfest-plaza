@@ -101,15 +101,15 @@ export class RegistrationRouter implements AppRouter {
       const titoEmails = await this.#context.store.retrieve<TitoRecord[]>(
         'tito.emails'
       )
-      if (!titoEmails) throw ApiError.internalServerError()
+      // if (!titoEmails) throw ApiError.internalServerError()
 
       const facilitatorEmails = await this.#context.store.retrieve<string[]>(
         'schedule.facilitators'
       )
-      if (!facilitatorEmails) throw ApiError.internalServerError()
+      // if (!facilitatorEmails) throw ApiError.internalServerError()
 
-      const titoRecord = titoEmails.find((r) => r.emailHash === emailHash)
-      const isFacilitator = facilitatorEmails.includes(emailHash)
+      const titoRecord = titoEmails?.find((r) => r.emailHash === emailHash)
+      const isFacilitator = facilitatorEmails?.includes(emailHash)
       const isAdmin = this.#context.env.ADMIN_EMAILS.has(emailAddress)
 
       if (!titoRecord && !isFacilitator && !isAdmin) {
