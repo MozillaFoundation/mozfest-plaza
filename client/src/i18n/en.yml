@@ -318,3 +318,8 @@ mozfest:
   mySchedule:
     title: My Schedule
     noResults: Add some sessions to My Schedule
+
+  searchView:
+    search: Search
+    noResults: Nothing matched your query
+    prompt: Start a search

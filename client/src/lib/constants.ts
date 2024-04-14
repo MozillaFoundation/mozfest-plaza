@@ -11,6 +11,7 @@ export enum StorageKey {
   WhatsOnFilters = 'whatsOnFilters',
   EmergentSessionsFilters = 'emergentSessionsFilters',
   MyScheduleFilters = 'myScheduleFilters',
+  SearchViewFilters = 'searchViewFilters',
 }
 
 export enum ExtraRoutes {
@@ -26,6 +27,7 @@ export enum ExtraRoutes {
   Calendar = 'calendar',
   MySchedule = 'mySchedule',
   Utils = 'utils',
+  Search = 'Search',
 }
 
 export const themeAllowlist = new Set([

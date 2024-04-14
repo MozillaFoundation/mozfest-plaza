@@ -220,6 +220,15 @@ const routes: Array<RouteConfig> = [
       pageTitle: 'mozfest.pageTitles.calendar',
     },
   },
+  {
+    path: '/search',
+    name: ExtraRoutes.Search,
+    component: () =>
+      import(/* webpackChunkName: "search" */ '../views/SearchView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.search',
+    },
+  },
 
   //
   // Utils

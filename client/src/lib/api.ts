@@ -27,6 +27,7 @@ export interface MozConferenceConfig {
   emergentInfo?: PageFlag
   emergentSessions?: PageFlag
   mySchedule?: PageFlag
+  search?: PageFlag
 
   navigation: {
     showInterpret: boolean

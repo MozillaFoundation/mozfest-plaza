@@ -2,8 +2,6 @@
 # This compose file spins up a redis + postgres container for development
 #
 
-version: '2.4'
-
 volumes:
   redis-data:
   pg-data:
