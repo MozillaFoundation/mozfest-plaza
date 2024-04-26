@@ -146,8 +146,8 @@ export async function fetchScheduleCommand(
         config.pretalx.questions.affiliation
       ),
       themes: helpers.getThemes(tags as any[]),
-      // tracks: config.tracks as Track[],
-      tracks: helpers.getTracksFromRooms(submissions as any),
+      tracks: config.tracks as Track[],
+      // tracks: helpers.getTracksFromRooms(submissions as any),
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
@@ -198,8 +198,12 @@ class PretalxHelpers {
         ? this.pretalx.getSlotId(submission.slot)
         : undefined
 
+      // submission.state = 'confirmed'
+      // submission.slot = '
+
       const type = submission.submission_type_id?.toString()
-      const track = submission.slot?.room_id?.toString()
+      // const track = submission.slot?.room_id?.toString()
+      const track = submission.track_id?.toString()
 
       if (type === undefined || track === undefined) return null
 
@@ -259,6 +263,8 @@ class PretalxHelpers {
         recommendations,
       }
     })
+
+    console.log(sessions)
 
     return sessions.filter((s) => Boolean(s)) as Session[]
   }

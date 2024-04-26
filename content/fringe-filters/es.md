@@ -1,1 +1,0 @@
-Te damos la bienvenida al directorio de eventos paralelos del MozFest, donde podrás encontrar todos los emocionantes eventos organizados por Mozilla y nuestra comunidad antes del festival. Echa un vistazo al programa de abajo para conocer los detalles de cada evento.

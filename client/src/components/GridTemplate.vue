@@ -4,17 +4,17 @@
       v-if="filteredSessions != null"
       :schedule="filteredSchedule"
       :sessions="filteredSessions"
-      :filters-key="filtersKey"
-      :enabled-filters="enabledFilters"
+      :filters-key="options.filtersKey"
+      :enabled-filters="options.enabledFilters"
       :config="config"
       slot-state="future"
       :language-options="languages"
       :url-filters="urlFilters"
       @filter="onFilter"
-      :readonly="false"
+      :readonly="config.options.readonly"
     >
-      <span slot="title">{{ $t('mozfest.artAndMedia.title') }}</span>
-      <ApiContent slot="info" slug="art-filters" />
+      <span slot="title">{{ config.title[$i18n.locale] }}</span>
+      <ApiContent slot="info" :slug="config.name" />
       <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
     </WhatsOnView>
     <InlineLoading v-else />
@@ -29,53 +29,62 @@ import {
   ApiContent,
   decodeUrlScheduleFilters,
   encodeScheduleFilters,
+  FilteredScheduleOptions,
   filterScheduleFromSessions,
-  guardPage,
-  ScheduleConfig,
   ScheduleFilterRecord,
   SelectOption,
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
 import { Session } from '@openlab/deconf-shared'
 import {
+  createSessionPredicate,
   getLanguageOptions,
+  GridOptions,
   mapApiState,
+  PageConfig,
   ScheduleRecord,
-  sessionTypeIds,
-  StorageKey,
 } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
+import { PropType } from 'vue/types/v3-component-props'
+
+type Config = PageConfig<'grid', GridOptions>
 
 interface Data {
-  filtersKey: string
-  enabledFilters: (keyof ScheduleFilterRecord)[]
-  config: ScheduleConfig
   languages: SelectOption[]
   urlFilters: ScheduleFilterRecord | null
 }
 
-const typeAllowList = new Set([sessionTypeIds.artAndMedia])
-
 export default Vue.extend({
   components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
+  props: {
+    config: { type: Object as PropType<Config>, required: true },
+  },
   data(): Data {
     return {
-      filtersKey: StorageKey.ArtFilters,
-      enabledFilters: ['query', 'track', 'language', 'theme'],
-      config: {
-        tileHeader: ['track'],
-        tileAttributes: ['themes'],
-      },
       languages: getLanguageOptions(),
       urlFilters: decodeUrlScheduleFilters(this.$route.query),
     }
   },
   computed: {
     ...mapApiState('api', ['schedule', 'user']),
+    options(): FilteredScheduleOptions {
+      const { filter, tile, controls } = this.config.options
+      return {
+        predicate: createSessionPredicate(filter),
+        filtersKey: `grid_${this.config.name}`,
+        enabledFilters: controls as any[],
+        languages: getLanguageOptions(),
+        scheduleConfig: {
+          tileHeader: tile.header as any[],
+          tileAttributes: tile.attributes as any[],
+          tileActions: tile.actions as any[],
+        },
+      }
+    },
     filteredSessions(): Session[] | null {
       if (!this.schedule) return null
 
-      return this.schedule.sessions.filter((s) => typeAllowList.has(s.type))
+      return this.schedule.sessions.filter((s) => this.options.predicate(s))
     },
     filteredSchedule(): ScheduleRecord | null {
       if (!this.schedule || !this.filteredSessions) return null
@@ -83,7 +92,9 @@ export default Vue.extend({
     },
   },
   created() {
-    guardPage(this.schedule?.settings.arts, this.user, this.$router)
+    // TODO: should this be migrated?
+    //
+    // guardPage(this.schedule?.settings.arts, this.user, this.$router)
   },
   methods: {
     onFilter(filters: ScheduleFilterRecord) {

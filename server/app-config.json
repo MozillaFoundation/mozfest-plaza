@@ -12,26 +12,17 @@
   "opengraphImage": "https://assets.mofoprod.net/network/images/Mozilla_Festival_2023_Banner_Graphic_1920x1080.original.png",
   "content": {
     "keys": [
-      "art-filters",
+      "arts",
       "atrium-active",
       "atrium-public",
-      "conference-over",
-      "fringe-filters",
-      "help",
-      "register",
-      "lightning-talks-filters",
-      "login",
-      "schedule-filters",
-      "spaces",
-      "whats-on-filters",
-      "misinfo-con-filters",
-      "emergent-info",
-      "emergent-filters",
       "calendar",
+      "help",
+      "login",
       "my-schedule",
-      "moz-house",
-      "moz-house-filters",
-      "search"
+      "register",
+      "schedule",
+      "search",
+      "whats-on"
     ]
   },
   "pretalx": {
@@ -99,42 +90,42 @@
   ],
   "tracks": [
     {
-      "id": 4498,
+      "id": "4498",
       "title": {
         "en": "Democracies and Elections",
         "es": "Democracies and Elections"
       }
     },
     {
-      "id": 4500,
+      "id": "4500",
       "title": {
         "en": "Mozilla Internal",
         "es": "Mozilla Internal"
       }
     },
     {
-      "id": 4501,
+      "id": "4501",
       "title": {
         "en": "Allies & Partners",
         "es": "Allies & Partners"
       }
     },
     {
-      "id": 4497,
+      "id": "4497",
       "title": {
         "en": "Planetary Justice",
         "es": "Planetary Justice"
       }
     },
     {
-      "id": 4499,
+      "id": "4499",
       "title": {
         "en": "Digital UniversalISM",
         "es": "Digital UniversalISM"
       }
     },
     {
-      "id": 4644,
+      "id": "4644",
       "title": {
         "en": "Dialogues for Unity",
         "es": "Dialogues for Unity"

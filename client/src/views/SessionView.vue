@@ -83,7 +83,7 @@ import { Location } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
 import { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
-import { getSessionParentRoute, MozSession } from '@/lib/module'
+import { MozSession } from '@/lib/module'
 import { env } from '@/plugins/env-plugin'
 
 const internalDomains = [
@@ -145,8 +145,7 @@ export default Vue.extend({
       )
     },
     backRoute(): Location {
-      if (!this.session) return { name: Routes.Schedule }
-      return getSessionParentRoute(this.session)
+      return { name: Routes.Schedule }
     },
     scheduleDate(): Date {
       return this.$dev.scheduleDate ?? this.$temporal.date

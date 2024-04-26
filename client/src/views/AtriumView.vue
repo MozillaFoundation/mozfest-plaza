@@ -16,7 +16,6 @@
               v-if="featuredVideoLink"
               :link="featuredVideoLink"
             />
-            <ApiContent slot="conference_over_message" slug="conference-over" />
           </ApiContent>
         </div>
       </BoxContent>

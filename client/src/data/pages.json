@@ -1,0 +1,64 @@
+{
+  "schedule": {
+    "path": "/schedule",
+    "name": "schedule",
+    "kind": "timeline",
+    "title": {
+      "en": "Schedule",
+      "es": "Programa"
+    },
+    "options": {
+      "filter": "types=4046,4047,4048,4049",
+      "tile": {
+        "header": ["type"],
+        "attributes": ["languages", "recorded", "track", "themes"],
+        "actions": ["addToMySchedule", "join"]
+      },
+      "controls": [
+        "query",
+        "sessionType",
+        "track",
+        "language",
+        "date",
+        "isRecorded",
+        "theme"
+      ]
+    }
+  },
+  "arts": {
+    "path": "/art-and-media",
+    "name": "arts",
+    "kind": "grid",
+    "title": {
+      "en": "Art & Media",
+      "es": "Arte y Medios"
+    },
+    "options": {
+      "filter": "types=4045,4359",
+      "tile": {
+        "header": ["track"],
+        "attributes": ["themes"]
+      },
+      "controls": ["query", "track", "language", "theme"],
+      "readonly": false
+    }
+  },
+  "whatsOn": {
+    "path": "/whats-on",
+    "name": "whatsOn",
+    "kind": "grid",
+    "title": {
+      "en": "Sneak Peek",
+      "es": "Adelanto"
+    },
+    "options": {
+      "filter": "",
+      "tile": {
+        "header": ["type"],
+        "attributes": ["track", "languages"]
+      },
+      "controls": ["query", "sessionType", "track", "language"],
+      "readonly": true
+    }
+  }
+}

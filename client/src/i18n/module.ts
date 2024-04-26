@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
 import en from './en.yml'
-// import es from './es.yml'
-import sw from './sw.yml'
+import es from './es.yml'
+// import sw from './sw.yml'
 
 Vue.use(VueI18n)
 
@@ -11,7 +11,7 @@ const rtlLocales = new Set(['ar'])
 
 const i18n = new VueI18n({
   locale: pickLocale(),
-  messages: { en, sw },
+  messages: { en, es },
 })
 
 export function pickLocale() {

@@ -16,6 +16,7 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 import { ExtraRoutes, StorageKey } from '@/lib/module'
 import { gaTrack, MetricsPlugin } from '@/plugins/metrics-plugin'
+import pages from '@/data/pages.json'
 
 Vue.use(VueRouter)
 
@@ -65,7 +66,7 @@ const routes: Array<RouteConfig> = [
       ),
   },
   {
-    path: '/schedule',
+    path: pages.schedule.path,
     name: Routes.Schedule,
     component: () =>
       import(/* webpackChunkName: "schedule" */ '../views/ScheduleView.vue'),
@@ -82,20 +83,15 @@ const routes: Array<RouteConfig> = [
       pageTitle: 'mozfest.pageTitles.mySchedule',
     },
   },
-  {
-    path: '/sneak-peak',
-    redirect: { name: Routes.Schedule },
-  },
-  {
-    path: '/sneak-peek',
-    name: Routes.WhatsOn,
-    // redirect: { name: Routes.Schedule },
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/WhatsOnView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.whatsOn',
-    },
-  },
+  // {
+  //   path: '/sneak-peek',
+  //   name: Routes.WhatsOn,
+  //   component: () =>
+  //     import(/* webpackChunkName: "schedule" */ '../views/WhatsOnView.vue'),
+  //   meta: {
+  //     pageTitle: 'mozfest.pageTitles.whatsOn',
+  //   },
+  // },
   {
     path: '/session/:sessionId',
     name: Routes.Session,
@@ -108,38 +104,10 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
-    path: '/social',
-    name: ExtraRoutes.Spaces,
-    component: () =>
-      import(/* webpackChunkName: "static" */ '../views/SpacesView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.spaces',
-    },
-  },
-  {
-    path: '/skill-share',
-    redirect: { name: ExtraRoutes.LightningTalks },
-  },
-  {
-    path: '/lightning-talks',
-    name: ExtraRoutes.LightningTalks,
-    component: () =>
-      import(
-        /* webpackChunkName: "schedule" */ '../views/LightningTalksView.vue'
-      ),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.skillShare',
-    },
-  },
-  {
-    path: '/art-gallery',
-    redirect: { name: ExtraRoutes.Arts },
-  },
-  {
     path: '/art-and-media',
     name: ExtraRoutes.Arts,
     component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/ArtAndMediaView.vue'),
+      import(/* webpackChunkName: "schedule" */ '../views/ArtsView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.artGallery',
     },
@@ -151,64 +119,6 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "static" */ '../views/HelpDeskView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.helpDesk',
-    },
-  },
-  {
-    path: '/fringe',
-    name: ExtraRoutes.Fringe,
-    component: () =>
-      import(
-        /* webpackChunkName: "schedule" */ '../views/FringeEventsView.vue'
-      ),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.fringeEvents',
-    },
-  },
-  {
-    path: '/house',
-    name: ExtraRoutes.House,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/HouseEventsView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.houseEvents',
-    },
-  },
-  {
-    path: '/house-info',
-    name: ExtraRoutes.HouseInfo,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/HouseInfoView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.houseEvents',
-    },
-  },
-  {
-    path: '/misinfocon',
-    name: ExtraRoutes.MisinfoCon,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/MisinfoConView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.misinfoCon',
-    },
-  },
-  {
-    path: '/emergent',
-    name: ExtraRoutes.EmergentInfo,
-    component: () =>
-      import(/* webpackChunkName: "static" */ '../views/EmergentInfoView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.emergentSessions',
-    },
-  },
-  {
-    path: '/emergent-sessions',
-    name: ExtraRoutes.EmergentSessions,
-    component: () =>
-      import(
-        /* webpackChunkName: "schedule" */ '../views/EmergentSessionsView.vue'
-      ),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.emergentSessions',
     },
   },
   {

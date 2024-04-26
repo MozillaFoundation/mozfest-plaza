@@ -65,21 +65,45 @@ export const themeAllowlist = new Set([
   '760', // Restaurant
 ])
 
-export const sessionTypeIds = {
-  extendedWorkshop: '3229',
-  artAndMedia: '3230',
-  discussion: '3227',
-  workshop: '3228',
-  inPersonWorkshop: '3201',
-  communityPlenary: '3333',
-  virtualEvent: '3411',
+export const sessionTypes = {
+  extendedWorkshop: '4048',
+  discussion: '4047',
+  workshop: '4046',
+  communityPlenary: '4049',
 
-  // Not setup for Kenya
-  socialMoment: '_',
-  lightningTalk: '_',
-  fringeEvent: '_',
+  instillation: '4045',
+  performance: '4359',
 }
 
 export const trackIds = {
   mozHouse: '3623',
+}
+
+export interface PageConfig<T extends string, U> {
+  path: string
+  name: string
+  title: Record<string, string>
+  kind: T
+  options: U
+}
+
+export type TimelineOptions = {
+  filter: string
+  tile: {
+    header: string[]
+    attributes: string[]
+    actions?: string[]
+  }
+  controls: string[]
+}
+
+export type GridOptions = {
+  filter: string
+  tile: {
+    header: string[]
+    attributes: string[]
+    actions?: string[]
+  }
+  controls: string[]
+  readonly: boolean
 }

@@ -33,7 +33,7 @@ import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
-import ArtAndMediaIcon from '@/icons/ArtAndMediaIcon.vue'
+import ArtsIcon from '@/icons/ArtsIcon.vue'
 import FringeIcon from '@/icons/FringeIcon.vue'
 import HelpDeskIcon from '@/icons/HelpDeskIcon.vue'
 import HouseIcon from '@/icons/HouseIcon.vue'
@@ -56,6 +56,7 @@ interface RouteIntermediate {
 }
 
 export default Vue.extend({
+  name: 'MozAppLayout',
   components: {
     AppLayout,
     MozfestLogo,
@@ -114,7 +115,7 @@ export default Vue.extend({
         {
           title: this.$t('mozfest.appLayout.arts') as string,
           name: ExtraRoutes.Arts,
-          icon: ArtAndMediaIcon,
+          icon: ArtsIcon,
           pageFlag: this.settings.arts,
         },
         {
