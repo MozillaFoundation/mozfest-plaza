@@ -46,6 +46,7 @@ export const ConferenceConfigStruct = object({
   emergentInfo: optional(PageFlagStruct),
   emergentSessions: optional(PageFlagStruct),
   mySchedule: optional(PageFlagStruct),
+  search: optional(PageFlagStruct),
 
   navigation: object({
     showInterpret: boolean(),

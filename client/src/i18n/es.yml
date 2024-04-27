@@ -308,6 +308,7 @@ mozfest:
     misinfoCon: MisinfoCon
     emergentSessions: Sesiones emergentes
     mySchedule: Mi programa
+    es: Buscar
 
   mySchedule:
     title: Mi programa

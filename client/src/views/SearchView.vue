@@ -4,13 +4,13 @@
       <div class="searchView-header">
         <ApiContent slug="search" />
         <div class="inlineField">
-          <label class="button is-static" for="searchQuery">
+          <label class="button is-static is-size-5" for="searchQuery">
             {{ $t('mozfest.searchView.search') }}
           </label>
           <input
             id="searchQuery"
             type="text"
-            class="input"
+            class="input is-size-5"
             :value="query"
             @input="onQuery"
           />
@@ -126,5 +126,8 @@ export default Vue.extend({
 .searchView .input {
   width: 320px;
   max-width: 100%;
+}
+.searchView .inlineField label {
+  pointer-events: all;
 }
 </style>

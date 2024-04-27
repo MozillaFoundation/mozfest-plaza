@@ -34,17 +34,13 @@ import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
 import ArtsIcon from '@/icons/ArtsIcon.vue'
-import FringeIcon from '@/icons/FringeIcon.vue'
+import SearchIcon from '@/icons/SearchIcon.vue'
 import HelpDeskIcon from '@/icons/HelpDeskIcon.vue'
-import HouseIcon from '@/icons/HouseIcon.vue'
-import LightningTalksIcon from '@/icons/LightningTalksIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
-import SpacesIcon from '@/icons/SpacesIcon.vue'
-import EmergentIcon from '@/icons/EmergentIcon.vue'
-import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
-import MisinfoConIcon from '@/icons/MisinfoConIcon.vue'
+// import SpacesIcon from '@/icons/SpacesIcon.vue'
+// import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
 import { ExtraRoutes, mapApiState, MozConferenceConfig } from '@/lib/module'
 import { Location } from 'vue-router'
 
@@ -88,18 +84,12 @@ export default Vue.extend({
           icon: PlazaIcon,
           pageFlag: this.settings.atrium,
         },
-        {
-          title: this.$t('mozfest.appLayout.whatsOn') as string,
-          name: Routes.WhatsOn,
-          icon: WhatsOnIcon,
-          pageFlag: this.settings.whatsOn,
-        },
-        {
-          title: this.$t('mozfest.appLayout.house') as string,
-          name: ExtraRoutes.House,
-          icon: HouseIcon,
-          pageFlag: this.settings.house,
-        },
+        // {
+        //   title: this.$t('mozfest.appLayout.whatsOn') as string,
+        //   name: Routes.WhatsOn,
+        //   icon: WhatsOnIcon,
+        //   pageFlag: this.settings.whatsOn,
+        // },
         {
           title: this.$t('mozfest.appLayout.schedule') as string,
           name: Routes.Schedule,
@@ -119,46 +109,10 @@ export default Vue.extend({
           pageFlag: this.settings.arts,
         },
         {
-          title: this.$t('mozfest.appLayout.skillShare') as string,
-          name: ExtraRoutes.LightningTalks,
-          icon: LightningTalksIcon,
-          pageFlag: this.settings.lightningTalks,
-        },
-        {
-          title: this.$t('mozfest.appLayout.fringe') as string,
-          name: ExtraRoutes.Fringe,
-          icon: FringeIcon,
-          pageFlag: this.settings.fringe,
-        },
-        {
-          title: this.$t('mozfest.appLayout.houseInfo') as string,
-          name: ExtraRoutes.HouseInfo,
-          icon: HouseIcon,
-          pageFlag: this.settings.houseInfo,
-        },
-        {
-          title: this.$t('mozfest.appLayout.misinfoCon') as string,
-          name: ExtraRoutes.MisinfoCon,
-          icon: MisinfoConIcon,
-          pageFlag: this.settings.misinfoCon,
-        },
-        {
-          title: this.$t('mozfest.appLayout.social') as string,
-          name: ExtraRoutes.Spaces,
-          icon: SpacesIcon,
-          pageFlag: this.settings.social,
-        },
-        {
-          title: this.$t('mozfest.appLayout.emergentSessions') as string,
-          name: ExtraRoutes.EmergentInfo,
-          icon: EmergentIcon,
-          pageFlag: this.settings.emergentInfo,
-        },
-        {
-          title: this.$t('mozfest.appLayout.emergentSessions') as string,
-          name: ExtraRoutes.EmergentSessions,
-          icon: EmergentIcon,
-          pageFlag: this.settings.emergentSessions,
+          title: this.$t('mozfest.appLayout.search') as string,
+          name: ExtraRoutes.Search,
+          icon: SearchIcon,
+          pageFlag: this.settings.search,
         },
         {
           title: this.$t('mozfest.appLayout.helpDesk') as string,

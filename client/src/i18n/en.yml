@@ -314,6 +314,7 @@ mozfest:
     misinfoCon: MisinfoCon
     emergentSessions: Emergent Sessions
     mySchedule: My Schedule
+    search: Search
 
   mySchedule:
     title: My Schedule
