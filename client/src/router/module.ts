@@ -113,6 +113,14 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
+    path: '/room/:roomId',
+    name: 'room',
+    component: () =>
+      import(/* webpackChunkName: "schedule" */ '../views/RoomView.vue'),
+    // NOTE: no page title as this is a hidden page
+    props: true,
+  },
+  {
     path: '/help',
     name: Routes.HelpDesk,
     component: () =>

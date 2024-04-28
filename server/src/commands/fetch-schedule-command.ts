@@ -261,6 +261,7 @@ class PretalxHelpers {
         hideFromSchedule: false,
 
         recommendations,
+        room: submission.slot?.room_id?.toString(),
       }
     })
 
