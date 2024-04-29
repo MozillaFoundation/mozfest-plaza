@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.19.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.19.0...v3.19.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* move to r0b registry ([b38a987](https://github.com/MozillaFoundation/mozfest-plaza/commit/b38a987f32652298daaae7a4918b7e5169a2ecdc))
+
 ## [3.19.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.18.0...v3.19.0) (2024-04-29)
 
 
