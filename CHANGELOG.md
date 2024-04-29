@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.19.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.18.0...v3.19.0) (2024-04-29)
+
+
+### Features
+
+* add hidden room view ([551d6f4](https://github.com/MozillaFoundation/mozfest-plaza/commit/551d6f4aae25cad235f7efaa43d2d6d68ca1aa10))
+* add new atrium banner ([807a06f](https://github.com/MozillaFoundation/mozfest-plaza/commit/807a06f29e15e98532d28cb178eba0cbd2821e50))
+* add new widgets ([e09d272](https://github.com/MozillaFoundation/mozfest-plaza/commit/e09d2725249ba75e7f4b6e34bcd962d27b6cca19))
+* add search page ([1894d2e](https://github.com/MozillaFoundation/mozfest-plaza/commit/1894d2eae13829da7e88454d0111b214ded31150))
+* allow arbitrary widget flags ([dc7e0cc](https://github.com/MozillaFoundation/mozfest-plaza/commit/dc7e0cc9b47c4867a859c01717cb13f106f0e2f6))
+* sketch out search view ([a394677](https://github.com/MozillaFoundation/mozfest-plaza/commit/a394677cdaeffb13e48e3efd1eb9b7a0cf69a422))
+* use CaMo to send magic links ([75c8340](https://github.com/MozillaFoundation/mozfest-plaza/commit/75c8340d90b9db83433322556343d4fe57165219))
+
+
+### Bug Fixes
+
+* add placeholder search icon ([a8c0cf1](https://github.com/MozillaFoundation/mozfest-plaza/commit/a8c0cf1485fd2f447cdc720f9791b6875c944149))
+* allow sessions without a track ([4146c8a](https://github.com/MozillaFoundation/mozfest-plaza/commit/4146c8a114747a11ab88c3ea27c99af942588dd5))
+* allow sign in before tito has been scraped ([562c913](https://github.com/MozillaFoundation/mozfest-plaza/commit/562c9131957b8d8bb4934aeafb4b1950f8e129a9))
+* update search icon ([6e0d65c](https://github.com/MozillaFoundation/mozfest-plaza/commit/6e0d65ce96da1daa3f12c70789b55271d5572581))
+
 ## [3.18.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.17.1...v3.18.0) (2024-03-24)
 
 
