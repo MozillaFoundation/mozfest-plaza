@@ -205,7 +205,7 @@ class PretalxHelpers {
       // const track = submission.slot?.room_id?.toString()
       const track = submission.track_id?.toString()
 
-      if (type === undefined || track === undefined) return null
+      if (type === undefined) return null
 
       const themes: string[] = (submission.tag_ids ?? []).map((t) =>
         t.toString()
