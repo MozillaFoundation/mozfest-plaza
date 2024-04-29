@@ -157,6 +157,16 @@ const staticWidgets: StaticWidget[] = deepSeal([
     href: 'mozfest.atrium.slackUrl',
   },
   {
+    key: 'discord',
+    public: true,
+    kind: 'custom',
+    classes: 'is-discord',
+    title: 'mozfest.atrium.discordTitle',
+    subtitle: 'mozfest.atrium.discordSubtitle',
+    icon: ['fab', 'discord'],
+    href: 'mozfest.atrium.discordUrl',
+  },
+  {
     key: 'linkedin',
     public: true,
     kind: 'custom',
@@ -184,6 +194,16 @@ const staticWidgets: StaticWidget[] = deepSeal([
     subtitle: 'mozfest.atrium.familySubtitle',
     icon: ['fas', 'puzzle-piece'],
     href: 'mozfest.atrium.familyUrl',
+  },
+  {
+    key: 'mastodon',
+    public: true,
+    kind: 'custom',
+    classes: 'is-mastodon',
+    title: 'mozfest.atrium.mastodonTitle',
+    subtitle: 'mozfest.atrium.mastodonSubtitle',
+    icon: ['fab', 'mastodon'],
+    href: 'mozfest.atrium.mastodonUrl',
   },
   {
     key: 'mozfestBook',
@@ -350,6 +370,18 @@ export default Vue.extend({
     background-color: $book;
     &[href]:hover {
       background-color: darken($book, 7%);
+    }
+  }
+  .colorWidget.is-discord {
+    background-color: $discord;
+    &[href]:hover {
+      background-color: darken($discord, 7%);
+    }
+  }
+  .colorWidget.is-mastodon {
+    background-color: $mastodon;
+    &[href]:hover {
+      background-color: #563acc;
     }
   }
   .colorWidget.is-register {

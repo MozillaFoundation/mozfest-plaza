@@ -214,7 +214,7 @@ mozfest:
     heading: MozFest 2023
     linkedinSubtitle: Add yourself to MozFest's LinkedIn Event to let others know you'll be attending.
     linkedinTitle: Share on LinkedIn
-    linkedinUrl: https://www.linkedin.com/events/6960951053789863936/
+    linkedinUrl: https://www.linkedin.com/events/mozfesthouseamsterdam20247183440579597336577/about/
     logIn: Log in
     onlineUsers: Online now
     registerSubtitle: Registration is now available for MozFest 2023.
@@ -240,6 +240,12 @@ mozfest:
     hubsSubtitle: Explore MozFest on Mozilla Hubs
     hubsTitle: Mozilla Hubs
     hubsUrl: https://mozfest.myhubs.net/
+    discordTitle: MozFest on Discord
+    discordSubtitle: Connect, collaborate and join the conversation.
+    discordUrl: https://www.discord.com/invite/mozfest
+    mastodonTitle: 'Twoot #MozFest'
+    mastodonSubtitle: Share the sessions you’re most excited about attending.
+    mastodonUrl: https://mzl.la/mf-share-mastodon
 
   footer:
     appName: MozFest

@@ -53,3 +53,13 @@
   color: $white;
   border-color: $secondary;
 }
+.button.is-discord {
+  background-color: $discord;
+  color: $white;
+  border-color: $discord;
+}
+.button.is-mastodon {
+  background-color: $mastodon;
+  color: $white;
+  border-color: $mastodon;
+}
