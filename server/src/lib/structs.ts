@@ -12,6 +12,7 @@ import {
   enums,
   coerce,
   defaulted,
+  record,
 } from 'superstruct'
 
 export const localised = () => object({ en: string(), es: string() })
@@ -55,20 +56,7 @@ export const ConferenceConfigStruct = object({
     showRegister: boolean(),
   }),
 
-  atriumWidgets: object({
-    siteVisitors: boolean(),
-    twitter: boolean(),
-    login: boolean(),
-    register: boolean(),
-    spatialChat: boolean(),
-    slack: boolean(),
-    familyResources: boolean(),
-    mozfestBook: boolean(),
-    linkedin: boolean(),
-    submissions: boolean(),
-    calendarHelp: boolean(),
-    hubs: defaulted(boolean(), false),
-  }),
+  atriumWidgets: record(string(), boolean()),
 
   content: object({
     atriumVideo: string(),

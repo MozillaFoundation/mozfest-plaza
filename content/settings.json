@@ -69,18 +69,15 @@
   },
 
   "atriumWidgets": {
-    "register": false,
-    "twitter": false,
     "login": true,
-    "siteVisitors": true,
-    "spatialChat": false,
-    "slack": false,
+    "siteVisitors": false,
+    "discord": true,
     "familyResources": false,
     "mozfestBook": true,
-    "linkedin": false,
+    "linkedin": true,
+    "mastodon": true,
     "submissions": false,
-    "calendarHelp": true,
-    "hubs": true
+    "calendarHelp": false
   },
 
   "content": {
