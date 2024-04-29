@@ -1,30 +1,17 @@
 <template>
   <svg
-    width="18px"
-    height="23px"
-    viewBox="0 0 18 23"
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="feather feather-search"
   >
-    <title>Artboard Copy</title>
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-      <circle
-        stroke="currentColor"
-        stroke-width="2"
-        cx="10.5861799"
-        cy="9.76925245"
-        r="5.76925245"
-      ></circle>
-      <line
-        x1="6.50132179"
-        y1="13.8428377"
-        x2="1.306158"
-        y2="19"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-      ></line>
-    </g>
+    <circle cx="11" cy="11" r="6"></circle>
+    <line x1="18.5" y1="18.5" x2="15.5" y2="15.5"></line>
   </svg>
 </template>
