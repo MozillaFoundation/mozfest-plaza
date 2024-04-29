@@ -8,7 +8,7 @@
       "es": "Programa"
     },
     "options": {
-      "filter": "types=4046,4047,4048,4049",
+      "filter": "types=4046,4047,4048,4049,4050",
       "tile": {
         "header": ["type"],
         "attributes": ["languages", "recorded", "track", "themes"],
