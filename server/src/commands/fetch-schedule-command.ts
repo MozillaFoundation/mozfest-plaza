@@ -265,7 +265,7 @@ class PretalxHelpers {
       }
     })
 
-    console.log(sessions)
+    // console.log(sessions)
 
     return sessions.filter((s) => Boolean(s)) as Session[]
   }
