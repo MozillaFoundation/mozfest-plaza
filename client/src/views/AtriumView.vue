@@ -517,6 +517,7 @@ export default Vue.extend({
   height: auto;
   display: block;
   max-width: 420px;
+  border-radius: $radius;
 }
 .atriumView-theme h3 {
   margin-bottom: 0;
