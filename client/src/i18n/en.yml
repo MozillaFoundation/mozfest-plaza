@@ -18,7 +18,7 @@ deconf:
     hideWorkshops: Hide all
 
   general:
-    appName: MozFest 2023 Schedule
+    appName: MozFest 2024 Schedule
     days: days | day | days
     hours: hours | hour | hours
     minutes: minutes | minute | minutes
@@ -211,13 +211,13 @@ mozfest:
     familySubtitle: On-demand activities for attendees ages 3-12.
     familyTitle: Family Resources
     familyUrl: https://www.mozillafestival.org/family-resources
-    heading: MozFest 2023
+    heading: MozFest
     linkedinSubtitle: Add yourself to MozFest's LinkedIn Event to let others know you'll be attending.
     linkedinTitle: Share on LinkedIn
     linkedinUrl: https://www.linkedin.com/events/mozfesthouseamsterdam20247183440579597336577/about/
     logIn: Log in
     onlineUsers: Online now
-    registerSubtitle: Registration is now available for MozFest 2023.
+    registerSubtitle: Registration is now available for MozFest.
     registerTitle: Secure Your Ticket
     registerUrl: https://www.mozillafestival.org/tickets
     slackSubtitle: Connect, collaborate, join the conversation on the MozFest slack

@@ -18,7 +18,7 @@ deconf:
     hideWorkshops: Ocultar todas
 
   general:
-    appName: Calendario del MozFest 2023
+    appName: Calendario del MozFest
     days: días | día | días
     hours: horas | hora | horas
     minutes: minutos | minuto | minutos
@@ -210,13 +210,13 @@ mozfest:
     familySubtitle: Actividades bajo demanda para asistentes de 3 a 12 años.
     familyTitle: Recursos para familias en MozFest
     familyUrl: https://www.mozillafestival.org/family-resources
-    heading: MozFest 2023
+    heading: MozFest
     linkedinSubtitle: Añade tu asistencia al Evento LinkedIn de MozFest para que otros sepan que asistirás.
     linkedinTitle: Comparte en LinkedIn
     linkedinUrl: https://www.linkedin.com/events/6960951053789863936/
     logIn: Iniciar sesión
     onlineUsers: En este momento en línea
-    registerSubtitle: El registro a MozFest 2023 ya está disponible.
+    registerSubtitle: El registro a MozFest ya está disponible.
     registerTitle: Asegura tu boleto de entrada
     registerUrl: https://www.mozillafestival.org/tickets
     slackSubtitle: Conectáte, colabora y únete a la conversación.
