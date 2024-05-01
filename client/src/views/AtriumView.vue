@@ -16,6 +16,40 @@
               v-if="featuredVideoLink"
               :link="featuredVideoLink"
             />
+            <div slot="themes" class="atriumView-themes">
+              <article class="atriumView-theme">
+                <img
+                  :src="$t('mozfest.atrium.theme1.image')"
+                  :alt="$t('mozfest.atrium.theme1.title')"
+                />
+                <h3>{{ $t('mozfest.atrium.theme1.title') }}</h3>
+                <p>{{ $t('mozfest.atrium.theme1.content') }}</p>
+              </article>
+              <article class="atriumView-theme">
+                <img
+                  :src="$t('mozfest.atrium.theme2.image')"
+                  :alt="$t('mozfest.atrium.theme2.title')"
+                />
+                <h3>{{ $t('mozfest.atrium.theme2.title') }}</h3>
+                <p>{{ $t('mozfest.atrium.theme2.content') }}</p>
+              </article>
+              <article class="atriumView-theme">
+                <img
+                  :src="$t('mozfest.atrium.theme3.image')"
+                  :alt="$t('mozfest.atrium.theme3.title')"
+                />
+                <h3>{{ $t('mozfest.atrium.theme3.title') }}</h3>
+                <p>{{ $t('mozfest.atrium.theme3.content') }}</p>
+              </article>
+              <article class="atriumView-theme">
+                <img
+                  :src="$t('mozfest.atrium.theme4.image')"
+                  :alt="$t('mozfest.atrium.theme4.title')"
+                />
+                <h3>{{ $t('mozfest.atrium.theme4.title') }}</h3>
+                <p>{{ $t('mozfest.atrium.theme4.content') }}</p>
+              </article>
+            </div>
           </ApiContent>
         </div>
       </BoxContent>
@@ -403,7 +437,7 @@ export default Vue.extend({
 
   .content {
     img {
-      max-width: 150px;
+      // max-width: 150px;
     }
   }
 
@@ -436,5 +470,24 @@ export default Vue.extend({
       }
     }
   }
+}
+
+.atriumView-themes {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+}
+.atriumView-theme {
+}
+.atriumView-theme img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.atriumView-theme h3 {
+  margin-bottom: 0;
+}
+.atriumView-theme > * + * {
+  margin-block-start: 0.5rem !important;
 }
 </style>

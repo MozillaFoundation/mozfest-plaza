@@ -1,25 +1,21 @@
-<!-- This is the Plaza page when the visitor is signed in -->
+<!-- This is the Plaza page when the visitor is NOT signed in -->
 
-# Arrive with an idea, leave with a community.
+MozFest House Amsterdam is a regional invitation for individuals, partners, allies, and initiatives to showcase their work within their local environment and experiences. House isn't just a date on the calendar – it's a vibrant convergence of minds, a celebration of creativity, and a catalyst for change in the digital world. Join us from 11-13 June 2024.
 
-MozFest House: Kenya is a regional gathering that will bring together builders, researchers, policymakers, activists, civil society organizations, and philanthropy to connect and explore critical issues related to a healthy internet and trustworthy AI. Join us in Nairobi, 21 - 22 September 2023.
+In 2024, urgent challenges await: 83 elections, ongoing conflicts, climate crisis, and AI’s impacts on jobs. Our theme for the year: Solidarity and Togetherness, aligns with envisioning a future prioritizing people and the environment. Together, we stand united, driving local change globally, prioritizing collective well-being over profit and machines, and reforming policies and tech for a better future.
 
-## What is MozFest House?
-This year, MozFest House is harnessing our collective power to better our digital landscape, build transformative systems, and sustain momentum within our community towards positive human and digital rights progress.
+## Thematic Focuses
 
-It is through the collective power of people that we can actualize Trustworthy AI and move the needle on important issues such as bias, transparency, data stewardship, and movement building.
+%themes%
 
-## What To Expect
-MozFest House: Kenya is the embodiment of Mozilla’s Africa Innovation Mradi convening strategy, facilitating spaces for diverse communities to come together to share knowledge, debate and build partnerships focused on the development and governance of digital technologies in Eastern and Southern Africa.
+## Featured Sessions
 
-MozFest House: Kenya aims to speak truth to power around digital safety, digital rights, tech accountability and the need for internet governance. House is hyper local: we come together with regional partners and new voices in the space to explore these issues from various perspectives. It is truly an event for everyone in the local community, so whether you're a technologist, educator, activist, artist or policy maker, all are welcome!
+%featured%
 
-# Keep Connected
+## Tickets and Registration
 
-## MozFest on Discord
+This year, you get to choose from our three ticket options with our early bird pricing starting at €55 for a Community Pass, €150 for a Festival Pass, and a range of €250 - €1000 for an Institutional Pass.
 
-[Have you joined MozFest on Discord](https://discord.gg/mozfest)?  It’s our digital space for ongoing conversations where you can engage year-round with diverse global movements, collaborate on Trustworthy AI, and stay updated with exclusive news and events.
+The Community Passes are subsidized by Mozilla and supported by the Institutional Pass ensuring accessibility for all. Your choice supports our mission of community participation for everyone while limiting financial barriers.
 
-## MozFest Blog and Newsletter
-
-Keep an eye on the [MozFest blog](http://mozillafestival.org/newsletter) and be sure to [subscribe to our emails](http://mozillafestival.org/newsletter) to be the first to know about upcoming opportunities, resources, and news about MozFest all-year-round. 
+%tito%
