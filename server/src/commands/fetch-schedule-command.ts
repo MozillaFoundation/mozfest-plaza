@@ -146,8 +146,8 @@ export async function fetchScheduleCommand(
         config.pretalx.questions.affiliation
       ),
       themes: helpers.getThemes(tags as any[]),
-      tracks: config.tracks as Track[],
-      // tracks: helpers.getTracksFromRooms(submissions as any),
+      // tracks: config.tracks as Track[],
+      tracks: helpers.getTracksFromRooms(submissions as any),
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
@@ -202,8 +202,8 @@ class PretalxHelpers {
       // submission.slot = '
 
       const type = submission.submission_type_id?.toString()
-      // const track = submission.slot?.room_id?.toString()
-      const track = submission.track_id?.toString()
+      const track = submission.slot?.room_id?.toString()
+      // const track = submission.track_id?.toString()
 
       if (type === undefined) return null
 
@@ -301,11 +301,19 @@ class PretalxHelpers {
       // TODO: check L10N when there is some data
       tracks.set(submission.slot.room_id, {
         id: submission.slot.room_id.toString(),
-        title: submission.slot.room,
+        title: this.unMozL10n(submission.slot.room),
       })
     }
 
     return Array.from(tracks.values())
+  }
+
+  unMozL10n(input: Record<string, unknown>) {
+    const output: Record<string, unknown> = {}
+    for (let key in input) {
+      output[key.replace(/-mozilla$/, '')] = input[key]
+    }
+    return output as Record<string, string>
   }
 
   // createTrack({ id, title }: { id: number; title: Localised }): Track {
