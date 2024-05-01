@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.20.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.19.1...v3.20.0) (2024-05-01)
+
+
+### Features
+
+* add pinned sessions to atrium ([88b7898](https://github.com/MozillaFoundation/mozfest-plaza/commit/88b7898d6d52d5fa2aa91d774d199a83b96e69f1))
+* add tito widget to atrium ([d0696fa](https://github.com/MozillaFoundation/mozfest-plaza/commit/d0696fab9bc9916e431ffb87a494b5bb7f6f8bf8))
+
+
+### Bug Fixes
+
+* fix CI for the server too ([b60aa08](https://github.com/MozillaFoundation/mozfest-plaza/commit/b60aa082b9507e9e19c4a5a6012a5c8ef2bc8a82))
+* pull track from rooms again ([55aad88](https://github.com/MozillaFoundation/mozfest-plaza/commit/55aad886f1d65da2827c1bf70566e03cfdb5a8a8))
+
 ### [3.19.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.19.0...v3.19.1) (2024-04-29)
 
 

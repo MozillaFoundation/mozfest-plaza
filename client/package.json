@@ -1,6 +1,6 @@
 {
   "name": "@openlab/mozfest-client",
-  "version": "3.19.1",
+  "version": "3.20.0",
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
