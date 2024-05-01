@@ -60,6 +60,7 @@ export const ConferenceConfigStruct = object({
 
   content: object({
     atriumVideo: string(),
+    featuredSessions: defaulted(array(string()), []),
   }),
 })
 

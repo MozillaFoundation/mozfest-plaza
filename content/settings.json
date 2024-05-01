@@ -81,6 +81,7 @@
   },
 
   "content": {
-    "atriumVideo": "https://vimeo.com/841947971"
+    "atriumVideo": "https://vimeo.com/841947971",
+    "featuredSessions": ["GRH3FU-1", "PHNFRC-1", "CY33P9-1", "F3ARTC-1 "]
   }
 }

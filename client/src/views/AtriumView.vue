@@ -50,6 +50,16 @@
                 <p>{{ $t('mozfest.atrium.theme4.content') }}</p>
               </article>
             </div>
+            <div slot="pinned" class="atriumView-pinned">
+              <SessionTile
+                v-for="session in pinnedSessions"
+                :key="session.id"
+                slot-state="future"
+                :session="session"
+                :schedule="schedule"
+                :config="pinnedConfig"
+              />
+            </div>
           </ApiContent>
         </div>
       </BoxContent>
@@ -93,7 +103,7 @@
         />
 
         <FeaturedSessions
-          v-if="user && featuredSessions && featuredSessions.length > 0"
+          v-if="user && featuredSessions.length > 0"
           :featured="featuredSessions"
           :current-date="scheduleDate"
         />
@@ -124,9 +134,12 @@ import {
   ApiContent,
   PrimaryEmbed,
   getFeaturedSessions,
+  ScheduleConfig,
+  SessionTile,
 } from '@openlab/deconf-ui-toolkit'
 import AppLayout from '@/components/MozAppLayout.vue'
 import { mapApiState, MozConferenceConfig } from '@/lib/module'
+import { Session } from '@openlab/deconf-shared'
 
 import sponsorData from '@/data/sponsors.json'
 
@@ -251,9 +264,16 @@ const staticWidgets: StaticWidget[] = deepSeal([
   },
 ])
 
+const pinnedConfig: ScheduleConfig = {
+  tileHeader: ['type'],
+  tileAttributes: ['track', 'themes'],
+  tileActions: ['join'],
+}
+
 interface Data {
   sponsors: SponsorGroup[]
   staticWidgets: StaticWidget[]
+  pinnedConfig: ScheduleConfig
 }
 
 export default Vue.extend({
@@ -267,11 +287,13 @@ export default Vue.extend({
     ColorWidget,
     SponsorGrid,
     FeaturedSessions,
+    SessionTile,
   },
   data(): Data {
     return {
       sponsors: deepSeal(sponsorData),
       staticWidgets,
+      pinnedConfig,
     }
   },
   computed: {
@@ -296,9 +318,9 @@ export default Vue.extend({
       return this.$dev.scheduleDate ?? this.$temporal.date
     },
 
-    featuredSessions(): null | SessionAndSlot[] {
-      if (!this.schedule) return null
-      if (!this.schedule.settings.schedule.enabled) return null
+    featuredSessions(): SessionAndSlot[] {
+      if (!this.schedule) return []
+      if (!this.schedule.settings.schedule.enabled) return []
 
       return (
         getFeaturedSessions(
@@ -306,8 +328,16 @@ export default Vue.extend({
           7,
           this.scheduleDate,
           (s) => Boolean(s.slot) && s.isFeatured
-        )?.slice(0, 3) ?? null
+        )?.slice(0, 3) ?? []
       )
+    },
+    pinnedSessions(): Session[] {
+      if (!this.schedule) return []
+      if (!this.schedule.settings.schedule.enabled) return []
+      const sessions = new Map(this.schedule.sessions.map((s) => [s.id, s]))
+      return this.schedule.settings.content.featuredSessions
+        .map((id) => sessions.get(id) as Session)
+        .filter((s) => Boolean(s))
     },
     widgets(): Set<string> {
       return new Set(
@@ -483,11 +513,26 @@ export default Vue.extend({
   width: 100%;
   height: auto;
   display: block;
+  max-width: 420px;
 }
 .atriumView-theme h3 {
   margin-bottom: 0;
 }
 .atriumView-theme > * + * {
   margin-block-start: 0.5rem !important;
+}
+.atriumView-pinned {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+}
+.atriumView-pinned > * {
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 1em;
+  align-self: flex-start;
+}
+.atriumView-pinned .speakerGrid {
+  display: none;
 }
 </style>

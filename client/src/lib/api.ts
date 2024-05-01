@@ -49,6 +49,7 @@ export interface MozConferenceConfig {
 
   content: {
     atriumVideo: string
+    featuredSessions: string[]
   }
 }
 

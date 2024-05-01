@@ -10,4 +10,4 @@ In 2024, urgent challenges await: 83 elections, ongoing conflicts, climate crisi
 
 ## Featured Sessions
 
-%featured%
+%pinned%
