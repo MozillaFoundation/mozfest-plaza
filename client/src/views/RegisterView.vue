@@ -1,6 +1,7 @@
 <template>
   <ContentLayout class="registerView">
     <ApiContent slug="register">
+      <!-- TODO: migrate to TitoWidget.vue -->
       <section v-if="scriptLoaded" slot="tito" class="titoWidget block">
         <tito-widget
           event="mozilla/mozilla-festival-2023"

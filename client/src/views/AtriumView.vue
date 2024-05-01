@@ -60,6 +60,7 @@
                 :config="pinnedConfig"
               />
             </div>
+            <TitoWidget slot="tito" />
           </ApiContent>
         </div>
       </BoxContent>
@@ -138,6 +139,7 @@ import {
   SessionTile,
 } from '@openlab/deconf-ui-toolkit'
 import AppLayout from '@/components/MozAppLayout.vue'
+import TitoWidget from '@/components/TitoWidget.vue'
 import { mapApiState, MozConferenceConfig } from '@/lib/module'
 import { Session } from '@openlab/deconf-shared'
 
@@ -281,6 +283,7 @@ export default Vue.extend({
     ApiContent,
     PrimaryEmbed,
     AppLayout,
+    TitoWidget,
     AtriumLayout,
     HeroCard,
     BoxContent,
