@@ -27,14 +27,18 @@ export class CaMoEmailService implements Readonly<EmailService> {
       `https://api.createsend.com/api/v3.2/transactional/smartemail/${templateId}/send`
     )
 
-    await got.post(endpoint, {
+    const res = await got.post(endpoint, {
       json: {
         To: [to],
         Data: data,
         ConsentToTrack: 'yes',
       },
       username: this.#context.env.SENDGRID_API_KEY,
-      throwHttpErrors: true,
+      throwHttpErrors: false,
     })
+    if (res.statusCode >= 400) {
+      console.error('CaMo Failed', res.body)
+      throw new Error('Failed to send email')
+    }
   }
 }
