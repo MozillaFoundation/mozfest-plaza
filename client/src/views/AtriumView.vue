@@ -528,7 +528,7 @@ export default Vue.extend({
 .atriumView-pinned {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
 }
 .atriumView-pinned > * {
   border: 1px solid $border;
