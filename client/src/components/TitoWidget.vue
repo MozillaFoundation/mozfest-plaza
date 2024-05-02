@@ -1,7 +1,7 @@
 <template>
   <section v-if="scriptLoaded" slot="tito" class="titoWidget block">
     <tito-widget
-      event="mozilla/mozilla-festival-2023"
+      event="mozilla/mozfest-house-amsterdam-2024"
       :locale="$i18n.locale"
     ></tito-widget>
   </section>
