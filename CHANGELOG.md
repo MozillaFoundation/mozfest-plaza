@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.20.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.20.1...v3.20.2) (2024-05-02)
+
+
+### Bug Fixes
+
+* improve mobile atrium ([84793f3](https://github.com/MozillaFoundation/mozfest-plaza/commit/84793f33255144030b0a5e0af89316358c41e2e7))
+* style tweak ([aceefd8](https://github.com/MozillaFoundation/mozfest-plaza/commit/aceefd8c43763624faae0ffe1bc5c49af6b45a99))
+* update tito embed slug ([e8e757f](https://github.com/MozillaFoundation/mozfest-plaza/commit/e8e757f31c69839c979dab2608677f4a44a0cc72))
+
 ### [3.20.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.20.0...v3.20.1) (2024-05-01)
 
 
