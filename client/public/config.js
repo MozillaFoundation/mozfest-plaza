@@ -7,6 +7,7 @@ window.CONFIG = {
   // GA_TOKEN: 'G-JRVVR708J7', // development/testing token
   GA_TOKEN: '',
   JWT_ISSUER: 'mozfest-localhost',
+  // SESSION_SHARE_URL: 'http://localhost:3000/share/session/$1',
   // DISABLE_SOCKETS: false,
 }
 

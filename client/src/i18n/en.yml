@@ -167,6 +167,7 @@ deconf:
       logIn: Log in
       recommendations: 'Recommendations:'
       recommendationsInfo: ''
+      share: Share this session
 
   interestSection:
     message: Register your interest

@@ -79,6 +79,13 @@ eventStructs.set(
     index: number(),
   })
 )
+eventStructs.set(
+  'session/share',
+  object({
+    sessionId: string(),
+    kind: string(),
+  })
+)
 eventStructs.set('profile/userCalendar', object({}))
 
 type Context = AppContext

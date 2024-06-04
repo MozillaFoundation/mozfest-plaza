@@ -37,6 +37,17 @@
         </p>
       </template>
 
+      <template slot="afterContent">
+        <button class="button is-primary" @click="shareSession">
+          <span class="icon">
+            <FontAwesomeIcon :icon="['fas', 'share-alt']" />
+          </span>
+          <span>
+            {{ $t('deconf.session.mozfest.share') }}
+          </span>
+        </button>
+      </template>
+
       <div
         slot="footer"
         v-if="recommendations.length > 0"
@@ -81,10 +92,12 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 import { Location } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
+import ShareSessionSheet from '@/components/ShareSessionSheet.vue'
 import { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
 import { MozSession } from '@/lib/module'
 import { env } from '@/plugins/env-plugin'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const internalDomains = [
   'mozilla.zoom.us',
@@ -127,6 +140,7 @@ export default Vue.extend({
     BackButton,
     NotFoundView,
     SessionTile,
+    FontAwesomeIcon,
   },
   props: {
     sessionId: { type: String, required: true },
@@ -246,6 +260,12 @@ export default Vue.extend({
       if (typeof index !== 'number') index = parseInt(index)
 
       console.log('RECOMMEND', session, index)
+    },
+    async shareSession() {
+      if (!this.session) return
+      this.$dialog.show(ShareSessionSheet, {
+        session: this.session,
+      })
     },
   },
 })
