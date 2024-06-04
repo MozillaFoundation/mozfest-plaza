@@ -166,9 +166,10 @@ export async function fetchScheduleCommand(
         speakers,
         config.pretalx.questions.affiliation
       ),
-      themes: helpers.getThemes(tags as any[]),
+      // themes: helpers.getThemes(tags as any[]),
+      themes: helpers.getThemesFromTracks(submissions as any[]),
       // tracks: config.tracks as Track[],
-      tracks: helpers.getTracksFromRooms(submissions as any),
+      tracks: helpers.getTracksFromRooms(submissions as any[]),
       types: config.sessionTypes.map((t) => helpers.createSessionType(t)),
     }
 
@@ -228,9 +229,10 @@ class PretalxHelpers {
 
       if (type === undefined) return null
 
-      const themes: string[] = (submission.tag_ids ?? []).map((t) =>
-        t.toString()
-      )
+      // const themes: string[] = (submission.tag_ids ?? []).map((t) =>
+      //   t.toString()
+      // )
+      const themes = submission.track_id ? [submission.track_id.toString()] : []
 
       const recommendations = pretalx.getSessionLinks(submission, [
         this.config.questions.recommendations,
@@ -327,6 +329,20 @@ class PretalxHelpers {
     }
 
     return Array.from(tracks.values())
+  }
+
+  getThemesFromTracks(submissions: PretalxTalk2[]) {
+    const themes = new Map<number, Theme>()
+
+    for (const sub of submissions) {
+      if (!sub.track_id || !sub.track || themes.has(sub.track_id)) continue
+      themes.set(sub.track_id, {
+        id: sub.track_id.toString(),
+        title: this.unMozL10n(sub.track),
+      })
+    }
+
+    return Array.from(themes.values())
   }
 
   unMozL10n(input: Record<string, unknown>) {

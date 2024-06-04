@@ -53,9 +53,9 @@ export function apiModule(): ApiStoreModule {
       },
       async fetchData({ commit }): Promise<boolean> {
         const data = await apiClient.getSchedule()
-        if (data) {
-          data.themes = data.themes.filter((t) => themeAllowlist.has(t.id))
-        }
+        // if (data) {
+        //   data.themes = data.themes.filter((t) => themeAllowlist.has(t.id))
+        // }
         commit('schedule', data)
         return data !== null
       },
