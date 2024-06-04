@@ -65,11 +65,12 @@
     "showInterpret": false,
     "showProfile": true,
     "showLogin": true,
-    "showRegister": false
+    "showRegister": true
   },
 
   "atriumWidgets": {
     "login": true,
+    "register": true,
     "siteVisitors": false,
     "discord": true,
     "familyResources": false,
