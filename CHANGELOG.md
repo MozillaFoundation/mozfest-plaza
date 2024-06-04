@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.21.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.20.3...v3.21.0) (2024-06-04)
+
+
+### Features
+
+* add share button to sessions ([9fabac0](https://github.com/MozillaFoundation/mozfest-plaza/commit/9fabac0970579239424e320a984ed36eafdedcf5))
+* map tracks as themes ([34a2d3e](https://github.com/MozillaFoundation/mozfest-plaza/commit/34a2d3eabbb52777e976560fe359c410f8d45847))
+* setup rooms ([3040fcc](https://github.com/MozillaFoundation/mozfest-plaza/commit/3040fccf092bb3fd7f795b7b58f510e96b3a3bf9))
+
+
+### Bug Fixes
+
+* content ([802854c](https://github.com/MozillaFoundation/mozfest-plaza/commit/802854c18b5f58e32c18d286b7f1ecadc0a87ba5))
+* copy ([661fbb5](https://github.com/MozillaFoundation/mozfest-plaza/commit/661fbb595fb712418f11b1b147b18d5a40d740fe))
+* use redir for favicon ([4c95063](https://github.com/MozillaFoundation/mozfest-plaza/commit/4c95063e238ce12e96c6947f5cf40936b0e423f6))
+
 ### [3.20.3](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.20.2...v3.20.3) (2024-05-04)
 
 
