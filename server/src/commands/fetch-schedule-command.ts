@@ -33,6 +33,7 @@ import {
   loadConfig,
   sha256Hash,
 } from '../lib/module.js'
+import got from 'got'
 
 // TODO: migrate back to deconf version once updated
 interface PretalxTax2 extends PretalxTax {
@@ -95,6 +96,7 @@ export const pretalxDataCommands = {
     p.getSpeakers(speakerOptions(await loadConfig()))
   ),
   tags: dataCommand((p) => p.getTags()),
+  rooms: dataCommand((p) => getRooms(p)),
 }
 
 function submissionOptions(config: AppConfig) {
@@ -113,6 +115,25 @@ function speakerOptions(config: AppConfig) {
       config.pretalx.questions.affiliation,
     ],
   }
+}
+
+async function getRooms(p: PretalxService) {
+  const config = await loadConfig()
+  const helpers = new PretalxHelpers(p, config.pretalx)
+
+  const data: any = await got(
+    `https://pretalx.com/api/events/${config.pretalx.eventSlug}/rooms/`
+  ).json()
+
+  const result: Record<string, unknown> = {}
+  for (const room of data.results) {
+    const name = helpers.unMozL10n(room.name)
+    result[p.getSlug(name.en)] = {
+      id: room.id,
+      name,
+    }
+  }
+  return result
 }
 
 /** A CLI command to scrape pretalx, format content for deconf and put into redis */

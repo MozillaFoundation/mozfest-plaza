@@ -1,6 +1,98 @@
 {
+  "tolhuis-cafe-sun-room-funder-lounge": {
+    "id": 3098,
+    "name": {
+      "en": "Tolhuis Cafe - Sun Room (Funder Lounge)"
+    }
+  },
+  "mozfest-virtual-gathering": {
+    "id": 3106,
+    "name": {
+      "en": "MozFest Virtual Gathering"
+    }
+  },
+  "arthur-staal": {
+    "id": 3099,
+    "name": {
+      "en": "Arthur Staal"
+    }
+  },
+  "room-e-flexroom": {
+    "id": 3100,
+    "name": {
+      "en": "Room E - Flexroom"
+    }
+  },
+  "room-d-water-studio": {
+    "id": 3101,
+    "name": {
+      "en": "Room D - Water Studio"
+    }
+  },
+  "room-a-ijzaal": {
+    "id": 3102,
+    "name": {
+      "en": "Room A - IJzaal"
+    }
+  },
+  "room-c-podcast-space": {
+    "id": 3103,
+    "name": {
+      "en": "Room C - Podcast Space"
+    }
+  },
+  "zonzij": {
+    "id": 3094,
+    "name": {
+      "en": "Zonzij"
+    }
+  },
+  "main-stage-galerij": {
+    "id": 3095,
+    "name": {
+      "en": "Main Stage - Galerij"
+    }
+  },
+  "room-b-tht-kamer": {
+    "id": 3096,
+    "name": {
+      "en": "Room B - THT Kamer"
+    }
+  },
   "garden": {
-    "id": "3104",
-    "name": { "en": "Garden" }
+    "id": 3104,
+    "name": {
+      "en": "Garden"
+    }
+  },
+  "room-g-garden-house": {
+    "id": 3105,
+    "name": {
+      "en": "Room G - Garden House"
+    }
+  },
+  "ethical-dilema-cafe": {
+    "id": 3163,
+    "name": {
+      "en": "Ethical Dilema Cafe"
+    }
+  },
+  "room-f-garden-tent": {
+    "id": 3137,
+    "name": {
+      "en": "Room F - Garden Tent"
+    }
+  },
+  "tolhuis-cafe-bar-area": {
+    "id": 3097,
+    "name": {
+      "en": "Tolhuis Cafe - Bar Area"
+    }
+  },
+  "paradiso": {
+    "id": 3155,
+    "name": {
+      "en": "Paradiso"
+    }
   }
 }
