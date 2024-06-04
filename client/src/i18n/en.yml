@@ -243,7 +243,7 @@ mozfest:
     discordTitle: MozFest on Discord
     discordSubtitle: Connect, collaborate and join the conversation.
     discordUrl: https://www.discord.com/invite/mozfest
-    mastodonTitle: 'Twoot #MozFest'
+    mastodonTitle: 'Toot #MozFest'
     mastodonSubtitle: Share the sessions you're most excited about attending.
     mastodonUrl: https://mzl.la/mf-share-mastodon
     themeHeading: Thematic Focuses
