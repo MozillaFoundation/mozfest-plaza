@@ -47,8 +47,6 @@ One of the highlights of #MozFest is meeting new people and making connections. 
 
 -   **Thursday, 13 June:**
 	- The final day for MozFest House Amsterdam starts again at 09:00. Sessions close at 18:00, but the show isn’t over. At 19:00 the doors open at the Tolhuistuin club for our [Songs of the Living](https://schedule.mozillafestival.org/session/DCAZCT-1) concert. This immersive performance, led by Toshi Reagon and a culmination of 3 community choirs and many local artists, is included in your festival ticket.
- 
-The final day for MozFest House Amsterdam starts again at 09:00. Sessions close at 18:00, but the show isn’t over. At 19:00 the doors open at the Tolhuistuin club for our [Songs of the Living](https://schedule.mozillafestival.org/session/DCAZCT-1) concert. This immersive performance, led by Toshi Reagon and a culmination of 3 community choirs and many local artists, is included in your festival ticket.
   
 If you’re keen on singing, you can be part of this musical journey and join the choir rehearsals happening June 8 and 10 in Amsterdam and June 9 in Rotterdam. [Sign up here.](https://www.mozillafestival.org/en/songs-of-the-living/)
 
@@ -90,11 +88,13 @@ Each session at MozFest House Amsterdam will be assigned a specific time and dat
 
 <details>
 <summary>I've registered for MozFest House Amsterdam but I get an error message when I try to login.</summary>
-Please ensure you are logging in with the same email that you used when registering for MozFest House Amsterdam. If you are using the same email address, make sure you have assigned your ticket. Search for your order confirmation email (with the subject line: “MozFest House Amsterdam 2024 Ticket”) and then press the 'View Order' button. If you are still experiencing issues after assigning your ticket, please reach out to [support@mozillafestival.org](mailto:support@mozillafestival.org).
+
+  Please ensure you are logging in with the same email that you used when registering for MozFest House Amsterdam. If you are using the same email address, make sure you have assigned your ticket. Search for your order confirmation email (with the subject line: “MozFest House Amsterdam 2024 Ticket”) and then press the 'View Order' button. If you are still experiencing issues after assigning your ticket, please reach out to [support@mozillafestival.org](mailto:support@mozillafestival.org).
 </details>
 
 <details>
 <summary>I'm unable to login to the Plaza? / The login box turns red when I enter my email.</summary>
+
 There are a couple of reasons for your email address not being accepted by the system:
 - If you have just registered, it can take up to 5 minutes for the schedule to recognize your email address. Please wait a moment and try again.
 - Did someone else register on your behalf? First ensure they have assigned the ticket to you, and if they have, you will need to complete your ticket sign up - check your inbox for an email from [support@tito.io](mailto:support@tito.io).
@@ -103,7 +103,8 @@ There are a couple of reasons for your email address not being accepted by the s
 
 <details>
 <summary>Can I sync my Plaza schedule with my Google or Outlook calendar?</summary>
-Yes! Follow the simple instructions [HERE](https://schedule.mozillafestival.org/sync-calendar) to add your MozFest session calendar
+
+  Yes! Follow the simple instructions [HERE](https://schedule.mozillafestival.org/sync-calendar) to add your MozFest session calendar
 </details>
 
  
@@ -111,17 +112,20 @@ Yes! Follow the simple instructions [HERE](https://schedule.mozillafestival.org/
 
 <details>
 <summary>Do I need a ticket to attend MozFest House Amsterdam?</summary>
+
 Yes, to be able to attend MozFest House Amsterdam you will need to have registered for a ticket on our website. Tickets are available on our [ticketing page](https://www.mozillafestival.org/en/tickets/).
 </details>
 
 <details>
 <summary>How much are the tickets for MozFest House Amsterdam?</summary> 
+
 Ticket prices start at just €55 for our community pass, which is subsidized by Mozilla, with a regular Festival Pass costing €200 for full access to the event as well as the [Songs of the Living](https://www.mozillafestival.org/en/songs-of-the-living/) concert taking place on 13 June.
 </details>
 
 <details>
 <summary>I’ve registered for a ticket but haven’t received a confirmation email!?</summary>
-Ticket confirmations are sent from support@tito.io. Please check your spam in case it’s sent there. If you haven't received your ticket please reach out to [support@mozillafestival.org](mailto:support@mozillafestival.org
+
+Ticket confirmations are sent from support@tito.io. Please check your spam in case it’s sent there. If you haven't received your ticket please reach out to support@mozillafestival.org
 </details>
 
 ### MozFest House Amsterdam Event Information
@@ -146,6 +150,7 @@ Welcome! As you arrive at the venue you will find helpful signs and navigation a
 
 <details>
 <summary>What if someone or something makes me feel uncomfortable, or I feel like I’m being harassed in any of my sessions?</summary>
+
 All of our Mozilla Festival events are governed by our [Community Participation Guidelines](https://www.mozillafestival.org/en/guidelines/). If at any time you feel uncomfortable or would like to report a concern, you can approach any staff member or Volunteer for immediate aid and report any issues to festivalsafety@mozilla.com for follow-up with our MozFest Safety team.
 </details>
 
