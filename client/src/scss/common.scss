@@ -1,9 +1,9 @@
 // ...
-$family-sans-serif: 'Nunito Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI',
+$family-sans-serif: 'MozillaSans', BlinkMacSystemFont, -apple-system, 'Segoe UI',
   'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
   'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
-$title-family: 'Zilla Slab', $family-sans-serif;
+$title-family: 'MozillaSemiSlab', $family-sans-serif;
 $title-weight: 700;
 $title-color: #000;
 
@@ -17,10 +17,18 @@ $mradi-blue: #01a9a9;
 //
 // MozFest
 //
-$primary: #ff02b1;
-$secondary: #8f14fb;
-$green: #03cccc;
-$link: #6702bf;
+// $primary: #ff02b1;
+// $secondary: #8f14fb;
+// $green: #03cccc;
+// $link: #6702bf;
+
+//
+// MozFest 2024
+//
+$primary: #ff008a;
+$secondary: #7f00ca;
+$green: #00d230;
+$link: #7f00ca;
 
 //
 // House Kenya
@@ -31,11 +39,19 @@ $link: #6702bf;
 // $link: $mradi-red;
 
 //
+// New brand
+//
+$radius-small: 0;
+$radius: 0;
+$radius-large: 0;
+
+//
 // ...
 //
-$sideTabs-background: $link;
-$sideTabs-active: #954fd2;
-$sideTabs-active: $link;
+$sideTabs-background: $primary;
+$sideTabs-color: black;
+$sideTabs-active: $secondary;
+$sideTabs-activeBackground: #ffebf4;
 
 $countdown-background: $link;
 

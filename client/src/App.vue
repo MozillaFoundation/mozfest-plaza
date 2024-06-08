@@ -122,44 +122,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-//
-// Fonts
-//
-@font-face {
-  font-display: swap;
-  font-family: 'Zilla Slab';
-  font-style: normal;
-  font-weight: 400;
-  src: url('@/fonts/zilla/ZillaSlab-Regular.woff2') format('woff2'),
-    url('@/fonts/zilla/ZillaSlab-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Zilla Slab';
-  font-style: normal;
-  font-weight: 700;
-  src: url('@/fonts/zilla/ZillaSlab-Bold.woff2') format('woff2'),
-    url('@/fonts/zilla/ZillaSlab-Bold.woff') format('woff');
-}
-@font-face {
-  font-display: swap;
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('@/fonts/nunito/NunitoSans-Regular.woff2') format('woff2'),
-    url('@/fonts/nunito/NunitoSans-Regular.ttf') format('ttf');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('@/fonts/nunito/NunitoSans-Bold.woff2') format('woff2'),
-    url('@/fonts/nunito/NunitoSans-Bold.ttf') format('ttf');
-}
-
+@import './scss/fonts.scss';
 @import '@openlab/deconf-ui-toolkit/theme.scss';
 @import '@fortawesome/fontawesome-svg-core/styles.css';
 @import './scss/hacks.scss';
