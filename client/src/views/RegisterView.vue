@@ -1,29 +1,24 @@
 <template>
   <ContentLayout class="registerView">
     <ApiContent slug="register">
-      <!-- TODO: migrate to TitoWidget.vue -->
-      <section v-if="scriptLoaded" slot="tito" class="titoWidget block">
-        <tito-widget
-          event="mozilla/mozilla-festival-2023"
-          :locale="$i18n.locale"
-        ></tito-widget>
-      </section>
+      <TitoWidget slot="tito" />
     </ApiContent>
   </ContentLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import ContentLayout from '@/components/MozContentLayout.vue'
 import { ApiContent } from '@openlab/deconf-ui-toolkit'
 import { loadScript } from '@/lib/module'
+import ContentLayout from '@/components/MozContentLayout.vue'
+import TitoWidget from '@/components/TitoWidget.vue'
 
 interface Data {
   scriptLoaded: boolean
 }
 
 export default Vue.extend({
-  components: { ApiContent, ContentLayout },
+  components: { ApiContent, ContentLayout, TitoWidget },
   data(): Data {
     return { scriptLoaded: false }
   },
