@@ -307,7 +307,7 @@ export default Vue.extend({
 
 .recommendationCard {
   background-color: hsl(0deg, 0%, 100%);
-  border-radius: 6px;
+  border-radius: $radius;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
     0 0px 0 1px rgb(10 10 10 / 1%);
   padding: 1em;
