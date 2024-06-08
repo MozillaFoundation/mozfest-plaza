@@ -72,3 +72,11 @@
 .sideTabs-tab {
   font-weight: 600;
 }
+
+.scheduleHeader.is-primary {
+  background-color: $secondary;
+}
+.sideTabs-tab .sideTabs-tabText,
+.sideTabs-tab .sideTabs-tabIcon {
+  opacity: 1;
+}
