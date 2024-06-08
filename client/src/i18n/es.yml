@@ -154,7 +154,7 @@ deconf:
     links: Enlaces
     linkPreview: Los enlaces para las sesiones estarán disponibles 15 minutos antes de que comiencen
     actions: Acciones
-    logIn: Si deseas asistir a esta sesión, inicia sesión y presiona el botón "Añadir a Mi programa". Los enlaces para unirse a la sesión aparecerán 15 minutos antes de que la sesión comience.
+    # logIn: Si deseas asistir a esta sesión, inicia sesión y presiona el botón "Añadir a Mi programa". Los enlaces para unirse a la sesión aparecerán 15 minutos antes de que la sesión comience.
     speakers: Facilitadores
     zoomLink: Zoom Room
     teamsLink: Reunión de Teams
