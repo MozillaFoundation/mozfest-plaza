@@ -3,6 +3,7 @@
     <tito-widget
       event="mozilla/mozfest-house-amsterdam-2024"
       :locale="$i18n.locale"
+      v-pre
     ></tito-widget>
   </section>
 </template>
