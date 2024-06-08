@@ -16,6 +16,7 @@ export interface MozConferenceConfig {
   whatsOn?: PageFlag
   schedule: PageFlag
   helpDesk: PageFlag
+  maps?: PageFlag
 
   social?: PageFlag
   arts?: PageFlag

@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import GridTemplate from '@/components/GridTemplate.vue'
+import GridTemplate from '@/templates/GridTemplate.vue'
 import pages from '@/data/pages.json'
 
 export default Vue.extend({

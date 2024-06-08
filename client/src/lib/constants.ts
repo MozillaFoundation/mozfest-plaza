@@ -107,3 +107,7 @@ export type GridOptions = {
   controls: string[]
   readonly: boolean
 }
+
+export type ContentOptions = {
+  contentSlug: string
+}

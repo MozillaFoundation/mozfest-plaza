@@ -44,7 +44,7 @@
     }
   },
   "whatsOn": {
-    "path": "/whats-on",
+    "path": "/whats-on (NOT_USED)",
     "name": "whatsOn",
     "kind": "grid",
     "title": {
@@ -59,6 +59,54 @@
       },
       "controls": ["query", "sessionType", "track", "language"],
       "readonly": true
+    }
+  },
+  "calendar": {
+    "path": "/sync-calendar",
+    "name": "calendar",
+    "kind": "content",
+    "title": {
+      "en": "My Calendar",
+      "es": "Mi calendario"
+    },
+    "options": {
+      "contentSlug": "calendar"
+    }
+  },
+  "register": {
+    "path": "/register",
+    "name": "register",
+    "kind": "content",
+    "title": {
+      "en": "Register",
+      "es": "Regístrate"
+    },
+    "options": {
+      "contentSlug": "register"
+    }
+  },
+  "maps": {
+    "path": "/maps",
+    "name": "maps",
+    "kind": "content",
+    "title": {
+      "en": "Maps",
+      "es": "Mapas"
+    },
+    "options": {
+      "contentSlug": "maps"
+    }
+  },
+  "helpDesk": {
+    "path": "/help",
+    "name": "helpDesk",
+    "kind": "content",
+    "title": {
+      "en": "Help Desk",
+      "es": "Servicio de Asistencia"
+    },
+    "options": {
+      "contentSlug": "help"
     }
   }
 }

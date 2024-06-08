@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import TimelineTemplate from '@/components/TimelineTemplate.vue'
+import TimelineTemplate from '@/templates/TimelineTemplate.vue'
 import NotFoundView from './NotFoundView.vue'
 import rooms from '@/data/rooms.json'
 import { PageConfig, TimelineOptions } from '@/lib/constants'
@@ -55,5 +55,9 @@ export default Vue.extend({
 
 .roomView .appLayout-page {
   margin: 0;
+}
+
+.roomView .scheduleView-title {
+  font-size: 4rem;
 }
 </style>

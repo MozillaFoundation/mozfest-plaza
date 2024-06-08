@@ -1,14 +1,15 @@
 <template>
-  <TimelineTemplate :config="pages.schedule" />
+  <ContentTemplate :config="pages.maps" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import TimelineTemplate from '@/templates/TimelineTemplate.vue'
+
+import ContentTemplate from '@/templates/ContentTemplate.vue'
 import pages from '@/data/pages.json'
 
 export default Vue.extend({
-  components: { TimelineTemplate },
+  components: { ContentTemplate },
   data: () => ({ pages }),
 })
 </script>

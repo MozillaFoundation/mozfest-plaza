@@ -281,22 +281,22 @@ mozfest:
   pageTitles:
     atrium: Plaza
     login: Log in
-    profile: Your Profile
-    schedule: Schedule
+    profile: My Profile
+    # schedule: Schedule
     session: View Session
-    spaces: Social
-    skillShare: Lightning Talks
-    artGallery: Art & Media
+    # spaces: Social
+    # skillShare: Lightning Talks
+    # artGallery: Art & Media
     terms: Ts & Cs
     guidelines: Guidelines
     privacy: Privacy
-    fringeEvents: Fringe Events
+    # fringeEvents: Fringe Events
     whatsOn: Sneak Peek
-    helpDesk: Help Desk
-    houseEvents: HouseEvents
-    misinfoCon: MisinfoCon
-    emergentSessions: Emergent Sessions
-    calendar: My Calendar
+    # helpDesk: Help Desk
+    # houseEvents: HouseEvents
+    # misinfoCon: MisinfoCon
+    # emergentSessions: Emergent Sessions
+    # calendar: My Calendar
     mySchedule: My Schedule
     utilities: Utilities
 
@@ -332,7 +332,7 @@ mozfest:
     atrium: Plaza
     whatsOn: Sneak Peek
     schedule: Schedule
-    helpDesk: Help Desk
+    # helpDesk: Help Desk
     social: Social
     arts: Arts & Media
     skillShare: Lightning Talks

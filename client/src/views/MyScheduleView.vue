@@ -51,6 +51,7 @@ function makeOptions(userSessions: string[]): FilteredScheduleOptions {
   }
 }
 
+// TODO: can this be migrated to TimelineTemplate ?
 export default Vue.extend({
   components: { AppLayout, FilteredScheduleView, ApiContent },
   computed: {

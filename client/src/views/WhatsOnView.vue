@@ -47,6 +47,8 @@ interface Data {
   urlFilters: ScheduleFilterRecord | null
 }
 
+// TODO: how can this use GridTemplate when it fetches its own sessions?
+
 export default Vue.extend({
   components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {

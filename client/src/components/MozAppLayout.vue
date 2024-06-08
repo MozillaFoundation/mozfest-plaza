@@ -25,7 +25,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { PageFlag } from '@openlab/deconf-shared'
-import { AppLayout, AppRoute, Routes } from '@openlab/deconf-ui-toolkit'
+import {
+  AppLayout,
+  AppRoute,
+  localiseFromObject,
+  Routes,
+} from '@openlab/deconf-ui-toolkit'
 
 import MozfestLogo from '@/components/MozfestLogo.vue'
 import MozillaLogo from '@/components/MozillaLogo.vue'
@@ -36,6 +41,7 @@ import LanguageControl from '@/components/LanguageControl.vue'
 import ArtsIcon from '@/icons/ArtsIcon.vue'
 import SearchIcon from '@/icons/SearchIcon.vue'
 import HelpDeskIcon from '@/icons/HelpDeskIcon.vue'
+import MapsIcon from '@/icons/MapsIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
@@ -43,6 +49,8 @@ import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
 // import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
 import { ExtraRoutes, mapApiState, MozConferenceConfig } from '@/lib/module'
 import { Location } from 'vue-router'
+
+import pages from '../data/pages.json'
 
 interface RouteIntermediate {
   title: string
@@ -77,6 +85,7 @@ export default Vue.extend({
     routes(): AppRoute[] {
       if (!this.settings) return []
 
+      // TODO: migrate this toward @/data/pages.json
       const routes: RouteIntermediate[] = [
         {
           title: this.$t('mozfest.appLayout.atrium') as string,
@@ -115,7 +124,19 @@ export default Vue.extend({
           pageFlag: this.settings.search,
         },
         {
-          title: this.$t('mozfest.appLayout.helpDesk') as string,
+          title: localiseFromObject(
+            this.$i18n.locale,
+            pages.maps.title
+          ) as string,
+          name: pages.maps.name,
+          icon: MapsIcon,
+          pageFlag: this.settings.maps,
+        },
+        {
+          title: localiseFromObject(
+            this.$i18n.locale,
+            pages.helpDesk.title
+          ) as string,
           name: Routes.HelpDesk,
           icon: HelpDeskIcon,
           pageFlag: this.settings.helpDesk,

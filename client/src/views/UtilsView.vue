@@ -46,24 +46,40 @@
           </li>
         </ul>
       </details>
+
+      <details>
+        <summary>Room URLs</summary>
+        <ul>
+          <li v-for="room in rooms" :key="room.slug">
+            <a :href="roomUrl(room.slug)">
+              {{ room.name.en }}
+            </a>
+          </li>
+        </ul>
+      </details>
     </article>
   </UtilLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import UtilLayout from '@/components/MozUtilLayout.vue'
 import {
   PrimaryEmbed,
   SecondaryEmbed,
   TextField,
 } from '@openlab/deconf-ui-toolkit'
+import { Localised } from '@openlab/deconf-shared'
+
+import UtilLayout from '@/components/MozUtilLayout.vue'
+import rooms from '@/data/rooms.json'
+import router from '@/router/module'
 
 interface Data {
   primaryUrl: string
   secondaryUrl: string
   primaryExamples: readonly string[]
   secondaryExamples: readonly string[]
+  rooms: { slug: string; id: number; name: Localised }[]
 }
 
 const primaryExamples = Object.freeze([
@@ -111,6 +127,9 @@ export default Vue.extend({
       secondaryUrl: 'https://vimeo.com/event/123456/chat/',
       primaryExamples,
       secondaryExamples,
+      rooms: Object.entries(rooms)
+        .map(([slug, room]) => ({ ...(room as any), slug }))
+        .sort((a, b) => a.name.en.localeCompare(b.name.en)),
     }
   },
   methods: {
@@ -121,6 +140,10 @@ export default Vue.extend({
       } catch {
         return false
       }
+    },
+    roomUrl(roomId: string) {
+      const r = router.resolve({ name: 'room', params: { roomId } })
+      return r.href
     },
   },
 })

@@ -1,26 +1,18 @@
 <template>
-  <ContentLayout class="calendarView">
-    <ApiContent slug="calendar">
-      <section slot="calendar" class="calendarWidget block">
-        <PrivateCalendarCreator api-module="api" />
-      </section>
-    </ApiContent>
-  </ContentLayout>
+  <ContentTemplate class="calendarView" :config="pages.calendar" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import ContentLayout from '@/components/MozContentLayout.vue'
-import {
-  ApiContent,
-  mapApiState,
-  PrivateCalendarCreator,
-  Routes,
-} from '@openlab/deconf-ui-toolkit'
+import { mapApiState, Routes } from '@openlab/deconf-ui-toolkit'
 import { ExtraRoutes } from '@/lib/constants'
 
+import ContentTemplate from '@/templates/ContentTemplate.vue'
+import pages from '@/data/pages.json'
+
 export default Vue.extend({
-  components: { ApiContent, ContentLayout, PrivateCalendarCreator },
+  components: { ContentTemplate },
+  data: () => ({ pages }),
   computed: {
     ...mapApiState('api', ['user']),
   },
@@ -37,17 +29,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.calendarView {
-  .calendarWidget {
-    border: 3px solid $border;
-    border-radius: $radius;
-    padding: 1rem;
-  }
-  .calendarWidget > * {
-    margin-bottom: 0;
-  }
-  p:has(img) {
-    text-align: center;
-  }
+.calendarView p:has(img) {
+  text-align: center;
 }
 </style>

@@ -6,13 +6,13 @@
     viewBox="-4 -4 32 32"
     fill="none"
     stroke="currentColor"
-    stroke-width="1.3"
+    stroke-width="1.2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    class="feather feather-help-circle"
+    class="feather feather-map"
   >
-    <circle cx="12" cy="12" r="10"></circle>
-    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+    <line x1="8" y1="2" x2="8" y2="18"></line>
+    <line x1="16" y1="6" x2="16" y2="22"></line>
   </svg>
 </template>

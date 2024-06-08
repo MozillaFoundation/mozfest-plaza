@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import VueRouter, { Route, RouteConfig } from 'vue-router'
 import i18n from '../i18n/module'
 import { env } from '../plugins/env-plugin'
 
@@ -12,11 +12,13 @@ import {
   createPageViewEvent,
   getRouteTitle,
   getScrollBehaviour,
+  localiseFromObject,
   Routes,
 } from '@openlab/deconf-ui-toolkit'
 import { ExtraRoutes, StorageKey } from '@/lib/module'
 import { gaTrack, MetricsPlugin } from '@/plugins/metrics-plugin'
 import pages from '@/data/pages.json'
+import VueI18n from 'vue-i18n'
 
 Vue.use(VueRouter)
 
@@ -58,12 +60,16 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
-    path: '/register',
+    path: pages.register.path,
     name: Routes.Register,
     component: () =>
       import(
         /* webpackChunkName: "registration" */ '../views/RegisterView.vue'
       ),
+    meta: {
+      title: pages.register.title,
+      // pageTitle: 'mozfest.pageTitles.register',
+    },
   },
   {
     path: pages.schedule.path,
@@ -71,7 +77,8 @@ const routes: Array<RouteConfig> = [
     component: () =>
       import(/* webpackChunkName: "schedule" */ '../views/ScheduleView.vue'),
     meta: {
-      pageTitle: 'mozfest.pageTitles.schedule',
+      title: pages.schedule.title,
+      // pageTitle: 'mozfest.pageTitles.schedule',
     },
   },
   {
@@ -81,6 +88,25 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "schedule" */ '../views/MyScheduleView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.mySchedule',
+    },
+  },
+  {
+    path: pages.arts.path,
+    name: ExtraRoutes.Arts,
+    component: () =>
+      import(/* webpackChunkName: "schedule" */ '../views/ArtsView.vue'),
+    meta: {
+      title: pages.arts.title,
+      // pageTitle: 'mozfest.pageTitles.artGallery',
+    },
+  },
+  {
+    path: pages.maps.path,
+    name: pages.maps.name,
+    component: () =>
+      import(/* webpackChunkName: "schedule" */ '../views/MapsView.vue'),
+    meta: {
+      title: pages.maps.title,
     },
   },
   // {
@@ -104,38 +130,31 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
-    path: '/art-and-media',
-    name: ExtraRoutes.Arts,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/ArtsView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.artGallery',
-    },
-  },
-  {
     path: '/room/:roomId',
     name: 'room',
     component: () =>
       import(/* webpackChunkName: "schedule" */ '../views/RoomView.vue'),
-    // NOTE: no page title as this is a hidden page
     props: true,
+    // NOTE: no page title as this is a hidden page
   },
   {
-    path: '/help',
+    path: pages.helpDesk.path,
     name: Routes.HelpDesk,
     component: () =>
       import(/* webpackChunkName: "static" */ '../views/HelpDeskView.vue'),
     meta: {
-      pageTitle: 'mozfest.pageTitles.helpDesk',
+      title: pages.helpDesk.path,
+      // pageTitle: 'mozfest.pageTitles.helpDesk',
     },
   },
   {
-    path: '/sync-calendar',
+    path: pages.calendar.path,
     name: ExtraRoutes.Calendar,
     component: () =>
       import(/* webpackChunkName: "static" */ '../views/CalendarView.vue'),
     meta: {
-      pageTitle: 'mozfest.pageTitles.calendar',
+      title: pages.calendar.title,
+      // pageTitle: 'mozfest.pageTitles.calendar',
     },
   },
   {
@@ -205,8 +224,18 @@ const router = new VueRouter({
   routes,
 })
 
+// Check the pages.json 's title field
+function getNewRouteTitle(to: Route, i18n: VueI18n) {
+  const title = to.meta?.title
+    ? localiseFromObject(i18n.locale, to.meta?.title)
+    : null
+  if (!title) return null
+  const app = i18n.t('deconf.general.appName')
+  return `${title} | ${app}`
+}
+
 router.beforeEach((to, from, next) => {
-  document.title = getRouteTitle(to, i18n)
+  document.title = getNewRouteTitle(to, i18n) || getRouteTitle(to, i18n)
 
   const loggedIn = Boolean(localStorage.getItem(StorageKey.AuthToken))
 
