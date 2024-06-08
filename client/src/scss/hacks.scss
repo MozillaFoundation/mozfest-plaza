@@ -26,7 +26,7 @@
 .content details {
   border: 2px dashed #ccc;
   padding: 1em;
-  border-radius: 0.5rem;
+  border-radius: $radius;
 }
 
 .content summary {
@@ -67,4 +67,8 @@
   background-color: $linkedin;
   color: $white;
   border-color: $linkedin;
+}
+
+.sideTabs-tab {
+  font-weight: 600;
 }

@@ -42,6 +42,6 @@ export default Vue.extend({
 
 <style lang="scss">
 .languageControl select {
-  border-radius: 6px;
+  border-radius: $radius;
 }
 </style>
