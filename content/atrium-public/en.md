@@ -6,6 +6,8 @@ In 2024, urgent challenges await: 83 elections, ongoing conflicts, climate crisi
 
 ## Thematic Focuses
 
+The following thematic focuses for MozFest House Amsterdam 2024 were co-designed by the talented Mozilla Festival Wranglers. This diverse group of over 20 practitioners, activists, academics, and artists from across the region came together to explore and define solidarity and togetherness in the realm of trustworthy AI. Discover more about our incredible Wrangler cohort and how to get involved in the program [here](https://www.mozillafestival.org/en/community/wranglers/)
+
 %themes%
 
 ## Featured Sessions
