@@ -60,6 +60,10 @@
     "enabled": true,
     "visible": true
   },
+  "maps": {
+    "enabled": true,
+    "visible": false
+  },
 
   "navigation": {
     "showInterpret": false,
