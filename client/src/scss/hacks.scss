@@ -80,3 +80,7 @@
 .sideTabs-tab .sideTabs-tabIcon {
   opacity: 1;
 }
+
+.sideTabs-tab:hover:not(.is-active) {
+  color: white;
+}
