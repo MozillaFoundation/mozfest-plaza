@@ -7,7 +7,7 @@
     class="mozAppLayout"
   >
     <MozfestLogo slot="brandA" />
-    <MozillaLogo slot="brandB" />
+    <!-- <MozillaLogo slot="brandB" /> -->
 
     <LanguageControl slot="languageControl" />
 
@@ -33,7 +33,7 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 
 import MozfestLogo from '@/components/MozfestLogo.vue'
-import MozillaLogo from '@/components/MozillaLogo.vue'
+// import MozillaLogo from '@/components/MozillaLogo.vue'
 import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
@@ -64,7 +64,7 @@ export default Vue.extend({
   components: {
     AppLayout,
     MozfestLogo,
-    MozillaLogo,
+    // MozillaLogo,
     MozfestSquareLogo,
     MozPageFooter,
     LanguageControl,

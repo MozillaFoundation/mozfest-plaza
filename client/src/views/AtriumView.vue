@@ -5,7 +5,7 @@
         slot="top"
         :title="$t('mozfest.atrium.title')"
         :subtitle="$t('mozfest.atrium.subtitle')"
-        coverImage="/atrium.jpg"
+        coverImage="/plaza-hero.png"
       />
 
       <BoxContent slot="left" :title="$t('mozfest.atrium.heading')">

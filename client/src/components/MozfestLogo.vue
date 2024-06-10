@@ -1,3 +1,3 @@
 <template>
-  <img src="/mozfest-logo.svg" width="92" height="33" />
+  <img src="/mozfest.png" width="160" height="21" />
 </template>
