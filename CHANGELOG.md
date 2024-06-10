@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.22.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.21.0...v3.22.0) (2024-06-10)
+
+
+### Features
+
+* add new content pages, pull from the pages.json & centralise slot-widgets ([76a87e0](https://github.com/MozillaFoundation/mozfest-plaza/commit/76a87e07216340408aad7d6fbb65487b3aa049b1))
+* new branding ([b1d5bd9](https://github.com/MozillaFoundation/mozfest-plaza/commit/b1d5bd98eb96b08fdc02a5b633a05d9a0f7e7d4f))
+
+
+### Bug Fixes
+
+* css tweak ([4b6d30c](https://github.com/MozillaFoundation/mozfest-plaza/commit/4b6d30ce16756f89dfe090b9755561f6572e9203))
+* i18n updates ([2238b37](https://github.com/MozillaFoundation/mozfest-plaza/commit/2238b37f67c2fc1710637bd505ae255ed032a4c5))
+* re-add tito widget to register page ([919e24c](https://github.com/MozillaFoundation/mozfest-plaza/commit/919e24cad429eadc13dcef87c68ba156b542fe09))
+* rebrand tweaks ([71555c6](https://github.com/MozillaFoundation/mozfest-plaza/commit/71555c67719e279773bc11fe975e6337772b2de3))
+* remove vue custom-element warning ([1a8790a](https://github.com/MozillaFoundation/mozfest-plaza/commit/1a8790aa28f01da38097caa4b506c3bbb1999d89))
+* style tweaks ([7fa9465](https://github.com/MozillaFoundation/mozfest-plaza/commit/7fa9465db3459001903d3b8a388636126dc1a6a4))
+* update GTM ([be501af](https://github.com/MozillaFoundation/mozfest-plaza/commit/be501af3c7c1da3c4aa1bcd61c8c9b04a0541000))
+
 ## [3.21.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.20.3...v3.21.0) (2024-06-04)
 
 
