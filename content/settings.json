@@ -62,7 +62,7 @@
   },
   "maps": {
     "enabled": true,
-    "visible": false
+    "visible": true
   },
 
   "navigation": {
