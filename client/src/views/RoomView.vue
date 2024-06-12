@@ -49,6 +49,7 @@ export default Vue.extend({
 .roomView .scheduleFilters,
 .roomView .appLayout-header,
 .roomView .pageFooter,
+.roomView .scheduleView-toggleHistory,
 .roomView .appLayout-tabs {
   display: none;
 }
