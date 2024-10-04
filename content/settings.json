@@ -8,12 +8,12 @@
     "visible": false
   },
   "schedule": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "helpDesk": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "social": {
@@ -21,19 +21,19 @@
     "visible": false
   },
   "arts": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "lightningTalks": {
     "enabled": false,
     "visible": false
   },
   "fringe": {
-    "enabled": true,
+    "enabled": false,
     "visible": false
   },
   "house": {
-    "enabled": true,
+    "enabled": false,
     "visible": false
   },
   "houseInfo": {
@@ -53,28 +53,28 @@
     "visible": false
   },
   "mySchedule": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "search": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "maps": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
 
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": true,
-    "showRegister": true
+    "showLogin": false,
+    "showRegister": false
   },
 
   "atriumWidgets": {
-    "login": true,
-    "register": true,
+    "login": false,
+    "register": false,
     "siteVisitors": false,
     "discord": true,
     "familyResources": false,
