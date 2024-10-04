@@ -1,1 +1,1 @@
-Welcome to MozFest House Amsterdam Installations Page. Here you will find information on all the art and installations that will be on display at the festival. Navigate these experiences at any time as it fits into your schedule.
+Welcome to MozFest House Zambia Installations Page. Here you will find information on all the art and installations that will be on display at the festival. Navigate these experiences at any time as it fits into your schedule.
