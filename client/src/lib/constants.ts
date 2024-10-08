@@ -1,3 +1,6 @@
+import { Localised } from '@openlab/deconf-shared'
+import { SponsorGroup } from '@openlab/deconf-ui-toolkit'
+
 export enum StorageKey {
   AuthToken = 'authToken',
   Analytics = 'analyticsConsent',
@@ -87,6 +90,8 @@ export interface PageConfig<T extends string, U> {
   options: U
 }
 
+// TODO: these should be *Config suffix-ed
+
 export type TimelineOptions = {
   filter: string
   tile: {
@@ -110,4 +115,38 @@ export type GridOptions = {
 
 export type ContentOptions = {
   contentSlug: string
+}
+
+export type AtriumWidgetInit<Kind, Options> = {
+  id: string
+  kind: Kind
+  options: Options
+  condition?: string
+}
+
+export type VisitorsWidgetOptions = AtriumWidgetInit<
+  'visitors',
+  { subtitle: Localised }
+>
+export type CustomWidgetOptions = AtriumWidgetInit<
+  'custom',
+  {
+    title: Localised
+    subtitle: Localised
+    url?: string
+    icon: string
+  }
+>
+export type AtriumWidgetOptions = VisitorsWidgetOptions | CustomWidgetOptions
+
+export type AtriumOptions = {
+  hero: {
+    title: Localised
+    subtitle: Localised
+  }
+  widgets: AtriumWidgetOptions[]
+  featured: {
+    limit: 7
+  }
+  sponsors: SponsorGroup
 }

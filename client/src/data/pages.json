@@ -1,4 +1,123 @@
 {
+  "plaza": {
+    "path": "/plaza",
+    "name": "atrium",
+    "kind": "atrium",
+    "title": {
+      "en": "MozFest House Zambia"
+    },
+    "options": {
+      "hero": {
+        "title": { "en": "MozFest House Zambia" },
+        "subtitle": { "en": "from November 20 - 21 2024" }
+      },
+      "widgets": [
+        {
+          "id": "register",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "Secure Your Ticket" },
+            "subtitle": { "en": "Registration is now available for MozFest." },
+            "url": "https://www.mozillafestival.org/tickets",
+            "icon": "fas ticket-alt"
+          },
+          "condition": "!user"
+        },
+        {
+          "id": "login",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "Log in" },
+            "subtitle": { "en": "" },
+            "url": "/login",
+            "icon": "fas envelope"
+          },
+          "condition": "!user"
+        },
+        {
+          "id": "visitors",
+          "kind": "visitors",
+          "options": {
+            "subtitle": { "en": "Online now" }
+          }
+        },
+        {
+          "id": "calendar",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "Calendar Sync" },
+            "subtitle": {
+              "en": "Get your MozFest sessions in your own calendar"
+            },
+            "url": "/sync-calendar",
+            "icon": "fas calendar-plus"
+          },
+          "condition": "user"
+        },
+        {
+          "id": "discord",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "MozFest on Discord" },
+            "subtitle": {
+              "en": "Connect, collaborate and join the conversation."
+            },
+            "url": "https://www.discord.com/invite/mozfest",
+            "icon": "fab discord"
+          }
+        },
+        {
+          "id": "linkedin",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "Share on LinkedIn" },
+            "subtitle": {
+              "en": "Add yourself to MozFest's LinkedIn Event to let others know you'll be attending."
+            },
+            "url": "https://www.linkedin.com/events/7241748022966063105/",
+            "icon": "fab linkedin"
+          }
+        },
+        {
+          "id": "mastodon",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "Toot #MozFest" },
+            "subtitle": {
+              "en": "Share the sessions you're most excited about attending."
+            },
+            "url": "https://mzl.la/mf-share-mastodon",
+            "icon": "fab mastodon"
+          }
+        },
+        {
+          "id": "book",
+          "kind": "custom",
+          "options": {
+            "title": { "en": "How To MozFest" },
+            "subtitle": {
+              "en": "Discover our award-winning book, a celebration of our past and future."
+            },
+            "url": "https://book.mozillafestival.org",
+            "icon": "fas book"
+          }
+        }
+      ],
+      "featuerd": { "limit": 7 },
+      "sponsors": [
+        {
+          "title": "Presenting Sponsor",
+          "size": "medium",
+          "sponsors": [{ "title": "Visa", "image": "sponsors/visa.png" }]
+        },
+        {
+          "title": "Showcase Sponsor",
+          "size": "regular",
+          "sponsors": [{ "title": "Skoll", "image": "sponsors/skoll.png" }]
+        }
+      ]
+    }
+  },
   "schedule": {
     "path": "/schedule",
     "name": "schedule",
