@@ -5,7 +5,7 @@
     :title="title"
     :subtitle="subtitle"
     :icon="icon"
-    :href="config.url"
+    :href="config.options.url"
   />
 </template>
 
