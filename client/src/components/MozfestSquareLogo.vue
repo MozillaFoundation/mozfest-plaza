@@ -1,3 +1,3 @@
 <template>
-  <img src="/house-logo.png" width="64" height="64" />
+  <img src="/house-logo.svg" width="64" height="64" />
 </template>
