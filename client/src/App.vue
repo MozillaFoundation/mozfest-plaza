@@ -72,7 +72,7 @@ export default Vue.extend({
     })
 
     // Setup a random tick to re-pull the schedule
-    this.timerId = setInterval(
+    this.timerId = window.setInterval(
       () => this.$store.dispatch('api/fetchData'),
       this.randomTick()
     )

@@ -16,7 +16,7 @@
 
       <div slot="right">
         <AtriumWidget
-          v-for="widget in config.options.widgets"
+          v-for="widget in filteredWidgets"
           :key="widget.id"
           :config="widget"
         />
@@ -77,7 +77,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapApiState('api', ['user', 'schedule']),
-    widgets(): AtriumWidgetOptions[] {
+    filteredWidgets(): AtriumWidgetOptions[] {
       return this.config.options.widgets.filter((w) => this.exec(w.condition))
     },
     contentSlug(): string {
@@ -104,6 +104,8 @@ export default Vue.extend({
     // TODO: use an actual logic library if this needs to be terser
     exec(condition?: string) {
       if (!condition) return true
+      if (condition === 'false') return false
+      if (condition === 'true') return true
       if (condition.includes('!user') && this.user) return false
       else if (condition.includes('user') && !this.user) return false
       return true

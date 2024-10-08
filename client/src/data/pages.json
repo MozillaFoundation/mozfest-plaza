@@ -39,7 +39,8 @@
           "kind": "visitors",
           "options": {
             "subtitle": { "en": "Online now" }
-          }
+          },
+          "condition": "false"
         },
         {
           "id": "calendar",

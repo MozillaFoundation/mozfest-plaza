@@ -54,7 +54,7 @@ export default Vue.extend({
     if (!this.isAdmin) return
 
     this.fetchStatus()
-    this.timerId = setInterval(() => this.fetchStatus(), 1000)
+    this.timerId = window.setInterval(() => this.fetchStatus(), 1000)
   },
   destroyed() {
     if (this.timerId) {

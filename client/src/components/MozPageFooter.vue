@@ -15,8 +15,8 @@ import { PageFooter, PageFooterLink } from '@openlab/deconf-ui-toolkit'
 import Vue from 'vue'
 
 interface Data {
-  appName: string
-  appVersion: string
+  appName: any
+  appVersion: any
 }
 
 export default Vue.extend({
