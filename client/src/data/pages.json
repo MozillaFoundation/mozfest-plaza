@@ -128,7 +128,7 @@
       "es": "Programa"
     },
     "options": {
-      "filter": "types=4046,4047,4048,4049,4050",
+      "filter": "types=4666,4667,4664,4669",
       "tile": {
         "header": ["type"],
         "attributes": ["languages", "recorded", "track", "themes"],
@@ -154,7 +154,7 @@
       "es": "Arte y Medios"
     },
     "options": {
-      "filter": "types=4045,4359",
+      "filter": "types=4665",
       "tile": {
         "header": ["track"],
         "attributes": ["themes"]
