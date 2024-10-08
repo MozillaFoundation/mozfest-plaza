@@ -155,7 +155,7 @@ deconf:
     links: Links
     linkPreview: The session links will be available 15 minutes before the start time
     actions: Actions
-    logIn: Attending MozFest House Amsterdam? Log in below with your ticket email to create your own personalized schedule. Click 'Add to My Schedule' once you're logged in.
+    logIn: Log in below with your ticket email to create your own personalized schedule. Click 'Add to My Schedule' once you're logged in.
     speakers: Facilitators
     zoomLink: Zoom Room
     teamsLink: Teams Meeting
