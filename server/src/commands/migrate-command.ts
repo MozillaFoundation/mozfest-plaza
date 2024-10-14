@@ -5,10 +5,11 @@ import {
   PostgresService,
 } from '@openlab/deconf-api-toolkit'
 import { createEnv, createDebug } from '../lib/module.js'
+import addAttendeeOauth2 from '../migrations/001-attendee-oauth2.js'
 
 const debug = createDebug('cmd:migrate')
 
-const MOZFEST_MIGRATIONS = [...DECONF_MIGRATIONS]
+const MOZFEST_MIGRATIONS = [...DECONF_MIGRATIONS, addAttendeeOauth2]
 
 export interface MigrateCommandOptions {
   // ...

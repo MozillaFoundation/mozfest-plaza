@@ -10,6 +10,7 @@ import {
   RegistrationRepository,
 } from '@openlab/deconf-api-toolkit'
 import { create } from 'superstruct'
+import { checkEnvObject } from 'valid-env'
 
 import { AppConfigStruct } from './structs.js'
 import { EmailLoginToken, Registration } from '@openlab/deconf-shared'
@@ -23,12 +24,18 @@ export function createEnv(processEnv = process.env) {
     REDIS_URL = null,
     ADMIN_EMAILS = null,
     TITO_SECURITY_TOKEN = null,
+    GOOGLE_OAUTH2_CLIENT_ID,
+    GOOGLE_OAUTH2_CLIENT_SECRET,
   } = processEnv
 
   return Object.assign(createDeconfEnv(processEnv), {
     REDIS_URL,
     ADMIN_EMAILS: new Set(ADMIN_EMAILS?.split(/\s*,\s*/)),
     TITO_SECURITY_TOKEN,
+    ...checkEnvObject({
+      GOOGLE_OAUTH2_CLIENT_ID,
+      GOOGLE_OAUTH2_CLIENT_SECRET,
+    }),
   })
 }
 
