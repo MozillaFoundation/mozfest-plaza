@@ -4,24 +4,27 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import TimelineTemplate from '@/templates/TimelineTemplate.vue'
 import NotFoundView from './NotFoundView.vue'
 import rooms from '@/data/rooms.json'
-import { PageConfig, TimelineOptions } from '@/lib/constants'
+import type { PageConfig, TimelineOptions } from '@/lib/constants'
 
-type Config = PageConfig<'room', TimelineOptions>
+type Config = PageConfig<string, TimelineOptions>
 
-export default Vue.extend({
+interface RoughRoom {
+  name: Record<string, string>
+  id: string
+}
+
+export default defineComponent({
   components: { TimelineTemplate, NotFoundView },
   props: {
     roomId: { type: String, required: true },
   },
   computed: {
-    room(): any {
-      console.log(rooms)
-
-      return rooms[this.roomId]
+    room(): RoughRoom {
+      return (rooms as Record<string, unknown>)[this.roomId] as RoughRoom
     },
     config(): Config {
       return {

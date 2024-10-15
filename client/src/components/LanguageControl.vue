@@ -3,7 +3,7 @@
     <select name="languageControl" :value="$i18n.locale" @change="onChange">
       <option
         v-for="option in options"
-        :key="option.value"
+        :key="`${option.value}`"
         :value="option.value"
       >
         {{ option.text }}
@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { SelectOption } from '@openlab/deconf-ui-toolkit'
+import { defineComponent } from 'vue'
+import type { SelectOption } from '@openlab/deconf-ui-toolkit'
 import { getLanguageOptions } from '@/lib/module'
 import { setLocale } from '@/i18n/module'
 
@@ -24,11 +24,11 @@ interface Data {
 
 const hiddenLanguages = new Set(['asl', 'cc'])
 
-export default Vue.extend({
+export default defineComponent({
   data(): Data {
     return {
       options: getLanguageOptions().filter(
-        (l) => !hiddenLanguages.has(l.value as string)
+        (l) => !hiddenLanguages.has(l.value as string),
       ),
     }
   },

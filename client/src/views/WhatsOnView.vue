@@ -13,28 +13,34 @@
       @filter="onFilter"
       :readonly="!scheduleIsLive"
     >
-      <span slot="title">{{ $t('mozfest.whatsOn.title') }}</span>
-      <ApiContent slot="info" slug="whats-on-filters" />
-      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
+      <template v-slot:title>
+        <span>{{ $t('mozfest.whatsOn.title') }}</span>
+      </template>
+      <template v-slot:info>
+        <ApiContent slug="whats-on-filters" />
+      </template>
+      <template v-slot:noResults>
+        <span>{{ $t('mozfest.general.noResults') }}</span>
+      </template>
     </WhatsOnView>
     <InlineLoading v-else />
   </AppLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import AppLayout from '@/components/MozAppLayout.vue'
 import {
   ApiContent,
   decodeUrlScheduleFilters,
   encodeScheduleFilters,
   guardPage,
-  ScheduleConfig,
-  ScheduleFilterRecord,
-  SelectOption,
+  type ScheduleConfig,
+  type ScheduleFilterRecord,
+  type SelectOption,
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
-import { Session } from '@openlab/deconf-shared'
+import type { Session } from '@openlab/deconf-shared'
 import { StorageKey, getLanguageOptions, mapApiState } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
 import { mapWhatsOnState } from '@/store/module'
@@ -49,7 +55,7 @@ interface Data {
 
 // TODO: how can this use GridTemplate when it fetches its own sessions?
 
-export default Vue.extend({
+export default defineComponent({
   components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {
     return {
@@ -87,7 +93,7 @@ export default Vue.extend({
     async fetchData() {
       this.$store.commit(
         'whatsOn/sessions',
-        await this.$store.dispatch('api/fetchWhatsOn')
+        await this.$store.dispatch('api/fetchWhatsOn'),
       )
     },
     onFilter(filters: ScheduleFilterRecord) {

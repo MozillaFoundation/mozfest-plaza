@@ -8,7 +8,8 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url('@/fonts/moz-sans/MozillaSansNormalBETA05-Extralight.woff2')
+  src:
+    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Extralight.woff2')
       format('woff2'),
     url('@/fonts/moz-sans/MozillaSansNormalBETA05-Extralight.woff')
       format('woff');
@@ -20,8 +21,8 @@
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url('@/fonts/moz-sans/MozillaSansNormalBETA05-Light.woff2')
-      format('woff2'),
+  src:
+    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Light.woff2') format('woff2'),
     url('@/fonts/moz-sans/MozillaSansNormalBETA05-Light.woff') format('woff');
 }
 
@@ -31,7 +32,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('@/fonts/moz-sans/MozillaSansNormalBETA05-Regular.woff2')
+  src:
+    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Regular.woff2')
       format('woff2'),
     url('@/fonts/moz-sans/MozillaSansNormalBETA05-Regular.woff') format('woff');
 }
@@ -42,7 +44,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('@/fonts/moz-sans/MozillaSansNormalBETA05-Semibold.woff2')
+  src:
+    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Semibold.woff2')
       format('woff2'),
     url('@/fonts/moz-sans/MozillaSansNormalBETA05-Semibold.woff') format('woff');
 }
@@ -53,8 +56,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('@/fonts/moz-sans/MozillaSansNormalBETA05-Bold.woff2')
-      format('woff2'),
+  src:
+    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Bold.woff2') format('woff2'),
     url('@/fonts/moz-sans/MozillaSansNormalBETA05-Bold.woff') format('woff');
 }
 
@@ -68,7 +71,8 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Extralight.woff2')
+  src:
+    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Extralight.woff2')
       format('woff2'),
     url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Extralight.woff')
       format('woff');
@@ -80,7 +84,8 @@
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Light.woff2')
+  src:
+    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Light.woff2')
       format('woff2'),
     url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Light.woff')
       format('woff');
@@ -92,7 +97,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Regular.woff2')
+  src:
+    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Regular.woff2')
       format('woff2'),
     url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Regular.woff')
       format('woff');
@@ -104,7 +110,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Semibold.woff2')
+  src:
+    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Semibold.woff2')
       format('woff2'),
     url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Semibold.woff')
       format('woff');
@@ -116,7 +123,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Bold.woff2')
+  src:
+    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Bold.woff2')
       format('woff2'),
     url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Bold.woff')
       format('woff');

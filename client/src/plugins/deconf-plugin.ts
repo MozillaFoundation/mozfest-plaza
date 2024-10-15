@@ -1,16 +1,16 @@
 import {
-  DeconfPlugin,
+  type DeconfPlugin,
   DialogPlugin,
-  MetricsEvent,
+  type MetricsEvent,
 } from '@openlab/deconf-ui-toolkit'
-import { Session } from '@openlab/deconf-shared'
-import _Vue, { Component } from 'vue'
+import type { Session } from '@openlab/deconf-shared'
+import type { App, Component } from 'vue'
 import { env } from './env-plugin'
 import { MetricsPlugin } from './metrics-plugin'
 
 export class MozFestDeconfPlugin implements DeconfPlugin {
-  static install(Vue: typeof _Vue): void {
-    Vue.prototype.$deconf = new MozFestDeconfPlugin()
+  static install(app: App): void {
+    app.config.globalProperties.$deconf = new MozFestDeconfPlugin()
   }
 
   getCalendarLink(session: Session, kind?: 'ical' | 'google'): string | null {

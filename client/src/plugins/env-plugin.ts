@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import _Vue from 'vue'
+import type { App } from 'vue'
 
 // TODO: replace `DISABLE_SOCKETS` with `SOCKETS_URL`
 
@@ -17,10 +15,6 @@ export interface EnvRecord {
 
 // window.CONFIG is from public/config.js
 
-interface WindowWithConfig {
-  CONFIG?: Record<string, string | undefined>
-}
-
 const {
   SELF_URL = 'http://localhost:8080/',
   SERVER_URL = 'http://localhost:3000/',
@@ -30,7 +24,7 @@ const {
   DISABLE_SOCKETS = false,
   STATIC_BUILD = false,
   SESSION_SHARE_URL = 'http://localhost:8080/session/$1',
-} = (window as WindowWithConfig).CONFIG || {}
+} = window.CONFIG || {}
 
 export const env = Object.seal<EnvRecord>({
   SELF_URL: new URL(SELF_URL),
@@ -47,7 +41,7 @@ export const env = Object.seal<EnvRecord>({
 // A plugin to provide environment variables to Vue components
 //
 export class EnvPlugin {
-  static install(Vue: typeof _Vue): void {
-    Vue.prototype.$env = env
+  static install(app: App): void {
+    app.config.globalProperties.$env = env
   }
 }

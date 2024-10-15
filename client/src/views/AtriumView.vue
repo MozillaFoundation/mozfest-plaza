@@ -1,14 +1,14 @@
 <template>
-  <AtriumTemplate :config="pages.plaza" />
+  <AtriumTemplate :config="config" />
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import AtriumTemplate from '@/templates/AtriumTemplate.vue'
 import pages from '@/data/pages.json'
 
-export default Vue.extend({
+export default defineComponent({
   components: { AtriumTemplate },
-  data: () => ({ pages }),
+  data: () => ({ config: pages.plaza }),
 })
 </script>

@@ -13,17 +13,17 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 
 import { BoxContent } from '@openlab/deconf-ui-toolkit'
-import { ContentOptions, PageConfig } from '@/lib/module'
+import type { ContentOptions, PageConfig } from '@/lib/module'
 
 import AppLayout from '@/components/MozAppLayout.vue'
 import MozApiContent from '@/components/MozApiContent.vue'
 
-type Config = PageConfig<'content', ContentOptions>
+type Config = PageConfig<string, ContentOptions>
 
-export default Vue.extend({
+export default defineComponent({
   components: { AppLayout, MozApiContent, BoxContent },
   props: {
     config: { type: Object as PropType<Config>, required: true },

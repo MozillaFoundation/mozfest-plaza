@@ -48,15 +48,15 @@ import {
   ApiContent,
   createQueryPredicate,
   debounce,
-  Debounced,
+  type Debounced,
   guardPage,
   NoResults,
-  ScheduleConfig,
+  type ScheduleConfig,
   SessionBoard,
-  SessionPredicate,
+  type SessionPredicate,
   SessionTile,
 } from '@openlab/deconf-ui-toolkit'
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 
 interface Data {
   query: string
@@ -69,7 +69,7 @@ const config: ScheduleConfig = {
   tileAttributes: ['track', 'themes'],
 }
 
-export default Vue.extend({
+export default defineComponent({
   components: { AppLayout, ApiContent, NoResults, SessionBoard, SessionTile },
   data(): Data {
     return {
@@ -88,7 +88,7 @@ export default Vue.extend({
       const predicate = createQueryPredicate(
         this.$i18n.locale,
         this.query,
-        this.schedule
+        this.schedule,
       )
       if (!predicate) return this.schedule.sessions
       return this.schedule.sessions.filter((s) => predicate(s)).slice(0, 50)

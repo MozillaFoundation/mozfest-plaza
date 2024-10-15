@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 
 import App from './App.vue'
 import router from './router/module'
@@ -17,22 +17,21 @@ import { MozFestDeconfPlugin } from './plugins/deconf-plugin'
 import { MetricsPlugin } from './plugins/metrics-plugin'
 import { SocketIoPlugin } from './plugins/socketio-plugin'
 
+const app = createApp(App)
+
 if (!env.DISABLE_SOCKETS) {
-  Vue.use(SocketIoPlugin)
+  app.use(SocketIoPlugin)
 }
-Vue.use(TemporalPlugin, 1000)
-Vue.use(DevPlugin)
-Vue.use(EnvPlugin)
-Vue.use(FontawesomePlugin)
-Vue.use(MetricsPlugin)
-Vue.use(MozFestDeconfPlugin)
-Vue.use(DialogPlugin)
+app
+  .use(TemporalPlugin, 1000)
+  .use(DevPlugin)
+  .use(EnvPlugin)
+  .use(FontawesomePlugin)
+  .use(MetricsPlugin)
+  .use(MozFestDeconfPlugin)
+  .use(DialogPlugin)
+  .use(router)
+  .use(store)
+  .use(i18n)
 
-Vue.config.productionTip = false
-
-new Vue({
-  i18n,
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app')
+app.mount('#app')

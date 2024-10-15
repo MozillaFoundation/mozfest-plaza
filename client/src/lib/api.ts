@@ -1,5 +1,5 @@
-import { EnvRecord } from '@/plugins/env-plugin'
-import {
+import type { EnvRecord } from '@/plugins/env-plugin'
+import type {
   LocalisedLink,
   PageFlag,
   ScheduleRecord as DeconfScheduleRecord,
@@ -7,15 +7,16 @@ import {
 } from '@openlab/deconf-shared'
 import {
   DeconfApiClient,
-  DeconfStaticFiles,
+  type DeconfStaticFiles,
   StaticDeconfApiClient,
 } from '@openlab/deconf-ui-toolkit'
 
 export interface MozConferenceConfig {
-  atrium?: PageFlag
-  whatsOn?: PageFlag
+  atrium: PageFlag
+  whatsOn: PageFlag
   schedule: PageFlag
   helpDesk: PageFlag
+  coffeeChat: PageFlag
   maps?: PageFlag
 
   social?: PageFlag
@@ -52,6 +53,10 @@ export interface MozConferenceConfig {
     atriumVideo: string
     featuredSessions: string[]
   }
+
+  isStatic: boolean
+  startDate: Date
+  endDate: Date
 }
 
 export type ScheduleRecord = Omit<DeconfScheduleRecord, 'settings'> & {
@@ -80,14 +85,14 @@ type MozStaticFiles = DeconfStaticFiles & {
 export class LiveApiClient extends DeconfApiClient implements MozApiClient {
   async getWhatsOn(): Promise<Session[]> {
     const response = await this.fetchJson<{ sessions: Session[] }>(
-      'schedule/whats-on'
+      'schedule/whats-on',
     )
     return response?.sessions ?? []
   }
 
   override async startEmailLogin(
     email: string,
-    { redirect }: MozLoginOptions = {}
+    { redirect }: MozLoginOptions = {},
   ): Promise<boolean> {
     return this.fetch(this.getEndpoint('RegistrationRoutes.startEmailLogin'), {
       method: 'POST',

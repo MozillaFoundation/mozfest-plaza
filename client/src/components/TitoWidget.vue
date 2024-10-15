@@ -1,5 +1,5 @@
 <template>
-  <section v-if="scriptLoaded" slot="tito" class="titoWidget block">
+  <section v-if="scriptLoaded" class="titoWidget block">
     <tito-widget
       event="mozilla/mozfest-house-zambia"
       :locale="$i18n.locale"
@@ -9,14 +9,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { loadScript } from '@/lib/module'
 
 interface Data {
   scriptLoaded: boolean
 }
 
-export default Vue.extend({
+export default defineComponent({
   data(): Data {
     return { scriptLoaded: false }
   },

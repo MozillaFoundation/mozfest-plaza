@@ -13,16 +13,16 @@
 
 <script lang="ts">
 import { loadScript } from '@/lib/external-scripts'
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     src: { type: String, required: true },
   },
   created() {
     loadScript(
       'tito-embed-v1',
-      'https://static.airtable.com/js/embed/embed_snippet_v1.js'
+      'https://static.airtable.com/js/embed/embed_snippet_v1.js',
     )
   },
 })

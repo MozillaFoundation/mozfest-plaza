@@ -1,6 +1,6 @@
-import { Session } from '@openlab/deconf-shared'
+import type { Session } from '@openlab/deconf-shared'
 import { ApiState, createStateMapper } from '@openlab/deconf-ui-toolkit'
-import { Module } from 'vuex'
+import type { Module } from 'vuex'
 
 export interface WhatsOnModuleState {
   apiState: ApiState

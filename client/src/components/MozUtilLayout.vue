@@ -1,8 +1,10 @@
 <template>
   <UtilLayout :home-route="atriumRoute" :width="width">
-    <MozfestLogo slot="brand" />
+    <template v-slot:brand>
+      <MozfestLogo />
+    </template>
 
-    <template slot="backButton">
+    <template v-slot:backButton>
       <slot name="backButton">
         <BackButton :to="atriumRoute">
           {{ $t('mozfest.general.backToAtrium') }}
@@ -10,24 +12,30 @@
       </slot>
     </template>
 
-    <LanguageControl slot="languageControl" />
+    <template v-slot:languageControl>
+      <LanguageControl />
+    </template>
 
-    <slot slot="main" />
+    <template v-slot:main>
+      <slot></slot>
+    </template>
 
-    <MozPageFooter slot="footer" />
+    <template v-slot:footer>
+      <MozPageFooter />
+    </template>
   </UtilLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { Location } from 'vue-router'
+import { defineComponent } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 import { BackButton, Routes, UtilLayout } from '@openlab/deconf-ui-toolkit'
 
 import MozfestLogo from './MozfestLogo.vue'
 import MozPageFooter from './MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     UtilLayout,
     MozfestLogo,
@@ -39,7 +47,7 @@ export default Vue.extend({
     width: { type: String, default: 'regular' },
   },
   computed: {
-    atriumRoute(): Location {
+    atriumRoute(): RouteLocationRaw {
       return { name: Routes.Atrium }
     },
   },

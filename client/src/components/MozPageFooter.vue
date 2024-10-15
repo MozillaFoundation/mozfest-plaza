@@ -11,20 +11,20 @@
 </template>
 
 <script lang="ts">
-import { PageFooter, PageFooterLink } from '@openlab/deconf-ui-toolkit'
-import Vue from 'vue'
+import { PageFooter, type PageFooterLink } from '@openlab/deconf-ui-toolkit'
+import { defineComponent } from 'vue'
 
 interface Data {
-  appName: any
-  appVersion: any
+  appName: string
+  appVersion: string
 }
 
-export default Vue.extend({
+export default defineComponent({
   components: { PageFooter },
   data(): Data {
     return {
-      appName: this.$t('mozfest.footer.appName') || process.env.VUE_APP_NAME,
-      appVersion: this.$env.BUILD_NAME || `v${process.env.VUE_APP_VERSION}`,
+      appName: this.$t('mozfest.footer.appName') || window.APP_NAME,
+      appVersion: this.$env.BUILD_NAME || `v${window.APP_VERSION}`,
     }
   },
   computed: {

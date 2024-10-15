@@ -9,14 +9,16 @@
       :force-enabled="isDev"
       :controls="['scheduleDate']"
     >
-      <PretalxDevBlock slot="extras" :dev-plugin="$dev" />
+      <template v-slot:extras>
+        <PretalxDevBlock :dev-plugin="$dev" />
+      </template>
     </DevControl>
     <AppDialog :dialog-plugin="$dialog" />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import {
   AppDialog,
   AppLoading,
@@ -24,8 +26,8 @@ import {
   mapApiState,
   Routes,
 } from '@openlab/deconf-ui-toolkit'
-import { ConferenceConfig } from '@openlab/deconf-shared'
-import { Location } from 'vue-router'
+import type { ConferenceConfig } from '@openlab/deconf-shared'
+import type { RouteLocationRaw } from 'vue-router'
 
 import MozApiError from '@/components/MozApiError.vue'
 import PretalxDevBlock from '@/components/PretalxDevBlock.vue'
@@ -37,7 +39,7 @@ interface Data {
   timerId: null | number
 }
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     AppLoading,
     DevControl,
@@ -53,11 +55,11 @@ export default Vue.extend({
     settings(): ConferenceConfig | null {
       return this.schedule?.settings ?? null
     },
-    homeRoute(): Location {
+    homeRoute(): RouteLocationRaw {
       return { name: Routes.Atrium }
     },
     isDev(): boolean {
-      return process.env.NODE_ENV === 'development'
+      return import.meta.env.mode === 'development'
     },
   },
   async mounted() {
@@ -74,10 +76,10 @@ export default Vue.extend({
     // Setup a random tick to re-pull the schedule
     this.timerId = window.setInterval(
       () => this.$store.dispatch('api/fetchData'),
-      this.randomTick()
+      this.randomTick(),
     )
   },
-  destroyed() {
+  unmounted() {
     this.$temporal.teardown()
     this.$io?.teardown()
 

@@ -1,17 +1,15 @@
 import {
-  ApiStoreModule,
-  AuthenticateOptions,
+  type ApiStoreModule,
+  type AuthenticateOptions,
   createApiStoreActions,
   createApiStoreModule,
   decodeJwt,
-  FullAuthToken,
+  type FullAuthToken,
 } from '@openlab/deconf-ui-toolkit'
 import { env } from '@/plugins/env-plugin'
 
 import { SocketIoPlugin } from '@/plugins/socketio-plugin'
 import { pickApi } from '@/lib/api'
-
-import { themeAllowlist } from '@/lib/module'
 
 export interface LoginPayload {
   email: string

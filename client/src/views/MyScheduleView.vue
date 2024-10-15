@@ -4,25 +4,31 @@
       class="myScheduleView"
       v-if="schedule"
       :schedule="schedule"
-      :user-sessions="userSessions"
+      :user-sessions="userSessions ?? undefined"
       :options="options"
       :schedule-date="scheduleDate"
       :route-query="$route.query"
       @filter="onFilter"
     >
-      <span slot="title">{{ $t('mozfest.mySchedule.title') }}</span>
-      <ApiContent slot="infoText" slug="my-schedule" />
-      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
+      <template v-slot:title>
+        <span>{{ $t('mozfest.mySchedule.title') }}</span>
+      </template>
+      <template v-slot:infoText>
+        <ApiContent slug="my-schedule" />
+      </template>
+      <template v-slot:noResults>
+        <span>{{ $t('mozfest.general.noResults') }}</span>
+      </template>
     </FilteredScheduleView>
   </AppLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import AppLayout from '@/components/MozAppLayout.vue'
 import {
   ApiContent,
-  FilteredScheduleOptions,
+  type FilteredScheduleOptions,
   FilteredScheduleView,
   guardPage,
 } from '@openlab/deconf-ui-toolkit'
@@ -52,11 +58,11 @@ function makeOptions(userSessions: string[]): FilteredScheduleOptions {
 }
 
 // TODO: can this be migrated to TimelineTemplate ?
-export default Vue.extend({
+export default defineComponent({
   components: { AppLayout, FilteredScheduleView, ApiContent },
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),
-    scheduleDate() {
+    scheduleDate(): Date {
       return this.$dev?.scheduleDate ?? this.$temporal.date
     },
     options(): FilteredScheduleOptions {

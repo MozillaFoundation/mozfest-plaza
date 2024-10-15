@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 
 import ContentTemplate from '@/templates/ContentTemplate.vue'
 import pages from '@/data/pages.json'
 
-export default Vue.extend({
+export default defineComponent({
   components: { ContentTemplate },
   data: () => ({ pages }),
 })

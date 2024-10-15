@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import GridTemplate from '@/templates/GridTemplate.vue'
 import pages from '@/data/pages.json'
 
-export default Vue.extend({
+export default defineComponent({
   components: { GridTemplate },
   data: () => ({ config: pages.arts }),
 })

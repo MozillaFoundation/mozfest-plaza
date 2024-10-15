@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { Routes, TokenCaptureView } from '@openlab/deconf-ui-toolkit'
 import { StorageKey } from '@/lib/module'
-import { AuthToken } from '@openlab/deconf-shared'
+import type { AuthToken } from '@openlab/deconf-shared'
 
-export default Vue.extend({
+export default defineComponent({
   components: { TokenCaptureView },
   data() {
     return { tokenKey: StorageKey.AuthToken }

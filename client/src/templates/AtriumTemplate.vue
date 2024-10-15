@@ -1,49 +1,56 @@
 <template>
   <AppLayout class="atriumView">
     <AtriumLayout>
-      <HeroCard
-        slot="top"
-        :title="localise(config.options.hero.title)"
-        :subtitle="localise(config.options.hero.subtitle)"
-        coverImage="/plaza-hero.png"
-      />
+      <template v-slot:top>
+        <HeroCard
+          :title="localise(config.options.hero.title)"
+          :subtitle="localise(config.options.hero.subtitle)"
+          coverImage="/plaza-hero.png"
+        />
+      </template>
 
-      <BoxContent slot="left" :title="$t('mozfest.atrium.heading')">
-        <div class="atriumView-content">
-          <ApiContent :slug="contentSlug" />
+      <template v-slot:left>
+        <BoxContent :title="$t('mozfest.atrium.heading')">
+          <div class="atriumView-content">
+            <ApiContent :slug="contentSlug" />
+          </div>
+        </BoxContent>
+      </template>
+
+      <template v-slot:right>
+        <div>
+          <AtriumWidget
+            v-for="widget in filteredWidgets"
+            :key="widget.id"
+            :config="widget"
+          />
+
+          <FeaturedSessions
+            v-if="user && featuredSessions.length > 0"
+            :featured="featuredSessions"
+            :current-date="scheduleDate"
+          />
         </div>
-      </BoxContent>
+      </template>
 
-      <div slot="right">
-        <AtriumWidget
-          v-for="widget in filteredWidgets"
-          :key="widget.id"
-          :config="widget"
-        />
-
-        <FeaturedSessions
-          v-if="user && featuredSessions.length > 0"
-          :featured="featuredSessions"
-          :current-date="scheduleDate"
-        />
-      </div>
-
-      <div slot="bottom">
-        <SponsorGrid :groups="config.options.sponsors" />
-      </div>
+      <template v-slot:bottom>
+        <div>
+          <SponsorGrid :groups="config.options.sponsors" />
+        </div>
+      </template>
     </AtriumLayout>
   </AppLayout>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import {
   AtriumLayout,
   HeroCard,
   BoxContent,
   SponsorGrid,
   FeaturedSessions,
-  SessionAndSlot,
+  type SessionAndSlot,
   getFeaturedSessions,
   localiseFromObject,
 } from '@openlab/deconf-ui-toolkit'
@@ -52,16 +59,16 @@ import ApiContent from '@/components/MozApiContent.vue'
 import AtriumWidget from '@/components/AtriumWidget.vue'
 
 import {
-  AtriumOptions,
-  AtriumWidgetOptions,
+  type AtriumOptions,
+  type AtriumWidgetOptions,
   mapApiState,
-  PageConfig,
+  type PageConfig,
 } from '@/lib/module'
-import { Localised } from '@openlab/deconf-shared'
+import type { Localised } from '@openlab/deconf-shared'
 
-type Config = PageConfig<'atrium', AtriumOptions>
+type Config = PageConfig<string, AtriumOptions>
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     ApiContent,
     AppLayout,
@@ -95,7 +102,7 @@ export default Vue.extend({
           this.schedule,
           7,
           this.scheduleDate,
-          (s) => Boolean(s.slot) && s.isFeatured
+          (s) => Boolean(s.slot) && s.isFeatured,
         )?.slice(0, 3) ?? []
       )
     },

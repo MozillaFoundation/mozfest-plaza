@@ -19,20 +19,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { Stack } from '@openlab/deconf-ui-toolkit'
-import { MozSession } from '@/lib/module'
+import type { MozSession } from '@/lib/module'
 import copy from 'copy-to-clipboard'
-import { PropType } from 'vue/types/v3-component-props'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-export default Vue.extend({
+export default defineComponent({
   components: { Stack, FontAwesomeIcon },
   props: {
-    session: { type: Object as PropType<MozSession> },
+    session: { type: Object as PropType<MozSession>, required: true },
   },
   computed: {
-    url() {
+    url(): string {
       return this.$env.SESSION_SHARE_URL.replace('$1', this.session.id)
     },
   },

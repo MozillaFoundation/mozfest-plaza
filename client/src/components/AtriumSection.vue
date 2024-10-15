@@ -4,15 +4,16 @@
     <div class="atriumSection-content">
       <div class="content">
         <h3 v-if="title">{{ title }}</h3>
-        <slot />
+        <slot></slot>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
-export default Vue.extend({
+import { defineComponent, type PropType } from 'vue'
+
+export default defineComponent({
   props: {
     title: { type: String as PropType<string | null>, default: null },
     image: { type: String as PropType<string | null>, default: null },

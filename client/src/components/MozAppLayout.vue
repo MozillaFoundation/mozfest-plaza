@@ -6,28 +6,35 @@
     :nav-links="navLinks"
     class="mozAppLayout"
   >
-    <MozfestLogo slot="brandA" />
+    <template v-slot:brandA>
+      <MozfestLogo />
+    </template>
     <!-- <MozillaLogo slot="brandB" /> -->
 
-    <LanguageControl slot="languageControl" />
+    <template v-slot:languageControl>
+      <LanguageControl />
+    </template>
 
-    <router-link slot="brandC" :to="atriumRoute">
-      <MozfestSquareLogo />
-    </router-link>
+    <template v-slot:brandC>
+      <router-link :to="atriumRoute">
+        <MozfestSquareLogo />
+      </router-link>
+    </template>
 
-    <template slot="main">
-      <slot />
+    <template v-slot:main>
+      <slot></slot>
       <MozPageFooter />
     </template>
   </AppLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { PageFlag } from '@openlab/deconf-shared'
+import { defineComponent, type Component } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
+import type { PageFlag } from '@openlab/deconf-shared'
 import {
   AppLayout,
-  AppRoute,
+  type AppRoute,
   localiseFromObject,
   Routes,
 } from '@openlab/deconf-ui-toolkit'
@@ -47,19 +54,22 @@ import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
 // import SpacesIcon from '@/icons/SpacesIcon.vue'
 // import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
-import { ExtraRoutes, mapApiState, MozConferenceConfig } from '@/lib/module'
-import { Location } from 'vue-router'
+import {
+  ExtraRoutes,
+  mapApiState,
+  type MozConferenceConfig,
+} from '@/lib/module'
 
 import pages from '../data/pages.json'
 
 interface RouteIntermediate {
   title: string
   name: string
-  icon: Vue.Component
+  icon: Component
   pageFlag?: PageFlag
 }
 
-export default Vue.extend({
+export default defineComponent({
   name: 'MozAppLayout',
   components: {
     AppLayout,
@@ -126,7 +136,7 @@ export default Vue.extend({
         {
           title: localiseFromObject(
             this.$i18n.locale,
-            pages.maps.title
+            pages.maps.title,
           ) as string,
           name: pages.maps.name,
           icon: MapsIcon,
@@ -135,7 +145,7 @@ export default Vue.extend({
         {
           title: localiseFromObject(
             this.$i18n.locale,
-            pages.helpDesk.title
+            pages.helpDesk.title,
           ) as string,
           name: Routes.HelpDesk,
           icon: HelpDeskIcon,
@@ -152,7 +162,7 @@ export default Vue.extend({
           enabled: r.pageFlag?.enabled == true,
         }))
     },
-    atriumRoute(): Location {
+    atriumRoute(): RouteLocationRaw {
       return { name: Routes.Atrium }
     },
   },

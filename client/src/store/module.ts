@@ -1,11 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+/// <reference types="vuex/types/index.d.ts" />
+import { createStore } from 'vuex'
 
-import { apiModule } from './api-module'
-import { metricsModule } from './metrics-module'
+import { apiModule } from './api-module.js'
+import { metricsModule } from './metrics-module.js'
 
-import { ApiModuleState, MetricsModuleState } from '@openlab/deconf-ui-toolkit'
-import { whatsOnModule, WhatsOnModuleState } from './whats-on-module'
+import type {
+  ApiModuleState,
+  MetricsModuleState,
+} from '@openlab/deconf-ui-toolkit'
+import { whatsOnModule, type WhatsOnModuleState } from './whats-on-module.js'
 
 export { mapWhatsOnState } from './whats-on-module'
 
@@ -15,9 +18,7 @@ export interface StoreState {
   whastsOn: WhatsOnModuleState
 }
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default createStore({
   modules: {
     api: apiModule(),
     metrics: metricsModule(),

@@ -1,5 +1,8 @@
-import Vue from 'vue'
-import VueRouter, { Route, RouteConfig } from 'vue-router'
+// import Vue from 'vue'
+// import { VueRouter, Route, RouteConfig } from 'vue-router'
+// import Vue from 'vue'
+// import { VueRouter, Route, RouteConfig } from 'vue-router'
+import type { VueI18n } from 'vue-i18n'
 import i18n from '../i18n/module'
 import { env } from '../plugins/env-plugin'
 
@@ -18,11 +21,16 @@ import {
 import { ExtraRoutes, StorageKey } from '@/lib/module'
 import { gaTrack, MetricsPlugin } from '@/plugins/metrics-plugin'
 import pages from '@/data/pages.json'
-import VueI18n from 'vue-i18n'
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  type RouteLocationNormalizedGeneric,
+  type RouteRecordRaw,
+} from 'vue-router'
+import type { Localised } from '@openlab/deconf-shared'
 
-Vue.use(VueRouter)
-
-const routes: Array<RouteConfig> = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: { name: Routes.Atrium },
@@ -44,8 +52,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: Routes.Login,
-    component: () =>
-      import(/* webpackChunkName: "registration" */ '../views/LoginView.vue'),
+    component: () => import('../views/LoginView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.login',
     },
@@ -53,8 +60,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/profile',
     name: Routes.Profile,
-    component: () =>
-      import(/* webpackChunkName: "registration" */ '../views/ProfileView.vue'),
+    component: () => import('../views/ProfileView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.profile',
     },
@@ -62,10 +68,7 @@ const routes: Array<RouteConfig> = [
   {
     path: pages.register.path,
     name: Routes.Register,
-    component: () =>
-      import(
-        /* webpackChunkName: "registration" */ '../views/RegisterView.vue'
-      ),
+    component: () => import('../views/RegisterView.vue'),
     meta: {
       title: pages.register.title,
       // pageTitle: 'mozfest.pageTitles.register',
@@ -74,8 +77,7 @@ const routes: Array<RouteConfig> = [
   {
     path: pages.schedule.path,
     name: Routes.Schedule,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/ScheduleView.vue'),
+    component: () => import('../views/ScheduleView.vue'),
     meta: {
       title: pages.schedule.title,
       // pageTitle: 'mozfest.pageTitles.schedule',
@@ -84,8 +86,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/my-schedule',
     name: ExtraRoutes.MySchedule,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/MyScheduleView.vue'),
+    component: () => import('../views/MyScheduleView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.mySchedule',
     },
@@ -93,8 +94,7 @@ const routes: Array<RouteConfig> = [
   {
     path: pages.arts.path,
     name: ExtraRoutes.Arts,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/ArtsView.vue'),
+    component: () => import('../views/ArtsView.vue'),
     meta: {
       title: pages.arts.title,
       // pageTitle: 'mozfest.pageTitles.artGallery',
@@ -103,8 +103,7 @@ const routes: Array<RouteConfig> = [
   {
     path: pages.maps.path,
     name: pages.maps.name,
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/MapsView.vue'),
+    component: () => import('../views/MapsView.vue'),
     meta: {
       title: pages.maps.title,
     },
@@ -113,7 +112,7 @@ const routes: Array<RouteConfig> = [
   //   path: '/sneak-peek',
   //   name: Routes.WhatsOn,
   //   component: () =>
-  //     import(/* webpackChunkName: "schedule" */ '../views/WhatsOnView.vue'),
+  //     import( '../views/WhatsOnView.vue'),
   //   meta: {
   //     pageTitle: 'mozfest.pageTitles.whatsOn',
   //   },
@@ -123,8 +122,7 @@ const routes: Array<RouteConfig> = [
     name: Routes.Session,
     props: true,
     // This is in the "schedule" chunk because it shares CSS
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/SessionView.vue'),
+    component: () => import('../views/SessionView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.session',
     },
@@ -132,16 +130,14 @@ const routes: Array<RouteConfig> = [
   {
     path: '/room/:roomId',
     name: 'room',
-    component: () =>
-      import(/* webpackChunkName: "schedule" */ '../views/RoomView.vue'),
+    component: () => import('../views/RoomView.vue'),
     props: true,
     // NOTE: no page title as this is a hidden page
   },
   {
     path: pages.helpDesk.path,
     name: Routes.HelpDesk,
-    component: () =>
-      import(/* webpackChunkName: "static" */ '../views/HelpDeskView.vue'),
+    component: () => import('../views/HelpDeskView.vue'),
     meta: {
       title: pages.helpDesk.path,
       // pageTitle: 'mozfest.pageTitles.helpDesk',
@@ -150,8 +146,7 @@ const routes: Array<RouteConfig> = [
   {
     path: pages.calendar.path,
     name: ExtraRoutes.Calendar,
-    component: () =>
-      import(/* webpackChunkName: "static" */ '../views/CalendarView.vue'),
+    component: () => import('../views/CalendarView.vue'),
     meta: {
       title: pages.calendar.title,
       // pageTitle: 'mozfest.pageTitles.calendar',
@@ -160,8 +155,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/search',
     name: ExtraRoutes.Search,
-    component: () =>
-      import(/* webpackChunkName: "search" */ '../views/SearchView.vue'),
+    component: () => import('../views/SearchView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.search',
     },
@@ -173,8 +167,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/utilities',
     name: ExtraRoutes.Utils,
-    component: () =>
-      import(/* webpackChunkName: "utilities" */ '../views/UtilsView.vue'),
+    component: () => import('../views/UtilsView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.utilities',
     },
@@ -199,7 +192,7 @@ const routes: Array<RouteConfig> = [
     component: NotFoundView,
   },
   {
-    path: '*',
+    path: '/:pathMatch(.*)*',
     component: NotFoundView,
   },
 ]
@@ -217,17 +210,18 @@ const protectedRoutes = new Set<string>([
 // 5.25rem into pixels ($navbar-height + tabbar height)
 const SCROLL_OFFSET = 80
 
-const router = new VueRouter({
-  mode: env.STATIC_BUILD ? 'hash' : 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: env.STATIC_BUILD
+    ? createWebHashHistory(import.meta.env.BASE_URL)
+    : createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior: getScrollBehaviour(SCROLL_OFFSET),
   routes,
 })
 
 // Check the pages.json 's title field
-function getNewRouteTitle(to: Route, i18n: VueI18n) {
+function getNewRouteTitle(to: RouteLocationNormalizedGeneric, i18n: VueI18n) {
   const title = to.meta?.title
-    ? localiseFromObject(i18n.locale, to.meta?.title)
+    ? localiseFromObject(i18n.locale, to.meta?.title as Localised)
     : null
   if (!title) return null
   const app = i18n.t('deconf.general.appName')
@@ -235,12 +229,14 @@ function getNewRouteTitle(to: Route, i18n: VueI18n) {
 }
 
 router.beforeEach((to, from, next) => {
-  document.title = getNewRouteTitle(to, i18n) || getRouteTitle(to, i18n)
+  document.title =
+    getNewRouteTitle(to, i18n.global as VueI18n) ||
+    getRouteTitle(to, i18n.global as VueI18n)
 
   const loggedIn = Boolean(localStorage.getItem(StorageKey.AuthToken))
 
   MetricsPlugin.shared?.track(
-    createPageViewEvent(to.name ?? to.path, to.params)
+    createPageViewEvent((to.name as string) ?? to.path, to.params),
   )
 
   const url = new URL(to.fullPath, location.origin)
@@ -251,7 +247,11 @@ router.beforeEach((to, from, next) => {
     pageTitle: document.title,
   })
 
-  if (!loggedIn && to.name && protectedRoutes.has(to.name)) {
+  if (
+    !loggedIn &&
+    typeof to.name === 'string' &&
+    protectedRoutes.has(to.name)
+  ) {
     next({ name: Routes.Atrium })
   } else {
     next()

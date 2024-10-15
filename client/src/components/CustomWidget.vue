@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ColorWidget, localiseFromObject } from '@openlab/deconf-ui-toolkit'
-import { CustomWidgetOptions } from '@/lib/module'
+import type { CustomWidgetOptions } from '@/lib/module'
 
-export default Vue.extend({
+export default defineComponent({
   components: { ColorWidget },
   props: {
     config: { type: Object as PropType<CustomWidgetOptions>, required: true },
@@ -34,13 +34,13 @@ export default Vue.extend({
         ''
       )
     },
-    icon(): string[] | null {
+    icon(): string[] {
       for (const prefix of ['fas ', 'far ', 'fab ']) {
         if (this.config.options.icon.startsWith(prefix)) {
           return this.config.options.icon.split(/\s+/).slice(0, 2)
         }
       }
-      return null
+      return ['fas', 'circle']
     },
   },
 })

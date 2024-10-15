@@ -1,4 +1,4 @@
-import _Vue from 'vue'
+import type { App } from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -83,7 +83,7 @@ library.add(
 // A plugin to register the fontawesome icon component
 //
 export class FontawesomePlugin {
-  static install(Vue: typeof _Vue): void {
-    Vue.component('fa-icon', FontAwesomeIcon)
+  static install(app: App): void {
+    app.component('fa-icon', FontAwesomeIcon)
   }
 }

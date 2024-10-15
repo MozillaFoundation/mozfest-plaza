@@ -1,4 +1,4 @@
-import _Vue from 'vue'
+import type { App } from 'vue'
 import io, { Socket } from 'socket.io-client'
 import { env } from './env-plugin'
 import { StorageKey } from '@/lib/module'
@@ -8,8 +8,8 @@ export class SocketIoPlugin {
 
   static sharedSocket: Socket | null = null
 
-  static install(Vue: typeof _Vue): void {
-    Vue.prototype.$io = new SocketIoPlugin(env.SERVER_URL)
+  static install(app: App): void {
+    app.config.globalProperties.$io = new SocketIoPlugin(env.SERVER_URL)
   }
 
   static authenticate(token: string): void {

@@ -1,15 +1,12 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import { createI18n } from 'vue-i18n'
 
 import en from './en.yml'
 import es from './es.yml'
 // import sw from './sw.yml'
 
-Vue.use(VueI18n)
-
 const rtlLocales = new Set(['ar'])
 
-const i18n = new VueI18n({
+const i18n = createI18n({
   locale: pickLocale(),
   messages: { en, es },
 })
@@ -29,10 +26,10 @@ export function getBrowserLocale(input = 'en') {
 export function setLocale(newLocale: string): void {
   const isBrowser = newLocale == getBrowserLocale()
 
-  i18n.locale = newLocale
-  updateDocumentDirection(i18n.locale)
+  i18n.global.locale = newLocale as 'en'
+  updateDocumentDirection(newLocale)
   if (isBrowser) localStorage.removeItem('locale')
-  else localStorage.setItem('locale', i18n.locale)
+  else localStorage.setItem('locale', newLocale)
 }
 
 function updateDocumentDirection(locale: string) {
@@ -41,6 +38,6 @@ function updateDocumentDirection(locale: string) {
   html.setAttribute('dir', rtlLocales.has(locale) ? 'rtl' : 'ltr')
 }
 
-updateDocumentDirection(i18n.locale)
+updateDocumentDirection(i18n.global.locale)
 
 export default i18n

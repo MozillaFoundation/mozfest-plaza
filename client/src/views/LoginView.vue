@@ -1,21 +1,25 @@
 <template>
   <UtilLayout>
     <LoginView api-module="api">
-      <ApiContent slug="login" slot="infoText" />
-      <p slot="doneText">
-        {{ $t('deconf.login.doneText') }}
-      </p>
+      <template v-slot:infoText>
+        <ApiContent slug="login" />
+      </template>
+      <template v-slot:doneText>
+        <p>
+          {{ $t('deconf.login.doneText') }}
+        </p>
+      </template>
     </LoginView>
   </UtilLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 
 import UtilLayout from '@/components/MozUtilLayout.vue'
 import { LoginView, ApiContent } from '@openlab/deconf-ui-toolkit'
 
-export default Vue.extend({
+export default defineComponent({
   components: { UtilLayout, LoginView, ApiContent },
 })
 </script>

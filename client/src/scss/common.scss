@@ -1,7 +1,19 @@
 // ...
-$family-sans-serif: 'MozillaSans', BlinkMacSystemFont, -apple-system, 'Segoe UI',
-  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-  'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$family-sans-serif:
+  'MozillaSans',
+  BlinkMacSystemFont,
+  -apple-system,
+  'Segoe UI',
+  'Roboto',
+  'Oxygen',
+  'Ubuntu',
+  'Cantarell',
+  'Fira Sans',
+  'Droid Sans',
+  'Helvetica Neue',
+  'Helvetica',
+  'Arial',
+  sans-serif;
 
 $title-family: 'MozillaSemiSlab', $family-sans-serif;
 $title-weight: 700;

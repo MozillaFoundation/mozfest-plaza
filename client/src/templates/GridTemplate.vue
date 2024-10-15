@@ -1,60 +1,65 @@
 <template>
   <AppLayout>
     <WhatsOnView
-      v-if="filteredSessions != null"
+      v-if="filteredSchedule && filteredSessions != null"
       :schedule="filteredSchedule"
       :sessions="filteredSessions"
       :filters-key="options.filtersKey"
       :enabled-filters="options.enabledFilters"
-      :config="config"
+      :config="options.scheduleConfig"
       slot-state="future"
       :language-options="languages"
       :url-filters="urlFilters"
       @filter="onFilter"
       :readonly="config.options.readonly"
     >
-      <span slot="title">{{ config.title[$i18n.locale] }}</span>
-      <ApiContent slot="info" :slug="config.name" />
-      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
+      <template v-slot:title>
+        <span>{{ config.title[$i18n.locale] }}</span>
+      </template>
+      <template v-slot:info>
+        <ApiContent :slug="config.name" />
+      </template>
+      <template v-slot:noResults>
+        <span>{{ $t('mozfest.general.noResults') }}</span>
+      </template>
     </WhatsOnView>
     <InlineLoading v-else />
   </AppLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import AppLayout from '@/components/MozAppLayout.vue'
 
 import {
   ApiContent,
   decodeUrlScheduleFilters,
   encodeScheduleFilters,
-  FilteredScheduleOptions,
+  type FilteredScheduleOptions,
   filterScheduleFromSessions,
-  ScheduleFilterRecord,
-  SelectOption,
+  type ScheduleFilterRecord,
+  type SelectOption,
   WhatsOnView,
 } from '@openlab/deconf-ui-toolkit'
-import { Session } from '@openlab/deconf-shared'
+import type { Session } from '@openlab/deconf-shared'
 import {
   createSessionPredicate,
   getLanguageOptions,
-  GridOptions,
+  type GridOptions,
   mapApiState,
-  PageConfig,
-  ScheduleRecord,
+  type PageConfig,
+  type ScheduleRecord,
 } from '@/lib/module'
 import InlineLoading from '@/components/InlineLoading.vue'
-import { PropType } from 'vue/types/v3-component-props'
 
-type Config = PageConfig<'grid', GridOptions>
+type Config = PageConfig<string, GridOptions>
 
 interface Data {
   languages: SelectOption[]
   urlFilters: ScheduleFilterRecord | null
 }
 
-export default Vue.extend({
+export default defineComponent({
   components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
   props: {
     config: { type: Object as PropType<Config>, required: true },
@@ -72,12 +77,12 @@ export default Vue.extend({
       return {
         predicate: createSessionPredicate(filter),
         filtersKey: `grid_${this.config.name}`,
-        enabledFilters: controls as any[],
+        enabledFilters: controls as unknown[],
         languages: getLanguageOptions(),
         scheduleConfig: {
-          tileHeader: tile.header as any[],
-          tileAttributes: tile.attributes as any[],
-          tileActions: tile.actions as any[],
+          tileHeader: tile.header as unknown[],
+          tileAttributes: tile.attributes as unknown[],
+          tileActions: tile.actions as unknown[],
         },
       }
     },

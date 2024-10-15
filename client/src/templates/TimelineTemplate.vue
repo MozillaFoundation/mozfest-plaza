@@ -3,45 +3,56 @@
     <FilteredScheduleView
       v-if="schedule"
       :schedule="schedule"
-      :user-sessions="userSessions"
+      :user-sessions="userSessions ?? undefined"
       :options="options"
       :schedule-date="scheduleDate"
-      :route-query="$route.query"
+      :route-query="route.query"
       @filter="onFilter"
     >
-      <span slot="title">{{ config.title[$i18n.locale] }}</span>
-      <ApiContent slot="infoText" :slug="config.name" />
-      <span slot="noResults">{{ $t('mozfest.general.noResults') }}</span>
+      <template v-slot:title>
+        <span>{{ config.title[$i18n.locale] }}</span>
+      </template>
+      <template v-slot:infoText>
+        <ApiContent :slug="config.name" />
+      </template>
+      <template v-slot:noResults>
+        <span>{{ $t('mozfest.general.noResults') }}</span>
+      </template>
     </FilteredScheduleView>
   </AppLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import AppLayout from '@/components/MozAppLayout.vue'
 import {
   ApiContent,
-  FilteredScheduleOptions,
+  type FilteredScheduleOptions,
   FilteredScheduleView,
 } from '@openlab/deconf-ui-toolkit'
 import {
   getLanguageOptions,
   mapApiState,
-  TimelineOptions,
-  PageConfig,
+  type TimelineOptions,
+  type PageConfig,
   createSessionPredicate,
 } from '@/lib/module'
-import { PropType } from 'vue/types/v3-component-props'
+import { useRoute } from 'vue-router'
 
-type Config = PageConfig<'timeline', TimelineOptions>
+type Config = PageConfig<string, TimelineOptions>
 
-export default Vue.extend({
+export default defineComponent({
   components: { AppLayout, FilteredScheduleView, ApiContent },
   props: {
     config: {
       type: Object as PropType<Config>,
       required: true,
     },
+  },
+  setup() {
+    return {
+      route: useRoute(),
+    }
   },
   computed: {
     ...mapApiState('api', ['schedule', 'user', 'userSessions']),
@@ -53,12 +64,12 @@ export default Vue.extend({
       return {
         predicate: createSessionPredicate(filter),
         filtersKey: `timeline_${this.config.name}`,
-        enabledFilters: controls as any[],
+        enabledFilters: controls as unknown[],
         languages: getLanguageOptions(),
         scheduleConfig: {
-          tileHeader: tile.header as any[],
-          tileAttributes: tile.attributes as any[],
-          tileActions: tile.actions as any[],
+          tileHeader: tile.header as unknown[],
+          tileAttributes: tile.attributes as unknown[],
+          tileActions: tile.actions as unknown[],
         },
       }
     },

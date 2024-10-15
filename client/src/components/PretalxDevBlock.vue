@@ -21,7 +21,7 @@
 <script lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { DeconfApiClient, mapApiState, Stack } from '@openlab/deconf-ui-toolkit'
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 
 interface Data {
   status: PretalxStatus | null
@@ -33,7 +33,7 @@ interface PretalxStatus {
   isEnabled: boolean
 }
 
-export default Vue.extend({
+export default defineComponent({
   components: { FontAwesomeIcon, Stack },
   data(): Data {
     return {
@@ -56,7 +56,7 @@ export default Vue.extend({
     this.fetchStatus()
     this.timerId = window.setInterval(() => this.fetchStatus(), 1000)
   },
-  destroyed() {
+  unmounted() {
     if (this.timerId) {
       clearInterval(this.timerId)
       this.timerId = null
@@ -65,9 +65,8 @@ export default Vue.extend({
   methods: {
     /** Fetch the pretalx status from the API */
     async fetchStatus() {
-      this.status = await this.apiClient.fetchJson<PretalxStatus>(
-        'admin/pretalx'
-      )
+      this.status =
+        await this.apiClient.fetchJson<PretalxStatus>('admin/pretalx')
     },
 
     /** Start a pretalx scrape */

@@ -1,121 +1,131 @@
 <template>
   <ApiContent :slug="slug">
     <!-- feedback_form -->
-    <AirtableEmbed
-      slot="feedback_form"
-      src="https://airtable.com/embed/shrSoLQIyaX54VlAy?backgroundColor=teal"
-    />
+    <template v-slot:feedback_form>
+      <AirtableEmbed
+        src="https://airtable.com/embed/shrSoLQIyaX54VlAy?backgroundColor=teal"
+      />
+    </template>
 
     <!-- callouts -->
-    <div class="buttons" slot="callouts">
-      <a
-        class="button is-large is-slack"
-        href="http://mozillafestival.org/slack"
-      >
-        <span class="icon">
-          <FontAwesomeIcon :icon="['fab', 'slack']" />
-        </span>
-        <span>Slack</span>
-      </a>
-      <a
-        class="button is-large is-secondary"
-        href="mailto:support@mozillafestival.org"
-      >
-        <span class="icon">
-          <FontAwesomeIcon :icon="['fas', 'envelope']" />
-        </span>
-        <span>Email</span>
-      </a>
-      <a
-        class="button is-large is-twitter"
-        href="https://twitter.com/intent/tweet?hashtags=mozhelp"
-      >
-        <span class="icon">
-          <FontAwesomeIcon :icon="['fab', 'twitter']" />
-        </span>
-        <span>Twitter</span>
-      </a>
-    </div>
+    <template v-slot:callouts>
+      <div class="buttons">
+        <a
+          class="button is-large is-slack"
+          href="http://mozillafestival.org/slack"
+        >
+          <span class="icon">
+            <FontAwesomeIcon :icon="['fab', 'slack']" />
+          </span>
+          <span>Slack</span>
+        </a>
+        <a
+          class="button is-large is-secondary"
+          href="mailto:support@mozillafestival.org"
+        >
+          <span class="icon">
+            <FontAwesomeIcon :icon="['fas', 'envelope']" />
+          </span>
+          <span>Email</span>
+        </a>
+        <a
+          class="button is-large is-twitter"
+          href="https://twitter.com/intent/tweet?hashtags=mozhelp"
+        >
+          <span class="icon">
+            <FontAwesomeIcon :icon="['fab', 'twitter']" />
+          </span>
+          <span>Twitter</span>
+        </a>
+      </div>
+    </template>
 
     <!-- calendar -->
-    <section slot="calendar" class="calendarWidget block">
-      <PrivateCalendarCreator api-module="api" />
-    </section>
+    <template v-slot:calendar>
+      <section class="calendarWidget block">
+        <PrivateCalendarCreator api-module="api" />
+      </section>
+    </template>
 
-    <TitoWidget slot="tito" />
+    <template v-slot:tito>
+      <TitoWidget />
+    </template>
 
-    <PrimaryEmbed
-      slot="feature_video"
-      v-if="featuredVideoLink"
-      :link="featuredVideoLink"
-    />
+    <template v-slot:feature_video>
+      <PrimaryEmbed v-if="featuredVideoLink" :link="featuredVideoLink" />
+    </template>
 
-    <div slot="themes" class="atriumView-themes">
-      <article class="atriumView-theme">
-        <img
-          :src="$t('mozfest.atrium.theme1.image')"
-          :alt="$t('mozfest.atrium.theme1.title')"
-        />
-        <h3>{{ $t('mozfest.atrium.theme1.title') }}</h3>
-        <p>{{ $t('mozfest.atrium.theme1.content') }}</p>
-      </article>
-      <article class="atriumView-theme">
-        <img
-          :src="$t('mozfest.atrium.theme2.image')"
-          :alt="$t('mozfest.atrium.theme2.title')"
-        />
-        <h3>{{ $t('mozfest.atrium.theme2.title') }}</h3>
-        <p>{{ $t('mozfest.atrium.theme2.content') }}</p>
-      </article>
-      <article class="atriumView-theme">
-        <img
-          :src="$t('mozfest.atrium.theme3.image')"
-          :alt="$t('mozfest.atrium.theme3.title')"
-        />
-        <h3>{{ $t('mozfest.atrium.theme3.title') }}</h3>
-        <p>{{ $t('mozfest.atrium.theme3.content') }}</p>
-      </article>
-      <article class="atriumView-theme">
-        <img
-          :src="$t('mozfest.atrium.theme4.image')"
-          :alt="$t('mozfest.atrium.theme4.title')"
-        />
-        <h3>{{ $t('mozfest.atrium.theme4.title') }}</h3>
-        <p>{{ $t('mozfest.atrium.theme4.content') }}</p>
-      </article>
-    </div>
+    <template v-slot:themes>
+      <div class="atriumView-themes">
+        <article class="atriumView-theme">
+          <img
+            :src="$t('mozfest.atrium.theme1.image')"
+            :alt="$t('mozfest.atrium.theme1.title')"
+          />
+          <h3>{{ $t('mozfest.atrium.theme1.title') }}</h3>
+          <p>{{ $t('mozfest.atrium.theme1.content') }}</p>
+        </article>
+        <article class="atriumView-theme">
+          <img
+            :src="$t('mozfest.atrium.theme2.image')"
+            :alt="$t('mozfest.atrium.theme2.title')"
+          />
+          <h3>{{ $t('mozfest.atrium.theme2.title') }}</h3>
+          <p>{{ $t('mozfest.atrium.theme2.content') }}</p>
+        </article>
+        <article class="atriumView-theme">
+          <img
+            :src="$t('mozfest.atrium.theme3.image')"
+            :alt="$t('mozfest.atrium.theme3.title')"
+          />
+          <h3>{{ $t('mozfest.atrium.theme3.title') }}</h3>
+          <p>{{ $t('mozfest.atrium.theme3.content') }}</p>
+        </article>
+        <article class="atriumView-theme">
+          <img
+            :src="$t('mozfest.atrium.theme4.image')"
+            :alt="$t('mozfest.atrium.theme4.title')"
+          />
+          <h3>{{ $t('mozfest.atrium.theme4.title') }}</h3>
+          <p>{{ $t('mozfest.atrium.theme4.content') }}</p>
+        </article>
+      </div>
+    </template>
 
-    <div slot="pinned" class="atriumView-pinned">
-      <SessionTile
-        v-for="session in pinnedSessions"
-        :key="session.id"
-        slot-state="future"
-        :session="session"
-        :schedule="schedule"
-        :config="pinnedConfig"
-      />
-    </div>
+    <template v-slot:pinned>
+      <div class="atriumView-pinned">
+        <SessionTile
+          v-for="session in pinnedSessions"
+          :key="session.id"
+          slot-state="future"
+          :session="session"
+          :schedule="schedule"
+          :config="pinnedConfig"
+        />
+      </div>
+    </template>
 
     <!-- ... -->
   </ApiContent>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   ApiContent,
+  PrimaryEmbed,
   PrivateCalendarCreator,
-  ScheduleConfig,
+  type ScheduleConfig,
   SessionTile,
 } from '@openlab/deconf-ui-toolkit'
 
 import TitoWidget from '@/components/TitoWidget.vue'
 import AirtableEmbed from '@/components/AirtableEmbed.vue'
 import { mapApiState } from '@/lib/module'
-import { Session } from '@openlab/deconf-shared'
+import type { Session } from '@openlab/deconf-shared'
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     ApiContent,
     FontAwesomeIcon,
@@ -123,6 +133,7 @@ export default Vue.extend({
     TitoWidget,
     AirtableEmbed,
     SessionTile,
+    PrimaryEmbed,
   },
   props: {
     slug: { type: String, required: true },

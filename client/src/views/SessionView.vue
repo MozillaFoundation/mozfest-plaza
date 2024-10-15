@@ -9,24 +9,24 @@
       :schedule-date="scheduleDate"
       @links="onLinks"
     >
-      <BackButton slot="backButton" :to="backRoute">
-        {{ $t('deconf.session.mozfest.backButton') }}
-      </BackButton>
+      <template v-slot:backButton>
+        <BackButton :to="backRoute">
+          {{ $t('deconf.session.mozfest.backButton') }}
+        </BackButton>
+      </template>
 
-      <div
-        class="notification is-warning"
-        slot="afterAttributes"
-        v-if="showExternalLinksWarning"
-      >
-        {{ $t('deconf.session.mozfest.externalLinks') }}
-      </div>
+      <template v-slot:afterAttributes>
+        <div class="notification is-warning" v-if="showExternalLinksWarning">
+          {{ $t('deconf.session.mozfest.externalLinks') }}
+        </div>
+      </template>
 
-      <template v-if="localeContent" slot="content">
+      <template v-if="localeContent" v-slot:content>
         <div class="content" v-html="localeContent"></div>
       </template>
 
       <!-- TODO: refactor this back to the framework properly -->
-      <template slot="login" v-if="!isStaticMode">
+      <template v-slot:login v-if="!isStaticMode">
         <p>
           {{ $t('deconf.session.logIn') }}
         </p>
@@ -37,7 +37,7 @@
         </p>
       </template>
 
-      <template slot="afterContent">
+      <template v-slot:afterContent>
         <button class="button is-primary" @click="shareSession">
           <span class="icon">
             <FontAwesomeIcon :icon="['fas', 'share-alt']" />
@@ -48,38 +48,39 @@
         </button>
       </template>
 
-      <div
-        slot="footer"
-        v-if="recommendations.length > 0"
-        class="sessionView-recommendations"
-      >
-        <h2>{{ $t('deconf.session.mozfest.recommendations') }}</h2>
-        <p>{{ $t('deconf.session.mozfest.recommendationsInfo') }}</p>
+      <template v-slot:footer>
+        <div
+          v-if="recommendations.length > 0"
+          class="sessionView-recommendations"
+        >
+          <h2>{{ $t('deconf.session.mozfest.recommendations') }}</h2>
+          <p>{{ $t('deconf.session.mozfest.recommendationsInfo') }}</p>
 
-        <div class="sessionView-recommendationCards">
-          <div
-            class="recommendationCard"
-            v-for="(session, index) in recommendations"
-            :key="session.id"
-          >
-            <SessionTile
-              slot-state="future"
-              :session="session"
-              :schedule="schedule"
-              :config="recommendationConfig"
-              :readonly="false"
-              @click="onRecommendation(session, index)"
-            />
+          <div class="sessionView-recommendationCards">
+            <div
+              class="recommendationCard"
+              v-for="(session, index) in recommendations"
+              :key="session.id"
+            >
+              <SessionTile
+                slot-state="future"
+                :session="session"
+                :schedule="schedule!"
+                :config="recommendationConfig"
+                :readonly="false"
+                @click="onRecommendation(session, index)"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </template>
     </SessionView>
   </AppLayout>
   <NotFoundView v-else />
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { marked } from 'marked'
 import {
   BackButton,
@@ -87,15 +88,15 @@ import {
   mapApiState,
   Routes,
   localiseFromObject,
-  ScheduleConfig,
+  type ScheduleConfig,
   SessionTile,
 } from '@openlab/deconf-ui-toolkit'
-import { Location } from 'vue-router'
+import { type RouteLocationRaw } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
 import ShareSessionSheet from '@/components/ShareSessionSheet.vue'
-import { LocalisedLink, Session } from '@openlab/deconf-shared'
+import type { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
-import { MozSession } from '@/lib/module'
+import type { MozSession } from '@/lib/module'
 import { env } from '@/plugins/env-plugin'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -133,7 +134,7 @@ interface Data {
   recommendationConfig: ScheduleConfig
 }
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     AppLayout,
     SessionView,
@@ -154,11 +155,11 @@ export default Vue.extend({
       if (!this.schedule) return null
       return (
         (this.schedule.sessions.find(
-          (s) => s.id === this.sessionId
+          (s) => s.id === this.sessionId,
         ) as MozSession) ?? null
       )
     },
-    backRoute(): Location {
+    backRoute(): RouteLocationRaw {
       return { name: Routes.Schedule }
     },
     scheduleDate(): Date {
@@ -191,7 +192,7 @@ export default Vue.extend({
         query: { redirect },
       }
     },
-    recommendations(): unknown {
+    recommendations(): Session[] {
       if (
         !this.session ||
         !this.schedule ||
@@ -224,7 +225,7 @@ export default Vue.extend({
           }
         }
         return true
-      } catch (error) {
+      } catch {
         return true
       }
     },
@@ -308,7 +309,8 @@ export default Vue.extend({
 .recommendationCard {
   background-color: hsl(0deg, 0%, 100%);
   border-radius: $radius;
-  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
+  box-shadow:
+    0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
     0 0px 0 1px rgb(10 10 10 / 1%);
   padding: 1em;
 }

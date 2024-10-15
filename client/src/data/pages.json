@@ -104,7 +104,7 @@
           }
         }
       ],
-      "featuerd": { "limit": 7 },
+      "featured": { "limit": 7 },
       "sponsors": [
         {
           "title": "Presenting Sponsor",

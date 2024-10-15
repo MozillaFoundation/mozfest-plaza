@@ -1,5 +1,5 @@
-import { Localised } from '@openlab/deconf-shared'
-import { SponsorGroup } from '@openlab/deconf-ui-toolkit'
+import { type Localised } from '@openlab/deconf-shared'
+import { type Sponsor } from '@openlab/deconf-ui-toolkit'
 
 export enum StorageKey {
   AuthToken = 'authToken',
@@ -33,40 +33,7 @@ export enum ExtraRoutes {
   Search = 'Search',
 }
 
-export const themeAllowlist = new Set([
-  '610', // Activism
-  '592', // Arts & Culture
-  '593', // Bias
-  '611', // Developer Focused
-  '594', // Data Stewardship
-  '595', // Decentralization
-  '596', // Equity, Diversity & Inclusion
-  '597', // Education
-  '598', // Intersectionality
-  '599', // Governance & Policy
-  '600', // Health
-  '601', // Movement Building
-  '602', // Openness & Transparency
-  '604', // Privacy & Security
-  '605', // Science
-  '606', // Speech & Language
-  '607', // Web Literacy
-  '585', // MozFest Funder Track
-
-  '701', // Room A - THT Kamer
-  '702', // Room B - Arthur Staal
-  '703', // Room C - Boardroom
-  '704', // Room D - Zonzij
-  '705', // Room E - Flexruimte
-  '706', // Room F - Water Studio
-  '707', // Garden - House
-  '708', // Garden - Tent
-  '709', // Lounge
-  '710', // Small Lounge
-  '724', // Online Only
-  '671', // Ethical Dilemma Cafe
-  '760', // Restaurant
-])
+export const themeAllowlist = new Set([])
 
 export const sessionTypes = {
   extendedWorkshop: '4048',
@@ -137,7 +104,18 @@ export type CustomWidgetOptions = AtriumWidgetInit<
     icon: string
   }
 >
-export type AtriumWidgetOptions = VisitorsWidgetOptions | CustomWidgetOptions
+export type GenericWidget = AtriumWidgetInit<string, unknown>
+export type AtriumWidgetOptions =
+  | VisitorsWidgetOptions
+  | CustomWidgetOptions
+  | GenericWidget
+
+// TypeScript doesn't like the literal types when its generated from JSON
+type SponsorGroup2 = {
+  title: string
+  size: string
+  sponsors: Sponsor[]
+}
 
 export type AtriumOptions = {
   hero: {
@@ -146,7 +124,7 @@ export type AtriumOptions = {
   }
   widgets: AtriumWidgetOptions[]
   featured: {
-    limit: 7
+    limit: number
   }
-  sponsors: SponsorGroup
+  sponsors: SponsorGroup2[]
 }

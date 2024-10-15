@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import UtilLayout from '@/components/MozUtilLayout.vue'
 import { ApiMessage } from '@openlab/deconf-ui-toolkit'
 
-export default Vue.extend({
+export default defineComponent({
   components: { UtilLayout, ApiMessage },
   props: {
     errorCode: { type: String, default: 'unknown' },

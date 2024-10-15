@@ -9,15 +9,15 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import {
   ColorWidget,
   localiseFromObject,
   mapMetricsState,
 } from '@openlab/deconf-ui-toolkit'
-import { VisitorsWidgetOptions } from '@/lib/module'
+import type { VisitorsWidgetOptions } from '@/lib/module'
 
-export default Vue.extend({
+export default defineComponent({
   components: { ColorWidget },
   props: {
     config: { type: Object as PropType<VisitorsWidgetOptions>, required: true },

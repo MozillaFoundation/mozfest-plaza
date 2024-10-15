@@ -7,17 +7,19 @@
       @logout="onLogout"
       @unregister="onUnregister"
     >
-      <PrivateCalendarCreator slot="preActions" api-module="api" />
+      <template v-slot:preActions>
+        <PrivateCalendarCreator api-module="api" />
+      </template>
     </ProfileView>
   </UtilLayout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import {
-  FullAuthToken,
+  type FullAuthToken,
   PrivateCalendarCreator,
-  ProfileField,
+  type ProfileField,
   ProfileView,
 } from '@openlab/deconf-ui-toolkit'
 
@@ -25,7 +27,7 @@ import UtilLayout from '@/components/MozUtilLayout.vue'
 import languageData from '@/data/languages.json'
 import { mapApiState, StorageKey } from '@/lib/module'
 
-export default Vue.extend({
+export default defineComponent({
   components: { UtilLayout, ProfileView, PrivateCalendarCreator },
   computed: {
     ...mapApiState('api', ['user', 'profile']),
@@ -86,7 +88,7 @@ export default Vue.extend({
       date.setMinutes(
         date.getMinutes() + date.getTimezoneOffset(),
         date.getSeconds(),
-        date.getMilliseconds()
+        date.getMilliseconds(),
       )
       return date.toLocaleString()
     },

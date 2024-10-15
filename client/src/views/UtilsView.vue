@@ -62,24 +62,30 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import {
   PrimaryEmbed,
   SecondaryEmbed,
   TextField,
 } from '@openlab/deconf-ui-toolkit'
-import { Localised } from '@openlab/deconf-shared'
+import type { Localised } from '@openlab/deconf-shared'
 
 import UtilLayout from '@/components/MozUtilLayout.vue'
 import rooms from '@/data/rooms.json'
 import router from '@/router/module'
+
+interface Room {
+  slug: string
+  id: number
+  name: Localised
+}
 
 interface Data {
   primaryUrl: string
   secondaryUrl: string
   primaryExamples: readonly string[]
   secondaryExamples: readonly string[]
-  rooms: { slug: string; id: number; name: Localised }[]
+  rooms: Room[]
 }
 
 const primaryExamples = Object.freeze([
@@ -119,7 +125,7 @@ const secondaryExamples = Object.freeze([
   'https://vimeo.com/event/123456/chat/',
 ])
 
-export default Vue.extend({
+export default defineComponent({
   components: { PrimaryEmbed, SecondaryEmbed, TextField, UtilLayout },
   data(): Data {
     return {
@@ -128,8 +134,8 @@ export default Vue.extend({
       primaryExamples,
       secondaryExamples,
       rooms: Object.entries(rooms)
-        .map(([slug, room]) => ({ ...(room as any), slug }))
-        .sort((a, b) => a.name.en.localeCompare(b.name.en)),
+        .map(([slug, room]) => ({ ...(room as Room), slug }))
+        .sort((a, b) => a.name.en!.localeCompare(b.name.en!)),
     }
   },
   methods: {
