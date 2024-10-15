@@ -1,6 +1,6 @@
 <template>
-  <VisitorsWidget v-if="config.kind == 'visitors'" :config="config" />
-  <CustomWidget v-else-if="config.kind == 'custom'" :config="config" />
+  <VisitorsWidget v-if="config.kind == 'visitors'" :config="anyConfig" />
+  <CustomWidget v-else-if="config.kind == 'custom'" :config="anyConfig" />
   <p v-else>unknown widget: {{ config }}</p>
 </template>
 
@@ -14,6 +14,12 @@ export default defineComponent({
   components: { VisitorsWidget, CustomWidget },
   props: {
     config: { type: Object as PropType<AtriumWidgetOptions>, required: true },
+  },
+  computed: {
+    anyConfig() {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return this.config as any
+    },
   },
 })
 </script>

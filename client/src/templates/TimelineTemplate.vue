@@ -23,6 +23,8 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { defineComponent, type PropType } from 'vue'
 import AppLayout from '@/components/MozAppLayout.vue'
 import {
@@ -64,12 +66,12 @@ export default defineComponent({
       return {
         predicate: createSessionPredicate(filter),
         filtersKey: `timeline_${this.config.name}`,
-        enabledFilters: controls as unknown[],
+        enabledFilters: controls as any[],
         languages: getLanguageOptions(),
         scheduleConfig: {
-          tileHeader: tile.header as unknown[],
-          tileAttributes: tile.attributes as unknown[],
-          tileActions: tile.actions as unknown[],
+          tileHeader: tile.header as any[],
+          tileAttributes: tile.attributes as any[],
+          tileActions: tile.actions as any[],
         },
       }
     },

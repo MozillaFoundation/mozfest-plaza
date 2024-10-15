@@ -44,7 +44,7 @@ export default defineComponent({
         },
         {
           label: this.$t('deconf.profile.mozfest.localeText'),
-          value: languageData[this.user.user_lang],
+          value: (languageData as Record<string, string>)[this.user.user_lang],
         },
         {
           label: this.$t('deconf.profile.mozfest.registeredText'),
@@ -88,7 +88,7 @@ export default defineComponent({
       date.setMinutes(
         date.getMinutes() + date.getTimezoneOffset(),
         date.getSeconds(),
-        date.getMilliseconds(),
+        date.getMilliseconds()
       )
       return date.toLocaleString()
     },

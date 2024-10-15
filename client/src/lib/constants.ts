@@ -111,7 +111,7 @@ export type AtriumWidgetOptions =
   | GenericWidget
 
 // TypeScript doesn't like the literal types when its generated from JSON
-type SponsorGroup2 = {
+export type GenericSponsorGroup = {
   title: string
   size: string
   sponsors: Sponsor[]
@@ -126,5 +126,5 @@ export type AtriumOptions = {
   featured: {
     limit: number
   }
-  sponsors: SponsorGroup2[]
+  sponsors: GenericSponsorGroup[]
 }

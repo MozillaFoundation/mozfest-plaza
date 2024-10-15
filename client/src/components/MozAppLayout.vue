@@ -1,7 +1,7 @@
 <template>
   <AppLayout
-    :app-settings="settings"
-    :user="user"
+    :app-settings="settings!"
+    :user="user ?? undefined"
     :routes="routes"
     :nav-links="navLinks"
     class="mozAppLayout"
@@ -136,7 +136,7 @@ export default defineComponent({
         {
           title: localiseFromObject(
             this.$i18n.locale,
-            pages.maps.title,
+            pages.maps.title
           ) as string,
           name: pages.maps.name,
           icon: MapsIcon,
@@ -145,7 +145,7 @@ export default defineComponent({
         {
           title: localiseFromObject(
             this.$i18n.locale,
-            pages.helpDesk.title,
+            pages.helpDesk.title
           ) as string,
           name: Routes.HelpDesk,
           icon: HelpDeskIcon,

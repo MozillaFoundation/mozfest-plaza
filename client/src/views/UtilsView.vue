@@ -134,7 +134,7 @@ export default defineComponent({
       primaryExamples,
       secondaryExamples,
       rooms: Object.entries(rooms)
-        .map(([slug, room]) => ({ ...(room as Room), slug }))
+        .map(([slug, room]) => ({ ...room, slug } as Room))
         .sort((a, b) => a.name.en!.localeCompare(b.name.en!)),
     }
   },

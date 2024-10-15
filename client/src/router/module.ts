@@ -236,7 +236,7 @@ router.beforeEach((to, from, next) => {
   const loggedIn = Boolean(localStorage.getItem(StorageKey.AuthToken))
 
   MetricsPlugin.shared?.track(
-    createPageViewEvent((to.name as string) ?? to.path, to.params),
+    createPageViewEvent((to.name as string) ?? to.path, to.params)
   )
 
   const url = new URL(to.fullPath, location.origin)

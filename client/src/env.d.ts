@@ -6,6 +6,7 @@
 
 import { Store } from 'vuex'
 import { VueI18n } from 'vue-i18n'
+import { VueRouter, RouteLocationNormalizedLoaded } from 'vue-router'
 
 import { EnvRecord } from '@/plugins/env-plugin'
 import { MetricsPlugin } from '@/plugins/metrics-plugin'
@@ -22,6 +23,7 @@ declare global {
     CONFIG?: Record<string, string | undefined>
     APP_NAME: string
     APP_VERSION: string
+    dataLayer?: unknown[]
   }
 }
 
@@ -38,5 +40,7 @@ declare module 'vue' {
     $i18n: VueI18n
     $t(...args: unknown[]): string
     // $deconf: DeconfPlugin
+    $router: VueRouter
+    $route: RouteLocationNormalizedLoaded
   }
 }

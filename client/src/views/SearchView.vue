@@ -88,7 +88,7 @@ export default defineComponent({
       const predicate = createQueryPredicate(
         this.$i18n.locale,
         this.query,
-        this.schedule,
+        this.schedule
       )
       if (!predicate) return this.schedule.sessions
       return this.schedule.sessions.filter((s) => predicate(s)).slice(0, 50)
@@ -99,7 +99,7 @@ export default defineComponent({
     this.triggerQuery = debounce(300, (value) => (this.query = value))
   },
   methods: {
-    onQuery(e: InputEvent) {
+    onQuery(e: Event) {
       if (!this.triggerQuery) return
       this.triggerQuery((e.target as HTMLInputElement).value)
     },

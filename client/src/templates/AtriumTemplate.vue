@@ -35,7 +35,7 @@
 
       <template v-slot:bottom>
         <div>
-          <SponsorGrid :groups="config.options.sponsors" />
+          <SponsorGrid :groups="sponsors" />
         </div>
       </template>
     </AtriumLayout>
@@ -53,6 +53,7 @@ import {
   type SessionAndSlot,
   getFeaturedSessions,
   localiseFromObject,
+  type SponsorGroup,
 } from '@openlab/deconf-ui-toolkit'
 import AppLayout from '@/components/MozAppLayout.vue'
 import ApiContent from '@/components/MozApiContent.vue'
@@ -102,9 +103,12 @@ export default defineComponent({
           this.schedule,
           7,
           this.scheduleDate,
-          (s) => Boolean(s.slot) && s.isFeatured,
+          (s) => Boolean(s.slot) && s.isFeatured
         )?.slice(0, 3) ?? []
       )
+    },
+    sponsors() {
+      return this.config.options.sponsors as SponsorGroup[]
     },
   },
   methods: {

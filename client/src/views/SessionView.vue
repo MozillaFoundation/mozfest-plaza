@@ -4,7 +4,7 @@
       api-module="api"
       :class="extraClasses"
       :session="session"
-      :schedule="schedule"
+      :schedule="schedule!"
       :logged-in="Boolean(user) || isStaticMode"
       :schedule-date="scheduleDate"
       @links="onLinks"
@@ -155,7 +155,7 @@ export default defineComponent({
       if (!this.schedule) return null
       return (
         (this.schedule.sessions.find(
-          (s) => s.id === this.sessionId,
+          (s) => s.id === this.sessionId
         ) as MozSession) ?? null
       )
     },
@@ -181,7 +181,7 @@ export default defineComponent({
           this.session && nonTemporalTypes.has(this.session.type),
       }
     },
-    loginLink(): unknown {
+    loginLink(): RouteLocationRaw {
       const redirect = this.$router.resolve({
         name: Routes.Session,
         params: { sessionId: this.sessionId },
@@ -309,8 +309,7 @@ export default defineComponent({
 .recommendationCard {
   background-color: hsl(0deg, 0%, 100%);
   border-radius: $radius;
-  box-shadow:
-    0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
     0 0px 0 1px rgb(10 10 10 / 1%);
   padding: 1em;
 }
