@@ -68,8 +68,8 @@
   "navigation": {
     "showInterpret": false,
     "showProfile": true,
-    "showLogin": false,
-    "showRegister": false
+    "showLogin": true,
+    "showRegister": true
   },
 
   "atriumWidgets": {
