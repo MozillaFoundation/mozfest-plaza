@@ -19,9 +19,10 @@
 </template>
 
 <script lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { DeconfApiClient, mapApiState, Stack } from '@openlab/deconf-ui-toolkit'
 import { defineComponent } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { DeconfApiClient, Stack } from '@openlab/deconf-ui-toolkit'
+import { mapApiState } from '@/lib/module'
 
 interface Data {
   status: PretalxStatus | null
@@ -65,8 +66,9 @@ export default defineComponent({
   methods: {
     /** Fetch the pretalx status from the API */
     async fetchStatus() {
-      this.status =
-        await this.apiClient.fetchJson<PretalxStatus>('admin/pretalx')
+      this.status = await this.apiClient.fetchJson<PretalxStatus>(
+        'admin/pretalx'
+      )
     },
 
     /** Start a pretalx scrape */

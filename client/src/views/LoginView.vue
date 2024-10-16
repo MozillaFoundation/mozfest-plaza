@@ -1,5 +1,5 @@
 <template>
-  <UtilLayout>
+  <MozUtilLayout>
     <LoginView api-module="api">
       <template v-slot:infoText>
         <ApiContent slug="login" />
@@ -10,16 +10,16 @@
         </p>
       </template>
     </LoginView>
-  </UtilLayout>
+  </MozUtilLayout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import UtilLayout from '@/components/MozUtilLayout.vue'
+import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import { LoginView, ApiContent } from '@openlab/deconf-ui-toolkit'
 
 export default defineComponent({
-  components: { UtilLayout, LoginView, ApiContent },
+  components: { MozUtilLayout, LoginView, ApiContent },
 })
 </script>

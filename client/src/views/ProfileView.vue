@@ -1,5 +1,5 @@
 <template>
-  <UtilLayout>
+  <MozUtilLayout>
     <ProfileView
       v-if="user && profile"
       api-module="api"
@@ -11,7 +11,7 @@
         <PrivateCalendarCreator api-module="api" />
       </template>
     </ProfileView>
-  </UtilLayout>
+  </MozUtilLayout>
 </template>
 
 <script lang="ts">
@@ -23,12 +23,12 @@ import {
   ProfileView,
 } from '@openlab/deconf-ui-toolkit'
 
-import UtilLayout from '@/components/MozUtilLayout.vue'
+import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import languageData from '@/data/languages.json'
 import { mapApiState, StorageKey } from '@/lib/module'
 
 export default defineComponent({
-  components: { UtilLayout, ProfileView, PrivateCalendarCreator },
+  components: { MozUtilLayout, ProfileView, PrivateCalendarCreator },
   computed: {
     ...mapApiState('api', ['user', 'profile']),
     fields(): ProfileField[] {

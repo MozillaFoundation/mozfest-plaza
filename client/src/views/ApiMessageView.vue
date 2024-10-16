@@ -1,16 +1,16 @@
 <template>
-  <UtilLayout>
+  <MozUtilLayout>
     <ApiMessage :error-code="errorCode" />
-  </UtilLayout>
+  </MozUtilLayout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import UtilLayout from '@/components/MozUtilLayout.vue'
+import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import { ApiMessage } from '@openlab/deconf-ui-toolkit'
 
 export default defineComponent({
-  components: { UtilLayout, ApiMessage },
+  components: { MozUtilLayout, ApiMessage },
   props: {
     errorCode: { type: String, default: 'unknown' },
   },

@@ -1,37 +1,34 @@
 <template>
-  <AppLayout>
-    <WhatsOnView
-      v-if="filteredSchedule && filteredSessions != null"
-      :schedule="filteredSchedule"
-      :sessions="filteredSessions"
-      :filters-key="options.filtersKey"
-      :enabled-filters="options.enabledFilters"
-      :config="options.scheduleConfig"
-      slot-state="future"
-      :language-options="languages"
-      :url-filters="urlFilters"
-      @filter="onFilter"
-      :readonly="config.options.readonly"
-    >
-      <template v-slot:title>
-        <span>{{ config.title[$i18n.locale] }}</span>
-      </template>
-      <template v-slot:info>
-        <ApiContent :slug="config.name" />
-      </template>
-      <template v-slot:noResults>
-        <span>{{ $t('mozfest.general.noResults') }}</span>
-      </template>
-    </WhatsOnView>
-    <InlineLoading v-else />
-  </AppLayout>
+  <WhatsOnView
+    v-if="filteredSchedule && filteredSessions != null"
+    :schedule="filteredSchedule"
+    :sessions="filteredSessions"
+    :filters-key="options.filtersKey"
+    :enabled-filters="options.enabledFilters"
+    :config="options.scheduleConfig"
+    slot-state="future"
+    :language-options="languages"
+    :url-filters="urlFilters"
+    @filter="onFilter"
+    :readonly="config.options.readonly"
+  >
+    <template v-slot:title>
+      {{ config.title[$i18n.locale] }}
+    </template>
+    <template v-slot:info>
+      <ApiContent :slug="config.name" />
+    </template>
+    <template v-slot:noResults>
+      {{ $t('mozfest.general.noResults') }}
+    </template>
+  </WhatsOnView>
+  <InlineLoading v-else />
 </template>
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { defineComponent, type PropType } from 'vue'
-import AppLayout from '@/components/MozAppLayout.vue'
 
 import {
   ApiContent,
@@ -62,7 +59,7 @@ interface Data {
 }
 
 export default defineComponent({
-  components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
+  components: { WhatsOnView, InlineLoading, ApiContent },
   props: {
     config: { type: Object as PropType<Config>, required: true },
   },

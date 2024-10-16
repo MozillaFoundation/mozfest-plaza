@@ -1,14 +1,4 @@
-import { type ScheduleRecord } from '@openlab/deconf-shared'
-import {
-  type ApiModuleState,
-  createStateMapper,
-} from '@openlab/deconf-ui-toolkit'
-import { type MozConferenceConfig } from './api'
+import { createStateMapper } from '@openlab/deconf-ui-toolkit'
+import type { MozApiStoreState } from '@/store/api-module.js'
 
-// TODO: work out how to merge upstream nicely
-type MozApiModuleState = Omit<ApiModuleState, 'schedule'> & {
-  schedule: Omit<ScheduleRecord, 'settings'> & {
-    settings: MozConferenceConfig
-  }
-}
-export const mapApiState = createStateMapper<MozApiModuleState>()
+export const mapApiState = createStateMapper<MozApiStoreState>()

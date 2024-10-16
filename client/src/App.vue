@@ -23,16 +23,14 @@ import {
   AppDialog,
   AppLoading,
   DevControl,
-  mapApiState,
   Routes,
 } from '@openlab/deconf-ui-toolkit'
-import type { ConferenceConfig } from '@openlab/deconf-shared'
 import type { RouteLocationRaw } from 'vue-router'
 
 import MozApiError from '@/components/MozApiError.vue'
 import PretalxDevBlock from '@/components/PretalxDevBlock.vue'
 
-import { StorageKey } from '@/lib/module'
+import { mapApiState, StorageKey } from '@/lib/module'
 import { setLocale } from '@/i18n/module'
 
 interface Data {
@@ -52,9 +50,6 @@ export default defineComponent({
   },
   computed: {
     ...mapApiState('api', ['apiState', 'schedule', 'user']),
-    settings(): ConferenceConfig | null {
-      return this.schedule?.settings ?? null
-    },
     homeRoute(): RouteLocationRaw {
       return { name: Routes.Atrium }
     },
@@ -76,7 +71,7 @@ export default defineComponent({
     // Setup a random tick to re-pull the schedule
     this.timerId = window.setInterval(
       () => this.$store.dispatch('api/fetchData'),
-      this.randomTick(),
+      this.randomTick()
     )
   },
   unmounted() {

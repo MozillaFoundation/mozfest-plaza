@@ -32,7 +32,7 @@
             :key="session.id"
             slot-state="future"
             :session="session"
-            :schedule="schedule"
+            :schedule="schedule!"
             :config="config"
           />
         </SessionBoard>
@@ -79,9 +79,9 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapApiState('api', ['schedule', 'user']),
+    ...mapApiState('api', ['schedule', 'user', 'settings']),
     predicate(): SessionPredicate | null {
-      return createQueryPredicate(this.$i18n.locale, this.query, this.schedule)
+      return createQueryPredicate(this.$i18n.locale, this.query, this.schedule!)
     },
     filteredSessions() {
       if (!this.schedule || !this.query) return []
@@ -95,7 +95,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    guardPage(this.schedule?.settings.search, this.user, this.$router)
+    guardPage(this.settings?.search, this.user, this.$router)
     this.triggerQuery = debounce(300, (value) => (this.query = value))
   },
   methods: {

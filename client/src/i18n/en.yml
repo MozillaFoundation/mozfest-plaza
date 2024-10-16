@@ -114,7 +114,7 @@ deconf:
     title: Login
     email:
       label: Email
-      placeholder: e.g. geoff@example.com
+      placeholder: ''
       help: The email you registered with on ti.to
     badEmail: Bad email
     doneText: Login code sent

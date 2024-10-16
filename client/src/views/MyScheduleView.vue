@@ -61,7 +61,7 @@ function makeOptions(userSessions: string[]): FilteredScheduleOptions {
 export default defineComponent({
   components: { AppLayout, FilteredScheduleView, ApiContent },
   computed: {
-    ...mapApiState('api', ['schedule', 'user', 'userSessions']),
+    ...mapApiState('api', ['schedule', 'user', 'userSessions', 'settings']),
     scheduleDate(): Date {
       return this.$dev?.scheduleDate ?? this.$temporal.date
     },
@@ -70,7 +70,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    guardPage(this.schedule?.settings.mySchedule, this.user, this.$router)
+    guardPage(this.settings?.mySchedule, this.user, this.$router)
   },
   methods: {
     onFilter(query: Record<string, string>) {

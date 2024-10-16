@@ -1,5 +1,6 @@
+// import { type Module } from 'vuex/types/index'
 import {
-  type ApiStoreModule,
+  type ApiModuleState,
   type AuthenticateOptions,
   createApiStoreActions,
   createApiStoreModule,
@@ -8,22 +9,38 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 import { env } from '@/plugins/env-plugin'
 
-import { SocketIoPlugin } from '@/plugins/socketio-plugin'
-import { pickApi } from '@/lib/api'
+import { SocketIoPlugin } from '@/plugins/socketio-plugin.js'
+import { pickApi, type MozConferenceConfig } from '@/lib/api.js'
 
 export interface LoginPayload {
   email: string
   redirect: string
 }
 
-export function apiModule(): ApiStoreModule {
+export interface MozApiStoreState extends ApiModuleState {
+  settings: MozConferenceConfig | undefined
+}
+
+// export type MozApiStoreModule = Module<MozApiStoreState, unknown>
+
+export function apiModule() {
   const apiClient = pickApi(env)
 
   const base = createApiStoreModule()
   const baseActions = createApiStoreActions(apiClient)
 
   return {
-    ...base,
+    namespaced: true,
+    state: () => ({
+      ...(base.state as ApiModuleState),
+      settings: undefined,
+    }),
+    mutations: {
+      ...base.mutations,
+      settings(state, settings) {
+        state.settings = settings
+      },
+    },
     getters: {
       ...base.getters,
       apiClient: () => apiClient,
@@ -55,6 +72,7 @@ export function apiModule(): ApiStoreModule {
         //   data.themes = data.themes.filter((t) => themeAllowlist.has(t.id))
         // }
         commit('schedule', data)
+        commit('settings', data?.settings)
         return data !== null
       },
       async fetchWhatsOn() {

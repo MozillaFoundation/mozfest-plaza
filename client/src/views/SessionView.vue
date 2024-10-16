@@ -85,7 +85,6 @@ import { marked } from 'marked'
 import {
   BackButton,
   SessionView,
-  mapApiState,
   Routes,
   localiseFromObject,
   type ScheduleConfig,
@@ -96,7 +95,7 @@ import AppLayout from '@/components/MozAppLayout.vue'
 import ShareSessionSheet from '@/components/ShareSessionSheet.vue'
 import type { LocalisedLink, Session } from '@openlab/deconf-shared'
 import NotFoundView from './NotFoundView.vue'
-import type { MozSession } from '@/lib/module'
+import { type MozSession, mapApiState } from '@/lib/module'
 import { env } from '@/plugins/env-plugin'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 

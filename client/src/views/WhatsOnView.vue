@@ -1,8 +1,8 @@
 <template>
-  <AppLayout>
+  <MozAppLayout>
     <WhatsOnView
       v-if="apiState === 'ready'"
-      :schedule="schedule"
+      :schedule="schedule!"
       :sessions="filteredSessions"
       :filters-key="filtersKey"
       :enabled-filters="enabledFilters"
@@ -24,12 +24,12 @@
       </template>
     </WhatsOnView>
     <InlineLoading v-else />
-  </AppLayout>
+  </MozAppLayout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import AppLayout from '@/components/MozAppLayout.vue'
+import MozAppLayout from '@/components/MozAppLayout.vue'
 import {
   ApiContent,
   decodeUrlScheduleFilters,
@@ -56,7 +56,7 @@ interface Data {
 // TODO: how can this use GridTemplate when it fetches its own sessions?
 
 export default defineComponent({
-  components: { AppLayout, WhatsOnView, InlineLoading, ApiContent },
+  components: { MozAppLayout, WhatsOnView, InlineLoading, ApiContent },
   data(): Data {
     return {
       filtersKey: StorageKey.WhatsOnFilters,
@@ -70,7 +70,7 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapApiState('api', ['schedule', 'user']),
+    ...mapApiState('api', ['schedule', 'user', 'settings']),
     ...mapWhatsOnState('whatsOn', ['apiState', 'sessions']),
     filteredSessions(): Session[] {
       if (!this.schedule || !this.sessions) return []
@@ -80,11 +80,11 @@ export default defineComponent({
       return this.sessions
     },
     scheduleIsLive(): boolean {
-      return Boolean(this.schedule?.settings.schedule.enabled)
+      return Boolean(this.settings?.schedule.enabled)
     },
   },
   created() {
-    guardPage(this.schedule?.settings.whatsOn, this.user, this.$router)
+    guardPage(this.settings?.whatsOn, this.user, this.$router)
   },
   mounted() {
     this.fetchData()
@@ -93,7 +93,7 @@ export default defineComponent({
     async fetchData() {
       this.$store.commit(
         'whatsOn/sessions',
-        await this.$store.dispatch('api/fetchWhatsOn'),
+        await this.$store.dispatch('api/fetchWhatsOn')
       )
     },
     onFilter(filters: ScheduleFilterRecord) {

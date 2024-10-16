@@ -1,17 +1,21 @@
 <template>
-  <ContentTemplate class="calendarView" :config="pages.calendar" />
+  <MozAppLayout>
+    <ContentTemplate class="calendarView" :config="pages.calendar" />
+  </MozAppLayout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mapApiState, Routes } from '@openlab/deconf-ui-toolkit'
+import { Routes } from '@openlab/deconf-ui-toolkit'
 import { ExtraRoutes } from '@/lib/constants'
 
+import MozAppLayout from '@/components/MozAppLayout.vue'
 import ContentTemplate from '@/templates/ContentTemplate.vue'
 import pages from '@/data/pages.json'
+import { mapApiState } from '@/lib/module.js'
 
 export default defineComponent({
-  components: { ContentTemplate },
+  components: { ContentTemplate, MozAppLayout },
   data: () => ({ pages }),
   computed: {
     ...mapApiState('api', ['user']),

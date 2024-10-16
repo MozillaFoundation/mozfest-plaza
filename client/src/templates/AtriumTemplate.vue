@@ -1,45 +1,39 @@
 <template>
-  <AppLayout class="atriumView">
-    <AtriumLayout>
-      <template v-slot:top>
-        <HeroCard
-          :title="localise(config.options.hero.title)"
-          :subtitle="localise(config.options.hero.subtitle)"
-          coverImage="/plaza-hero.png"
-        />
-      </template>
+  <AtriumLayout class="atriumView">
+    <template v-slot:top>
+      <HeroCard
+        :title="localise(config.options.hero.title)"
+        :subtitle="localise(config.options.hero.subtitle)"
+        coverImage="/plaza-hero.png"
+      />
+    </template>
 
-      <template v-slot:left>
-        <BoxContent :title="$t('mozfest.atrium.heading')">
-          <div class="atriumView-content">
-            <ApiContent :slug="contentSlug" />
-          </div>
-        </BoxContent>
-      </template>
-
-      <template v-slot:right>
-        <div>
-          <AtriumWidget
-            v-for="widget in filteredWidgets"
-            :key="widget.id"
-            :config="widget"
-          />
-
-          <FeaturedSessions
-            v-if="user && featuredSessions.length > 0"
-            :featured="featuredSessions"
-            :current-date="scheduleDate"
-          />
+    <template v-slot:left>
+      <BoxContent :title="$t('mozfest.atrium.heading')">
+        <div class="atriumView-content">
+          <ApiContent :slug="contentSlug" />
         </div>
-      </template>
+      </BoxContent>
+    </template>
 
-      <template v-slot:bottom>
-        <div>
-          <SponsorGrid :groups="sponsors" />
-        </div>
-      </template>
-    </AtriumLayout>
-  </AppLayout>
+    <template v-slot:right>
+      <AtriumWidget
+        v-for="widget in filteredWidgets"
+        :key="widget.id"
+        :config="widget"
+      />
+
+      <FeaturedSessions
+        v-if="user && featuredSessions.length > 0"
+        :featured="featuredSessions"
+        :current-date="scheduleDate"
+      />
+    </template>
+
+    <template v-slot:bottom>
+      <SponsorGrid :groups="sponsors" />
+    </template>
+  </AtriumLayout>
 </template>
 
 <script lang="ts">
@@ -55,7 +49,6 @@ import {
   localiseFromObject,
   type SponsorGroup,
 } from '@openlab/deconf-ui-toolkit'
-import AppLayout from '@/components/MozAppLayout.vue'
 import ApiContent from '@/components/MozApiContent.vue'
 import AtriumWidget from '@/components/AtriumWidget.vue'
 
@@ -72,7 +65,6 @@ type Config = PageConfig<string, AtriumOptions>
 export default defineComponent({
   components: {
     ApiContent,
-    AppLayout,
     AtriumLayout,
     AtriumWidget,
     BoxContent,
@@ -84,7 +76,7 @@ export default defineComponent({
     config: { type: Object as PropType<Config>, required: true },
   },
   computed: {
-    ...mapApiState('api', ['user', 'schedule']),
+    ...mapApiState('api', ['user', 'schedule', 'settings']),
     filteredWidgets(): AtriumWidgetOptions[] {
       return this.config.options.widgets.filter((w) => this.exec(w.condition))
     },
@@ -96,7 +88,7 @@ export default defineComponent({
     },
     featuredSessions(): SessionAndSlot[] {
       if (!this.schedule) return []
-      if (!this.schedule.settings.schedule.enabled) return []
+      if (!this.settings?.schedule.enabled) return []
 
       return (
         getFeaturedSessions(

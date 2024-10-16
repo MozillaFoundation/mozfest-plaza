@@ -99,7 +99,7 @@
           :key="session.id"
           slot-state="future"
           :session="session"
-          :schedule="schedule"
+          :schedule="schedule!"
           :config="pinnedConfig"
         />
       </div>
@@ -139,10 +139,10 @@ export default defineComponent({
     slug: { type: String, required: true },
   },
   computed: {
-    ...mapApiState('api', ['schedule']),
+    ...mapApiState('api', ['schedule', 'settings']),
     featuredVideoLink(): string | undefined {
       try {
-        const raw = this.schedule.settings?.content.atriumVideo
+        const raw = this.settings?.content.atriumVideo
         if (!raw) return undefined
         return new URL(raw).toString()
       } catch {
@@ -158,9 +158,9 @@ export default defineComponent({
     },
     pinnedSessions(): Session[] {
       if (!this.schedule) return []
-      if (!this.schedule.settings.schedule.enabled) return []
+      if (!this.settings?.schedule.enabled) return []
       const sessions = new Map(this.schedule.sessions.map((s) => [s.id, s]))
-      return this.schedule.settings.content.featuredSessions
+      return this.settings.content.featuredSessions
         .map((id) => sessions.get(id) as Session)
         .filter((s) => Boolean(s))
     },

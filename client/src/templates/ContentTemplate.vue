@@ -1,15 +1,13 @@
 <template>
-  <AppLayout>
-    <div class="contentTemplate appLayout-main">
-      <section class="section">
-        <div class="container">
-          <BoxContent>
-            <MozApiContent :slug="config.options.contentSlug" />
-          </BoxContent>
-        </div>
-      </section>
-    </div>
-  </AppLayout>
+  <div class="contentTemplate appLayout-main">
+    <section class="section">
+      <div class="container">
+        <BoxContent>
+          <MozApiContent :slug="config.options.contentSlug" />
+        </BoxContent>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -18,13 +16,12 @@ import { defineComponent, type PropType } from 'vue'
 import { BoxContent } from '@openlab/deconf-ui-toolkit'
 import type { ContentOptions, PageConfig } from '@/lib/module'
 
-import AppLayout from '@/components/MozAppLayout.vue'
 import MozApiContent from '@/components/MozApiContent.vue'
 
 type Config = PageConfig<string, ContentOptions>
 
 export default defineComponent({
-  components: { AppLayout, MozApiContent, BoxContent },
+  components: { MozApiContent, BoxContent },
   props: {
     config: { type: Object as PropType<Config>, required: true },
   },

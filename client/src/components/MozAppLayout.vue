@@ -54,11 +54,7 @@ import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
 // import SpacesIcon from '@/icons/SpacesIcon.vue'
 // import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
-import {
-  ExtraRoutes,
-  mapApiState,
-  type MozConferenceConfig,
-} from '@/lib/module'
+import { ExtraRoutes, mapApiState } from '@/lib/module'
 
 import pages from '../data/pages.json'
 
@@ -80,10 +76,7 @@ export default defineComponent({
     LanguageControl,
   },
   computed: {
-    ...mapApiState('api', ['schedule', 'user']),
-    settings(): MozConferenceConfig | null {
-      return this.schedule?.settings ?? null
-    },
+    ...mapApiState('api', ['schedule', 'user', 'settings']),
     navLinks(): string[] {
       const links: string[] = []
       if (this.settings?.navigation.showInterpret) links.push('interpret')

@@ -1,5 +1,5 @@
 <template>
-  <UtilLayout>
+  <MozUtilLayout>
     <article class="utilsView content">
       <h1>Utilities</h1>
 
@@ -58,7 +58,7 @@
         </ul>
       </details>
     </article>
-  </UtilLayout>
+  </MozUtilLayout>
 </template>
 
 <script lang="ts">
@@ -70,7 +70,7 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 import type { Localised } from '@openlab/deconf-shared'
 
-import UtilLayout from '@/components/MozUtilLayout.vue'
+import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import rooms from '@/data/rooms.json'
 import router from '@/router/module'
 
@@ -126,7 +126,7 @@ const secondaryExamples = Object.freeze([
 ])
 
 export default defineComponent({
-  components: { PrimaryEmbed, SecondaryEmbed, TextField, UtilLayout },
+  components: { PrimaryEmbed, SecondaryEmbed, TextField, MozUtilLayout },
   data(): Data {
     return {
       primaryUrl: 'https://zoom.us/my/123456',
