@@ -85,14 +85,31 @@ type MozStaticFiles = DeconfStaticFiles & {
 export class LiveApiClient extends DeconfApiClient implements MozApiClient {
   async getWhatsOn(): Promise<Session[]> {
     const response = await this.fetchJson<{ sessions: Session[] }>(
-      'schedule/whats-on',
+      'schedule/whats-on'
     )
     return response?.sessions ?? []
   }
 
+  // override async getLinks(): Promise<SessionLinks | null> {
+  //   return {
+  //     links: [
+  //       {
+  //         type: '',
+  //         url: 'https://www.youtube.com/watch?v=DRFHklnN-SM',
+  //         language: 'en',
+  //       },
+  //       {
+  //         type: '',
+  //         url: 'https://example.com',
+  //         language: 'en',
+  //       },
+  //     ],
+  //   }
+  // }
+
   override async startEmailLogin(
     email: string,
-    { redirect }: MozLoginOptions = {},
+    { redirect }: MozLoginOptions = {}
   ): Promise<boolean> {
     return this.fetch(this.getEndpoint('RegistrationRoutes.startEmailLogin'), {
       method: 'POST',
