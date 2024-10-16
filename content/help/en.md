@@ -27,9 +27,9 @@ Free shuttle buses will take those staying in central Lusaka to and from the ven
 
 Sessions on 20 & 21 November will run in parallel in various rooms for an hour to an hour-and-a-half, with a short break in between - we expect to have between 4-6 sessions running in parallel across the space. We will close with our evening party from 6pm-8pm on 21 November.
 
-### Registration Upon Arrival - go to the garden entrance
+### Registration Upon Arrival
 
--   Upon arrival, you’ll be directed to registration by our team of Volunteers.
+-   Upon arrival, you’ll want to join us through the main entrance where you'll be directed to registration by our team of Volunteers.
 -   Have your QR code ready from your ticket confirmation email and the team will check you in and give you your festival pass. This pass gives you access to all areas of the festival for the duration of the event so please wear it at all times in the venue and garden.
 -   At registration, with your festival pass, you will also choose a lanyard color that reflects your photo/video preference. A specific color is available for those who prefer not to be recorded.
 
