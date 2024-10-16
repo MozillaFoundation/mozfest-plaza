@@ -8,12 +8,12 @@
     "visible": false
   },
   "schedule": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "helpDesk": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
 
   "social": {
@@ -21,8 +21,8 @@
     "visible": false
   },
   "arts": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "lightningTalks": {
     "enabled": false,
@@ -57,8 +57,8 @@
     "visible": false
   },
   "search": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "maps": {
     "enabled": false,
@@ -73,8 +73,8 @@
   },
 
   "atriumWidgets": {
-    "login": false,
-    "register": false,
+    "login": true,
+    "register": true,
     "siteVisitors": false,
     "discord": true,
     "familyResources": false,
@@ -87,6 +87,6 @@
 
   "content": {
     "atriumVideo": "https://vimeo.com/841947971",
-    "featuredSessions": ["GRH3FU-1", "PHNFRC-1", "CY33P9-1", "F3ARTC-1 "]
+    "featuredSessions": ["FWPXKF-1", "PHNFRC-1", "CY33P9-1", "F3ARTC-1 "]
   }
 }
