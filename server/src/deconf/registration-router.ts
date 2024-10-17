@@ -282,7 +282,7 @@ export class RegistrationRouter implements AppRouter {
         const user = await this.lookupUser(profile.email)
         if (!user) {
           ctx.redirect(
-            this.#context.url.getClientErrorLink('not_found').toString()
+            this.#context.url.getClientErrorLink('not_registered').toString()
           )
           return
         }
