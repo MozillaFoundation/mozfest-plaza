@@ -363,3 +363,7 @@ mozfest:
       title: You are not registered for MozFest
       info: The email address you used or Google Account you signed in with is not associated with a ti.to account that has a ticket for MozFest. You could try logging in again or registering for a ticket.
       action: Log in
+
+  login:
+    oauth: Log in with an existing account, make sure to pick the account you used with ti.to.
+    google: Sign in with Google
