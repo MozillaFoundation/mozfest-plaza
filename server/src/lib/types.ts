@@ -6,6 +6,7 @@ import { AppConfig } from './structs.js'
 import { EnvRecord } from './utils.js'
 import { SocketService } from './socket-service.js'
 import { UrlService } from './url-service.js'
+import { Oauth2Repository } from '../deconf/oauth2-repository.js'
 
 //
 // A common object passed between instances to share functionality and abstract implementations
@@ -32,6 +33,7 @@ export type AppContext = Pick<
   }
   url: Readonly<UrlService>
   sockets: Readonly<SocketService>
+  oauth2Repo: Readonly<Oauth2Repository>
 }
 
 //

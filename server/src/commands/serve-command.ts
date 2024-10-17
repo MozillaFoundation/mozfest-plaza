@@ -29,6 +29,7 @@ import { RedisAdapter } from '@socket.io/redis-adapter'
 import { migrateCommand } from './migrate-command.js'
 import { fetchContentCommand } from './fetch-content-command.js'
 import { CaMoEmailService } from '../lib/email-service.js'
+import { Oauth2Repository } from '../deconf/oauth2-repository.js'
 
 const debug = createDebug('cmd:serve')
 
@@ -72,11 +73,13 @@ export async function createServerContext() {
   const registrationRepo = new RegistrationRepository({ postgres })
   const metricsRepo = new MetricsRepository({ postgres })
   // const interpreterRepo = new InterpreterRepository({ jwt, conferenceRepo })
+  const oauth2Repo = new Oauth2Repository({ postgres })
 
   // prettier-ignore
   return {
     config, env, pkg, resources, email, i18n, jwt, postgres, semaphore, sockets,
-    store, url, attendanceRepo, conferenceRepo, metricsRepo, registrationRepo
+    store, url, attendanceRepo, conferenceRepo, metricsRepo, registrationRepo,
+    oauth2Repo
   }
 }
 

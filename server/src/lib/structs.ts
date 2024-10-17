@@ -124,5 +124,10 @@ export const AppConfigStruct = object({
       title: localised(),
     })
   ),
+  // google: object({
+  //   oauth2: object({
+  //     clientId: string(),
+  //   })
+  // }),
   opengraphImage: optional(string()),
 })
