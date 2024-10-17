@@ -353,3 +353,13 @@ mozfest:
     search: Search
     noResults: Nothing matched your query
     prompt: Start a search
+
+  apiMessage:
+    oauth2Failed:
+      title: Log in failed
+      info: The login process with Google failed, you cancelled the request or didn't grant access. You can try again if you like
+      action: Log in
+    notRegistered:
+      title: You are not registered for MozFest
+      info: The email address you used or Google Account you signed in with is not associated with a ti.to account that has a ticket for MozFest. You could try logging in again or registering for a ticket.
+      action: Log in
