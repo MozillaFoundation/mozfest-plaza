@@ -9,7 +9,7 @@
   "jwt": {
     "issuer": "mozfest-localhost"
   },
-  "opengraphImage": "https://assets.mofoprod.net/network/images/Mozilla_Festival_2023_Banner_Graphic_1920x1080.original.png",
+  "opengraphImage": "https://mzf.st/opengraph-image",
   "content": {
     "keys": [
       "arts",
@@ -35,8 +35,8 @@
       "affiliation": 4047,
       "recommendations": 4037
     },
-    "aslTagId": 632,
-    "ccTagId": 633
+    "aslTagId": -1,
+    "ccTagId": -1
   },
   "tito": {
     "accountSlug": "mozilla",
