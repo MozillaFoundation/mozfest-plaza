@@ -21,11 +21,12 @@ import { StoreState } from '@/store/module'
 declare global {
   interface Window {
     CONFIG?: Record<string, string | undefined>
-    APP_NAME: string
-    APP_VERSION: string
     dataLayer?: unknown[]
   }
 }
+
+declare const __APP_NAME__: string
+declare const __APP_VERSION__: string
 
 declare module 'vue' {
   // provide typings for `this` in Vue components

@@ -28,8 +28,10 @@ export default defineConfig({
       },
     },
   },
+
+  // https://vite.dev/config/shared-options.html#define
   define: {
-    APP_NAME: `'${pkg.name}'`,
-    APP_VERSION: `'${pkg.version}'`,
+    __APP_NAME__: JSON.stringify(pkg.name),
+    __APP_VERSION__: JSON.stringify(pkg.version),
   },
 })

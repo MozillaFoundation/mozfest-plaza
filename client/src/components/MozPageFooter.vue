@@ -23,8 +23,8 @@ export default defineComponent({
   components: { PageFooter },
   data(): Data {
     return {
-      appName: this.$t('mozfest.footer.appName') || window.APP_NAME,
-      appVersion: this.$env.BUILD_NAME || `v${window.APP_VERSION}`,
+      appName: this.$t('mozfest.footer.appName') || __APP_NAME__,
+      appVersion: this.$env.BUILD_NAME || `v${__APP_VERSION__}`,
     }
   },
   computed: {
