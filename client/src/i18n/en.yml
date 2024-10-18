@@ -367,3 +367,17 @@ mozfest:
   login:
     oauth: Log in with an existing account, make sure to pick the account you used with ti.to.
     google: Sign in with Google
+
+  profile:
+    calendar: Calendar Settings
+    notifications: Notifications Preferences
+
+  profileCalendar:
+    name: Calendar Settings
+    info: Use this page to manage your MySchedule integrations
+    ical: Subscribe with ical
+    google: Sync with Google Calandar
+    moreInfo: More information
+
+  profileNotifications:
+    name: Notification Preferences

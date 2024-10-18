@@ -119,7 +119,12 @@ export class RegistrationRouter implements AppRouter {
 
       await this.#assertNotBlocked(result.registration.email)
 
-      ctx.body = result
+      const tokenRecords = await this.#context.oauth2Repo.getTokens(
+        result.registration.id
+      )
+      const tokens = tokenRecords.map((r) => ({ kind: r.kind, scope: r.scope }))
+
+      ctx.body = Object.assign(result, { tokens })
     })
 
     router.post('registration.startLogin', '/auth/login', async (ctx) => {
@@ -212,25 +217,32 @@ export class RegistrationRouter implements AppRouter {
       'registration.startOAuth2',
       '/auth/oauth2/google',
       async (ctx) => {
-        const redirect = parseLoginRedirect(
-          ctx.request.query.redirect,
+        const { mode, redirect } = ctx.request.query
+
+        const validatedRedirect = parseLoginRedirect(
+          redirect,
           this.#context.env.CLIENT_URL
         )
+
         const scopes = [
           'https://www.googleapis.com/auth/userinfo.email',
           'openid',
           'profile',
         ]
 
+        if (mode === 'calendar') {
+          scopes.push('https://www.googleapis.com/auth/calendar.events')
+        }
+
         const oauth2Client = this.getGoogleClient()
 
         const state = crypto.randomBytes(32).toString('base64url')
         ctx.cookies.set('oauth2-csrf', state)
-        ctx.cookies.set('oauth2-redirect', redirect)
+        ctx.cookies.set('oauth2-redirect', validatedRedirect)
 
         ctx.redirect(
           oauth2Client.generateAuthUrl({
-            access_type: 'offline',
+            access_type: mode === 'calendar' ? 'offline' : undefined,
             scope: scopes,
             include_granted_scopes: true,
             state,
@@ -298,6 +310,7 @@ export class RegistrationRouter implements AppRouter {
         await this.#context.oauth2Repo.store(
           registration.id,
           'google',
+          tokens.scope ?? '',
           tokens.access_token!,
           tokens.refresh_token ?? null,
           tokens.expiry_date ? new Date(tokens.expiry_date) : null

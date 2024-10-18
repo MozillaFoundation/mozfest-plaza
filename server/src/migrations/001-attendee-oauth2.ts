@@ -9,6 +9,7 @@ export default {
         "created" timestamp DEFAULT CURRENT_TIMESTAMP,
         "attendee" integer REFERENCES attendees(id) ON DELETE CASCADE,
         "kind" varchar(50) NOT NULL,
+        "scope" varchar(255) NOT NULL,
         "accessToken" varchar(255) NOT NULL,
         "refreshToken" varchar(255) DEFAULT NULL,
         "expiry" timestamp DEFAULT NULL

@@ -66,6 +66,22 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: '/profile/calendar',
+    name: ExtraRoutes.ProfileCalendar,
+    component: () => import('../views/ProfileCalendarView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.profile',
+    },
+  },
+  {
+    path: '/profile/notifications',
+    name: ExtraRoutes.ProfileNotifications,
+    component: () => import('../views/ProfileNotificationsView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.profile',
+    },
+  },
+  {
     path: pages.register.path,
     name: Routes.Register,
     component: () => import('../views/RegisterView.vue'),

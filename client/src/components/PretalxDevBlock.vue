@@ -21,8 +21,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { DeconfApiClient, Stack } from '@openlab/deconf-ui-toolkit'
-import { mapApiState } from '@/lib/module'
+import { Stack } from '@openlab/deconf-ui-toolkit'
+import { apiClient, mapApiState } from '@/lib/module'
 
 interface Data {
   status: PretalxStatus | null
@@ -47,9 +47,6 @@ export default defineComponent({
     isAdmin(): boolean {
       return Boolean(this.user && this.user.user_roles.includes('admin'))
     },
-    apiClient(): DeconfApiClient {
-      return this.$store.getters['api/apiClient']
-    },
   },
   mounted() {
     if (!this.isAdmin) return
@@ -66,9 +63,7 @@ export default defineComponent({
   methods: {
     /** Fetch the pretalx status from the API */
     async fetchStatus() {
-      this.status = await this.apiClient.fetchJson<PretalxStatus>(
-        'admin/pretalx'
-      )
+      this.status = await apiClient.fetchJson<PretalxStatus>('admin/pretalx')
     },
 
     /** Start a pretalx scrape */
@@ -81,7 +76,7 @@ export default defineComponent({
       const confirmed = confirm('Are you sure?')
       if (!confirmed) return
 
-      const result = await this.apiClient.fetchJson('admin/pretalx', {
+      const result = await apiClient.fetchJson('admin/pretalx', {
         method: 'post',
       })
 

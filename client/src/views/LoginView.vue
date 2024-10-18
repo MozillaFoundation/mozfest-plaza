@@ -39,7 +39,11 @@ export default defineComponent({
   components: { MozUtilLayout, LoginView, ApiContent, FontAwesomeIcon },
   computed: {
     googleLink(): string {
-      return new URL('./auth/oauth2/google', env.SERVER_URL).toString()
+      const url = new URL('./auth/oauth2/google', env.SERVER_URL)
+      if (this.$route.query.redirect) {
+        url.searchParams.set('redirect', this.$route.query.redirect as string)
+      }
+      return url.toString()
     },
   },
 })

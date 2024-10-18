@@ -1,4 +1,3 @@
-// import { type Module } from 'vuex/types/index'
 import {
   type ApiModuleState,
   type AuthenticateOptions,
@@ -10,7 +9,12 @@ import {
 import { env } from '@/plugins/env-plugin'
 
 import { SocketIoPlugin } from '@/plugins/socketio-plugin.js'
-import { pickApi, type MozConferenceConfig } from '@/lib/api.js'
+import {
+  apiClient,
+  type MozConferenceConfig,
+  type ProfileToken,
+} from '@/lib/module.js'
+import type { Module } from 'vuex'
 
 export interface LoginPayload {
   email: string
@@ -19,13 +23,10 @@ export interface LoginPayload {
 
 export interface MozApiStoreState extends ApiModuleState {
   settings: MozConferenceConfig | undefined
+  tokens: ProfileToken[] | undefined
 }
 
-// export type MozApiStoreModule = Module<MozApiStoreState, unknown>
-
-export function apiModule() {
-  const apiClient = pickApi(env)
-
+export function apiModule(): Module<MozApiStoreState, unknown> {
   const base = createApiStoreModule()
   const baseActions = createApiStoreActions(apiClient)
 
@@ -34,11 +35,15 @@ export function apiModule() {
     state: () => ({
       ...(base.state as ApiModuleState),
       settings: undefined,
+      tokens: undefined,
     }),
     mutations: {
       ...base.mutations,
       settings(state, settings) {
         state.settings = settings
+      },
+      tokens(state, tokens) {
+        state.tokens = tokens
       },
     },
     getters: {
@@ -82,6 +87,13 @@ export function apiModule() {
       // TODO: remove this hack + getRedirect if login redirection gets merged upstream
       login(ctx, email: string) {
         return apiClient.startEmailLogin(email, { redirect: getRedirect() })
+      },
+
+      async fetchProfile({ commit }) {
+        const result = await apiClient.getRegistration()
+        commit('profile', result?.registration ?? null)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        commit('tokens', (result as any).tokens ?? null)
       },
     },
   }

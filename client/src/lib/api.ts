@@ -1,4 +1,4 @@
-import type { EnvRecord } from '@/plugins/env-plugin'
+import { env, type EnvRecord } from '@/plugins/env-plugin'
 import type {
   LocalisedLink,
   PageFlag,
@@ -131,3 +131,10 @@ export class StaticApiClient
 export interface MozSession extends Session {
   recommendations?: LocalisedLink[]
 }
+
+export interface ProfileToken {
+  kind: string
+  scope: string
+}
+
+export const apiClient = pickApi(env)

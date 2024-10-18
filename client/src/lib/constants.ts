@@ -31,6 +31,8 @@ export enum ExtraRoutes {
   MySchedule = 'mySchedule',
   Utils = 'utils',
   Search = 'Search',
+  ProfileCalendar = 'ProfileCalendar',
+  ProfileNotifications = 'ProfileNotifications',
 }
 
 export const themeAllowlist = new Set([])
@@ -128,3 +130,7 @@ export type AtriumOptions = {
   }
   sponsors: GenericSponsorGroup[]
 }
+
+// https://developers.google.com/identity/protocols/oauth2/scopes
+export const GOOGLE_CALENDAR_SCOPE =
+  'https://www.googleapis.com/auth/calendar.events'

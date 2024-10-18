@@ -8,7 +8,14 @@
       @unregister="onUnregister"
     >
       <template v-slot:preActions>
-        <PrivateCalendarCreator api-module="api" />
+        <div class="buttons">
+          <router-link class="button is-primary" :to="calendarRoute">
+            {{ $t('mozfest.profile.calendar') }}
+          </router-link>
+          <router-link class="button is-primary" :to="notificationsRoute">
+            {{ $t('mozfest.profile.notifications') }}
+          </router-link>
+        </div>
       </template>
     </ProfileView>
   </MozUtilLayout>
@@ -18,17 +25,18 @@
 import { defineComponent } from 'vue'
 import {
   type FullAuthToken,
-  PrivateCalendarCreator,
   type ProfileField,
   ProfileView,
 } from '@openlab/deconf-ui-toolkit'
 
 import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import languageData from '@/data/languages.json'
-import { mapApiState, StorageKey } from '@/lib/module'
+import { ExtraRoutes, mapApiState, StorageKey } from '@/lib/module'
+import type { RouteLocationRaw } from 'vue-router'
 
 export default defineComponent({
-  components: { MozUtilLayout, ProfileView, PrivateCalendarCreator },
+  components: { MozUtilLayout, ProfileView },
+
   computed: {
     ...mapApiState('api', ['user', 'profile']),
     fields(): ProfileField[] {
@@ -55,6 +63,12 @@ export default defineComponent({
           value: this.iatToString((this.user as FullAuthToken).iat),
         },
       ]
+    },
+    calendarRoute(): RouteLocationRaw {
+      return { name: ExtraRoutes.ProfileCalendar }
+    },
+    notificationsRoute(): RouteLocationRaw {
+      return { name: ExtraRoutes.ProfileNotifications }
     },
   },
   mounted() {
