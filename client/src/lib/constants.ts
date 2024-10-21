@@ -132,5 +132,4 @@ export type AtriumOptions = {
 }
 
 // https://developers.google.com/identity/protocols/oauth2/scopes
-export const GOOGLE_CALENDAR_SCOPE =
-  'https://www.googleapis.com/auth/calendar.events'
+export const GOOGLE_CALENDAR_SCOPE = 'https://www.googleapis.com/auth/calendar'

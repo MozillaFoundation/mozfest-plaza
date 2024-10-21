@@ -23,6 +23,7 @@ import { fakeTitoCommand } from './commands/fake-tito-command.js'
 import { fakeScheduleCommand } from './commands/fake-schedule-command.js'
 import { logVisitorsCommand } from './commands/log-visitors-command.js'
 import { exportScheduleCommand } from './commands/export-schedule-command.js'
+import { calendarSyncCommand } from './commands/calendar-sync-command.js'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -198,6 +199,13 @@ cli.command(
       default: 'static/schedule',
     }),
   (args) => exportScheduleCommand(args).catch(errorHandler)
+)
+
+cli.command(
+  'calendar-sync',
+  'Run the Google Calendar sync tool',
+  (yargs) => yargs.option('dryRun', { type: 'boolean', default: false }),
+  (args) => calendarSyncCommand(args)
 )
 
 cli.parse()

@@ -100,7 +100,9 @@ export default defineComponent({
     localise: () => localise,
     isAuthorized() {
       if (!this.tokens) return false
-      return this.tokens.some((t) => t.scope.includes(GOOGLE_CALENDAR_SCOPE))
+      return this.tokens.some((t) =>
+        t.scope.split(' ').some((s) => s === GOOGLE_CALENDAR_SCOPE)
+      )
     },
     isGoogle() {
       if (!this.tokens) return false

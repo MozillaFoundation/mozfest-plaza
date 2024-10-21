@@ -15,6 +15,8 @@ import {
   AppContext,
   AppRouter,
   BlockList,
+  getGoogleClient,
+  GOOGLE_CALENDAR_SCOPE,
   sha256Hash,
   TitoRecord,
   TokenStruct,
@@ -231,10 +233,10 @@ export class RegistrationRouter implements AppRouter {
         ]
 
         if (mode === 'calendar') {
-          scopes.push('https://www.googleapis.com/auth/calendar.events')
+          scopes.push(GOOGLE_CALENDAR_SCOPE)
         }
 
-        const oauth2Client = this.getGoogleClient()
+        const oauth2Client = getGoogleClient(this.#context.env)
 
         const state = crypto.randomBytes(32).toString('base64url')
         ctx.cookies.set('oauth2-csrf', state)
@@ -273,7 +275,7 @@ export class RegistrationRouter implements AppRouter {
           return
         }
 
-        const oauth2 = this.getGoogleClient()
+        const oauth2 = getGoogleClient(this.#context.env)
         const { tokens } = await oauth2.getToken(code)
         oauth2.setCredentials(tokens)
 
@@ -329,17 +331,6 @@ export class RegistrationRouter implements AppRouter {
             .toString()
         )
       }
-    )
-  }
-
-  getGoogleClient() {
-    return new google.auth.OAuth2(
-      this.#context.env.GOOGLE_OAUTH2_CLIENT_ID,
-      this.#context.env.GOOGLE_OAUTH2_CLIENT_SECRET,
-      new URL(
-        './auth/oauth2/google/callback',
-        this.#context.env.SELF_URL
-      ).toString()
     )
   }
 
