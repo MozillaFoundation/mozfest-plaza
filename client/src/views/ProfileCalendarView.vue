@@ -25,7 +25,9 @@
       <h2>{{ localise('mozfest.profileCalendar.google') }}</h2>
 
       <template v-if="isAuthorized">
-        <p>You're all set up! [last sync: {{ lastSync }}]</p>
+        <p>You're all set up!</p>
+
+        <p>Last sync: {{ lastSync }}</p>
 
         <details>
           <summary>Danger zone</summary>
@@ -82,6 +84,11 @@ import {
 import DebugOutput from '@/components/DebugOutput.vue'
 import { env } from '@/plugins/env-plugin'
 
+const fullDate = new Intl.DateTimeFormat(navigator.language, {
+  dateStyle: 'medium',
+  timeStyle: 'medium',
+})
+
 export default defineComponent({
   components: {
     MozUtilLayout,
@@ -115,10 +122,10 @@ export default defineComponent({
       return url.toString()
     },
     lastSync() {
-      return (
-        (this.profile?.userData as Record<string, string>).calendarSync ??
-        'pending'
-      )
+      const date = (this.profile?.userData as Record<string, string>)
+        .googleCalendarDate
+      if (date) return fullDate.format(new Date(date))
+      return 'pending'
     },
   },
   mounted() {
