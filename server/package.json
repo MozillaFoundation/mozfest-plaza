@@ -1,6 +1,6 @@
 {
   "name": "@openlab/mozfest-server",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0-beta.2",
   "private": true,
   "type": "module",
   "scripts": {
