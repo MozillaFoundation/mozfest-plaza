@@ -124,7 +124,11 @@ export class RegistrationRouter implements AppRouter {
       const tokenRecords = await this.#context.oauth2Repo.getTokens(
         result.registration.id
       )
-      const tokens = tokenRecords.map((r) => ({ kind: r.kind, scope: r.scope }))
+      const tokens = tokenRecords.map((r) => ({
+        kind: r.kind,
+        scope: r.scope,
+        hasRefresh: Boolean(r.refreshToken),
+      }))
 
       ctx.body = Object.assign(result, { tokens })
     })

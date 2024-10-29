@@ -72,8 +72,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import MozUtilLayout from '@/components/MozUtilLayout.vue'
-import { BackButton, Routes } from '@openlab/deconf-ui-toolkit'
-import { PrivateCalendarCreator } from '@openlab/deconf-ui-toolkit'
+import {
+  BackButton,
+  Routes,
+  PrivateCalendarCreator,
+} from '@openlab/deconf-ui-toolkit'
 
 import {
   ExtraRoutes,
@@ -107,8 +110,11 @@ export default defineComponent({
     localise: () => localise,
     isAuthorized() {
       if (!this.tokens) return false
-      return this.tokens.some((t) =>
-        t.scope.split(' ').some((s) => s === GOOGLE_CALENDAR_SCOPE)
+
+      return this.tokens.some(
+        (t) =>
+          t.scope.split(' ').some((s) => s === GOOGLE_CALENDAR_SCOPE) &&
+          t.hasRefresh
       )
     },
     isGoogle() {
