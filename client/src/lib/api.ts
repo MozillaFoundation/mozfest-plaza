@@ -70,6 +70,7 @@ export interface MozLoginOptions {
 export interface MozApiClient {
   getWhatsOn(): Promise<Session[]>
   startEmailLogin(email: string, options?: MozLoginOptions): Promise<boolean>
+  unlinkGoogleCalendar(): Promise<void>
 }
 
 export function pickApi(env: EnvRecord): DeconfApiClient & MozApiClient {
@@ -88,6 +89,10 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
       'schedule/whats-on'
     )
     return response?.sessions ?? []
+  }
+
+  async unlinkGoogleCalendar(): Promise<void> {
+    await this.fetch('/calendar/google/unlink', { method: 'POST' })
   }
 
   // override async getLinks(): Promise<SessionLinks | null> {
@@ -125,6 +130,9 @@ export class StaticApiClient
 {
   getWhatsOn(): Promise<Session[]> {
     return this.getStaticFile('whats-on.json')
+  }
+  unlinkGoogleCalendar(): Promise<void> {
+    return Promise.resolve()
   }
 }
 

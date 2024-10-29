@@ -30,6 +30,7 @@ import { migrateCommand } from './migrate-command.js'
 import { fetchContentCommand } from './fetch-content-command.js'
 import { CaMoEmailService } from '../lib/email-service.js'
 import { Oauth2Repository } from '../deconf/oauth2-repository.js'
+import { CalendarRepository } from '../mozfest/calendar-repo.js'
 
 const debug = createDebug('cmd:serve')
 
@@ -49,7 +50,7 @@ export interface ServeCommandOptions {
   content: boolean
 }
 
-export async function createServerContext() {
+export async function createServerContext(): Promise<AppContext> {
   const env = createEnv()
   const config = await loadConfig()
   const pkg = JSON.parse(await fs.readFile('package.json', 'utf8'))
@@ -74,12 +75,13 @@ export async function createServerContext() {
   const metricsRepo = new MetricsRepository({ postgres })
   // const interpreterRepo = new InterpreterRepository({ jwt, conferenceRepo })
   const oauth2Repo = new Oauth2Repository({ postgres })
+  const calendarRepo = new CalendarRepository({ postgres })
 
   // prettier-ignore
   return {
     config, env, pkg, resources, email, i18n, jwt, postgres, semaphore, sockets,
     store, url, attendanceRepo, conferenceRepo, metricsRepo, registrationRepo,
-    oauth2Repo
+    oauth2Repo, calendarRepo
   }
 }
 

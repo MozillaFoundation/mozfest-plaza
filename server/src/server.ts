@@ -22,7 +22,7 @@ import {
 } from '@openlab/deconf-api-toolkit'
 import { AppContext, AppRouter, AppBroker, createDebug } from './lib/module.js'
 
-import { GeneralRouter } from './general/general-router.js'
+import { GeneralRouter } from './mozfest/general-router.js'
 import { RegistrationRouter } from './deconf/registration-router.js'
 import { AttendanceRouter } from './deconf/attendance-router.js'
 import { ConferenceRouter } from './deconf/conference-router.js'
@@ -31,7 +31,8 @@ import { MetricsBroker } from './deconf/metrics-broker.js'
 import { AuthBroker } from './deconf/auth-broker.js'
 import { AdminRouter } from './deconf/admin-router.js'
 import { CalendarRouter } from './deconf/calendar-router.js'
-import { TitoRouter } from './general/tito-router.js'
+import { TitoRouter } from './mozfest/tito-router.js'
+import { MozCalendarRouter } from './mozfest/calendar-router.js'
 
 const STATIC_MAX_AGE = 30 * 60 * 1000
 const debug = createDebug('server')
@@ -128,6 +129,7 @@ export function createServer(context: AppContext) {
     new AdminRouter(context),
     new CalendarRouter(context),
     new TitoRouter(context),
+    new MozCalendarRouter(context),
   ]
 
   const appBrokers: AppBroker[] = [

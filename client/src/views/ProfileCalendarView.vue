@@ -29,15 +29,11 @@
 
         <p>Last sync: {{ lastSync }}</p>
 
-        <details>
-          <summary>Danger zone</summary>
-
-          <p>This will unlink the Google Calendar integration.</p>
-
-          <div class="buttons">
-            <button class="button is-danger">Unlink Google Calendar</button>
-          </div>
-        </details>
+        <div class="buttons">
+          <button class="button is-danger" @click="unlinkCalendar">
+            Unlink Google Calendar
+          </button>
+        </div>
       </template>
       <template v-else-if="isGoogle">
         <p>
@@ -62,6 +58,11 @@
           Unfortunatly, you need to have signed in with your Google account to
           use this feature.
         </p>
+        <p>
+          <router-link class="button is-link" :to="loginRoute">
+            Log in
+          </router-link>
+        </p>
       </template>
 
       <DebugOutput :value="{ authorizeUrl, tokens }" />
@@ -79,6 +80,7 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 
 import {
+  apiClient,
   ExtraRoutes,
   GOOGLE_CALENDAR_SCOPE,
   localise,
@@ -101,6 +103,9 @@ export default defineComponent({
   },
   computed: {
     ...mapApiState('api', ['profile', 'tokens']),
+    loginRoute() {
+      return { name: Routes.Login }
+    },
     profileRoute() {
       return { name: Routes.Profile }
     },
@@ -136,6 +141,15 @@ export default defineComponent({
   },
   mounted() {
     this.$store.dispatch('api/fetchProfile')
+  },
+  methods: {
+    async unlinkCalendar() {
+      const message = 'This will unlink the Google Calendar integration.'
+      if (!confirm(message)) return
+
+      await apiClient.unlinkGoogleCalendar()
+      this.$store.dispatch('api/fetchProfile')
+    },
   },
 })
 </script>

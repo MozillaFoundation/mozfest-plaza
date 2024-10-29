@@ -4,7 +4,7 @@ import ipRegex from 'ip-regex'
 import yaml from 'yaml'
 import fs from 'fs/promises'
 
-import { generateSessionOpengraphImage } from '../general/general-router.js'
+import { generateSessionOpengraphImage } from '../mozfest/general-router.js'
 import { createEnv, loadConfig } from '../lib/module.js'
 
 //
