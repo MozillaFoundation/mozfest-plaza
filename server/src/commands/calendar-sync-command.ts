@@ -22,7 +22,8 @@ function getTokens(pg: PostgresClient) {
   return pg.sql<Oauth2Record>`
     SELECT id, created, attendee, kind, scope, "accessToken", "refreshToken", expiry
     FROM attendee_oauth2
-    WHERE expiry > NOW() OR "refreshToken" IS NOT NULL
+    WHERE (expiry > NOW() OR "refreshToken" IS NOT NULL)
+      AND kind = 'google'
   `
 }
 
