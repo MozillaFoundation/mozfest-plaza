@@ -135,6 +135,7 @@ export interface MozSession extends Session {
 export interface ProfileToken {
   kind: string
   scope: string
+  hasRefresh: boolean
 }
 
 export const apiClient = pickApi(env)
