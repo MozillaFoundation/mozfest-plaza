@@ -14,14 +14,14 @@
 import { PageFooter, type PageFooterLink } from '@openlab/deconf-ui-toolkit'
 import { defineComponent } from 'vue'
 
-interface Data {
+export interface _Data {
   appName: string
   appVersion: string
 }
 
 export default defineComponent({
   components: { PageFooter },
-  data(): Data {
+  data(): _Data {
     return {
       appName: this.$t('mozfest.footer.appName') || __APP_NAME__,
       appVersion: this.$env.BUILD_NAME || `v${__APP_VERSION__}`,

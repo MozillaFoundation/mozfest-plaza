@@ -18,17 +18,17 @@ import type { SelectOption } from '@openlab/deconf-ui-toolkit'
 import { getLanguageOptions } from '@/lib/module'
 import { setLocale } from '@/i18n/module'
 
-interface Data {
+export interface _Data {
   options: SelectOption[]
 }
 
 const hiddenLanguages = new Set(['asl', 'cc'])
 
 export default defineComponent({
-  data(): Data {
+  data(): _Data {
     return {
       options: getLanguageOptions().filter(
-        (l) => !hiddenLanguages.has(l.value as string),
+        (l) => !hiddenLanguages.has(l.value as string)
       ),
     }
   },
