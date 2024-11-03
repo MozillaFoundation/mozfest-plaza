@@ -11,6 +11,7 @@ import { VueRouter, RouteLocationNormalizedLoaded } from 'vue-router'
 import { EnvRecord } from '@/plugins/env-plugin'
 import { MetricsPlugin } from '@/plugins/metrics-plugin'
 import { SocketIoPlugin } from '@/plugins/socketio-plugin'
+import type { ServiceWorkerPlugin } from './plugins/service-worker-plugin'
 import {
   TemporalPlugin,
   DevPlugin,
@@ -38,6 +39,7 @@ declare module 'vue' {
     $metrics: MetricsPlugin
     $io?: SocketIoPlugin
     $dialog: DialogPlugin
+    $serviceWorker: ServiceWorkerPlugin
     $i18n: VueI18n
     $t(...args: unknown[]): string
     // $deconf: DeconfPlugin

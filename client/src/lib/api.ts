@@ -67,10 +67,15 @@ export interface MozLoginOptions {
   redirect?: string
 }
 
+export interface WebPushCredentials {
+  publicKey: string
+}
+
 export interface MozApiClient {
   getWhatsOn(): Promise<Session[]>
   startEmailLogin(email: string, options?: MozLoginOptions): Promise<boolean>
   unlinkGoogleCalendar(): Promise<void>
+  getWebPushCredentials(): Promise<WebPushCredentials | null>
 }
 
 export function pickApi(env: EnvRecord): DeconfApiClient & MozApiClient {
@@ -93,6 +98,12 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
 
   async unlinkGoogleCalendar(): Promise<void> {
     await this.fetch('/calendar/google/unlink', { method: 'POST' })
+  }
+
+  getWebPushCredentials() {
+    return this.fetchJson<WebPushCredentials>(
+      '/notifications/web-push-credentials'
+    )
   }
 
   // override async getLinks(): Promise<SessionLinks | null> {
@@ -133,6 +144,9 @@ export class StaticApiClient
   }
   unlinkGoogleCalendar(): Promise<void> {
     return Promise.resolve()
+  }
+  async getWebPushCredentials(): Promise<null> {
+    return null
   }
 }
 

@@ -26,6 +26,8 @@ export function createEnv(processEnv = process.env) {
     TITO_SECURITY_TOKEN = null,
     GOOGLE_OAUTH2_CLIENT_ID,
     GOOGLE_OAUTH2_CLIENT_SECRET,
+    WEB_PUSH_PUBLIC_KEY,
+    WEB_PUSH_PRIVATE_KEY,
   } = processEnv
 
   return Object.assign(createDeconfEnv(processEnv), {
@@ -35,6 +37,8 @@ export function createEnv(processEnv = process.env) {
     ...checkEnvObject({
       GOOGLE_OAUTH2_CLIENT_ID,
       GOOGLE_OAUTH2_CLIENT_SECRET,
+      WEB_PUSH_PUBLIC_KEY,
+      WEB_PUSH_PRIVATE_KEY,
     }),
   })
 }

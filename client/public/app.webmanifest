@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest.json",
+  "$comment": "https://developer.mozilla.org/en-US/docs/Web/Manifest",
+  "name": "MozFest Plaza",
+  "short_name": "Plaza",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F4F4",
+  "theme_color": "#FF008A",
+  "lang": "en",
+  "scope": "/"
+}

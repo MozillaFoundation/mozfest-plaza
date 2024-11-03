@@ -33,6 +33,7 @@ import { AdminRouter } from './deconf/admin-router.js'
 import { CalendarRouter } from './deconf/calendar-router.js'
 import { TitoRouter } from './mozfest/tito-router.js'
 import { MozCalendarRouter } from './mozfest/calendar-router.js'
+import { MozNotificationsRouter } from './mozfest/notifications-router.js'
 
 const STATIC_MAX_AGE = 30 * 60 * 1000
 const debug = createDebug('server')
@@ -130,6 +131,7 @@ export function createServer(context: AppContext) {
     new CalendarRouter(context),
     new TitoRouter(context),
     new MozCalendarRouter(context),
+    new MozNotificationsRouter(context),
   ]
 
   const appBrokers: AppBroker[] = [

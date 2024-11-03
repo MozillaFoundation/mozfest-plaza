@@ -16,6 +16,7 @@ import { FontawesomePlugin } from './plugins/fontawesome-plugin'
 import { MozFestDeconfPlugin } from './plugins/deconf-plugin'
 import { MetricsPlugin } from './plugins/metrics-plugin'
 import { SocketIoPlugin } from './plugins/socketio-plugin'
+import { ServiceWorkerPlugin } from './plugins/service-worker-plugin'
 
 const app = createApp(App)
 
@@ -30,6 +31,7 @@ app
   .use(MetricsPlugin)
   .use(MozFestDeconfPlugin)
   .use(DialogPlugin)
+  .use(ServiceWorkerPlugin)
   .use(router)
   .use(store)
   .use(i18n)
