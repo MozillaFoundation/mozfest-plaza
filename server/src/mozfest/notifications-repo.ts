@@ -2,6 +2,8 @@ import { AppContext } from '../lib/module.js'
 
 type Context = Pick<AppContext, 'postgres'>
 
+export const MAX_WEB_PUSH_RETRIES = 3
+
 export interface WebPushDeviceRecord {
   id: number
   created: Date
@@ -25,6 +27,15 @@ export interface WebPushDeviceInit {
 export interface WebPushDeviceUpdate {
   name: string
   categories: string[]
+}
+
+export interface WebPushMessageRecord {
+  id: number
+  created: Date
+  device: number
+  message: unknown
+  retries: number
+  state: string
 }
 
 export class NotificationsRepository {
@@ -98,6 +109,53 @@ export class NotificationsRepository {
       (client) => client.sql`
         DELETE FROM web_push_devices
         WHERE id = ${id}
+      `
+    )
+  }
+
+  listPendingWebPushMessages(): Promise<WebPushMessageRecord[]> {
+    return this.#context.postgres.run(
+      (client) => client.sql`
+        SELECT id, created, device, message, retries, state
+        FROM web_push_messages
+        WHERE state = 'pending'
+          AND retries < ${MAX_WEB_PUSH_RETRIES}
+      `
+    )
+  }
+
+  updateWebPushMessage(
+    message: WebPushMessageRecord,
+    state: 'sent' | 'failed'
+  ) {
+    return this.#context.postgres.run(async (client) => {
+      if (state === 'sent') {
+        await client.sql`
+          UPDATE web_push_messages
+          SET updated = NOW(), state = 'sent'
+          WHERE id = ${message.id}
+        `
+      }
+      if (state === 'failed') {
+        const state =
+          message.retries <= MAX_WEB_PUSH_RETRIES ? 'pending' : 'failed'
+
+        const retries = message.retries + 1
+
+        await client.sql`
+          UPDATE web_push_messages
+          SET updated = NOW(), state = ${state}, retries = ${retries}
+          WHERE id = ${message}
+        `
+      }
+    })
+  }
+
+  async createWebPushMessage(device: number, message: unknown) {
+    await this.#context.postgres.run(
+      (client) => client.sql`
+        INSERT INTO web_push_messages (device, message)
+        VALUES (${device}, ${message})
       `
     )
   }

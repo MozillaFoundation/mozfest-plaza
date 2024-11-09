@@ -6,6 +6,7 @@
 
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
+
 import { devAuthCommand } from './commands/dev-auth-command.js'
 import { migrateCommand } from './commands/migrate-command.js'
 import {
@@ -24,6 +25,7 @@ import { fakeScheduleCommand } from './commands/fake-schedule-command.js'
 import { logVisitorsCommand } from './commands/log-visitors-command.js'
 import { exportScheduleCommand } from './commands/export-schedule-command.js'
 import { calendarSyncCommand } from './commands/calendar-sync-command.js'
+import { notifyCommand } from './commands/notify-command.js'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -206,6 +208,13 @@ cli.command(
   'Run the Google Calendar sync tool',
   (yargs) => yargs.option('dryRun', { type: 'boolean', default: false }),
   (args) => calendarSyncCommand(args)
+)
+
+cli.command(
+  'notify',
+  'Send pending notifications',
+  (yargs) => yargs.option('dryRun', { type: 'boolean', default: false }),
+  (args) => notifyCommand(args)
 )
 
 cli.parse()

@@ -95,21 +95,24 @@ export class MozNotificationsRouter implements AppRouter {
     })
 
     router.post('/notifications/web-push-test', async (ctx) => {
-      // ...
+      const auth = this.#context.jwt.getRequestAuth(ctx.request.headers)
+      if (!auth) throw ApiError.unauthorized()
 
-      const result = await webPush.sendNotification(
-        ctx.request.body as any,
-        JSON.stringify({
+      const devices = await this.#context.notifsRepo.listAttendeeWebPushDevices(
+        auth.sub
+      )
+
+      for (const device of devices) {
+        await this.#context.notifsRepo.createWebPushMessage(device.id, {
           title: 'Hello There!',
           body: 'General Kenobi',
           data: {
             url: 'https://example.com',
           },
-        }),
-        { headers: { 'Content-Type': 'application/json' } }
-      )
+        })
+      }
 
-      ctx.body = result
+      ctx.body = VOID_RESPONSE
     })
   }
 }
