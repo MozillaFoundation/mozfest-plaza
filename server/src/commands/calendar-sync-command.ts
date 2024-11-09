@@ -306,6 +306,8 @@ export interface CalendarSyncCommandOptions {
 export async function calendarSyncCommand(options: CalendarSyncCommandOptions) {
   debug('start')
 
+  let exitCode = 0
+
   const env = createEnv()
   const store = pickAStore(env.REDIS_URL)
   const postgres = new PostgresService({ env })

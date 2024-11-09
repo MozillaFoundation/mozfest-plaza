@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.23.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.23.1...v3.23.2) (2024-10-16)
+
+
+### Bug Fixes
+
+* update copy ([7fa6bdf](https://github.com/MozillaFoundation/mozfest-plaza/commit/7fa6bdf667905ad1b65f584e446883189548cd30))
+
 ### [3.23.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.23.0...v3.23.1) (2024-10-08)
 
 ## [3.22.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.21.0...v3.22.0) (2024-06-10)
