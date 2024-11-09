@@ -354,8 +354,8 @@ export async function calendarSyncCommand(options: CalendarSyncCommandOptions) {
       const calendarId = await upsertCalendar(gcal, userData.googleCalendarId!)
       if (!calendarId) {
         debug('[skip] user deleted calendar')
-        userData.googleCalendarId = null
-        await updateUserData(pg, attendee, userData)
+        // userData.googleCalendarId = null
+        // await updateUserData(pg, attendee, userData)
         continue
       }
 
