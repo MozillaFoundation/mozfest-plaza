@@ -7,6 +7,7 @@ import {
   createEnv as createDeconfEnv,
   EmailService,
   JwtService,
+  MetricsRepository,
   RegistrationRepository,
 } from '@openlab/deconf-api-toolkit'
 import { create } from 'superstruct'
@@ -92,4 +93,18 @@ export interface SendLoginEmailOptions {
   templateId: string
   roles: string[]
   redirect?: string
+}
+
+export async function logServerError(
+  metricsRepo: MetricsRepository,
+  eventName: string,
+  error: unknown
+) {
+  console.error('ServerError:', error)
+
+  await metricsRepo.trackEvent(eventName, {
+    name: (error as Error).name ?? 'Unknown Error',
+    message: (error as Error).message ?? '',
+    stack: (error as Error).stack ?? '',
+  })
 }

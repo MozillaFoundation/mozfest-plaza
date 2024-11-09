@@ -3,18 +3,27 @@ import crypto from 'node:crypto'
 import {
   ConferenceRepository,
   localise,
+  MetricsRepository,
   PostgresClient,
   PostgresService,
   RegistrationRepository,
-  UrlService,
+  SemaphoreService,
 } from '@openlab/deconf-api-toolkit'
 import { Attendance, Localised, Registration } from '@openlab/deconf-shared'
 import { calendar_v3, google } from 'googleapis'
 
 import { Oauth2Record, Oauth2Repository } from '../deconf/oauth2-repository.js'
 import { getGoogleClient, GOOGLE_CALENDAR_SCOPE } from '../lib/google.js'
-import { createDebug, createEnv, EnvRecord } from '../lib/module.js'
+import {
+  AppContext,
+  createDebug,
+  createEnv,
+  EnvRecord,
+  logServerError,
+  UrlService,
+} from '../lib/module.js'
 import { pickAStore } from './serve-command.js'
+import ms from 'ms'
 
 const debug = createDebug('cmd:dev-auth')
 
@@ -244,7 +253,7 @@ function setupAuth(
   token: CalendarToken,
   attendee: number,
   queue: Promise<unknown>[],
-  oauth2Repo: Oauth2Repository
+  oauth2Repo: Readonly<Oauth2Repository>
 ) {
   // Create a google client to authenticate the user
   const auth = getGoogleClient(env)
@@ -277,6 +286,19 @@ interface CalendarUserData {
   googleCalendarDate: string | undefined
 }
 
+type Context = Pick<
+  AppContext,
+  'env' | 'store' | 'oauth2Repo' | 'registrationRepo' | 'conferenceRepo' | 'url'
+> & {
+  pg: PostgresClient
+  allEvents: Map<string, GlobalEvent>
+  enqueued: Promise<unknown>[]
+  dryRun: boolean
+}
+
+const LOCK_KEY = 'calendarSyncCommand/lock'
+const LOCK_AGE = ms('2m')
+
 export interface CalendarSyncCommandOptions {
   dryRun: boolean
 }
@@ -288,102 +310,129 @@ export async function calendarSyncCommand(options: CalendarSyncCommandOptions) {
   const store = pickAStore(env.REDIS_URL)
   const postgres = new PostgresService({ env })
 
-  const oauthRepo = new Oauth2Repository({ postgres })
-  const regRepo = new RegistrationRepository({ postgres })
-  const confRepo = new ConferenceRepository({ store })
-  const urls = new UrlService({ env })
+  const oauth2Repo = new Oauth2Repository({ postgres })
+  const registrationRepo = new RegistrationRepository({ postgres })
+  const conferenceRepo = new ConferenceRepository({ store })
+  const metricsRepo = new MetricsRepository({ postgres })
+  const url = new UrlService({ env })
 
-  const allEvents = await getEvents(confRepo, urls)
+  const allEvents = await getEvents(conferenceRepo, url)
 
-  let enqueued: Promise<unknown>[] = []
+  const ctx = {
+    ...options,
+    env,
+    store,
+    oauth2Repo,
+    registrationRepo,
+    conferenceRepo,
+    url,
+    allEvents,
+    enqueued: [],
+  } satisfies Partial<Context>
 
-  await postgres.run(async (pg) => {
-    const allTokens = await getTokens(pg)
+  const semaphore = new SemaphoreService({ store })
 
-    for (const [attendee, tokens] of perAttendee(allTokens)) {
-      debug('attendee=%o', attendee)
+  try {
+    const unlocked = await semaphore.aquire(LOCK_KEY, LOCK_AGE)
+    if (!unlocked) throw new Error('Process already running')
 
-      // Skip if they are not a valid registation
-      const registration = await regRepo.getVerifiedRegistration(attendee)
-      if (!registration) {
-        debug('[skip] not verified')
-        continue
+    await postgres.run(async (pg) => {
+      const allTokens = await getTokens(pg)
+
+      for (const [attendee, tokens] of perAttendee(allTokens)) {
+        try {
+          await runUser(attendee, tokens, { ...ctx, pg })
+        } catch (error) {
+          await logServerError(metricsRepo, 'calendarSync/error', error)
+        }
       }
-      const userData = registration.userData as CalendarUserData
-
-      // Skip the calendar sync if explicitly set to null
-      if (userData.googleCalendarId === null) {
-        debug('[skip] sync disabled')
-        continue
-      }
-
-      // Don't run if there is no calendar token
-      const activeToken = getActiveToken(tokens)
-      if (!activeToken) {
-        debug('[skip] no calendar tokens')
-        continue
-      }
-
-      // Fetch the user's attendance and map those to sessions
-      const localEvents = keyedBy(
-        'id',
-        await getUserEvents(pg, registration, allEvents)
-      )
-      debug('attending %o', [...localEvents.keys()])
-
-      // Create a google client authenticated with the user
-      const auth = setupAuth(env, activeToken, attendee, enqueued, oauthRepo)
-      const gcal = google.calendar({ version: 'v3', auth })
-
-      // Fetch the user's google events
-      const googleEvents = keyedBy(
-        'id',
-        await getGoogleEvents(gcal, userData.googleCalendarId!)
-      )
-
-      const diff = diffEvents(localEvents, googleEvents)
-
-      if (options.dryRun) {
-        console.log('user data', userData)
-        console.log('diff', diff)
-        continue
-      }
-
-      const calendarId = await upsertCalendar(gcal, userData.googleCalendarId!)
-      if (!calendarId) {
-        debug('[skip] user deleted calendar')
-        userData.googleCalendarId = null
-        await updateUserData(pg, attendee, userData)
-        continue
-      }
-
-      debug('storing calendar id')
-      userData.googleCalendarId = calendarId
-      await updateUserData(pg, attendee, userData)
-
-      try {
-        debug('starting diff')
-        await performDiff(gcal, calendarId, diff)
-      } catch (error) {
-        console.error('failed to perform diff', error)
-        continue
-      }
-
-      debug('storing calendar date')
-      userData.googleCalendarDate = new Date().toISOString()
-      await updateUserData(pg, attendee, userData)
-
-      debug('done')
-    }
-  })
+    })
+  } finally {
+    await semaphore.release(LOCK_KEY)
+  }
 
   debug('waiting for queue')
-  await Promise.all(enqueued)
+  await Promise.all(ctx.enqueued)
 
   await postgres.close()
   await store.close()
 
   debug('finished')
+}
+
+async function runUser(
+  attendee: number,
+  tokens: Oauth2Record[],
+  ctx: Context
+): Promise<void> {
+  debug('attendee=%o', attendee)
+
+  // Skip if they are not a valid registation
+  const registration = await ctx.registrationRepo.getVerifiedRegistration(
+    attendee
+  )
+  if (!registration) {
+    return debug('[skip] not verified')
+  }
+  const userData = registration.userData as CalendarUserData
+
+  // Skip the calendar sync if explicitly set to null
+  if (userData.googleCalendarId === null) {
+    return debug('[skip] sync disabled')
+  }
+
+  // Don't run if there is no calendar token
+  const activeToken = getActiveToken(tokens)
+  if (!activeToken) {
+    return debug('[skip] no calendar tokens')
+  }
+
+  // Fetch the user's attendance and map those to sessions
+  const localEvents = keyedBy(
+    'id',
+    await getUserEvents(ctx.pg, registration, ctx.allEvents)
+  )
+  debug('attending %o', [...localEvents.keys()])
+
+  // Create a google client authenticated with the user
+  const auth = setupAuth(
+    ctx.env,
+    activeToken,
+    attendee,
+    ctx.enqueued,
+    ctx.oauth2Repo
+  )
+  const gcal = google.calendar({ version: 'v3', auth })
+
+  // Fetch the user's google events
+  const googleEvents = keyedBy(
+    'id',
+    await getGoogleEvents(gcal, userData.googleCalendarId!)
+  )
+
+  const diff = diffEvents(localEvents, googleEvents)
+
+  if (ctx.dryRun) {
+    console.log('user data', userData)
+    console.log('diff', diff)
+    return
+  }
+
+  const calendarId = await upsertCalendar(gcal, userData.googleCalendarId!)
+  if (!calendarId) return debug('[skip] calendar not found') // will have thrown
+
+  debug('storing calendar id')
+  userData.googleCalendarId = calendarId
+  await updateUserData(ctx.pg, attendee, userData)
+
+  debug('starting diff')
+  await performDiff(gcal, calendarId, diff)
+
+  debug('storing calendar date')
+  userData.googleCalendarDate = new Date().toISOString()
+  await updateUserData(ctx.pg, attendee, userData)
+
+  debug('done')
 }
 
 function googleEvent(event: CalendarEvent) {
@@ -458,8 +507,8 @@ async function upsertCalendar(
   calendarId?: string
 ): Promise<string | null> {
   if (calendarId) {
-    const res = await gcal.calendars.get({ calendarId }).catch(() => null)
-    if (res?.data?.id) {
+    const res = await gcal.calendars.get({ calendarId })
+    if (res.data?.id) {
       debug('found calendar')
       return res.data.id
     } else {
@@ -469,14 +518,12 @@ async function upsertCalendar(
   }
 
   debug('creating google calendar')
-  const calendar = await gcal.calendars
-    .insert({
-      quotaUser: 'mozfest-development',
-      requestBody: {
-        summary: 'MozFest calendar',
-      },
-    })
-    .catch(() => null)
+  const calendar = await gcal.calendars.insert({
+    quotaUser: 'mozfest-development',
+    requestBody: {
+      summary: 'MozFest calendar',
+    },
+  })
 
   return calendar?.data.id ?? null
 }
