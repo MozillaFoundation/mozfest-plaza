@@ -284,6 +284,8 @@ export interface CalendarSyncCommandOptions {
 export async function calendarSyncCommand(options: CalendarSyncCommandOptions) {
   debug('start')
 
+  let exitCode = 0
+
   const env = createEnv()
   const store = pickAStore(env.REDIS_URL)
   const postgres = new PostgresService({ env })
@@ -366,6 +368,7 @@ export async function calendarSyncCommand(options: CalendarSyncCommandOptions) {
         await performDiff(gcal, calendarId, diff)
       } catch (error) {
         console.error('failed to perform diff', error)
+        exitCode = 1
         continue
       }
 
@@ -384,6 +387,7 @@ export async function calendarSyncCommand(options: CalendarSyncCommandOptions) {
   await store.close()
 
   debug('finished')
+  process.exit(exitCode)
 }
 
 function googleEvent(event: CalendarEvent) {
