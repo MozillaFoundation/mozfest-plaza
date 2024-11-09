@@ -5,53 +5,58 @@
 Get ready for a seamless #MozFest experience! We've gathered all the crucial information you need to make your participation smooth and enjoyable.
 
 ### Your Ticket
-If you haven’t already, don't forget to assign your ticket. You can find your MozFest House Amsterdam ticket confirmation email by searching your inbox for “MozFest House Amsterdam 2024 Ticket”. Ensure that you have your ticket confirmation email handy upon arrival, as you’ll need to provide the QR code to register on-site.
+If you haven’t already, don't forget to assign your ticket. You can find your MozFest House Zambia ticket confirmation email by searching your inbox for “MozFest House Zambia Ticket”. Ensure that you have your ticket confirmation email handy upon arrival, as you’ll need to provide the QR code to register on-site.
 
-### Directions To MozFest House Amsterdam Venue
+### Directions To MozFest House Zambia Venue
 
-[Tolhuistuin](https://tolhuistuin.nl/) is just across the River Ij from Amsterdam’s Central Station
+[Lusaka International Convention Centre](https://cielaresort.com/licc/)
 
-Address: IJpromenade 2, 1031KT Amsterdam
+Ngwerere Road, Bonanza Estate Lusaka ZM, 10110, Zambia
 
-  There is a free 24-hour ferry ([Buiksloterweg](https://reisinfo.gvb.nl/en/lijnen/F3/dienstregeling/heen) ferry) that runs continuously from the back of the station (Amsterdam Centraal). Once you step off the ferry you’ll see the Tolhuistuin building - head to the right of the building and **enter through the garden** - our friendly Volunteers will be ready to direct you.
+Phone: +260 211 433 250
 
-### Registration Upon Arrival - go to the garden entrance
+MozFest House will take place at the [Lusaka International Conference Centre](https://cielaresort.com/licc/) which is located at the Ciela Resort and is a 20 minute drive out of the city and just a 15 minute drive from the airport.
 
--   Upon arrival, you’ll be directed to registration by our team of Volunteers. **Registration and the main festival entrance is to the right side of the building**, NOT through the main doors at the front.
+Free shuttle buses will take those staying in central Lusaka to and from the venue in the morning and afternoon. Buses will depart from East Park Mall with a schedule as follows:  
+  
+* East Park Mall to Ciela: 09:00 Wednesday 20 November
+* Ciela to East Park Mall: 18:00 Wednesday 20 November
+* East Park Mall to Ciela: 09:00 Thursday 20 November
+* Ciela to East Park Mall: 18:00 Thursday 21 November
+* Ciela to East Park Mall: 21:00 Thursday 21 November
+
+Sessions on 20 & 21 November will run in parallel in various rooms for an hour to an hour-and-a-half, with a short break in between - we expect to have between 4-6 sessions running in parallel across the space. We will close with our evening party from 6pm-8pm on 21 November.
+
+### Registration Upon Arrival
+
+-   Upon arrival, you’ll want to join us through the main entrance where you'll be directed to registration by our team of Volunteers.
 -   Have your QR code ready from your ticket confirmation email and the team will check you in and give you your festival pass. This pass gives you access to all areas of the festival for the duration of the event so please wear it at all times in the venue and garden.
 -   At registration, with your festival pass, you will also choose a lanyard color that reflects your photo/video preference. A specific color is available for those who prefer not to be recorded.
 
 ### Accessibility
 
--   If you have any accessibility needs, you will be directed through the main building, where there is an elevator to the 1st-floor rooms, or direct access through the garden.
--   Once inside the Tolhuistuin building, all session rooms and restrooms are accessible, our volunteer team will also be on hand to assist you.
+-   Once inside the venue building all session rooms and restrooms are accessible and our volunteer team will also be on hand to assist you.
+-   If you'd need specific assistance or have any questions once on-site, please feel free to flag down any of our helpful volunteers to see how we can help you further!
 
 ### Schedule
 
-**You can see the** [full schedule here](https://schedule.mozillafestival.org/plaza)  - spots will be available on a first-come first-served basis. If a session is full, don’t worry, you can take a look around our Ethical Dilemma Cafe, network in our Art & Social Space, or enjoy our garden installations.
+You can check out the [full schedule here](https://schedule.mozillafestival.org/plaza) - spots are available on a first-come, first-served basis. If a session is full or you’ve got some time between sessions, swing by The Hub Session Space to explore fascinating projects and discussions. Be sure to check out the beautifully curated Art and Installations throughout the venue, or stumble upon one of the casual Social Movements happening around the schedule. There’s always something exciting going on!
 
+Looking for a spot to connect with others, get some work done, or simply relax between sessions? We’ve got plenty of cozy corners where you can meet fellow attendees, grab a quick coffee, and explore. These spaces are designed with you in mind—perfect for recharging, unwinding, and striking up conversations.
 
-Looking for a place to connect with others, get some work done, or just unwind between sessions? Check out the Garden, Art & Social space, or Ethical Dilemma Cafe! We've designed these spaces for you to relax, recharge, and connect with other attendees. Plus look out for our Hip Hip energizer on Wednesday and our garden breathing session on Thursday to allow some time to recharge!
+***Keep in mind that the Plaza will display session timings based on the timezone set on your computer or mobile device. If you’re traveling, sessions should automatically switch to Lusaka time (CAT) once you arrive.***
 
 #### Pre-festival Virtual Networking:
 
-One of the highlights of #MozFest is meeting new people and making connections. Get a head start by joining our exclusive [Virtual Networking Event on Discord](https://discord.gg/qGBBGKqp?event=1234919356677492819) on 10 June at 12 pm CET!
+One of the best parts of #MozFest is meeting new people and building connections! Get a head start by joining our [Virtual Networking Event on Discord](https://mzl.la/MFHZambiaVirtualNetworkingEvent) on Monday, 18 November at 7 pm CAT. It’s the perfect opportunity to connect with fellow attendees before the main event kicks off!
 
 ### Opening hours (on-site)
 
--   **Tuesday, 11 June:**
-	- We open with our garden party from 17:00-19:00 on Tuesday 11 June. Here you can collect your festival pass, network with your fellow MozFesters, and enjoy some drinks and snacks in the sunshine. It’s best to get your festival pass during our garden party, as registration usually takes longer the first day.
+-   **Wednesday, 20 November:**
+	- Registration opens at 8:30am sharp for all the early risers and kicks off the first of two amazing days at MozFest House Zambia. **Our keynote session, Your Data, Your Power by Angela Odour Lungati, starts at 11:05 CAT** — you definitely don’t want to miss it!
 
--   **Wednesday, 12 June:**
-	- We are open from 09:00 - 18:00. This is the first full day of our festival. **Our keynote session by Mona Chalabi, Pulitzer Prize-winning journalist and data scientist, starts at 11:00 CET.** You don’t want to miss it!
-
--   **Thursday, 13 June:**
-	- The final day for MozFest House Amsterdam starts again at 09:00. Sessions close at 18:00, but the show isn’t over. At 19:00 the doors open at the Tolhuistuin club for our [Songs of the Living](https://schedule.mozillafestival.org/session/DCAZCT-1) concert. This immersive performance, led by Toshi Reagon and a culmination of 3 community choirs and many local artists, is included in your festival ticket.
-  
-If you’re keen on singing, you can be part of this musical journey and join the choir rehearsals happening June 8 and 10 in Amsterdam and June 9 in Rotterdam. [Sign up here.](https://www.mozillafestival.org/en/songs-of-the-living/)
-
-### Festival Map
-We’ve made this map to ensure you’re able to find your way and get to your desired sessions on time. [Check out our festival map!](http://mzl.la/map) 
+-   **Thursday, 21 June:**
+	- Day two at MozFest House Zambia is packed with even more amazing community-led sessions that you won’t want to miss! It’s a day full of inspiration, collaboration, and learning. We’ll bring things to a close with our **Closing Circle at 17:45 CAT**, reflecting on the incredible moments we’ve shared. Make sure to stick around for the **Closing Party at 18:00 CAT**—it’s going to be a fantastic celebration!
 
 ## Frequently Asked Questions
 
@@ -59,13 +64,13 @@ We’ve made this map to ensure you’re able to find your way and get to your d
 
 <details>
 <summary>What is the Mozilla Festival Plaza?</summary>
-Our Mozilla Festival Plaza, also known as the Mozilla Festival Schedule, is our interactive scheduling platform for MozFest House Amsterdam. Here you will find the full lineup of our sessions, speakers and facilitators, browse through our art exhibits, as well as our amazing 'Dialogues and Debates' series and keynote. Explore and add to your calendar to create your own unforgettable experience!
+Our Mozilla Festival Plaza, also known as the Mozilla Festival Schedule, is our interactive scheduling platform for MozFest House Zambia Here you will find the full lineup of our sessions, speakers and facilitators, browse through our art exhibits, as well as our amazing 'Dialogues and Debates' series and keynote. Explore and add to your calendar to create your own unforgettable experience!
 </details>
 
 <details>
 <summary>What do the different session types mean?</summary>
 
-We’ve grouped the sessions at MozFest House Amsterdam into a few helpful categories to help participants understand how that session will be conducted:
+We’ve grouped the sessions at MozFest House Zambia into a few helpful categories to help participants understand how that session will be conducted:
 - **Discussion**
 Synchronous live sessions bring people together to learn from each other, share experiences, and build a common understanding of a given topic.
 - **Workshop**
@@ -77,19 +82,22 @@ Forming new connections and deepening conversations is at the heart of MozFest! 
 - **Community Plenary**
 Within the Mozilla Festival schedule, you’ll find various sessions and workshops specially curated or produced by Mozilla for the benefit of the community as a whole. These include our flagship Dialogue and Debate series, the festival Keynote, and other special events throughout the main stage.
 - **Arts & Media**
-Throughout MozFest House Amsterdam you’ll find a wonderful array of engaging art exhibitions, interactive installations, and thought provoking performances. These experiences can be found under the “Arts & Media” section of the Plaza.
+Throughout MozFest House Zambia, you’ll find a wonderful array of engaging art exhibitions and interactive installations. These experiences can be explored in the “Arts & Media” section of the Plaza.
 
 </details>
 
 <details>
 <summary>What time is a specific session taking place?</summary>
-Each session at MozFest House Amsterdam will be assigned a specific time and date which you can view in the Plaza. You can click the “Schedule” tab and browse all sessions, or use the search or filter options along the top to deep dive into specific content.
+Each session at MozFest House Zambia will be assigned a specific time and date which you can view in the Plaza. You can click the “Schedule” tab and browse all sessions, or use the search or filter options along the top to deep dive into specific content. 
+
+**Keep in mind that the Plaza will display session timings based on the timezone set on your computer or mobile device. If you’re traveling, sessions should automatically switch to Lusaka time (CAT) once you arrive.**
+
 </details>
 
 <details>
-<summary>I've registered for MozFest House Amsterdam but I get an error message when I try to login.</summary>
+<summary>I've registered for MozFest House Zambia but I get an error message when I try to login.</summary>
 
-  Please ensure you are logging in with the same email that you used when registering for MozFest House Amsterdam. If you are using the same email address, make sure you have assigned your ticket. Search for your order confirmation email (with the subject line: “MozFest House Amsterdam 2024 Ticket”) and then press the 'View Order' button. If you are still experiencing issues after assigning your ticket, please reach out to [support@mozillafestival.org](mailto:support@mozillafestival.org).
+  Please ensure you are logging in with the same email that you used when registering for MozFest House Zambia. If you are using the same email address, make sure you have assigned your ticket. Search for your order confirmation email (with the subject line: “MozFest House Zambia Ticket”) and then press the 'View Order' button. If you are still experiencing issues after assigning your ticket, please reach out to [support@mozillafestival.org](mailto:support@mozillafestival.org).
 </details>
 
 <details>
@@ -111,15 +119,20 @@ There are a couple of reasons for your email address not being accepted by the s
 ### Tickets
 
 <details>
-<summary>Do I need a ticket to attend MozFest House Amsterdam?</summary>
+<summary>Do I need a ticket to attend MozFest House Zambia?</summary>
 
-Yes, to be able to attend MozFest House Amsterdam you will need to have registered for a ticket on our website. Tickets are available on our [ticketing page](https://www.mozillafestival.org/en/tickets/).
+Yes, to be able to attend MozFest House Zambia you will need to have registered for a ticket on our website. Tickets are available on our [ticketing page](https://www.mozillafestival.org/en/?tito=%2FMozilla%2Fmozfest-house-zambia%2Fen%2Fregistrations%2Fnew).
 </details>
 
 <details>
-<summary>How much are the tickets for MozFest House Amsterdam?</summary> 
+<summary>How much are the tickets for MozFest House Zambia?</summary> 
 
-Ticket prices start at just €55 for our community pass, which is subsidized by Mozilla, with a regular Festival Pass costing €200 for full access to the event as well as the [Songs of the Living](https://www.mozillafestival.org/en/songs-of-the-living/) concert taking place on 13 June.
+
+MozFest House Zambia offers two ticket options:
+
+- Community Pass: Available at no cost.
+- Philanthropic Access Ticket: Donation-based, allowing you to contribute and support the event.
+
 </details>
 
 <details>
@@ -128,24 +141,25 @@ Ticket prices start at just €55 for our community pass, which is subsidized by
 Ticket confirmations are sent from support@tito.io. Please check your spam in case it’s sent there. If you haven't received your ticket please reach out to support@mozillafestival.org
 </details>
 
-### MozFest House Amsterdam Event Information
+### MozFest House Zambia Event Information
 
 <details>
-<summary>What are the dates for MozFest House Amsterdam?</summary>
-MozFest House Amsterdam will be taking place 11-13 June 2024
+<summary>What are the dates for MozFest House Zambia?</summary>
+MozFest House Zambia will be taking place 20-21 November 2024
 </details>
 
 <details>
-<summary>Where is MozFest House Amsterdam taking place?</summary>
-MozFest House Amsterdam will take place at Tolhuistuin (which means Tolhouse Garden), located directly across the river on the North (Noord) side of the city. It can be accessed via a free ferry which runs continuously back and forth from Central station 24/7 and takes a few minutes.
+<summary>Where is MozFest House Zambia taking place?</summary>
+The event will be held at the Lusaka International Convention Centre in Lusaka, Zambia.
 
-- Venue website link: [https://tolhuistuin.nl/en/](https://tolhuistuin.nl/en/)
-- Google Maps link: [https://maps.app.goo.gl/wHKjanVjCM1LpAMH8](https://maps.app.goo.gl/wHKjanVjCM1LpAMH8)
+* Venue website link: [https://cielaresort.com/licc/](https://cielaresort.com/licc/)
+* Google Maps link: [https://maps.app.goo.gl/1iUooTFTCcq4LKye6](https://maps.app.goo.gl/1iUooTFTCcq4LKye6)
+
 </details>
 
 <details>
-<summary>What do I do once I arrive at MozFest House Amsterdam?</summary>
-Welcome! As you arrive at the venue you will find helpful signs and navigation aids directing you to the registration desk. From there you’ll be checked in and provided with your MozFest badge - it’s important you wear that badge at all times during the event. If you ever get lost, just keep an eye out for the colorful shirts that have #MozHelp on the back and we’ll be happy to point you in the right direction.
+<summary>What do I do once I arrive at MozFest House Zambia?</summary>
+Welcome! As you arrive at the venue you will find helpful signs and navigation aids directing you to the registration desk. From there you’ll be checked in and provided with your MozFest badge - it’s important you wear that badge at all times during the event. If you ever get lost, just keep an eye out for the colorful shirts that have #MozHelp on the back and we’ll be happy to point you in the right direction. 
 </details>
 
 <details>
@@ -156,7 +170,7 @@ All of our Mozilla Festival events are governed by our [Community Participation 
 
 <details>
 <summary>Will the sessions at MozFest House be recorded?</summary>
-Our  Keynote session and 'Dialogues and Debates' series are recorded and will be available to live stream and watch after the event. Beyond that, sessions at MozFest House Amsterdam will not be recorded.
+Our  Keynote session and 'Dialogues and Debates' series are recorded and will be available to live stream and watch after the event. Beyond that, sessions at MozFest House Zambia will not be recorded.
 </details>
 
 ## Get in touch
@@ -173,16 +187,7 @@ Message us at [support@mozillafestival.org](mailto:support@mozillafestival.org)
 
 During the event, our team of friendly Volunteers and Staff are available to assist participants - just keep an eye out for the colorful MozFest shirts with #MozHelp on the back.  
 
--------
-
-## Additional Support
-
-The Vita-Activa.org helpline is available for Mozilla Festival participants to help you navigate the impactful themes, conversations, and session content you may encounter throughout the festival. 
-
-Vita-Activa.org, is a helpline for women, LGBTTIQ+ people, journalists, activists and human rights defenders who face online gender-based violence, stress, anxiety, chronic fatigue, trauma and pain. Their services in Spanish and English are free, confidential and anonymous. Vita Activa provides psychological and digital first aid, holistic crisis management and strategic decision-making. Find them in [apoyo@vita-activa.org](mailto:apoyo@vita-activa.org) (Spanish) and [support@vita-activa.org](mailto:support@vita-activa.org) (English) | @VitaActivaOrg | +52155-8171-1117 (Whatsapp, Signal)
-
 ## Feedback
-
 
 Do you have thoughts you’d like to share about your experience or comments to pass along to the Mozilla Festival team? Please feel free to reach out via [support@mozillafestival.org](mailto:support@mozillafestival.org). We’ll also be following up after the event with a brief survey and hope you’ll share your thoughts!
 
