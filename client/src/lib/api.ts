@@ -71,11 +71,43 @@ export interface WebPushCredentials {
   publicKey: string
 }
 
+export interface WebPushDevice {
+  id: number
+  created: Date
+  attendee: number
+  name: string
+  endpoint: string
+  expiration: Date | null
+  keys: Record<string, string>
+  categories: string[]
+}
+
+export interface WebPushDeviceInit {
+  name: string
+  endpoint: string
+  expiration: Date | null
+  keys: Record<string, string>
+  categories: string[]
+}
+
+export interface WebPushDeviceUpdate {
+  name: string
+  categories: string[]
+}
+
 export interface MozApiClient {
   getWhatsOn(): Promise<Session[]>
   startEmailLogin(email: string, options?: MozLoginOptions): Promise<boolean>
   unlinkGoogleCalendar(): Promise<void>
   getWebPushCredentials(): Promise<WebPushCredentials | null>
+
+  listWebPushDevices(): Promise<WebPushDevice[] | null>
+  createWebPushDevice(init: WebPushDeviceInit): Promise<WebPushDevice | null>
+  updateWebPushDevice(
+    id: string | number,
+    update: WebPushDeviceUpdate
+  ): Promise<WebPushDevice | null>
+  deleteWebPushDevice(id: string | number): Promise<boolean>
 }
 
 export function pickApi(env: EnvRecord): DeconfApiClient & MozApiClient {
@@ -104,6 +136,35 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
     return this.fetchJson<WebPushCredentials>(
       '/notifications/web-push-credentials'
     )
+  }
+
+  listWebPushDevices(): Promise<WebPushDevice[] | null> {
+    return this.fetchJson<WebPushDevice[]>('/notifications/web-push-devices')
+  }
+  createWebPushDevice(init: WebPushDeviceInit): Promise<WebPushDevice | null> {
+    return this.fetchJson<WebPushDevice>('/notifications/web-push-devices', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(init),
+    })
+  }
+  updateWebPushDevice(
+    id: string | number,
+    update: WebPushDeviceUpdate
+  ): Promise<WebPushDevice | null> {
+    return this.fetchJson<WebPushDevice>(
+      `/notifications/web-push-devices/${id}`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(update),
+      }
+    )
+  }
+  deleteWebPushDevice(id: string | number): Promise<boolean> {
+    return this.fetch(`/notifications/web-push-devices/${id}`, {
+      method: 'DELETE',
+    })
   }
 
   // override async getLinks(): Promise<SessionLinks | null> {
@@ -147,6 +208,19 @@ export class StaticApiClient
   }
   async getWebPushCredentials(): Promise<null> {
     return null
+  }
+
+  async listWebPushDevices(): Promise<null> {
+    return null
+  }
+  async createWebPushDevice(): Promise<null> {
+    return null
+  }
+  async updateWebPushDevice(): Promise<null> {
+    return null
+  }
+  async deleteWebPushDevice(): Promise<boolean> {
+    return false
   }
 }
 

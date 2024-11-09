@@ -18,3 +18,16 @@ export function localise(input: unknown) {
     )
   }
 }
+
+// https://stackoverflow.com/q/22266826/
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function shallowCompare(a: any, b: any) {
+  return (
+    a &&
+    b &&
+    typeof a === 'object' &&
+    typeof b === 'object' &&
+    Object.keys(a).length === Object.keys(b).length &&
+    Object.keys(a).every((key) => a[key] === b[key])
+  )
+}

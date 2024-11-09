@@ -31,6 +31,7 @@ import { fetchContentCommand } from './fetch-content-command.js'
 import { CaMoEmailService } from '../lib/email-service.js'
 import { Oauth2Repository } from '../deconf/oauth2-repository.js'
 import { CalendarRepository } from '../mozfest/calendar-repo.js'
+import { NotificationsRepository } from '../mozfest/notifications-repo.js'
 
 const debug = createDebug('cmd:serve')
 
@@ -76,12 +77,13 @@ export async function createServerContext(): Promise<AppContext> {
   // const interpreterRepo = new InterpreterRepository({ jwt, conferenceRepo })
   const oauth2Repo = new Oauth2Repository({ postgres })
   const calendarRepo = new CalendarRepository({ postgres })
+  const notifsRepo = new NotificationsRepository({ postgres })
 
   // prettier-ignore
   return {
     config, env, pkg, resources, email, i18n, jwt, postgres, semaphore, sockets,
     store, url, attendanceRepo, conferenceRepo, metricsRepo, registrationRepo,
-    oauth2Repo, calendarRepo
+    oauth2Repo, calendarRepo, notifsRepo
   }
 }
 

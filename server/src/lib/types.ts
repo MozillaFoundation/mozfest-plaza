@@ -8,6 +8,7 @@ import { SocketService } from './socket-service.js'
 import { UrlService } from './url-service.js'
 import { Oauth2Repository } from '../deconf/oauth2-repository.js'
 import { CalendarRepository } from '../mozfest/calendar-repo.js'
+import { NotificationsRepository } from '../mozfest/notifications-repo.js'
 
 //
 // A common object passed between instances to share functionality and abstract implementations
@@ -36,6 +37,7 @@ export type AppContext = Pick<
   sockets: Readonly<SocketService>
   oauth2Repo: Readonly<Oauth2Repository>
   calendarRepo: Readonly<CalendarRepository>
+  notifsRepo: Readonly<NotificationsRepository>
 }
 
 //

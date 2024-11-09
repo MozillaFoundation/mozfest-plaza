@@ -6,10 +6,15 @@ import {
 } from '@openlab/deconf-api-toolkit'
 import { createEnv, createDebug } from '../lib/module.js'
 import addAttendeeOauth2 from '../migrations/001-attendee-oauth2.js'
+import addWebPushDevices from '../migrations/002-web-push-device.js'
 
 const debug = createDebug('cmd:migrate')
 
-const MOZFEST_MIGRATIONS = [...DECONF_MIGRATIONS, addAttendeeOauth2]
+const MOZFEST_MIGRATIONS = [
+  ...DECONF_MIGRATIONS,
+  addAttendeeOauth2,
+  addWebPushDevices,
+]
 
 export interface MigrateCommandOptions {
   // ...
