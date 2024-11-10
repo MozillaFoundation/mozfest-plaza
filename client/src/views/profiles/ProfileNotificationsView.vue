@@ -34,8 +34,11 @@
       <WebPushForm v-if="!hasCurrent && canAddDevice" @submit="addDevice" />
 
       <p v-if="!canAddDevice">
-        Your current device doesn't support the [Web Push
-        API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API).
+        Your current device doesn't support the
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">
+          Web Push API
+        </a>
+        . If you're on mobile, try adding this website to your homescreen.
       </p>
 
       <!-- <details>
