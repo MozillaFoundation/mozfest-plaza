@@ -10,7 +10,10 @@
         </p>
       </template>
       <template v-slot:extraOptions>
-        <div class="content loginView-oauth">
+        <div
+          class="content loginView-oauth"
+          v-if="settings?.features.googleAuth"
+        >
           <hr />
           <p>{{ $t('mozfest.login.oauth') }}</p>
           <div class="buttons">
@@ -34,10 +37,12 @@ import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import { LoginView, ApiContent } from '@openlab/deconf-ui-toolkit'
 import { env } from '@/plugins/env-plugin'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { mapApiState } from '@/lib/deconf-hacks'
 
 export default defineComponent({
   components: { MozUtilLayout, LoginView, ApiContent, FontAwesomeIcon },
   computed: {
+    ...mapApiState('api', ['settings']),
     googleLink(): string {
       const url = new URL('./auth/oauth2/google', env.SERVER_URL)
       if (this.$route.query.redirect) {

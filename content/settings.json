@@ -73,6 +73,7 @@
   },
 
   "features": {
+    "googleAuth": true,
     "calendarSync": true,
     "webPush": true
   },

@@ -11,7 +11,7 @@ import {
   StaticDeconfApiClient,
 } from '@openlab/deconf-ui-toolkit'
 
-type FeatureFlag = 'calendarSync' | 'webPush'
+type FeatureFlag = 'calendarSync' | 'webPush' | 'googleAuth'
 
 export interface MozConferenceConfig {
   atrium: PageFlag
