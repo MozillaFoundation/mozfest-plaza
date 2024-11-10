@@ -42,11 +42,7 @@ const message = ref({
 })
 
 async function sendTestMessage() {
-  const success = await apiClient.fetch('admin/test-message', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(message.value),
-  })
+  const success = await apiClient.testWebPush(message.value)
   if (!success) alert('Failed to send test message')
   await fetchData()
 }

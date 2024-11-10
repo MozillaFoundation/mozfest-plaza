@@ -143,15 +143,15 @@ async function addDevice(data: WebPushSubmit) {
 async function test() {
   if (!subscription.value) return
 
-  await apiClient.fetch(
-    new URL('/notifications/web-push-test', apiClient.baseUrl).toString(),
-    {
-      method: 'POST',
-      body: JSON.stringify(subscription.value),
-      headers: {
-        'content-type': 'application/json',
-      },
-    }
-  )
+  // await apiClient.fetch(
+  //   new URL('notifications/web-push-test', apiClient.baseUrl).toString(),
+  //   {
+  //     method: 'POST',
+  //     body: JSON.stringify(subscription.value),
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //   }
+  // )
 }
 </script>

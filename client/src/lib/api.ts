@@ -99,6 +99,12 @@ export interface WebPushDeviceUpdate {
   categories: string[]
 }
 
+export interface TestWebPushMessage {
+  title: string
+  body: string
+  url: string
+}
+
 export interface MozApiClient {
   getWhatsOn(): Promise<Session[]>
   startEmailLogin(email: string, options?: MozLoginOptions): Promise<boolean>
@@ -112,6 +118,8 @@ export interface MozApiClient {
     update: WebPushDeviceUpdate
   ): Promise<WebPushDevice | null>
   deleteWebPushDevice(id: string | number): Promise<boolean>
+
+  testWebPush(message: TestWebPushMessage): Promise<boolean>
 }
 
 export function pickApi(env: EnvRecord): DeconfApiClient & MozApiClient {
@@ -133,20 +141,20 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
   }
 
   async unlinkGoogleCalendar(): Promise<void> {
-    await this.fetch('/calendar/google/unlink', { method: 'POST' })
+    await this.fetch('calendar/google/unlink', { method: 'POST' })
   }
 
   getWebPushCredentials() {
     return this.fetchJson<WebPushCredentials>(
-      '/notifications/web-push-credentials'
+      'notifications/web-push-credentials'
     )
   }
 
   listWebPushDevices(): Promise<WebPushDevice[] | null> {
-    return this.fetchJson<WebPushDevice[]>('/notifications/web-push-devices')
+    return this.fetchJson<WebPushDevice[]>('notifications/web-push-devices')
   }
   createWebPushDevice(init: WebPushDeviceInit): Promise<WebPushDevice | null> {
-    return this.fetchJson<WebPushDevice>('/notifications/web-push-devices', {
+    return this.fetchJson<WebPushDevice>('notifications/web-push-devices', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(init),
@@ -157,7 +165,7 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
     update: WebPushDeviceUpdate
   ): Promise<WebPushDevice | null> {
     return this.fetchJson<WebPushDevice>(
-      `/notifications/web-push-devices/${id}`,
+      `notifications/web-push-devices/${id}`,
       {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -166,8 +174,16 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
     )
   }
   deleteWebPushDevice(id: string | number): Promise<boolean> {
-    return this.fetch(`/notifications/web-push-devices/${id}`, {
+    return this.fetch(`notifications/web-push-devices/${id}`, {
       method: 'DELETE',
+    })
+  }
+
+  testWebPush(message: TestWebPushMessage): Promise<boolean> {
+    return this.fetch('admin/test-message', {
+      method: 'POST',
+      body: JSON.stringify(message),
+      headers: { 'Content-Type': 'application/json' },
     })
   }
 
@@ -224,6 +240,10 @@ export class StaticApiClient
     return null
   }
   async deleteWebPushDevice(): Promise<boolean> {
+    return false
+  }
+
+  async testWebPush(): Promise<boolean> {
     return false
   }
 }
