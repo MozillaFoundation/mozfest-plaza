@@ -69,9 +69,11 @@ const devices = ref<WebPushDevice[]>()
 const serviceWorker = ServiceWorkerPlugin.use()
 const subscription = shallowRef<PushSubscription | null>(null)
 
+const webPushAvailable = 'Notification' in window
+
 // Fetch the previous subscription when the pages loads
 onMounted(async () => {
-  if (Notification.permission !== 'granted') return
+  if (!webPushAvailable || Notification.permission !== 'granted') return
   if (!serviceWorker.registration) return // TODO: should this be watched instead?
   subscription.value =
     await serviceWorker.registration.pushManager.getSubscription()
@@ -109,13 +111,14 @@ async function deleteDevice(id: number) {
   await fetchDevices()
 }
 
-// TODO: a better test
-const canAddDevice = computed(() => serviceWorker.registration)
+const canAddDevice = computed(
+  () => webPushAvailable && serviceWorker.registration
+)
 
 async function addDevice(data: WebPushSubmit) {
   console.log('addDevice', data)
 
-  if (!serviceWorker.registration) return
+  if (!webPushAvailable || !serviceWorker.registration) return
 
   const creds = await apiClient.getWebPushCredentials()
   if (!creds) return
