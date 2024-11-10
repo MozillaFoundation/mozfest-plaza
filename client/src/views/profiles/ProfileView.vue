@@ -9,10 +9,18 @@
     >
       <template v-slot:preActions>
         <div class="buttons">
-          <router-link class="button is-primary" :to="calendarRoute">
+          <router-link
+            class="button is-primary"
+            :to="calendarRoute"
+            v-if="settings?.features.calendarSync"
+          >
             {{ $t('mozfest.profile.calendar') }}
           </router-link>
-          <router-link class="button is-primary" :to="notificationsRoute">
+          <router-link
+            class="button is-primary"
+            :to="notificationsRoute"
+            v-if="settings?.features.webPush"
+          >
             {{ $t('mozfest.profile.notifications') }}
           </router-link>
         </div>
@@ -38,7 +46,7 @@ export default defineComponent({
   components: { MozUtilLayout, ProfileView },
 
   computed: {
-    ...mapApiState('api', ['user', 'profile']),
+    ...mapApiState('api', ['user', 'profile', 'settings']),
     fields(): ProfileField[] {
       if (!this.user || !this.profile) return []
       return [

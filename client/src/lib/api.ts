@@ -11,6 +11,8 @@ import {
   StaticDeconfApiClient,
 } from '@openlab/deconf-ui-toolkit'
 
+type FeatureFlag = 'calendarSync' | 'webPush'
+
 export interface MozConferenceConfig {
   atrium: PageFlag
   whatsOn: PageFlag
@@ -37,6 +39,8 @@ export interface MozConferenceConfig {
     showLogin: boolean
     showRegister: boolean
   }
+
+  features: Record<FeatureFlag, boolean | undefined>
 
   atriumWidgets: {
     register: boolean

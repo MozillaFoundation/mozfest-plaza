@@ -57,6 +57,8 @@ export const ConferenceConfigStruct = object({
     showRegister: boolean(),
   }),
 
+  features: defaulted(record(string(), boolean()), {}),
+
   atriumWidgets: record(string(), boolean()),
 
   content: object({

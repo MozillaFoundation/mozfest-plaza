@@ -72,6 +72,11 @@
     "showRegister": true
   },
 
+  "features": {
+    "calendarSync": true,
+    "webPush": true
+  },
+
   "atriumWidgets": {
     "login": true,
     "register": true,
