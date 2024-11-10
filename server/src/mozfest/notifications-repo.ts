@@ -38,6 +38,11 @@ export interface WebPushMessageRecord {
   state: string
 }
 
+export interface AdminStats {
+  categories: Record<string, number>
+  messages: Record<string, number>
+}
+
 export class NotificationsRepository {
   #context: Context
   constructor(context: Context) {
@@ -158,5 +163,28 @@ export class NotificationsRepository {
         VALUES (${device}, ${message})
       `
     )
+  }
+
+  async getAdminStats(): Promise<AdminStats> {
+    return this.#context.postgres.run(async (client) => {
+      const devices = await client.sql<{ categories: string[] }>`
+        SELECT categories FROM web_push_devices
+      `
+      const categories: Record<string, number> = {}
+      for (const record of devices) {
+        for (const category of record.categories) {
+          categories[category] = (categories[category] ?? 0) + 1
+        }
+      }
+
+      const states = await client.sql<{ state: string; count: number }>`
+        SELECT state, count(*) AS count
+        FROM web_push_messages
+        GROUP BY state;
+      `
+      const messages = Object.fromEntries(states.map((r) => [r.state, r.count]))
+
+      return { categories, messages }
+    })
   }
 }

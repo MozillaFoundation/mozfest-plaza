@@ -37,6 +37,11 @@
         Your current device doesn't support the [Web Push
         API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API).
       </p>
+
+      <!-- <details>
+        <summary>debug</summary>
+        <button @click="test">Send a test</button>
+      </details> -->
     </div>
   </MozUtilLayout>
 </template>
@@ -133,5 +138,20 @@ async function addDevice(data: WebPushSubmit) {
   subscription.value = sub
 
   await fetchDevices()
+}
+
+async function test() {
+  if (!subscription.value) return
+
+  await apiClient.fetch(
+    new URL('/notifications/web-push-test', apiClient.baseUrl).toString(),
+    {
+      method: 'POST',
+      body: JSON.stringify(subscription.value),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  )
 }
 </script>

@@ -10,7 +10,15 @@
       :controls="['scheduleDate']"
     >
       <template v-slot:extras>
-        <PretalxDevBlock :dev-plugin="$dev" />
+        <div class="devControl-block">
+          <RouterLink
+            :to="adminRoute"
+            class="button is-fullwidth is-link is-light"
+          >
+            Admin dashboard →
+          </RouterLink>
+        </div>
+        <PretalxDevBlock class="devControl-block" :dev-plugin="$dev" />
       </template>
     </DevControl>
     <AppDialog :dialog-plugin="$dialog" />
@@ -30,7 +38,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import MozApiError from '@/components/MozApiError.vue'
 import PretalxDevBlock from '@/components/PretalxDevBlock.vue'
 
-import { mapApiState, StorageKey } from '@/lib/module'
+import { ExtraRoutes, mapApiState, StorageKey } from '@/lib/module'
 import { setLocale } from '@/i18n/module'
 
 interface Data {
@@ -52,6 +60,9 @@ export default defineComponent({
     ...mapApiState('api', ['apiState', 'schedule', 'user']),
     homeRoute(): RouteLocationRaw {
       return { name: Routes.Atrium }
+    },
+    adminRoute(): RouteLocationRaw {
+      return { name: ExtraRoutes.Admin }
     },
     isDev(): boolean {
       return import.meta.env.mode === 'development'

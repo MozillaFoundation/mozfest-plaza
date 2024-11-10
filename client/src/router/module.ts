@@ -60,7 +60,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/profile',
     name: Routes.Profile,
-    component: () => import('../views/ProfileView.vue'),
+    component: () => import('../views/profiles/ProfileView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.profile',
     },
@@ -68,7 +68,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/profile/calendar',
     name: ExtraRoutes.ProfileCalendar,
-    component: () => import('../views/ProfileCalendarView.vue'),
+    component: () => import('../views/profiles/ProfileCalendarView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.profile',
     },
@@ -76,7 +76,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/profile/notifications',
     name: ExtraRoutes.ProfileNotifications,
-    component: () => import('../views/ProfileNotificationsView.vue'),
+    component: () => import('../views/profiles/ProfileNotificationsView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.profile',
     },
@@ -178,15 +178,25 @@ const routes: RouteRecordRaw[] = [
   },
 
   //
-  // Utils
+  // Admin
   //
   {
-    path: '/utilities',
-    name: ExtraRoutes.Utils,
-    component: () => import('../views/UtilsView.vue'),
-    meta: {
-      pageTitle: 'mozfest.pageTitles.utilities',
-    },
+    path: '/admin',
+    name: ExtraRoutes.Admin,
+    component: () => import('../views/admin/AdminView.vue'),
+    meta: { pageTitle: 'mozfest.pageTitles.admin' },
+  },
+  {
+    path: '/admin/schedule',
+    name: ExtraRoutes.AdminSchedule,
+    component: () => import('../views/admin/AdminScheduleView.vue'),
+    meta: { pageTitle: 'mozfest.pageTitles.admin' },
+  },
+  {
+    path: '/admin/messaging',
+    name: ExtraRoutes.AdminMessaging,
+    component: () => import('../views/admin/AdminMessagingView.vue'),
+    meta: { pageTitle: 'mozfest.pageTitles.admin' },
   },
 
   //

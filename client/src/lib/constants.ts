@@ -33,6 +33,10 @@ export enum ExtraRoutes {
   Search = 'Search',
   ProfileCalendar = 'ProfileCalendar',
   ProfileNotifications = 'ProfileNotifications',
+
+  Admin = 'Admin',
+  AdminSchedule = 'AdminSchedule',
+  AdminMessaging = 'AdminMessaging',
 }
 
 export const themeAllowlist = new Set([])

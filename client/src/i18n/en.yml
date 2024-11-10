@@ -299,7 +299,7 @@ mozfest:
     # emergentSessions: Emergent Sessions
     # calendar: My Calendar
     mySchedule: My Schedule
-    utilities: Utilities
+    admin: Admin
 
   whatsOn:
     title: Sneak Peek

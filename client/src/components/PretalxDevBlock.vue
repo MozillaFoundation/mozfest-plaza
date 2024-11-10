@@ -1,5 +1,5 @@
 <template>
-  <div class="devControl-block" v-if="isAdmin && status">
+  <div v-if="isAdmin && status">
     <template v-if="status.isRunning">
       <Stack direction="horizontal" gap="regular" align="center">
         <FontAwesomeIcon :icon="['fas', 'sync']" spin size="xl" />

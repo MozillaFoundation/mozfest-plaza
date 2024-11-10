@@ -1,12 +1,23 @@
 import { Request } from 'koa'
 import KoaRouter from '@koa/router'
-import { ApiError, VOID_RESPONSE } from '@openlab/deconf-api-toolkit'
+import {
+  ApiError,
+  assertStruct,
+  VOID_RESPONSE,
+} from '@openlab/deconf-api-toolkit'
 
 import { AppContext, AppRouter } from '../lib/module.js'
 import {
   PRETALX_LOCK_KEY,
   fetchScheduleCommand,
 } from '../commands/fetch-schedule-command.js'
+import { object, string } from 'superstruct'
+
+const PushMessage = object({
+  title: string(),
+  body: string(),
+  url: string(),
+})
 
 type Context = AppContext
 
@@ -33,6 +44,7 @@ export class AdminRouter implements AppRouter {
       if (!auth || !auth.user_roles.includes('admin')) {
         throw ApiError.unauthorized()
       }
+      return auth
     }
 
     // admin-only - run the pretalx scrape
@@ -60,6 +72,39 @@ export class AdminRouter implements AppRouter {
         isEnabled: process.env.PRETALX_API_TOKEN !== undefined,
         isRunning: await this.#isRunningPretalx(),
       }
+    })
+
+    router.get('/admin/messaging', async (ctx) => {
+      guardAdminOnly(ctx.request)
+
+      ctx.body = await this.#context.notifsRepo.getAdminStats()
+    })
+
+    router.post('/admin/test-message', async (ctx) => {
+      const auth = guardAdminOnly(ctx.request)
+
+      assertStruct(ctx.request.body, PushMessage)
+      const { title, body, url } = ctx.request.body
+
+      try {
+        new URL(url)
+      } catch {
+        throw new ApiError(400, ['admin.invalidUrl'])
+      }
+
+      const devices = await this.#context.notifsRepo.listAttendeeWebPushDevices(
+        auth.sub
+      )
+
+      for (const device of devices) {
+        await this.#context.notifsRepo.createWebPushMessage(device.id, {
+          title,
+          body,
+          data: { url },
+        })
+      }
+
+      ctx.body = VOID_RESPONSE
     })
   }
 }
