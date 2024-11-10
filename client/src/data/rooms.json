@@ -1,98 +1,74 @@
 {
-  "tolhuis-cafe-sun-room-funder-lounge": {
-    "id": 3098,
+  "main-stage": {
+    "id": 3573,
     "name": {
-      "en": "Tolhuis Cafe - Sun Room (Funder Lounge)"
+      "en": "Main Stage"
     }
   },
-  "mozfest-virtual-gathering": {
-    "id": 3106,
+  "zebra-room": {
+    "id": 3574,
     "name": {
-      "en": "MozFest Virtual Gathering"
+      "en": "Zebra Room"
     }
   },
-  "arthur-staal": {
-    "id": 3099,
+  "buffalo-room": {
+    "id": 3575,
     "name": {
-      "en": "Arthur Staal"
+      "en": "Buffalo Room"
     }
   },
-  "room-e-flexroom": {
-    "id": 3100,
+  "hippo-tent": {
+    "id": 3576,
     "name": {
-      "en": "Room E - Flexroom"
+      "en": "Hippo Tent"
     }
   },
-  "room-d-water-studio": {
-    "id": 3101,
+  "giraffe-tent": {
+    "id": 3577,
     "name": {
-      "en": "Room D - Water Studio"
+      "en": "Giraffe Tent"
     }
   },
-  "room-a-ijzaal": {
-    "id": 3102,
+  "main-foyer": {
+    "id": 3578,
     "name": {
-      "en": "Room A - IJzaal"
+      "en": "Main Foyer"
     }
   },
-  "room-c-podcast-space": {
-    "id": 3103,
+  "boardroom": {
+    "id": 3579,
     "name": {
-      "en": "Room C - Podcast Space"
+      "en": "Boardroom"
     }
   },
-  "zonzij": {
-    "id": 3094,
+  "rest-relaxation-tent": {
+    "id": 3580,
     "name": {
-      "en": "Zonzij"
+      "en": "Rest & Relaxation Tent"
     }
   },
-  "main-stage-galerij": {
-    "id": 3095,
+  "brewery": {
+    "id": 3581,
     "name": {
-      "en": "Main Stage - Galerij"
+      "en": "Brewery"
     }
   },
-  "room-b-tht-kamer": {
-    "id": 3096,
+  "the-hub-session-space": {
+    "id": 3629,
     "name": {
-      "en": "Room B - THT Kamer"
+      "en": "The Hub Session Space"
     }
   },
-  "garden": {
-    "id": 3104,
+  "mozfest-discord": {
+    "id": 3655,
     "name": {
-      "en": "Garden"
+      "en": "MozFest Discord"
     }
   },
-  "room-g-garden-house": {
-    "id": 3105,
+  "ciela-resort-pool-area": {
+    "id": 3658,
     "name": {
-      "en": "Room G - Garden House"
-    }
-  },
-  "ethical-dilema-cafe": {
-    "id": 3163,
-    "name": {
-      "en": "Ethical Dilema Cafe"
-    }
-  },
-  "room-f-garden-tent": {
-    "id": 3137,
-    "name": {
-      "en": "Room F - Garden Tent"
-    }
-  },
-  "tolhuis-cafe-bar-area": {
-    "id": 3097,
-    "name": {
-      "en": "Tolhuis Cafe - Bar Area"
-    }
-  },
-  "paradiso": {
-    "id": 3155,
-    "name": {
-      "en": "Paradiso"
+      "en": "Ciela Resort - Pool Area"
     }
   }
 }
