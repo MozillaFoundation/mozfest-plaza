@@ -17,15 +17,20 @@ Phone: +260 211 433 250
 
 MozFest House will take place at the [Lusaka International Conference Centre](https://cielaresort.com/licc/) which is located at the Ciela Resort and is a 20 minute drive out of the city and just a 15 minute drive from the airport.
 
-Free shuttle buses will take those staying in central Lusaka to and from the venue in the morning and afternoon. Buses will depart from East Park Mall with a schedule as follows:  
-  
-* East Park Mall to Ciela: 09:00 Wednesday 20 November
-* Ciela to East Park Mall: 18:00 Wednesday 20 November
-* East Park Mall to Ciela: 09:00 Thursday 20 November
-* Ciela to East Park Mall: 18:00 Thursday 21 November
-* Ciela to East Park Mall: 21:00 Thursday 21 November
+### Free Shuttle Bus Transporation 
 
-Sessions on 20 & 21 November will run in parallel in various rooms for an hour to an hour-and-a-half, with a short break in between - we expect to have between 4-6 sessions running in parallel across the space. We will close with our evening party from 6pm-8pm on 21 November.
+For those who requested coach travel - free shuttle buses will take those staying in central Lusaka to and from the venue in the morning and afternoon. Buses will depart from East Park Mall car park (opposite the Cargo Hotel) with a schedule as follows - please show your registration to the travel co-ordinator in the MozFest orange T-Shirt.
+
+* East Park Mall to Ciela: From 09:00 Wednesday 20 November
+  * Coaches to run back and forth all day
+* Ciela to East Park Mall: From 18:00 Wednesday 20 November
+  * Coaches to run back and forth all day
+* East Park Mall to Ciela: From 09:00 Thursday 20 November
+  * Coaches to run back and forth all day
+* Ciela to East Park Mall: From 18:00 Thursday 21 November
+* Ciela to East Park Mall: From 20:00 Thursday 21 November
+
+***Please note during busy times there might be some waiting time as the coaches board, and go back and forth between Lusaka and the venue - we thank you for your patience!***
 
 ### Registration Upon Arrival
 
@@ -41,6 +46,8 @@ Sessions on 20 & 21 November will run in parallel in various rooms for an hour t
 ### Schedule
 
 You can check out the [full schedule here](https://schedule.mozillafestival.org/plaza) - spots are available on a first-come, first-served basis. If a session is full or you’ve got some time between sessions, swing by The Hub Session Space to explore fascinating projects and discussions. Be sure to check out the beautifully curated Art and Installations throughout the venue, or stumble upon one of the casual Social Movements happening around the schedule. There’s always something exciting going on!
+
+Sessions on 20 & 21 November will run in parallel in various rooms for an hour to an hour-and-a-half, with a short break in between - we expect to have between 4-6 sessions running in parallel across the space. We will close with our evening party from 6pm-8pm on 21 November.
 
 Looking for a spot to connect with others, get some work done, or simply relax between sessions? We’ve got plenty of cozy corners where you can meet fellow attendees, grab a quick coffee, and explore. These spaces are designed with you in mind—perfect for recharging, unwinding, and striking up conversations.
 
