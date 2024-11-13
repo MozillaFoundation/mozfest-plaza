@@ -339,9 +339,6 @@ async function runUser(
 
   // Don't run if there is no calendar token
   const activeToken = getActiveToken(tokens, GOOGLE_CALENDAR_SCOPE)
-  if (!activeToken) {
-    return debug('[skip] no calendar tokens')
-  }
 
   // Fetch the user's attendance and map those to sessions
   const localEvents = keyedBy(

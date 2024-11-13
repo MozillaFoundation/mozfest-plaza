@@ -4,8 +4,7 @@ import { Oauth2Record, Oauth2Repository } from '../deconf/oauth2-repository.js'
 
 const debug = createDebug('lib:google')
 
-export const GOOGLE_CALENDAR_SCOPE =
-  'https://www.googleapis.com/auth/calendar.events'
+export const GOOGLE_CALENDAR_SCOPE = 'https://www.googleapis.com/auth/calendar'
 
 type Env = Pick<
   EnvRecord,
@@ -21,7 +20,7 @@ export function getGoogleClient(env: Env) {
 }
 
 export interface ActiveToken {
-  accessToken: string
+  accessToken?: string
   refreshToken?: string | null
 }
 
@@ -29,17 +28,15 @@ export interface ActiveToken {
 export function getActiveToken(
   tokens: Oauth2Record[],
   scope: string
-): ActiveToken | null {
+): ActiveToken {
   const newestFirst = tokens
     .filter((t) => t.scope.includes(scope))
     .sort((a, b) => b.created.getTime() - a.created.getTime())
 
-  if (newestFirst.length === 0) return null
-
   // Return the newest token that has a refresh token & latest access token
   return {
     refreshToken: newestFirst.map((t) => t.refreshToken).filter((t) => t)[0],
-    accessToken: newestFirst[0].accessToken,
+    accessToken: newestFirst[0]?.accessToken,
   }
 }
 
