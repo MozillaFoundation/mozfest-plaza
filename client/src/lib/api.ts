@@ -141,7 +141,7 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
   }
 
   async unlinkGoogleCalendar(): Promise<void> {
-    await this.fetch('calendar/google/unlink', { method: 'POST' })
+    await this.fetch('my-schedule/google/unlink', { method: 'POST' })
   }
 
   getWebPushCredentials() {

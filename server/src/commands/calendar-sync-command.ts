@@ -13,7 +13,12 @@ import { Attendance, Localised, Registration } from '@openlab/deconf-shared'
 import { calendar_v3, google } from 'googleapis'
 
 import { Oauth2Record, Oauth2Repository } from '../deconf/oauth2-repository.js'
-import { getGoogleClient, GOOGLE_CALENDAR_SCOPE } from '../lib/google.js'
+import {
+  getActiveToken,
+  getGoogleClient,
+  GOOGLE_CALENDAR_SCOPE,
+  setupGoogleAuth,
+} from '../lib/google.js'
 import {
   AppContext,
   createDebug,
@@ -55,21 +60,6 @@ function getAttendance(pg: PostgresClient, attendee: number) {
     FROM attendance
     WHERE attendee = ${attendee}
   `
-}
-
-/** From a set of attendee tokens, get their latest access & refresh tokens */
-export function getActiveToken(tokens: Oauth2Record[]) {
-  const newestFirst = tokens
-    .filter((t) => t.scope.includes(GOOGLE_CALENDAR_SCOPE))
-    .sort((a, b) => b.created.getTime() - a.created.getTime())
-
-  if (newestFirst.length === 0) return null
-
-  // Return the newest token that has a refresh token & latest access token
-  return {
-    refreshToken: newestFirst.map((t) => t.refreshToken).filter((t) => t)[0],
-    accessToken: newestFirst[0].accessToken,
-  }
 }
 
 /** An unlocalised event */
@@ -243,40 +233,6 @@ function diffEvents(
   return { missing, removed, modified }
 }
 
-interface CalendarToken {
-  accessToken: string
-  refreshToken?: string | null
-}
-
-function setupAuth(
-  env: EnvRecord,
-  token: CalendarToken,
-  attendee: number,
-  queue: Promise<unknown>[],
-  oauth2Repo: Readonly<Oauth2Repository>
-) {
-  // Create a google client to authenticate the user
-  const auth = getGoogleClient(env)
-  auth.setCredentials({
-    access_token: token.accessToken,
-    refresh_token: token.refreshToken,
-  })
-  auth.on('tokens', (tokens) => {
-    debug('enqueue new token attendee=%o', attendee)
-    queue.push(
-      oauth2Repo.store(
-        attendee,
-        'google',
-        tokens.scope ?? '',
-        tokens.access_token!,
-        tokens.refresh_token ?? null,
-        tokens.expiry_date ? new Date(tokens.expiry_date) : null
-      )
-    )
-  })
-  return auth
-}
-
 function keyedBy<T, K extends keyof T>(key: K, items: T[]) {
   return new Map(items.map((i) => [i[key], i]))
 }
@@ -292,7 +248,7 @@ type Context = Pick<
 > & {
   pg: PostgresClient
   allEvents: Map<string, GlobalEvent>
-  enqueued: Promise<unknown>[]
+  enqueued: Promise<void>[]
   dryRun: boolean
 }
 
@@ -382,7 +338,7 @@ async function runUser(
   }
 
   // Don't run if there is no calendar token
-  const activeToken = getActiveToken(tokens)
+  const activeToken = getActiveToken(tokens, GOOGLE_CALENDAR_SCOPE)
   if (!activeToken) {
     return debug('[skip] no calendar tokens')
   }
@@ -395,7 +351,7 @@ async function runUser(
   debug('attending %o', [...localEvents.keys()])
 
   // Create a google client authenticated with the user
-  const auth = setupAuth(
+  const auth = setupGoogleAuth(
     ctx.env,
     activeToken,
     attendee,

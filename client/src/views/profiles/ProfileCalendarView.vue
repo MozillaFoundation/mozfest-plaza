@@ -30,6 +30,7 @@
         <p>Last sync: {{ lastSync }}</p>
 
         <div class="buttons">
+          <!-- <button class="button is-link" @click="refresh">Refresh</button> -->
           <button class="button is-danger" @click="unlinkCalendar">
             Unlink Google Calendar
           </button>
@@ -42,15 +43,12 @@
           the events in MySchedule with it.
         </p>
 
-        <p>
-          To do this you need, we will ask for offline permissions to your
-          calendar
-        </p>
+        <p>To do this, we will ask for offline permissions to your calendar</p>
 
         <div class="buttons">
-          <a class="button is-primary" :href="authorizeUrl"
-            >Request permission</a
-          >
+          <a class="button is-primary" :href="authorizeUrl">
+            Request permission
+          </a>
         </div>
       </template>
       <template v-else>
@@ -141,6 +139,7 @@ export default defineComponent({
   },
   mounted() {
     this.$store.dispatch('api/fetchProfile')
+    this.refresh()
   },
   methods: {
     async unlinkCalendar() {
@@ -149,6 +148,9 @@ export default defineComponent({
 
       await apiClient.unlinkGoogleCalendar()
       this.$store.dispatch('api/fetchProfile')
+    },
+    async refresh() {
+      return apiClient.fetchJson('my-schedule/google/status')
     },
   },
 })
