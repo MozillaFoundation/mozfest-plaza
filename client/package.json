@@ -17,7 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@openlab/deconf-shared": "^4.0.0",
-    "@openlab/deconf-ui-toolkit": "^3.0.2",
+    "@openlab/deconf-ui-toolkit": "^3.0.3",
     "bulma": "^0.9.4",
     "copy-to-clipboard": "^3.3.2",
     "ky": "^0.28.7",

@@ -7,3 +7,4 @@ node_modules
 dist
 server/data
 .nova
+CHANGELOG.md

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v4.0.0...v4.0.1) (2024-11-13)
+
+### Fixed
+
+The navigation bar is no longer always disabled
+
 ## [4.0.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.23.2...v4.0.0) (2024-11-13)
 
 ### Features
