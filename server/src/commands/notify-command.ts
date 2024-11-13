@@ -1,4 +1,5 @@
 import {
+  createDebug,
   MetricsRepository,
   PostgresClient,
   PostgresService,
@@ -19,6 +20,8 @@ import {
   WebPushDeviceRecord,
 } from '../mozfest/notifications-repo.js'
 
+const debug = createDebug('cmd:migrate')
+
 type Context = Pick<AppContext, 'store' | 'notifsRepo' | 'metricsRepo'> & {
   dryRun: boolean
 }
@@ -31,6 +34,7 @@ export interface NotifyCommandOptions {
 }
 
 export async function notifyCommand(options: NotifyCommandOptions) {
+  debug('start')
   const env = createEnv()
   const config = await loadConfig()
   const store = pickAStore(env.REDIS_URL)
@@ -50,6 +54,7 @@ export async function notifyCommand(options: NotifyCommandOptions) {
   try {
     const unlocked = await semaphore.aquire(LOCK_KEY, LOCK_AGE)
     if (!unlocked) throw new Error('Failed to aquire lock')
+    debug('unlocked')
 
     const result = await _run({ store, notifsRepo, metricsRepo, ...options })
     console.log('finished %O', result)
@@ -74,6 +79,8 @@ interface WebPushMessageRecord {
 async function _run({ notifsRepo, metricsRepo, dryRun }: Context) {
   const messages = await notifsRepo.listPendingWebPushMessages()
 
+  debug('messages', messages.length)
+
   if (dryRun) {
     console.log('%d message(s) to send', messages.length)
     for (const m of messages) {
@@ -94,6 +101,7 @@ async function _run({ notifsRepo, metricsRepo, dryRun }: Context) {
   }
 
   for (const message of messages) {
+    debug('message=%d device=%d', message.id, message.device)
     const device = await notifsRepo.getAttendeeWebPushDevice(message.device)
     if (!device) {
       console.error('missing device id=%d', message.device)
@@ -101,6 +109,7 @@ async function _run({ notifsRepo, metricsRepo, dryRun }: Context) {
     }
 
     const success = await _send(message, device)
+    debug('  success=%o', success)
     if (success) {
       await notifsRepo.updateWebPushMessage(message, 'sent')
       counts.sent++
@@ -124,7 +133,7 @@ async function _send(
       JSON.stringify(message.message),
       { headers: { 'Content-Type': 'application/json' } }
     )
-    return true
+    return result.statusCode >= 200 && result.statusCode < 400
   } catch (error) {
     console.error('web-push error', error)
     return false
