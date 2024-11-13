@@ -9,6 +9,7 @@ import { createEnv, createDebug } from '../lib/module.js'
 import addAttendeeOauth2 from '../migrations/001-attendee-oauth2.js'
 import addWebPushDevices from '../migrations/002-web-push-device.js'
 import addWebPushMessages from '../migrations/003-web-push-message.js'
+import addAttendanceNotified from '../migrations/004-update-attendance.js'
 
 const debug = createDebug('cmd:migrate')
 
@@ -17,6 +18,7 @@ const MOZFEST_MIGRATIONS = [
   addAttendeeOauth2,
   addWebPushDevices,
   addWebPushMessages,
+  addAttendanceNotified,
 ]
 
 export interface MigrateCommandOptions {

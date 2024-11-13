@@ -213,7 +213,10 @@ cli.command(
 cli.command(
   'notify',
   'Send pending notifications',
-  (yargs) => yargs.option('dryRun', { type: 'boolean', default: false }),
+  (yargs) =>
+    yargs
+      .option('dryRun', { type: 'boolean', default: false })
+      .option('time', { type: 'string', default: null }),
   (args) => notifyCommand(args)
 )
 

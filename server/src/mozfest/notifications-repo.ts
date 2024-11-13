@@ -43,6 +43,12 @@ export interface AdminStats {
   messages: Record<string, number>
 }
 
+export interface PushMessageJson {
+  title: string
+  body: string
+  data: { url: string }
+}
+
 export class NotificationsRepository {
   #context: Context
   constructor(context: Context) {
@@ -156,7 +162,10 @@ export class NotificationsRepository {
     })
   }
 
-  async createWebPushMessage(device: number, message: unknown) {
+  async createWebPushMessage<T extends PushMessageJson>(
+    device: number,
+    message: T
+  ) {
     await this.#context.postgres.run(
       (client) => client.sql`
         INSERT INTO web_push_messages (device, message)
