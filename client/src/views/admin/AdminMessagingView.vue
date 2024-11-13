@@ -44,6 +44,17 @@ const message = ref({
 async function sendTestMessage() {
   const success = await apiClient.testWebPush(message.value)
   if (!success) alert('Failed to send test message')
+  alert('Test message sent')
+  await fetchData()
+}
+async function sendFullMessage() {
+  if (!confirm('Are you sure?')) return
+  const success = await apiClient.sendWebPush(message.value)
+  if (!success) alert('Failed to send message')
+  else {
+    message.value = { title: '', body: '', url: location.origin }
+    alert('Message sent')
+  }
   await fetchData()
 }
 </script>
@@ -128,10 +139,12 @@ async function sendTestMessage() {
         <p>A test message will go to any of your registered devices</p>
 
         <div class="buttons">
-          <button class="button is-primary" @click="sendTestMessage">
+          <button class="button is-secondary" @click="sendTestMessage">
             Send test message
           </button>
-          <!-- <button class="button" @test="test">Send</button> -->
+          <button class="button is-primary" @click="sendFullMessage">
+            Send
+          </button>
         </div>
       </div>
     </div>

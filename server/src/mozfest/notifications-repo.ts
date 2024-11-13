@@ -71,13 +71,24 @@ export class NotificationsRepository {
 
   listAttendeeWebPushDevices(attendee: number): Promise<WebPushDeviceRecord[]> {
     return this.#context.postgres.run(
-      (client) =>
-        client.sql<WebPushDeviceRecord>`
-          SELECT id, created, attendee, name, endpoint, expiration, keys, categories
-          FROM web_push_devices
-          WHERE attendee = ${attendee}
+      (client) => client.sql<WebPushDeviceRecord>`
+        SELECT id, created, attendee, name, endpoint, expiration, keys, categories
+        FROM web_push_devices
+        WHERE attendee = ${attendee}
       `
     )
+  }
+
+  async listAllWebPushDevices(
+    category: string
+  ): Promise<WebPushDeviceRecord[]> {
+    const records = await this.#context.postgres.run(
+      (client) => client.sql<WebPushDeviceRecord>`
+        SELECT id, created, attendee, name, endpoint, expiration, keys, categories
+        FROM web_push_devices
+      `
+    )
+    return records.filter((r) => r.categories.includes(category))
   }
 
   async createWebPushDevices(

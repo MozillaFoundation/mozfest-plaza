@@ -106,5 +106,32 @@ export class AdminRouter implements AppRouter {
 
       ctx.body = VOID_RESPONSE
     })
+
+    router.post('/admin/send-message', async (ctx) => {
+      guardAdminOnly(ctx.request)
+      assertStruct(ctx.request.body, PushMessage)
+
+      const { title, body, url } = ctx.request.body
+
+      try {
+        new URL(url)
+      } catch {
+        throw new ApiError(400, ['admin.invalidUrl'])
+      }
+
+      const devices = await this.#context.notifsRepo.listAllWebPushDevices(
+        'Special'
+      )
+
+      for (const device of devices) {
+        await this.#context.notifsRepo.createWebPushMessage(device.id, {
+          title,
+          body,
+          data: { url },
+        })
+      }
+
+      ctx.body = VOID_RESPONSE
+    })
   }
 }

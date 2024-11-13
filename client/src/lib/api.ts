@@ -99,7 +99,7 @@ export interface WebPushDeviceUpdate {
   categories: string[]
 }
 
-export interface TestWebPushMessage {
+export interface WebPushMessage {
   title: string
   body: string
   url: string
@@ -119,7 +119,8 @@ export interface MozApiClient {
   ): Promise<WebPushDevice | null>
   deleteWebPushDevice(id: string | number): Promise<boolean>
 
-  testWebPush(message: TestWebPushMessage): Promise<boolean>
+  testWebPush(message: WebPushMessage): Promise<boolean>
+  sendWebPush(message: WebPushMessage): Promise<boolean>
 }
 
 export function pickApi(env: EnvRecord): DeconfApiClient & MozApiClient {
@@ -179,8 +180,16 @@ export class LiveApiClient extends DeconfApiClient implements MozApiClient {
     })
   }
 
-  testWebPush(message: TestWebPushMessage): Promise<boolean> {
+  testWebPush(message: WebPushMessage): Promise<boolean> {
     return this.fetch('admin/test-message', {
+      method: 'POST',
+      body: JSON.stringify(message),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
+
+  sendWebPush(message: WebPushMessage): Promise<boolean> {
+    return this.fetch('admin/send-message', {
       method: 'POST',
       body: JSON.stringify(message),
       headers: { 'Content-Type': 'application/json' },
@@ -244,6 +253,9 @@ export class StaticApiClient
   }
 
   async testWebPush(): Promise<boolean> {
+    return false
+  }
+  async sendWebPush(): Promise<boolean> {
     return false
   }
 }
