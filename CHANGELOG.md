@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.23.2...v4.0.0) (2024-11-13)
+
+### Features
+
+- Sign-in with Google
+- (opt-in) Sync your MySchedule with your Google calendar
+- (opt-in) to Web Push notifications for special broadcasts or when MySchedule sessions go live
+
+### Improvements
+
+- The front-end is now using vue 3 and built with vite
+- A dedicated admin page for conference organisers
+- Features can be toggled with new flags in `settings.json`
+- The profile view is split into seperate views for simplicity
+- Many dependencies were updated to newer versions like FontAwesome
+
 ### [3.23.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/v3.23.1...v3.23.2) (2024-10-16)
 
 
