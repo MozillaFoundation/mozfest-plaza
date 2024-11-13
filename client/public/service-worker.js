@@ -15,8 +15,6 @@ self.addEventListener('install', () => {
 /**
  * @param {ServiceWorkerGlobalScope} self
  * @param {PushEvent} event
- *
- * Shows the notification to the user
  */
 async function onPush(self, event) {
   try {
@@ -42,8 +40,6 @@ async function onPush(self, event) {
 /**
  * @param {ServiceWorkerGlobalScope} self
  * @param {NotificationEvent} event
- *
- * Parses the notification payload and opens the URL if there is one
  */
 async function onNotificationClick(self, event) {
   try {
@@ -63,16 +59,22 @@ async function onNotificationClick(self, event) {
 /**
  * @param {ServiceWorkerGlobalScope} self
  * @param {URL|string} url
- *
- * Opens the URL in the first window related to the ServiceWorker
  */
 async function openUrl(self, url) {
   try {
-    const [window] = await self.clients.matchAll({ type: 'window' })
-    if (window) {
-      window.focus()
-      window.navigate(url)
+    const windows = await self.clients.matchAll({ type: 'window' })
+    if (windows[0]) {
+      windows[0].focus()
+      windows[0].navigate(url)
     }
+    // const alreadyOpen = windows.find((w) => w.url === url)
+    // if (alreadyOpen) {
+    //   exists.focus()
+    //   return
+    // }
+
+    // const newWindow = await self.clients.openWindow(url)
+    // newWindow?.focus?.()
   } catch (error) {
     console.error('Failed to open window', error)
     await log(self, 'Failed to open window: ' + error?.message)
