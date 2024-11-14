@@ -22,7 +22,7 @@ import {
   WebPushDeviceRecord,
 } from '../mozfest/notifications-repo.js'
 
-const debug = createDebug('cmd:migrate')
+const debug = createDebug('cmd:notify')
 
 type Context = Pick<
   AppContext,
