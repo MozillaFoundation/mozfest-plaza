@@ -33,6 +33,7 @@ export enum ExtraRoutes {
   Search = 'Search',
   ProfileCalendar = 'ProfileCalendar',
   ProfileNotifications = 'ProfileNotifications',
+  ProfileAuth = 'ProfileAuth',
 
   Admin = 'Admin',
   AdminSchedule = 'AdminSchedule',

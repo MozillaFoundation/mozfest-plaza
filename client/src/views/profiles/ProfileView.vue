@@ -16,12 +16,21 @@
           >
             {{ $t('mozfest.profile.calendar') }}
           </router-link>
+
           <router-link
             class="button is-primary"
             :to="notificationsRoute"
             v-if="settings?.features.webPush"
           >
             {{ $t('mozfest.profile.notifications') }}
+          </router-link>
+
+          <router-link
+            class="button is-primary"
+            :to="authRoute"
+            v-if="settings?.features.appCodes"
+          >
+            {{ $t('mozfest.profile.auth') }}
           </router-link>
         </div>
       </template>
@@ -77,6 +86,9 @@ export default defineComponent({
     },
     notificationsRoute(): RouteLocationRaw {
       return { name: ExtraRoutes.ProfileNotifications }
+    },
+    authRoute(): RouteLocationRaw {
+      return { name: ExtraRoutes.ProfileAuth }
     },
   },
   mounted() {

@@ -82,6 +82,14 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: '/profile/auth',
+    name: ExtraRoutes.ProfileAuth,
+    component: () => import('../views/profiles/ProfileAuthView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.profile',
+    },
+  },
+  {
     path: pages.register.path,
     name: Routes.Register,
     component: () => import('../views/RegisterView.vue'),

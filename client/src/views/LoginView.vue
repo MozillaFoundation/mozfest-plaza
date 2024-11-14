@@ -14,8 +14,9 @@
           class="content loginView-oauth"
           v-if="settings?.features.googleAuth"
         >
-          <hr />
-          <p>{{ $t('mozfest.login.oauth') }}</p>
+          <p>
+            {{ $t('mozfest.login.oauth') }}
+          </p>
           <div class="buttons">
             <a :href="googleLink" class="button is-google">
               <span class="icon">
@@ -23,6 +24,20 @@
               </span>
               <span> {{ $t('mozfest.login.google') }} </span>
             </a>
+          </div>
+        </div>
+
+        <div
+          class="content loginView-appCode"
+          v-if="settings?.features.appCodes"
+        >
+          <p>
+            {{ $t('mozfest.login.appCode') }}
+          </p>
+          <div class="buttons">
+            <RouterLink :to="profileAuthRoute" class="button is-secondary">
+              {{ $t('mozfest.login.profileAuth') }}
+            </RouterLink>
           </div>
         </div>
       </template>
@@ -38,6 +53,8 @@ import { LoginView, ApiContent } from '@openlab/deconf-ui-toolkit'
 import { env } from '@/plugins/env-plugin'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { mapApiState } from '@/lib/deconf-hacks'
+import type { RouteLocationRaw } from 'vue-router'
+import { ExtraRoutes } from '@/lib/constants'
 
 export default defineComponent({
   components: { MozUtilLayout, LoginView, ApiContent, FontAwesomeIcon },
@@ -50,11 +67,15 @@ export default defineComponent({
       }
       return url.toString()
     },
+    profileAuthRoute(): RouteLocationRaw {
+      return { name: ExtraRoutes.ProfileAuth }
+    },
   },
 })
 </script>
 
 <style lang="scss">
+.loginView-appCode,
 .loginView-oauth {
   margin-block-start: 3em;
 }

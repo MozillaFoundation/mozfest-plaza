@@ -18,7 +18,7 @@ export interface StoreState {
   whastsOn: WhatsOnModuleState
 }
 
-export default createStore({
+export default createStore<StoreState>({
   modules: {
     api: apiModule(),
     metrics: metricsModule(),

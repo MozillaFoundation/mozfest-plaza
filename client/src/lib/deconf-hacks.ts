@@ -4,6 +4,8 @@ import {
 } from '@openlab/deconf-ui-toolkit'
 import type { MozApiStoreState } from '@/store/api-module.js'
 import { useI18n } from 'vue-i18n'
+import store from '../store/module.js'
+import { computed } from 'vue'
 
 export const mapApiState = createStateMapper<MozApiStoreState>()
 
@@ -17,6 +19,10 @@ export function localise(input: unknown) {
       input as Record<string, string>
     )
   }
+}
+
+export function useUser() {
+  return computed(() => store.state.api.user)
 }
 
 // https://stackoverflow.com/q/22266826/

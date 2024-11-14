@@ -23,7 +23,15 @@ import {
   upsertRegistration,
 } from '../lib/module.js'
 
-import { Describe, object, optional, string } from 'superstruct'
+import {
+  Describe,
+  literal,
+  number,
+  object,
+  optional,
+  string,
+  type,
+} from 'superstruct'
 import { MozRegistrationMailer } from '../lib/mailer.js'
 
 export interface UserData {}
@@ -36,6 +44,11 @@ export interface Oauth2LoginToken {
 const LoginStartBodyStruct = object({
   email: string(),
   redirect: optional(string()),
+})
+
+const AppCodeStruct = type({
+  kind: literal('app-login'),
+  sub: number(),
 })
 
 function parseLoginRedirect(
@@ -336,6 +349,41 @@ export class RegistrationRouter implements AppRouter {
         )
       }
     )
+
+    router.get('/auth/login-code', (ctx) => {
+      const auth = this.#context.jwt.getRequestAuth(ctx.request.headers)
+      if (!auth) throw ApiError.unauthorized()
+
+      const token = this.#context.jwt.signToken(
+        { kind: 'app-login', sub: auth.sub },
+        { expiresIn: '5m' }
+      )
+      ctx.body = { token }
+    })
+
+    router.post('/auth/login-code/:token', async (ctx) => {
+      const code = this.#context.jwt.verifyToken(
+        ctx.params.token,
+        AppCodeStruct
+      )
+
+      const registration =
+        await this.#context.registrationRepo.getVerifiedRegistration(code.sub)
+      if (!registration) throw ApiError.unauthorized()
+
+      const user = await this.lookupUser(registration.email)
+      if (!user) throw ApiError.unauthorized()
+
+      const token = this.#context.jwt.signToken<AuthToken>({
+        kind: 'auth',
+        sub: registration.id,
+        user_lang: registration.language,
+        user_roles: user.roles,
+      })
+      const url = this.#context.url.getClientLoginLink(token)
+
+      ctx.body = { token, url }
+    })
   }
 
   //
