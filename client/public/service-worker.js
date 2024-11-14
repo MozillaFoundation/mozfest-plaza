@@ -64,8 +64,8 @@ async function openUrl(self, url) {
   try {
     const windows = await self.clients.matchAll({ type: 'window' })
     if (windows[0]) {
-      windows[0].focus()
       windows[0].navigate(url)
+      windows[0].focus()
     }
     // const alreadyOpen = windows.find((w) => w.url === url)
     // if (alreadyOpen) {
