@@ -1,7 +1,7 @@
 {
   "name": "@openlab/mozfest",
   "private": true,
-  "version": "4.1.0",
+  "version": "4.1.1",
   "scripts": {
     "prepare": "husky install",
     "format": "npm run --prefix server format && npm run --prefix client format",
