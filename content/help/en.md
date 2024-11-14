@@ -43,6 +43,10 @@ For those who requested coach travel - free shuttle buses will take those stayin
 -   Once inside the venue building all session rooms and restrooms are accessible and our volunteer team will also be on hand to assist you.
 -   If you'd need specific assistance or have any questions once on-site, please feel free to flag down any of our helpful volunteers to see how we can help you further!
 
+### Planning Your Outfit
+
+Our event is casual, so feel free to dress comfortably! Whether you prefer jeans, business casual, or something in between, wear whatever helps you feel at ease and ready to enjoy the experience. For the closing party and other social events, you’re welcome to stick with your casual attire or dress up a bit if you’d like—whatever feels right for you!
+
 ### Schedule
 
 You can check out the [full schedule here](https://schedule.mozillafestival.org/plaza) - spots are available on a first-come, first-served basis. If a session is full or you’ve got some time between sessions, swing by The Hub Session Space to explore fascinating projects and discussions. Be sure to check out the beautifully curated Art and Installations throughout the venue, or stumble upon one of the casual Social Movements happening around the schedule. There’s always something exciting going on!
