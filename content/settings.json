@@ -73,9 +73,10 @@
   },
 
   "features": {
-    "googleAuth": false,
-    "calendarSync": false,
-    "webPush": false
+    "googleAuth": true,
+    "calendarSync": true,
+    "webPush": true,
+    "appCodes": true
   },
 
   "atriumWidgets": {
