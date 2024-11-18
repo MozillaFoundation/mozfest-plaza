@@ -37,6 +37,13 @@
         </p>
       </template>
 
+      <template v-slot:afterEmbed v-if="activeSurvey">
+        <div class="sessionSurvey">
+          <h3>{{ $t('deconf.session.mozfest.feedback') }}</h3>
+          <IframeEmbed :src="activeSurvey" />
+        </div>
+      </template>
+
       <template v-slot:afterContent>
         <button class="button is-primary" @click="shareSession">
           <span class="icon">
@@ -80,24 +87,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { marked } from 'marked'
-import {
-  BackButton,
-  SessionView,
-  Routes,
-  localiseFromObject,
-  type ScheduleConfig,
-  SessionTile,
-} from '@openlab/deconf-ui-toolkit'
-import { type RouteLocationRaw } from 'vue-router'
 import AppLayout from '@/components/MozAppLayout.vue'
 import ShareSessionSheet from '@/components/ShareSessionSheet.vue'
-import type { LocalisedLink, Session } from '@openlab/deconf-shared'
-import NotFoundView from './NotFoundView.vue'
 import { type MozSession, mapApiState } from '@/lib/module'
 import { env } from '@/plugins/env-plugin'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type {
+  LocalisedLink,
+  Session,
+  SessionSlot,
+} from '@openlab/deconf-shared'
+import {
+  BackButton,
+  IframeEmbed,
+  Routes,
+  type ScheduleConfig,
+  SessionTile,
+  SessionView,
+  localiseFromObject,
+} from '@openlab/deconf-ui-toolkit'
+import { marked } from 'marked'
+import { defineComponent } from 'vue'
+import { type RouteLocationRaw } from 'vue-router'
+import NotFoundView from './NotFoundView.vue'
+
+const SURVEY_THRESHOLD_MS = 7 * 24 * 60 * 60 * 1000 // 7 days
 
 const internalDomains = [
   'mozilla.zoom.us',
@@ -141,6 +155,7 @@ export default defineComponent({
     NotFoundView,
     SessionTile,
     FontAwesomeIcon,
+    IframeEmbed,
   },
   props: {
     sessionId: { type: String, required: true },
@@ -164,6 +179,10 @@ export default defineComponent({
     scheduleDate(): Date {
       return this.$dev.scheduleDate ?? this.$temporal.date
     },
+    sessionSlot(): SessionSlot | undefined {
+      if (!this.schedule || !this.session?.slot) return undefined
+      return this.schedule.slots.find((s) => s.id === this.session?.slot)
+    },
     showExternalLinksWarning(): boolean {
       if (!this.links) return false
       return this.links.some((l) => this.isExternal(l.url))
@@ -172,7 +191,7 @@ export default defineComponent({
       if (!this.session) return null
       const md = localiseFromObject(this.$i18n.locale, this.session.content)
       if (!md) return null
-      return marked(md)
+      return marked(md, { async: false })
     },
     extraClasses(): unknown {
       return {
@@ -208,6 +227,15 @@ export default defineComponent({
     },
     isStaticMode(): boolean {
       return env.STATIC_BUILD === true
+    },
+    activeSurvey(): string | null {
+      if (!this.sessionSlot) return null
+
+      const dt = this.scheduleDate.getTime() - this.sessionSlot!.end.getTime()
+
+      if (dt < 0 || dt > SURVEY_THRESHOLD_MS) return null
+
+      return this.session?.surveys?.[0]?.url ?? null
     },
   },
   methods: {
@@ -311,5 +339,21 @@ export default defineComponent({
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 2%),
     0 0px 0 1px rgb(10 10 10 / 1%);
   padding: 1em;
+}
+
+.sessionSurvey {
+  background: #ffeaf4;
+  padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.sessionSurvey h3 {
+  font-size: $size-4;
+  font-family: $title-family;
+  color: $title-color;
+  font-weight: $title-weight;
+  line-height: 1.2;
 }
 </style>

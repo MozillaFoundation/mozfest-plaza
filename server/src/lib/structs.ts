@@ -97,6 +97,7 @@ export const AppConfigStruct = object({
       links: array(number()),
       affiliation: number(),
       recommendations: number(),
+      feedback: number(),
     }),
     aslTagId: optional(number()),
     ccTagId: optional(number()),

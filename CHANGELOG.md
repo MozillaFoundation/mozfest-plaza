@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v4.1.0...v4.2.0) (2024-11-18)
+
+### Features
+
+- Add option to show feedback surveys after sessions
+
 ## [4.1.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v4.0.1...v4.1.0) (2024-11-13)
 
 ### Features

@@ -169,6 +169,7 @@ deconf:
       recommendations: 'Recommendations:'
       recommendationsInfo: ''
       share: Share this session
+      feedback: How was this session?
 
   interestSection:
     message: Register your interest

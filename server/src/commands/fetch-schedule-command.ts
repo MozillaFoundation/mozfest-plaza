@@ -238,6 +238,10 @@ class PretalxHelpers {
         this.config.questions.recommendations,
       ])
 
+      const surveys = pretalx.getSessionLinks(submission, [
+        this.config.questions.feedback,
+      ])
+
       const links = [
         ...pretalx.getSessionLinks(submission, this.config.questions.links),
         ...this.getLinks(submission),
@@ -284,6 +288,7 @@ class PretalxHelpers {
         hideFromSchedule: false,
 
         recommendations,
+        surveys,
         room: submission.slot?.room_id?.toString(),
       }
     })
