@@ -19,16 +19,17 @@ MozFest House will take place at the [Lusaka International Conference Centre](ht
 
 ### Free Shuttle Bus Transporation 
 
-For those who requested coach travel - free shuttle buses will take those staying in central Lusaka to and from the venue in the morning and afternoon. Buses will depart from East Park Mall car park (opposite the Cargo Hotel) with a schedule as follows - please show your registration to the travel co-ordinator in the MozFest orange T-Shirt.
+For those who **pre-registered for shuttle transportation** via the form sent to ticket holders in early November, free buses will transport attendees between central Lusaka and the venue in the morning and afternoon. Buses will depart from the East Park Mall car park (opposite the Cargo Hotel) according to the schedule below. Please have your registration ready to show to the travel coordinator, who will be wearing a MozFest orange T-shirt.
 
-* East Park Mall to Ciela: From 09:00 Wednesday 20 November
-  * Coaches to run back and forth all day
-* Ciela to East Park Mall: From 18:00 Wednesday 20 November
-  * Coaches to run back and forth all day
-* East Park Mall to Ciela: From 09:00 Thursday 20 November
-  * Coaches to run back and forth all day
-* Ciela to East Park Mall: From 18:00 Thursday 21 November
-* Ciela to East Park Mall: From 20:00 Thursday 21 November
+**Wednesday, 20 November**
+
+-   **East Park Mall ↔ LICC**: Shuttles will run continuously between the East Park Mall and the LICC starting at  **9:00 AM**  and continuing until  **6:00 PM**, with regular pickups and drop-offs throughout the day.
+-   **LICC to East Park Mall**: Starting at  **5:30 PM**, shuttles will depart the LICC at regular intervals, with the final shuttle leaving at  **6:30 PM**.
+
+**Thursday, 21 November**
+
+-   **East Park Mall ↔ LICC**: Shuttles will run continuously between the East Park Mall and the LICC starting at  **9:00 AM**  and continuing until  **6:00 PM**, with regular pickups and drop-offs throughout the day.
+-   **LICC to East Park Mall**: Starting at  **6:00 PM**, shuttles will depart the LICC at regular intervals, with the final shuttle leaving at  **8:00 PM**.
 
 ***Please note during busy times there might be some waiting time as the coaches board, and go back and forth between Lusaka and the venue - we thank you for your patience!***
 
