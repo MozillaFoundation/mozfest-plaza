@@ -104,6 +104,7 @@ function submissionOptions(config: AppConfig) {
     questions: [
       config.pretalx.questions.recommendations,
       ...config.pretalx.questions.links,
+      config.pretalx.questions.feedback,
     ],
   }
 }
