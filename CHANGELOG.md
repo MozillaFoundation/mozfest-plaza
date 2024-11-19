@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 - Add option to show feedback surveys after sessions
+- Improve App Code wording
 
 ## [4.1.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v4.0.1...v4.1.0) (2024-11-13)
 
