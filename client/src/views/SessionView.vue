@@ -356,4 +356,7 @@ export default defineComponent({
   font-weight: $title-weight;
   line-height: 1.2;
 }
+.sessionSurvey .iframeEmbed {
+  padding-bottom: 75%;
+}
 </style>
