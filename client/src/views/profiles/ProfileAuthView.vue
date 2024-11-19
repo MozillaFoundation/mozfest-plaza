@@ -9,17 +9,13 @@
     <div class="content">
       <header class="content">
         <h1>{{ localise('mozfest.profileAuth.name') }}</h1>
-        <p>
-          Use this page to log share your log-in with the installed app or
-          vice-versa.
-        </p>
+        <p>Use this page to generate an App Code or use one to log in.</p>
       </header>
 
       <div class="content" v-if="user">
         <h2>Create login</h2>
         <p>
-          Because you're logged in, use this page to generate a code to log in
-          to another browser.
+          Generate an App Code to log in to another browser or device.
           <strong> Never share this code with anyone else </strong>. Your code
           lasts for 5 minutes.
         </p>
@@ -41,7 +37,7 @@
         <h2>Log in</h2>
         <p>
           Navigate to <strong>Profile → App Codes</strong> on the website to
-          generate a code. Paste that code here and Press Log in.
+          generate a code. Paste that code here and press Log in.
         </p>
 
         <TextField v-model="code" type="string" name="code" label="Code" />
