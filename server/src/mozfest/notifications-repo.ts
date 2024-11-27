@@ -167,7 +167,7 @@ export class NotificationsRepository {
         await client.sql`
           UPDATE web_push_messages
           SET updated = NOW(), state = ${state}, retries = ${retries}
-          WHERE id = ${message}
+          WHERE id = ${message.id}
         `
       }
     })
