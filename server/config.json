@@ -1,0 +1,9 @@
+{
+  "redis": {
+    "prefix": "/moz"
+  },
+  "pretalx": {
+    "event": "mozilla-festival-2025",
+    "url": "https://pretalx.com/api/"
+  }
+}

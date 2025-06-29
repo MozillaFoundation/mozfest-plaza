@@ -1,28 +1,24 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "ES2020",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "module": "ES2020",
-
-    "sourceMap": true,
-    "declaration": true,
+    "target": "ES2023",
+    "module": "NodeNext",
+    "outDir": "bundle",
     "newLine": "lf",
-    "stripInternal": true,
-    "pretty": true,
-
     "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "useDefineForClassFields": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "ts-node": {
-    "transpileOnly": true
-  },
-  "include": ["src"]
+  "include": ["source"]
 }

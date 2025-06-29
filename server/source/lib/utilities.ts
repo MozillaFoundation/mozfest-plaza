@@ -1,0 +1,35 @@
+import fs from "node:fs";
+import path from "node:path";
+import url from "node:url";
+
+/**
+ * A helper to wrap a method in a cache.
+ * The frist time it is used, the result is written to the specified cache file as JSON.
+ * When called again, the cached version is returned instead of executing the function.
+ */
+export async function cacheToDisk<T>(
+  file: URL,
+  noCache: boolean,
+  fn: () => Promise<T>,
+): Promise<T> {
+  if (noCache) return fn();
+
+  await fs.promises.mkdir(path.dirname(url.fileURLToPath(file)), {
+    recursive: true,
+  });
+
+  try {
+    const value = JSON.parse(await fs.promises.readFile(file, "utf8"));
+    console.error("[cache] hit=%o", file.toString());
+    return value;
+  } catch (error) {
+    console.error("[cache] miss", (error as Error).message);
+  }
+
+  const data = await fn();
+  if (data) {
+    await fs.promises.writeFile(file, JSON.stringify(data));
+    console.error("[cache] write=%o", file.toString());
+  }
+  return data;
+}

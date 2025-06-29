@@ -5,5 +5,13 @@
 *.env
 .DS_Store
 node_modules
+
+server/diff.json
+server/data.json
+server/.cache
+server/bundle
+
+# TBR
 server/data
 server/static
+x_server
