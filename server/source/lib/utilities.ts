@@ -33,3 +33,10 @@ export async function cacheToDisk<T>(
   }
   return data;
 }
+
+/** Create a namespaced function to write to stderr */
+export function createDebug(namespace: string) {
+  return (first: string, ...args: any[]) => {
+    console.error(`[${namespace}] ` + first, ...args);
+  };
+}

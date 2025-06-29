@@ -8,6 +8,7 @@ node_modules
 
 server/diff.json
 server/data.json
+server/fake.json
 server/.cache
 server/bundle
 

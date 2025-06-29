@@ -1,8 +1,9 @@
-import { hostname } from "node:os";
+import os from "node:os";
 
 import { useAppConfig } from "../config.ts";
 import {
   cacheToDisk,
+  createDebug,
   DeconfApiClient,
   Localised,
   MOZ_STUB,
@@ -18,6 +19,8 @@ import {
   PretalxSubmission,
 } from "./pretalx-client.ts";
 
+const debug = createDebug("fake-schedule");
+
 export interface FetchScheduleOptions {
   noCache: boolean;
   dryRun?: string;
@@ -25,7 +28,7 @@ export interface FetchScheduleOptions {
 
 /** Fetches data from Deconf + Pretalx and updates the Deconf schedule */
 export async function fetchSchedule(options: FetchScheduleOptions) {
-  console.error(
+  debug(
     "[fetch-schedule] noCache=%o dryRun=%o",
     options.noCache,
     options.dryRun,
@@ -48,16 +51,14 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
   // Aquire a lock so that only one instance of this job can run at once
   await using _lock = await semaphore.aquire({
     name: "fetch_schedule",
-    hostname: hostname(),
+    hostname: os.hostname(),
     maxAge: 10 * 60 * 1_000, // ten minutes
-    debug: (msg: string, ...args) => {
-      console.error("[semaphore] " + msg, ...args);
-    },
+    debug: createDebug("semaphore"),
   });
 
   // Create a client to talk to the Pretalx API
   const event = new PretalxEventClient(appConfig.pretalx.event, {
-    debug: (msg, ...args) => console.error("[pretalx] " + msg, ...args),
+    debug: createDebug("pretalx"),
     apiToken: appConfig.pretalx.apiToken,
     version: "v1",
   });
@@ -145,21 +146,18 @@ function convertToDeconf(input: PretalxData, confId: number): StagedDeconfData {
   const taxonomies: Taxonomies = {
     themes: {
       id: "legacy/themes",
-      conference_id: ctx.confId,
       icon: "",
       title: { en: "Themes" },
       metadata: { ref: "legacy/themes" },
     },
     tracks: {
       id: "legacy/tracks",
-      conference_id: ctx.confId,
       icon: "",
       title: { en: "Tracks" },
       metadata: { ref: "legacy/tracks" },
     },
     types: {
       id: "legacy/types",
-      conference_id: ctx.confId,
       icon: "",
       title: { en: "Types" },
       metadata: { ref: "legacy/types" },

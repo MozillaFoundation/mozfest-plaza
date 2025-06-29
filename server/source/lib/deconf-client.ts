@@ -74,7 +74,7 @@ export class DeconfApiClient {
     dryRun: boolean = false,
   ) {
     const url = this.endpoint(`./admin/v1/conference/${conference}/schedule`);
-    if (dryRun) url.searchParams.set("dryRun", "1");
+    if (dryRun) url.searchParams.set("dryRun", "verbose");
 
     const res = await this.fetch(url, {
       method: "PUT",

@@ -178,7 +178,10 @@ export interface WebPushMessageRecord {
  * Generate a version of the record for Deconf staging,
  * i.e. remove ids & relations and replace with locally-generated values
  */
-type StagedRecord<T, K extends keyof T> = Omit<T, K | "created_at"> &
+type StagedRecord<T, K extends keyof T> = Omit<
+  T,
+  K | "created_at" | "conference_id" | "updated_at"
+> &
   Record<K, string>;
 
 export type StagedTaxonomy = StagedRecord<TaxonomyRecord, "id">;

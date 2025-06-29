@@ -5,6 +5,7 @@ import yargs from "yargs";
 import { dumpConfiguration, useAppConfig } from "./config.ts";
 import { runServer } from "./server.ts";
 import { fetchSchedule } from "./pretalx/fetch-schedule.ts";
+import { fakeSchedule } from "./lib/fake-schedule.ts";
 
 const cli = yargs(process.argv.slice(2))
   .help()
@@ -33,6 +34,14 @@ cli.command(
       .option("no-cache", { type: "boolean", default: false })
       .option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fetchSchedule(args),
+);
+
+cli.command(
+  "fake-schedule",
+  "generate a fake schedule for testing",
+  (yargs) =>
+    yargs.option("dry-run", { type: "string", choices: ["client", "server"] }),
+  (args) => fakeSchedule(args),
 );
 
 try {
