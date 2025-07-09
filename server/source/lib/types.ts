@@ -213,3 +213,5 @@ export interface StagedDeconfData {
   sessionLinks: StagedSessionLink[];
   sessionLabels: StagedSessionLabel[];
 }
+
+export type StagedContent = StagedRecord<ContentRecord, "id">;

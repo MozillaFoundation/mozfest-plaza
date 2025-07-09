@@ -6,6 +6,7 @@ import { dumpConfiguration, useAppConfig } from "./config.ts";
 import { runServer } from "./server.ts";
 import { fetchSchedule } from "./pretalx/fetch-schedule.ts";
 import { fakeSchedule } from "./lib/fake-schedule.ts";
+import { fetchContent } from "./content/fetch-content.ts";
 
 const cli = yargs(process.argv.slice(2))
   .help()
@@ -42,6 +43,16 @@ cli.command(
   (yargs) =>
     yargs.option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fakeSchedule(args),
+);
+
+cli.command(
+  "fetch-content",
+  "query the repo-api-service to get content and upload to deconf",
+  (yargs) =>
+    yargs
+      .option("no-cache", { type: "boolean", default: false })
+      .option("dry-run", { type: "string", choices: ["client", "server"] }),
+  (args) => fetchContent(args),
 );
 
 try {

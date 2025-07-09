@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
+import { AppConfig } from "../config.ts";
+import { DeconfApiClient } from "./deconf-client.ts";
 
 /**
  * A helper to wrap a method in a cache.
@@ -39,4 +41,18 @@ export function createDebug(namespace: string) {
   return (first: string, ...args: any[]) => {
     console.error(`[${namespace}] ` + first, ...args);
   };
+}
+
+// https://github.com/tc39/proposal-upsert
+export function getOrInsert<K, V>(map: Map<K, V>, key: K, defaultValue: V) {
+  if (!map.has(key)) {
+    map.set(key, defaultValue);
+  }
+  return map.get(key)!;
+}
+
+export function getDeconfClient({ url, apiToken }: AppConfig["deconf"]) {
+  const deconf = new DeconfApiClient(url);
+  deconf.authzToken = apiToken;
+  return deconf;
 }

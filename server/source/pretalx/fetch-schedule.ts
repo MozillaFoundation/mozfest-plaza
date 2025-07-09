@@ -4,7 +4,7 @@ import { useAppConfig } from "../config.ts";
 import {
   cacheToDisk,
   createDebug,
-  DeconfApiClient,
+  getDeconfClient,
   Localised,
   MOZ_STUB,
   Semaphore,
@@ -19,7 +19,7 @@ import {
   PretalxSubmission,
 } from "./pretalx-client.ts";
 
-const debug = createDebug("fake-schedule");
+const debug = createDebug("fetch-schedule");
 
 export interface FetchScheduleOptions {
   noCache: boolean;
@@ -28,11 +28,7 @@ export interface FetchScheduleOptions {
 
 /** Fetches data from Deconf + Pretalx and updates the Deconf schedule */
 export async function fetchSchedule(options: FetchScheduleOptions) {
-  debug(
-    "[fetch-schedule] noCache=%o dryRun=%o",
-    options.noCache,
-    options.dryRun,
-  );
+  debug("start noCache=%o dryRun=%o", options.noCache, options.dryRun);
 
   const appConfig = useAppConfig();
   await using _store = useStore();
@@ -63,8 +59,7 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     version: "v1",
   });
 
-  const deconf = new DeconfApiClient(appConfig.deconf.url);
-  deconf.authzToken = appConfig.deconf.apiToken;
+  const deconf = getDeconfClient(appConfig.deconf);
 
   // TODO: configure questions
 
@@ -115,7 +110,6 @@ type PretalxData = Awaited<ReturnType<typeof getPretalxData>>;
 /** A helper for conversion */
 interface ConvertContext {
   id(): string;
-  confId: number;
   data: StagedDeconfData;
 }
 
@@ -139,7 +133,6 @@ function convertToDeconf(input: PretalxData, confId: number): StagedDeconfData {
 
   const ctx: ConvertContext = {
     id: () => `fake://${crypto.randomUUID()}`,
-    confId,
     data,
   };
 
@@ -278,7 +271,6 @@ function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
     id,
     avatar_id: null, // TODO: ...
     bio: { en: speaker.biography ?? "" },
-    conference_id: ctx.confId,
     name: speaker.name,
     subtitle: "", // TODO: pull from a Q
     metadata: {
@@ -301,7 +293,6 @@ function upsertSession(
   const id = `pretalx/submission/${submission.code}`;
   ctx.data.sessions.push({
     id: id,
-    conference_id: ctx.confId,
     title: { en: submission.title },
     slug: submission.code,
     summary: { en: submission.abstract ?? undefined },

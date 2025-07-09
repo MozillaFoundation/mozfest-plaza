@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
+import { createApp, type App } from 'vue'
 
-import App from './App.vue'
+import MozApp from './App.vue'
 import router from './router/module'
 import store from './store/module'
 import i18n from './i18n/module'
@@ -17,23 +17,29 @@ import { MozFestDeconfPlugin } from './plugins/deconf-plugin'
 import { MetricsPlugin } from './plugins/metrics-plugin'
 import { SocketIoPlugin } from './plugins/socketio-plugin'
 import { ServiceWorkerPlugin } from './plugins/service-worker-plugin'
+import { registerWidgets } from './lib/widgets.js'
 
-const app = createApp(App)
+const app = createApp(MozApp)
 
-if (!env.DISABLE_SOCKETS) {
-  app.use(SocketIoPlugin)
+export function setupApp(app: App<Element>) {
+  if (!env.DISABLE_SOCKETS) {
+    app.use(SocketIoPlugin)
+  }
+  app
+    .use(TemporalPlugin, 1000)
+    .use(DevPlugin)
+    .use(EnvPlugin)
+    .use(FontawesomePlugin)
+    .use(MetricsPlugin)
+    .use(MozFestDeconfPlugin)
+    .use(DialogPlugin)
+    .use(ServiceWorkerPlugin)
+    .use(router)
+    .use(store)
+    .use(i18n)
+  return app
 }
-app
-  .use(TemporalPlugin, 1000)
-  .use(DevPlugin)
-  .use(EnvPlugin)
-  .use(FontawesomePlugin)
-  .use(MetricsPlugin)
-  .use(MozFestDeconfPlugin)
-  .use(DialogPlugin)
-  .use(ServiceWorkerPlugin)
-  .use(router)
-  .use(store)
-  .use(i18n)
 
-app.mount('#app')
+setupApp(app).mount('#app')
+
+registerWidgets()

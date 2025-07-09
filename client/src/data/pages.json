@@ -128,7 +128,7 @@
       "es": "Programa"
     },
     "options": {
-      "filter": "types=4666,4667,4664,4669",
+      "filter": "types=40,41",
       "tile": {
         "header": ["type"],
         "attributes": ["languages", "recorded", "track", "themes"],

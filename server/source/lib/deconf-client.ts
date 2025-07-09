@@ -8,6 +8,7 @@ import {
   SessionLinkRecord,
   SessionPersonRecord,
   SessionRecord,
+  StagedContent,
   StagedDeconfData,
   TaxonomyRecord,
 } from "../lib/mod.ts";
@@ -25,7 +26,7 @@ export interface DeconfSchedule {
 }
 
 /**
- * A shallow client for talking to Deconf API
+ * A shallow client for talking to Deconf admin API
  */
 export class DeconfApiClient {
   authzToken?: string;
@@ -41,7 +42,7 @@ export class DeconfApiClient {
   }
 
   /** perform a fetch against the server, adding auth logic & resolving endpoints */
-  fetch(input: URL | string | Request, init: RequestInit = {}) {
+  async fetch(input: URL | string | Request, init: RequestInit = {}) {
     if (this.authzCookie) init.credentials = "include";
 
     if (typeof input === "string") input = this.endpoint(input);
@@ -53,17 +54,21 @@ export class DeconfApiClient {
 
     request.headers.set("User-Agent", `MozFest/${pkg.version}`);
 
-    return fetch(request);
+    const res = await fetch(request);
+
+    if (!res.ok) {
+      throw new Error("DeconfApiClient error" + (await res.text()));
+    }
+
+    return res;
   }
 
   /** Get the full schedule from the admin API */
   async getSchedule(conference: number | string): Promise<DeconfSchedule> {
     const res = await this.fetch(
-      `./admin/v1/conference/${conference}/schedule`,
+      `./admin/v1/conferences/${conference}/schedule`,
     );
-    if (!res.ok) {
-      throw new Error("DeconfApiClient error" + (await res.text()));
-    }
+
     return res.json();
   }
 
@@ -71,9 +76,9 @@ export class DeconfApiClient {
   async putSchedule(
     conference: number | string,
     data: StagedDeconfData,
-    dryRun: boolean = false,
+    dryRun = false,
   ) {
-    const url = this.endpoint(`./admin/v1/conference/${conference}/schedule`);
+    const url = this.endpoint(`./admin/v1/conferences/${conference}/schedule`);
     if (dryRun) url.searchParams.set("dryRun", "verbose");
 
     const res = await this.fetch(url, {
@@ -81,9 +86,24 @@ export class DeconfApiClient {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    if (!res.ok) {
-      throw new Error("DeconfApiClient error" + (await res.text()));
-    }
+
+    return res.json();
+  }
+
+  async putContent(
+    conference: number | string,
+    data: StagedContent[],
+    dryRun = false,
+  ) {
+    const url = this.endpoint(`./admin/v1/conferences/${conference}/content`);
+    if (dryRun) url.searchParams.set("dryRun", "verbose");
+
+    const res = await this.fetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
     return res.json();
   }
 }

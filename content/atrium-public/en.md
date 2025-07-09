@@ -10,6 +10,8 @@ The following thematic focuses for MozFest House Zambia were co-designed by the 
 
 %themes%
 
+<!-- <mzf-feedback src="https://airtable.com/embed/shrSoLQIyaX54VlAy?backgroundColor=teal"></mzf-feedback> -->
+
 ## Tickets and Registration
 
 Our Community Ticket offers full access at no cost to you!
@@ -17,3 +19,5 @@ Our Community Ticket offers full access at no cost to you!
 Whether you're a technologist, activist, artist, or simply passionate about the future of technology, join us at Lusaka International Convention Center on November 20-21. Be part of a global movement shaping the future of AI and technology in Africa and beyond.
 
 %tito%
+
+<!-- <mzf-tito event="mozilla/mozfest-house-zambia"></mzf-tito> -->

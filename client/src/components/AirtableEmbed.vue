@@ -21,8 +21,8 @@ export default defineComponent({
   },
   created() {
     loadScript(
-      'tito-embed-v1',
-      'https://static.airtable.com/js/embed/embed_snippet_v1.js',
+      'airtable-v1',
+      'https://static.airtable.com/js/embed/embed_snippet_v1.js'
     )
   },
 })

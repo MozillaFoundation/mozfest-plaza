@@ -80,6 +80,17 @@ const struct = config.object({
       fallback: new URL("../.cache/", import.meta.url),
     }),
   }),
+
+  content: config.object({
+    url: config.url({
+      variable: "CONTENT_URL",
+      fallback: "http://localhost:9000",
+    }),
+    prefix: config.string({
+      variable: "CONTENT_PREFIX",
+      fallback: "content/",
+    }),
+  }),
 });
 
 export async function loadConfiguration(path: string | URL) {

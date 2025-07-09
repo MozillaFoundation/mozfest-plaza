@@ -7,20 +7,28 @@ volumes:
   pg-data:
 
 services:
-  redis:
-    image: redis:6-alpine
-    ports:
-      - 6379:6379
-    volumes:
-      - redis-data:/data
+  # redis:
+  #   image: redis:6-alpine
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - redis-data:/data
 
-  postgres:
-    image: postgres:12-alpine
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: user
+  # postgres:
+  #   image: postgres:12-alpine
+  #   ports:
+  #     - 5432:5432
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: secret
+  #     POSTGRES_DB: user
+  #   volumes:
+  #     - pg-data:/var/lib/postgresql/data
+  
+  content-repo:
+    image: containers.r0b.io/repo-api-service:0.3.6
+    platform: linux/amd64
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - ./content:/app/repo/content
+    ports:
+      - '127.0.0.1:9000:8000'
