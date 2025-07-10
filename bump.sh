@@ -15,7 +15,7 @@ echo "setting to $VERSION"
 npm version --no-git-tag-version --allow-same-version -C server $VERSION
 npm version --no-git-tag-version --allow-same-version -C client $VERSION
 
-npm version --no-git-tag-version $VERSION
+npm version --no-git-tag-version --allow-same-version $VERSION
 git add client/package*.json server/package*.json package*.json
 
 git commit -m "$VERSION"
