@@ -66,7 +66,7 @@ export class RedisStore implements Store {
 
   async close(): Promise<void> {
     const client = await this.getClient();
-    await client.quit();
+    if (client.isOpen) await client.quit();
   }
 
   async [Symbol.asyncDispose]() {
