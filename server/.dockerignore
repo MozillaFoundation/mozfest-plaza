@@ -7,5 +7,7 @@ coverage
 *.env
 .DS_Store
 dist
+bundle
+.cache
 **/*.spec.ts
 .git
