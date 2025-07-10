@@ -67,9 +67,9 @@
 
   "navigation": {
     "showInterpret": false,
-    "showProfile": true,
-    "showLogin": true,
-    "showRegister": true
+    "showProfile": false,
+    "showLogin": false,
+    "showRegister": false
   },
 
   "features": {
@@ -80,8 +80,8 @@
   },
 
   "atriumWidgets": {
-    "login": true,
-    "register": true,
+    "login": false,
+    "register": false,
     "siteVisitors": false,
     "discord": true,
     "familyResources": false,

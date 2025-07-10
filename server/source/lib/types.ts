@@ -134,8 +134,10 @@ export interface ContentRecord {
   id: number;
   created_at: Date;
   slug: string;
+  content_type: string;
   body: Record<string, string | undefined>;
   conference_id: number;
+  metadata: RecordMetadata;
 }
 
 export interface Oauth2TokenRecord {

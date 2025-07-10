@@ -11,6 +11,7 @@ import { env } from '@/plugins/env-plugin'
 import { SocketIoPlugin } from '@/plugins/socketio-plugin.js'
 import {
   apiClient,
+  deconfClient,
   type MozConferenceConfig,
   type ProfileToken,
 } from '@/lib/module.js'
@@ -57,6 +58,10 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
       async authenticate({ commit, dispatch }, { token }: AuthenticateOptions) {
         const user = decodeJwt(token) as FullAuthToken
 
+        // TODO: this is a pre-deconf hack
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        user.user_roles = (user as any).scope.split(/\s+/)
+
         if (user.iss !== env.JWT_ISSUER) {
           console.error('JWT signed by unknown issuer %o', user.iss)
           commit('user', null)
@@ -66,6 +71,7 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
         commit('user', user)
 
         apiClient.setAuthToken(token)
+        deconfClient.setAuthToken(token)
         SocketIoPlugin.authenticate(token)
 
         await dispatch('fetchData')
@@ -84,9 +90,8 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
         return apiClient.getWhatsOn()
       },
 
-      // TODO: remove this hack + getRedirect if login redirection gets merged upstream
-      login(ctx, email: string) {
-        return apiClient.startEmailLogin(email, { redirect: getRedirect() })
+      async login(/* ctx, email: string */) {
+        throw new Error('not implemented')
       },
 
       async fetchProfile({ commit }) {
@@ -97,13 +102,4 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
       },
     },
   }
-}
-
-function getRedirect() {
-  const url = new URL(location.href)
-  const target = url.searchParams.get('redirect')
-  if (typeof target !== 'string' || !target.startsWith('/')) {
-    return undefined
-  }
-  return target
 }

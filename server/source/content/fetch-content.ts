@@ -1,7 +1,7 @@
 import os from "node:os";
 import path from "node:path";
 
-import { useAppConfig } from "../config.ts";
+import { AppConfig, useAppConfig } from "../config.ts";
 import {
   createDebug,
   getDeconfClient,
@@ -44,32 +44,10 @@ export async function fetchContent(options: FetchContentOptions) {
 
   const api = new RepoApi(appConfig.content.url);
 
-  const files = await api.queryGlob<RepoMarkdown>(
-    appConfig.content.prefix + "**/*.md",
-    { format: "markdown" },
-  );
-
-  debug("found", Array.from(files.keys()));
-
-  const content = new Map<string, Map<string, string>>();
-
-  for (const [file, data] of files) {
-    const normalised = path.relative(appConfig.content.prefix, file);
-    const { dir, name } = path.parse(normalised);
-
-    getOrInsert(content, dir, new Map()).set(name, processMarkdown(data.body));
-  }
-
-  const newRecords: StagedContent[] = Array.from(content.entries()).map(
-    ([slug, copy]) => ({
-      id: `moz/${slug}`,
-      slug,
-      body: Object.fromEntries(copy),
-      metadata: {
-        ref: `moz/${slug}`,
-      },
-    }),
-  );
+  const newRecords = [
+    ...(await getContent(api, appConfig)),
+    ...(await getConfig(api, appConfig)),
+  ];
 
   // Exit-early and output the diff when using client dry-run
   if (options.dryRun === "client") {
@@ -86,6 +64,76 @@ export async function fetchContent(options: FetchContentOptions) {
   );
 
   console.log(JSON.stringify(output));
+}
+
+export async function getContent(
+  repo: RepoApi,
+  appConfig: AppConfig,
+): Promise<StagedContent[]> {
+  const files = await repo.queryGlob<RepoMarkdown>(
+    appConfig.content.prefix + "**/*.md",
+    { format: "markdown" },
+  );
+
+  debug("found content", Array.from(files.keys()));
+
+  const content = new Map<string, Map<string, string>>();
+
+  for (const [file, data] of files) {
+    const normalised = path.relative(appConfig.content.prefix, file);
+    const { dir, name } = path.parse(normalised);
+
+    getOrInsert(content, dir, new Map()).set(name, processMarkdown(data.body));
+  }
+
+  return Array.from(content.entries()).map(([slug, copy]) => ({
+    id: `moz/${slug}`,
+    slug,
+    content_type: "text/markdown",
+    body: Object.fromEntries(copy),
+    metadata: {
+      ref: `moz/${slug}`,
+    },
+  }));
+}
+
+function isObject(value: any) {
+  return value && typeof value === "object";
+}
+
+// Only a rough check
+function checkSettings(settings: any) {
+  return (
+    isObject(settings) &&
+    isObject(settings.navigation) &&
+    isObject(settings.features) &&
+    isObject(settings.atriumWidgets) &&
+    isObject(settings.content)
+  );
+}
+
+export async function getConfig(
+  repo: RepoApi,
+  appConfig: AppConfig,
+): Promise<StagedContent[]> {
+  const files: StagedContent[] = [];
+
+  const settings = await repo.queryFile<any>(
+    appConfig.content.prefix + "settings.json",
+    { format: "json" },
+  );
+
+  if (!checkSettings(settings)) throw new Error("Invalid settings");
+
+  files.push({
+    id: "moz/settings",
+    slug: "settings",
+    content_type: "application/json",
+    body: { en: JSON.stringify(settings) },
+    metadata: { ref: "moz/settings" },
+  });
+
+  return files;
 }
 
 // https://github.com/digitalinteraction/deconf-api-toolkit/blob/main/src/content/content-service.ts

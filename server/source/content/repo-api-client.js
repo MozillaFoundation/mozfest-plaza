@@ -68,6 +68,7 @@ export class RepoApi {
     const res = await this.fetch(url);
     if (!res.ok) throw new Error(await res.text());
 
+    // @ts-ignore
     return options.format ? res.json() : res.text();
   }
 
@@ -82,7 +83,7 @@ export class RepoApi {
   }
 
   /**
-   * @template [T]
+   * @template T
    * @param {string} glob
    * @param {RepoQueryOptions} options
    * @returns {Promise<Map<string, T>>}

@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Stack } from '@openlab/deconf-ui-toolkit'
 import { apiClient, mapApiState } from '@/lib/module'
 
-interface Data {
+export interface _Data {
   status: PretalxStatus | null
   timerId: number | null
 }
@@ -36,7 +36,7 @@ interface PretalxStatus {
 
 export default defineComponent({
   components: { FontAwesomeIcon, Stack },
-  data(): Data {
+  data(): _Data {
     return {
       status: null,
       timerId: null,

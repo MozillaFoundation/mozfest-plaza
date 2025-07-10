@@ -6,9 +6,12 @@ window.CONFIG = {
   BUILD_NAME: '',
   // GA_TOKEN: 'G-JRVVR708J7', // development/testing token
   GA_TOKEN: '',
-  JWT_ISSUER: 'mozfest-localhost',
+  JWT_ISSUER: 'deconf.app',
   // SESSION_SHARE_URL: 'http://localhost:3000/share/session/$1',
-  // DISABLE_SOCKETS: false,
+  DISABLE_SOCKETS: true,
+
+  DECONF_API_URL: 'http://localhost:3000/',
+  DECONF_CONFERENCE: 1,
 }
 
 //

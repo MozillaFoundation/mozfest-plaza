@@ -11,7 +11,7 @@ import { VueRouter, RouteLocationNormalizedLoaded } from 'vue-router'
 import { EnvRecord } from '@/plugins/env-plugin'
 import { MetricsPlugin } from '@/plugins/metrics-plugin'
 import { SocketIoPlugin } from '@/plugins/socketio-plugin'
-import type { ServiceWorkerPlugin } from './plugins/service-worker-plugin'
+import type { ServiceWorkerPlugin } from './src/plugins/service-worker-plugin'
 import {
   TemporalPlugin,
   DevPlugin,

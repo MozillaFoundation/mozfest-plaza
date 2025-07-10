@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts">
+import { env } from '@/plugins/env-plugin.js'
 import { PageFooter, type PageFooterLink } from '@openlab/deconf-ui-toolkit'
 import { defineComponent } from 'vue'
 
@@ -23,8 +24,8 @@ export default defineComponent({
   components: { PageFooter },
   data(): _Data {
     return {
-      appName: this.$t('mozfest.footer.appName') || __APP_NAME__,
-      appVersion: this.$env.BUILD_NAME || `v${__APP_VERSION__}`,
+      appName: this.$t('mozfest.footer.appName') || env.APP_NAME,
+      appVersion: this.$env.BUILD_NAME || `v${env.APP_VERSION}`,
     }
   },
   computed: {

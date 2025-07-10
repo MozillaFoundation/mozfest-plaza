@@ -154,7 +154,7 @@
       "es": "Arte y Medios"
     },
     "options": {
-      "filter": "types=4665",
+      "filter": "types=42",
       "tile": {
         "header": ["track"],
         "attributes": ["themes"]

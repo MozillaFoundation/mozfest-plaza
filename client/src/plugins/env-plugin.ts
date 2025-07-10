@@ -11,6 +11,12 @@ export interface EnvRecord {
   readonly DISABLE_SOCKETS: boolean
   readonly STATIC_BUILD: boolean
   readonly SESSION_SHARE_URL: string
+
+  readonly DECONF_API_URL: string
+  readonly DECONF_CONFERENCE: number
+
+  readonly APP_NAME: string
+  readonly APP_VERSION: string
 }
 
 // window.CONFIG is from public/config.js
@@ -24,6 +30,9 @@ const {
   DISABLE_SOCKETS = false,
   STATIC_BUILD = false,
   SESSION_SHARE_URL = 'http://localhost:8080/session/$1',
+
+  DECONF_API_URL = 'http://localhost:3000/',
+  DECONF_CONFERENCE = '-1',
 } = window.CONFIG || {}
 
 export const env = Object.seal<EnvRecord>({
@@ -35,7 +44,20 @@ export const env = Object.seal<EnvRecord>({
   DISABLE_SOCKETS: Boolean(DISABLE_SOCKETS),
   STATIC_BUILD: Boolean(STATIC_BUILD),
   SESSION_SHARE_URL,
+
+  DECONF_API_URL,
+  DECONF_CONFERENCE: parseInt(DECONF_CONFERENCE),
+
+  /** @ts-expect-error This is injected by vite */
+  APP_NAME: __APP_NAME__,
+
+  /** @ts-expect-error This is injected by vite */
+  APP_VERSION: BUILD_NAME ?? __APP_VERSION__,
 })
+
+if (env.DECONF_CONFERENCE === -1) {
+  console.error('DECONF_CONFERENCE not set')
+}
 
 //
 // A plugin to provide environment variables to Vue components
