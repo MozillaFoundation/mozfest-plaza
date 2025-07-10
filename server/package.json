@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx --env-file=.env source/main.ts",
+    "debug": "tsx --env-file=.env --inspect-wait source/main.ts",
     "start": "tsx --env-file=.env --watch source/main.ts serve",
     "build": "tsc"
   },
