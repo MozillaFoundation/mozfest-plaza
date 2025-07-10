@@ -8,6 +8,7 @@ import {
   StagedLabel,
   StagedPerson,
   StagedSession,
+  StagedSessionLink,
   StagedTaxonomy,
   useStore,
 } from "./mod.ts";
@@ -151,7 +152,21 @@ export async function fakeSchedule(options: FakeScheduleOptions) {
       { id: id(), session_id: "fake/art-d", label_id: "fake/type-art" },
       { id: id(), session_id: "fake/art-e", label_id: "fake/type-art" },
     ],
-    sessionLinks: [],
+    sessionLinks: [
+      fakeLink(
+        "YouTube video",
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "fake/session-a",
+      ),
+      fakeLink("Zoom call", "https://zoom.us/my/abcdef", "fake/session-b"),
+      fakeLink("Miro Board", "https://miro.com/en", "fake/session-b"),
+      fakeLink(
+        "Live stream",
+        "https://www.twitch.tv/bobross",
+        "fake/session-c",
+      ),
+      fakeLink("Worksheet", "https://docs.google.com/abcdef", "fake/session-c"),
+    ],
   };
 
   if (options.dryRun === "client") {
@@ -231,5 +246,19 @@ function fakeSession(
     start_date: start ? new Date(start) : null,
     end_date: end,
     metadata: { ref: id },
+  };
+}
+
+function fakeLink(
+  title: string,
+  url: string,
+  session: string,
+): StagedSessionLink {
+  return {
+    id: url,
+    session_id: session,
+    title: { en: title },
+    url: { en: url },
+    metadata: { ref: url },
   };
 }
