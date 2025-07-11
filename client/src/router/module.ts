@@ -18,9 +18,8 @@ import {
   localiseFromObject,
   Routes,
 } from '@openlab/deconf-ui-toolkit'
-import { ExtraRoutes, StorageKey } from '@/lib/module'
+import { ExtraRoutes, pages, StorageKey } from '@/lib/module'
 import { gaTrack, MetricsPlugin } from '@/plugins/metrics-plugin'
-import pages from '@/data/pages.json'
 import {
   createRouter,
   createWebHashHistory,

@@ -11,8 +11,7 @@ import { ExtraRoutes } from '@/lib/constants'
 
 import MozAppLayout from '@/components/MozAppLayout.vue'
 import ContentTemplate from '@/templates/ContentTemplate.vue'
-import pages from '@/data/pages.json'
-import { mapApiState } from '@/lib/module.js'
+import { mapApiState, pages } from '@/lib/module.js'
 
 export default defineComponent({
   components: { ContentTemplate, MozAppLayout },

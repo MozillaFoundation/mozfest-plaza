@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue'
 import AtriumTemplate from '@/templates/AtriumTemplate.vue'
 import MozAppLayout from '@/components/MozAppLayout.vue'
-import pages from '@/data/pages.json'
+import { pages } from '@/lib/module.js'
 
 export default defineComponent({
   components: { AtriumTemplate, MozAppLayout },
