@@ -1,8 +1,9 @@
 import { defineRoute, FetchRouter, serveHTTP } from "gruber";
 import { useAppConfig } from "./config.ts";
 import { useStore, useTerminator } from "./lib/globals.ts";
+import { emailRoute } from "./deconf/email.ts";
 
-export const hello = defineRoute({
+export const helloRoute = defineRoute({
   method: "GET",
   pathname: "/",
   dependencies: {
@@ -16,7 +17,7 @@ export const hello = defineRoute({
   },
 });
 
-export const healthz = defineRoute({
+export const healthzRoute = defineRoute({
   method: "GET",
   pathname: "/healthz",
   dependencies: {
@@ -27,7 +28,7 @@ export const healthz = defineRoute({
   },
 });
 
-export const routes = [hello, healthz];
+export const routes = [helloRoute, healthzRoute, emailRoute];
 
 export interface RunServerOptions {
   port: number;

@@ -19,7 +19,7 @@ const struct = config.object({
   }),
 
   server: config.object({
-    port: config.number({ variable: "PORT", flag: "--port", fallback: 3000 }),
+    port: config.number({ variable: "PORT", flag: "--port", fallback: 3001 }),
     hostname: config.string({
       variable: "HOST",
       flag: "--hostname",
@@ -28,7 +28,7 @@ const struct = config.object({
     url: config.url({
       variable: "SELF_URL",
       flag: "--url",
-      fallback: "http://localhost:3000",
+      fallback: "http://localhost:3001",
     }),
   }),
 
@@ -91,6 +91,30 @@ const struct = config.object({
       fallback: "content/",
     }),
   }),
+
+  email: config.object({
+    clientId: config.string({
+      variable: "EMAIL_CLIENT_ID",
+      fallback: MOZ_STUB,
+    }),
+    apiKey: config.string({ variable: "EMAIL_API_KEY", fallback: MOZ_STUB }),
+    loginTemplate: config.string({
+      variable: "EMAIL_LOGIN_TEMPLATE",
+      fallback: "0d5cab3f-91b0-4436-82e5-8202ceae59df",
+    }),
+    sharedSecret: config.string({
+      variable: "EMAIL_SHARED_SECRET",
+      fallback: "top_secret",
+    }),
+    fromAddress: config.string({
+      variable: "EMAIL_FROM_ADDRESS",
+      fallback: "noreply@eml.mozilla.org",
+    }),
+    replyTo: config.string({
+      variable: "EMAIL_REPLY_TO",
+      fallback: "mozfest@eml.mozilla.org",
+    }),
+  }),
 });
 
 export async function loadConfiguration(path: string | URL) {
@@ -98,10 +122,16 @@ export async function loadConfiguration(path: string | URL) {
 
   if (value.env === "production") {
     if (value.pretalx.apiToken === MOZ_STUB) {
-      throw new Error("pretalx.apiToken not set");
+      throw new Error("[config] pretalx.apiToken not set");
     }
     if (value.deconf.url.hostname === "localhost") {
-      throw new Error("deconf.url not set");
+      throw new Error("[config] deconf.url not set");
+    }
+    if (value.email.apiKey === MOZ_STUB) {
+      throw new Error("[config] email.apiKey not set");
+    }
+    if (value.email.sharedSecret === "top_secret") {
+      throw new Error("[config] email.sharedSecret not set");
     }
   }
 
