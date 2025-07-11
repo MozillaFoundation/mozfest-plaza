@@ -1,6 +1,6 @@
 <template>
-  <MozAppLayout>
-    <TimelineTemplate :config="pages.schedule" />
+  <MozAppLayout v-if="config">
+    <TimelineTemplate :config="config" />
   </MozAppLayout>
 </template>
 
@@ -9,10 +9,12 @@ import { defineComponent } from 'vue'
 
 import MozAppLayout from '@/components/MozAppLayout.vue'
 import TimelineTemplate from '@/templates/TimelineTemplate.vue'
-import { pages } from '@/lib/module.js'
+import { getPageConfig, type TimelineOptions } from '@/lib/module.js'
 
 export default defineComponent({
   components: { TimelineTemplate, MozAppLayout },
-  data: () => ({ pages }),
+  data: () => ({
+    config: getPageConfig<TimelineOptions>('schedule'),
+  }),
 })
 </script>

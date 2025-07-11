@@ -54,9 +54,7 @@ import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
 // import SpacesIcon from '@/icons/SpacesIcon.vue'
 // import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
-import { ExtraRoutes, mapApiState } from '@/lib/module'
-
-import pages from '../data/pages.json'
+import { ExtraRoutes, mapApiState, pages } from '@/lib/module'
 
 interface RouteIntermediate {
   title: string

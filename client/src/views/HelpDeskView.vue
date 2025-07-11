@@ -1,6 +1,6 @@
 <template>
-  <MozAppLayout>
-    <ContentTemplate :config="pages.helpDesk" />
+  <MozAppLayout v-if="config">
+    <ContentTemplate :config="config" />
   </MozAppLayout>
 </template>
 
@@ -9,10 +9,12 @@ import { defineComponent } from 'vue'
 
 import MozAppLayout from '@/components/MozAppLayout.vue'
 import ContentTemplate from '@/templates/ContentTemplate.vue'
-import { pages } from '@/lib/module.js'
+import { getPageConfig, type ContentOptions } from '@/lib/module.js'
 
 export default defineComponent({
   components: { ContentTemplate, MozAppLayout },
-  data: () => ({ pages }),
+  data: () => ({
+    config: getPageConfig<ContentOptions>('helpDesk'),
+  }),
 })
 </script>

@@ -1,3 +1,5 @@
+import pages from "./pages.json" with { type: "json" }
+
 // Set global config for the deployment
 // to be overwritten in production
 window.CONFIG = {
@@ -13,6 +15,17 @@ window.CONFIG = {
   DECONF_API_URL: 'http://localhost:3000/',
   DECONF_CONFERENCE: 1,
 }
+
+// async function fetchPages() {
+//   try {
+//     const res = await fetch("./pages.json")
+//     return res.json()
+//   } catch (error) {
+//     return null
+//   }
+// }
+
+window.PAGES = pages
 
 //
 // Static mode live

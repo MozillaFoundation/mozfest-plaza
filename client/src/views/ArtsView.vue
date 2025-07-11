@@ -8,10 +8,12 @@
 import { defineComponent } from 'vue'
 import MozAppLayout from '@/components/MozAppLayout.vue'
 import GridTemplate from '@/templates/GridTemplate.vue'
-import { pages } from '@/lib/module.js'
+import { getPageConfig, type GridOptions } from '@/lib/module.js'
 
 export default defineComponent({
   components: { GridTemplate, MozAppLayout },
-  data: () => ({ config: pages.arts }),
+  data: () => ({
+    config: getPageConfig<GridOptions>('arts'),
+  }),
 })
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <MozAppLayout>
+  <MozAppLayout v-if="config">
     <AtriumTemplate :config="config" />
   </MozAppLayout>
 </template>
@@ -8,10 +8,12 @@
 import { defineComponent } from 'vue'
 import AtriumTemplate from '@/templates/AtriumTemplate.vue'
 import MozAppLayout from '@/components/MozAppLayout.vue'
-import { pages } from '@/lib/module.js'
+import { getPageConfig, type AtriumOptions } from '@/lib/module.js'
 
 export default defineComponent({
   components: { AtriumTemplate, MozAppLayout },
-  data: () => ({ config: pages.plaza }),
+  data: () => ({
+    config: getPageConfig<AtriumOptions>('plaza'),
+  }),
 })
 </script>
