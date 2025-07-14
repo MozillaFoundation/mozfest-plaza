@@ -57,7 +57,7 @@ export class DeconfApiClient {
     const res = await fetch(request);
 
     if (!res.ok) {
-      throw new Error("DeconfApiClient error: " + (await res.text()));
+      throw new Error(`Deconf - ${res.statusText}` + (await res.text()));
     }
 
     return res;

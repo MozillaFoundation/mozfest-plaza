@@ -1,4 +1,5 @@
 import { getConfiguration, Infer, loader } from "gruber";
+import fs from "node:fs";
 import process from "node:process";
 
 import pkg from "../package.json" with { type: "json" };
@@ -54,7 +55,7 @@ const struct = config.object({
       fallback: 1,
     }),
     apiToken: config.string({
-      variable: "DECONF_TOKEN",
+      variable: "DECONF_API_TOKEN",
       fallback: MOZ_STUB,
     }),
 
@@ -118,6 +119,10 @@ const struct = config.object({
 });
 
 export async function loadConfiguration(path: string | URL) {
+  if (fs.existsSync(".env")) process.loadEnvFile(".env");
+
+  console.log(fs.existsSync(".env"));
+
   const value = await config.load(path, struct);
 
   if (value.env === "production") {
