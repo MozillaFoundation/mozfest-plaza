@@ -80,7 +80,16 @@ export async function fetchRegistrations(options: FetchRegistrationsOptions) {
   console.log(JSON.stringify(output));
 }
 
+function trimEmail(input: string) {
+  return input.toLowerCase().trim();
+}
+
 function convertToDeconf(tickets: TitoTicket[]): StagedTitoData {
+  // One email might have bought multiple tickets
+  // The other tickets might not have been assigned (null)
+  // or use the same email address multiple times
+  const visited = new Set<string>();
+
   const diff = {
     users: [] as StagedUser[],
     registrations: [] as StagedRegistration[],
@@ -88,6 +97,12 @@ function convertToDeconf(tickets: TitoTicket[]): StagedTitoData {
   };
 
   for (const ticket of tickets) {
+    if (!ticket.email) continue;
+    const email = trimEmail(ticket.email);
+
+    if (visited.has(email)) continue;
+    visited.add(email);
+
     const ref = `tito/ticket/${ticket.id}`;
 
     diff.users.push({

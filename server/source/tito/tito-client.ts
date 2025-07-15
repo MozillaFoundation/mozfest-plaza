@@ -39,7 +39,7 @@ export interface TitoTicket {
   company_name: string;
   consented_at: string;
   created_at: string;
-  email: string;
+  email: string | null;
   first_name: string;
   last_name: string;
   metadata: any;
