@@ -217,3 +217,16 @@ export interface StagedDeconfData {
 }
 
 export type StagedContent = StagedRecord<ContentRecord, "id">;
+
+export type StagedUser = StagedRecord<UserRecord, "id">;
+export type StagedRegistration = StagedRecord<
+  RegistrationRecord,
+  "id" | "user_id"
+>;
+
+export type StagedAsset = StagedRecord<AssetRecord, "id">;
+
+export interface StagedTitoData {
+  users: StagedUser[];
+  registrations: StagedRegistration[];
+}

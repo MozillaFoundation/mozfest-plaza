@@ -2,7 +2,7 @@
 // API Types
 //
 
-export type Localised = Record<string, string | undefined>;
+import { Localised } from "../lib/mod.ts";
 
 export interface PretalxSlimEvent {
   name: Localised;
@@ -312,7 +312,7 @@ export class PretalxEventClient {
 
   /** Iterate through the pagination and apply retry-headers when asked to */
   async *_iterate<T = unknown>(response: Response) {
-    this.#options.debug?.("iterate", response.status, response.headers);
+    this.debug("iterate", response.status, response.headers);
 
     if (!response.ok) console.error("iterate error", await response.json());
 

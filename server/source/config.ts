@@ -4,6 +4,7 @@ import process from "node:process";
 
 import pkg from "../package.json" with { type: "json" };
 import { MOZ_STUB } from "./lib/globals.ts";
+import { MissingConfig } from "./lib/utilities.ts";
 
 const config = getConfiguration();
 
@@ -67,6 +68,18 @@ const struct = config.object({
     // }),
   }),
 
+  tito: config.object({
+    account: config.string({ variable: "TITO_ACCOUNT", fallback: "Mozilla" }),
+    event: config.string({
+      variable: "TITO_EVENT",
+      fallback: "test-event-2025",
+    }),
+    apiToken: config.string({
+      variable: "TITO_API_KEY",
+      fallback: MOZ_STUB,
+    }),
+  }),
+
   redis: config.object({
     url: config.url({
       variable: "REDIS_URL",
@@ -121,22 +134,23 @@ const struct = config.object({
 export async function loadConfiguration(path: string | URL) {
   if (fs.existsSync(".env")) process.loadEnvFile(".env");
 
-  console.log(fs.existsSync(".env"));
-
   const value = await config.load(path, struct);
 
   if (value.env === "production") {
     if (value.pretalx.apiToken === MOZ_STUB) {
-      throw new Error("[config] pretalx.apiToken not set");
+      throw new MissingConfig("pretalx.apiToken");
     }
     if (value.deconf.url.hostname === "localhost") {
-      throw new Error("[config] deconf.url not set");
+      throw new MissingConfig("deconf.url");
     }
     if (value.email.apiKey === MOZ_STUB) {
-      throw new Error("[config] email.apiKey not set");
+      throw new MissingConfig("email.apiKey");
     }
     if (value.email.sharedSecret === "top_secret") {
-      throw new Error("[config] email.sharedSecret not set");
+      throw new MissingConfig("email.sharedSecret");
+    }
+    if (value.tito.apiToken === MOZ_STUB) {
+      throw new MissingConfig("tito.apiToken");
     }
   }
 

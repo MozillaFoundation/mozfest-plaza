@@ -6,6 +6,7 @@ import {
   createDebug,
   getDeconfClient,
   Localised,
+  MissingConfig,
   MOZ_STUB,
   Semaphore,
   StagedDeconfData,
@@ -35,13 +36,13 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
   const semaphore = Semaphore.use();
 
   if (appConfig.pretalx.event === MOZ_STUB) {
-    throw new Error("pretalx.event not set");
+    throw new MissingConfig("pretalx.event");
   }
   if (appConfig.pretalx.apiToken === MOZ_STUB) {
-    throw new Error("pretalx.apiToken not set");
+    throw new MissingConfig("pretalx.apiToken");
   }
   if (appConfig.deconf.apiToken === MOZ_STUB) {
-    throw new Error("deconf.apiToken not set");
+    throw new MissingConfig("deconf.apiToken");
   }
 
   // Aquire a lock so that only one instance of this job can run at once

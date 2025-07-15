@@ -1,7 +1,7 @@
 import os from "node:os";
 import { useAppConfig } from "../config.ts";
 import {
-  DeconfApiClient,
+  getDeconfClient,
   MOZ_STUB,
   Semaphore,
   StagedDeconfData,
@@ -12,7 +12,7 @@ import {
   StagedTaxonomy,
   useStore,
 } from "./mod.ts";
-import { createDebug } from "./utilities.ts";
+import { createDebug, MissingConfig } from "./utilities.ts";
 
 const debug = createDebug("fake-schedule");
 
@@ -175,11 +175,10 @@ export async function fakeSchedule(options: FakeScheduleOptions) {
   }
 
   if (appConfig.deconf.apiToken === MOZ_STUB) {
-    throw new Error("deconf.apiToken not set");
+    throw new MissingConfig("deconf.apiToken");
   }
 
-  const deconf = new DeconfApiClient(appConfig.deconf.url);
-  deconf.authzToken = appConfig.deconf.apiToken;
+  const deconf = getDeconfClient(appConfig.deconf);
 
   const output = await deconf.putSchedule(
     appConfig.deconf.conference,

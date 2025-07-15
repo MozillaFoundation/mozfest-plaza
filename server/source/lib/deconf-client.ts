@@ -10,6 +10,7 @@ import {
   SessionRecord,
   StagedContent,
   StagedDeconfData,
+  StagedTitoData,
   TaxonomyRecord,
 } from "../lib/mod.ts";
 
@@ -96,6 +97,25 @@ export class DeconfApiClient {
     dryRun = false,
   ) {
     const url = this.endpoint(`./admin/v1/conferences/${conference}/content`);
+    if (dryRun) url.searchParams.set("dryRun", "verbose");
+
+    const res = await this.fetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    return res.json();
+  }
+
+  async putRegistrations(
+    conference: number | string,
+    data: StagedTitoData,
+    dryRun = false,
+  ) {
+    const url = this.endpoint(
+      `./admin/v1/conferences/${conference}/registrations`,
+    );
     if (dryRun) url.searchParams.set("dryRun", "verbose");
 
     const res = await this.fetch(url, {

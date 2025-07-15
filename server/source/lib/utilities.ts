@@ -56,3 +56,11 @@ export function getDeconfClient({ url, apiToken }: AppConfig["deconf"]) {
   deconf.authzToken = apiToken;
   return deconf;
 }
+
+export class MissingConfig extends Error {
+  constructor(key: string) {
+    super(`[config] ${key} not set`);
+    this.name = "MissingConfig";
+    Error.captureStackTrace(this, MissingConfig);
+  }
+}

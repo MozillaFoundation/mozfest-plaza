@@ -6,6 +6,8 @@ import {
   createDebug,
   getDeconfClient,
   getOrInsert,
+  MissingConfig,
+  MOZ_STUB,
   Semaphore,
   StagedContent,
   useStore,
@@ -53,6 +55,10 @@ export async function fetchContent(options: FetchContentOptions) {
   if (options.dryRun === "client") {
     console.log(JSON.stringify(newRecords));
     return;
+  }
+
+  if (appConfig.deconf.apiToken === MOZ_STUB) {
+    throw new MissingConfig("deconf.apiToken");
   }
 
   const deconf = getDeconfClient(appConfig.deconf);

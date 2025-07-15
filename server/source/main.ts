@@ -7,6 +7,8 @@ import { runServer } from "./server.ts";
 import { fetchSchedule } from "./pretalx/fetch-schedule.ts";
 import { fakeSchedule } from "./lib/fake-schedule.ts";
 import { fetchContent } from "./content/fetch-content.ts";
+import { titoData } from "./tito/tito-data.ts";
+import { fetchRegistrations } from "./tito/fetch-registrations.ts";
 
 const cli = yargs(process.argv.slice(2))
   .help()
@@ -53,6 +55,23 @@ cli.command(
       .option("no-cache", { type: "boolean", default: false })
       .option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fetchContent(args),
+);
+
+cli.command(
+  "tito <data>",
+  "query and output data from ti.to",
+  (yargs) => yargs.positional("data", { type: "string", demandOption: true }),
+  (args) => titoData(args.data),
+);
+
+cli.command(
+  "fetch-registrations",
+  "query ti.to and merge registrations",
+  (yargs) =>
+    yargs
+      .option("no-cache", { type: "boolean", default: false })
+      .option("dry-run", { type: "string", choices: ["client", "server"] }),
+  (args) => fetchRegistrations(args),
 );
 
 try {
