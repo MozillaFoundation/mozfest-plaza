@@ -42,7 +42,7 @@
           <p>{{ $t('mozfest.login.emailSent') }}</p>
         </div>
         <div class="notification is-danger" v-if="state === 'error'">
-          <p>{{ $t('mozfest.login.emailSent') }}</p>
+          <p>{{ $t('mozfest.login.badCode') }}</p>
         </div>
 
         <!-- <input name="code" required="" type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="6" pattern="\d{1,6}"> -->
