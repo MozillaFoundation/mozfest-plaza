@@ -9,6 +9,7 @@ import { fakeSchedule } from "./lib/fake-schedule.ts";
 import { fetchContent } from "./content/fetch-content.ts";
 import { titoData } from "./tito/tito-data.ts";
 import { fetchRegistrations } from "./tito/fetch-registrations.ts";
+import { pretalxData } from "./pretalx/pretalx-data.ts";
 
 const cli = yargs(process.argv.slice(2))
   .help()
@@ -23,7 +24,7 @@ cli.command(
 );
 
 cli.command(
-  "serve",
+  ["serve", "start"],
   "run the http server",
   (yargs) => yargs,
   () => runServer(useAppConfig().server),
@@ -37,6 +38,13 @@ cli.command(
       .option("no-cache", { type: "boolean", default: false })
       .option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fetchSchedule(args),
+);
+
+cli.command(
+  "pretalx <data>",
+  "query and output data from pretalx",
+  (yargs) => yargs.positional("data", { type: "string", demandOption: true }),
+  (args) => pretalxData(args.data),
 );
 
 cli.command(

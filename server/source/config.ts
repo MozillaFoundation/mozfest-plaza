@@ -44,6 +44,10 @@ const struct = config.object({
       variable: "PRETALX_API_TOKEN",
       fallback: MOZ_STUB,
     }),
+    publicTags: config.string({
+      variable: "PRETALX_PUBLIC_TAGS",
+      fallback: "",
+    }),
   }),
 
   deconf: config.object({

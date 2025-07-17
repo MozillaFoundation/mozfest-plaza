@@ -31,6 +31,12 @@ export interface PretalxDetailEvent {
   content_locales: string[];
 }
 
+export interface PretalxResource {
+  id: string;
+  resource: string;
+  description: string;
+}
+
 // https://docs.pretalx.org/api/resources/#tag/submissions/operation/submissions_list
 export interface PretalxSubmission {
   code: string;
@@ -55,7 +61,7 @@ export interface PretalxSubmission {
   content_locale: string;
   do_not_record: boolean;
   image: string;
-  resources: number[];
+  resources: PretalxResource[];
   slots: number[];
   answers: number[];
 }
@@ -252,6 +258,7 @@ export class PretalxEventClient {
   // https://docs.pretalx.org/api/resources/#tag/submissions/operation/submissions_list
   async listSubmissions(questions?: string[]) {
     const url = this.endpoint(`submissions`);
+    url.searchParams.set("expand", "resources");
     if (questions) url.searchParams.set("questions", questions.join(","));
     return this.paginate<PretalxSubmission>(url);
   }

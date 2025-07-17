@@ -1,6 +1,6 @@
 import os from "node:os";
 
-import { useAppConfig } from "../config.ts";
+import { AppConfig, useAppConfig } from "../config.ts";
 import {
   cacheToDisk,
   createDebug,
@@ -78,7 +78,7 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     () => getPretalxData(event),
   );
 
-  const diff = convertToDeconf(pretalx, appConfig.deconf.conference);
+  const diff = convertToDeconf(pretalx, appConfig);
 
   // Output the diff file
   if (options.dryRun === "client") {
@@ -112,6 +112,7 @@ type PretalxData = Awaited<ReturnType<typeof getPretalxData>>;
 interface ConvertContext {
   id(): string;
   data: StagedDeconfData;
+  publicTags: Set<number>;
 }
 
 interface Taxonomies {
@@ -121,7 +122,10 @@ interface Taxonomies {
 }
 
 /** Convert pretalx data into a staged Deconf schedule */
-function convertToDeconf(input: PretalxData, confId: number): StagedDeconfData {
+function convertToDeconf(
+  input: PretalxData,
+  appConfig: AppConfig,
+): StagedDeconfData {
   const data: StagedDeconfData = {
     labels: [],
     people: [],
@@ -132,9 +136,17 @@ function convertToDeconf(input: PretalxData, confId: number): StagedDeconfData {
     taxonomies: [],
   };
 
+  const publicTags = new Set(
+    appConfig.pretalx.publicTags
+      .split(",")
+      .map((str) => parseInt(str.trim()))
+      .filter((v) => !Number.isNaN(v)),
+  );
+
   const ctx: ConvertContext = {
     id: () => `fake://${crypto.randomUUID()}`,
     data,
+    publicTags,
   };
 
   const taxonomies: Taxonomies = {
@@ -203,19 +215,15 @@ function convertToDeconf(input: PretalxData, confId: number): StagedDeconfData {
     // if (limit <= 0) continue;
     // limit--;
 
-    // if (convertState(submission.state) === "draft") continue;
+    if (convertState(submission.state) === "draft") continue;
 
     // TODO: revisit if submissions get scheduled more than once
     const slot = submission.slots[0]
       ? slots.get(submission.slots[0])
       : undefined;
 
-    // Create the submission
+    // Create the session + add it's links
     const sessionId = upsertSession(ctx, submission, slot);
-
-    // Create links
-    // TODO: revisit with questions logic
-    // upsertSessionLink(ctx)
 
     // Create people
     for (const speaker of submission.speakers) {
@@ -292,6 +300,7 @@ function upsertSession(
   slot: PretalxSlot | undefined,
 ) {
   const id = `pretalx/submission/${submission.code}`;
+  const isPublic = submission.tags.some((id) => ctx.publicTags.has(id));
   ctx.data.sessions.push({
     id: id,
     title: { en: submission.title },
@@ -299,7 +308,7 @@ function upsertSession(
     summary: { en: submission.abstract ?? undefined },
     details: { en: submission.description ?? "" },
     languages: "en",
-    visibility: "public", // TODO: pull from questions
+    visibility: isPublic ? "public" : "private",
     state: convertState(submission.state),
     start_date: slot?.start ? new Date(slot.start) : null,
     end_date: slot?.end ? new Date(slot.end) : null,
@@ -307,6 +316,17 @@ function upsertSession(
       ref: id,
     },
   });
+  for (const resource of submission.resources) {
+    ctx.data.sessionLinks.push({
+      id: resource.resource,
+      session_id: id,
+      title: { en: resource.description },
+      url: { en: resource.resource },
+      metadata: {
+        ref: resource.resource,
+      },
+    });
+  }
   return id;
 }
 
