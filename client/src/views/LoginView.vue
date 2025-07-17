@@ -184,13 +184,14 @@ export default defineComponent({
       if (this.state === 'working') return
       this.state = 'working'
 
-      const ok = await deconfClient.login(this.emailAddress)
+      const login = await deconfClient.login(this.emailAddress)
 
-      if (!ok) {
+      if (!login) {
         this.state = 'error'
         return
       }
 
+      this.token = login.token
       this.mode = 'code'
       this.state = 'input'
     },

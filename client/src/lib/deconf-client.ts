@@ -4,6 +4,10 @@ export interface ApiVerify {
   token: string
 }
 
+export interface ApiLogin {
+  token: string
+}
+
 export interface DeconfClientOptions {
   authzToken?: string
   credentials?: RequestCredentials
@@ -45,7 +49,7 @@ export class DeconfClient {
     return res
   }
 
-  async login(emailAddress: string) {
+  async login(emailAddress: string): Promise<ApiLogin | null> {
     const res = await this.fetch(`auth/v1/login`, {
       method: 'POST',
       body: JSON.stringify({
@@ -57,7 +61,7 @@ export class DeconfClient {
       },
     })
 
-    return res.ok
+    return res.ok ? res.json() : null
   }
 
   async verify(code: string, token?: string): Promise<ApiVerify | null> {
