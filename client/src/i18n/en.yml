@@ -117,7 +117,7 @@ deconf:
       label: Email
       placeholder: ''
       help: The email you registered with on ti.to
-    badEmail: We don't recognise that email address
+    badEmail: We don't recognise that email address or something went wrong
     doneText: Login code sent
     submitButton: Request magic link
     registerLabel: Not registered yet?
