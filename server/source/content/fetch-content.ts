@@ -24,12 +24,12 @@ interface RepoMarkdown<T = unknown> {
 }
 
 export interface FetchContentOptions {
-  noCache: boolean;
+  cache: boolean;
   dryRun?: string;
 }
 
 export async function fetchContent(options: FetchContentOptions) {
-  debug("start noCache=%o dryRun=%o", options.noCache, options.dryRun);
+  debug("start cache=%o dryRun=%o", options.cache, options.dryRun);
 
   const appConfig = useAppConfig();
   await using _store = useStore();

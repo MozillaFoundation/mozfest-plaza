@@ -35,7 +35,7 @@ cli.command(
   "query the pretalx API and populate the schedule",
   (yargs) =>
     yargs
-      .option("no-cache", { type: "boolean", default: false })
+      .option("cache", { type: "boolean", default: true })
       .option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fetchSchedule(args),
 );
@@ -60,7 +60,7 @@ cli.command(
   "query the repo-api-service to get content and upload to deconf",
   (yargs) =>
     yargs
-      .option("no-cache", { type: "boolean", default: false })
+      .option("cache", { type: "boolean", default: true })
       .option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fetchContent(args),
 );
@@ -77,7 +77,7 @@ cli.command(
   "query ti.to and merge registrations",
   (yargs) =>
     yargs
-      .option("no-cache", { type: "boolean", default: false })
+      .option("cache", { type: "boolean", default: true })
       .option("dry-run", { type: "string", choices: ["client", "server"] }),
   (args) => fetchRegistrations(args),
 );

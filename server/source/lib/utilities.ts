@@ -11,21 +11,23 @@ import { DeconfApiClient } from "./deconf-client.ts";
  */
 export async function cacheToDisk<T>(
   file: URL,
-  noCache: boolean,
+  cache: boolean,
   fn: () => Promise<T>,
 ): Promise<T> {
-  if (noCache) return fn();
-
   await fs.promises.mkdir(path.dirname(url.fileURLToPath(file)), {
     recursive: true,
   });
 
-  try {
-    const value = JSON.parse(await fs.promises.readFile(file, "utf8"));
-    console.error("[cache] hit=%o", file.toString());
-    return value;
-  } catch (error) {
-    console.error("[cache] miss", (error as Error).message);
+  if (cache) {
+    try {
+      const value = JSON.parse(await fs.promises.readFile(file, "utf8"));
+      console.error("[cache] hit=%o", file.toString());
+      return value;
+    } catch (error) {
+      console.error("[cache] miss", (error as Error).message);
+    }
+  } else {
+    console.error("[cache] skip cache");
   }
 
   const data = await fn();

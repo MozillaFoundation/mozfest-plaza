@@ -23,13 +23,13 @@ import {
 const debug = createDebug("fetch-schedule");
 
 export interface FetchScheduleOptions {
-  noCache: boolean;
+  cache: boolean;
   dryRun?: string;
 }
 
 /** Fetches data from Deconf + Pretalx and updates the Deconf schedule */
 export async function fetchSchedule(options: FetchScheduleOptions) {
-  debug("start noCache=%o dryRun=%o", options.noCache, options.dryRun);
+  debug("start cache=%o dryRun=%o", options.cache, options.dryRun);
 
   const appConfig = useAppConfig();
   await using _store = useStore();
@@ -67,14 +67,14 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
   // Fetch the current deconf data
   const _schedule = await cacheToDisk(
     new URL("deconf.json", appConfig.cache.local),
-    options.noCache,
+    options.cache,
     () => deconf.getSchedule(appConfig.deconf.conference),
   );
 
   // Fetch information from pretalx
   const pretalx = await cacheToDisk(
     new URL("pretalx.json", appConfig.cache.local),
-    options.noCache,
+    options.cache,
     () => getPretalxData(event),
   );
 

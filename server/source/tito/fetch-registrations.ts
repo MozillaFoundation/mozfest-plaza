@@ -20,12 +20,12 @@ import {
 const debug = createDebug("fetch-registrations");
 
 export interface FetchRegistrationsOptions {
-  noCache: boolean;
+  cache: boolean;
   dryRun?: string;
 }
 
 export async function fetchRegistrations(options: FetchRegistrationsOptions) {
-  debug("start noCache=%o dryRun=%o", options.noCache, options.dryRun);
+  debug("start cache=%o dryRun=%o", options.cache, options.dryRun);
 
   const appConfig = useAppConfig();
   await using _store = useStore();
@@ -60,7 +60,7 @@ export async function fetchRegistrations(options: FetchRegistrationsOptions) {
 
   const tickets = await cacheToDisk(
     new URL("tickets.json", appConfig.cache.local),
-    options.noCache,
+    options.cache,
     () => tito.listTickets(),
   );
 
