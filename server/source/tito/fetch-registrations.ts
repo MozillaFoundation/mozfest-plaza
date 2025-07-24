@@ -1,4 +1,5 @@
 import os from "node:os";
+import { Buffer } from "node:buffer";
 
 import { useAppConfig } from "../config.ts";
 import { MOZ_STUB, useStore } from "../lib/globals.ts";
@@ -64,7 +65,7 @@ export async function fetchRegistrations(options: FetchRegistrationsOptions) {
     () => tito.listTickets(),
   );
 
-  const diff = convertToDeconf(tickets);
+  const diff = await convertToDeconf(tickets);
 
   // Output the diff file
   if (options.dryRun === "client") {
@@ -84,7 +85,25 @@ function trimEmail(input: string) {
   return input.toLowerCase().trim();
 }
 
-function convertToDeconf(tickets: TitoTicket[]): StagedTitoData {
+async function hashEmail(input: string) {
+  const data = await crypto.subtle.digest(
+    "SHA-1",
+    new TextEncoder().encode(input),
+  );
+  // NOTE: I'd prefer this be web-standards based
+  // i.e. Uint8Array.prototype.toBase64 when it is supported
+  return Buffer.from(data).toString("base64");
+}
+
+async function jsonHash(input: any) {
+  const data = await crypto.subtle.digest(
+    "SHA-1",
+    new TextEncoder().encode(JSON.stringify(input)),
+  );
+  return Buffer.from(data).toString("base64");
+}
+
+async function convertToDeconf(tickets: TitoTicket[]): Promise<StagedTitoData> {
   // One email might have bought multiple tickets
   // The other tickets might not have been assigned (null)
   // or use the same email address multiple times
@@ -99,11 +118,13 @@ function convertToDeconf(tickets: TitoTicket[]): StagedTitoData {
   for (const ticket of tickets) {
     if (!ticket.email) continue;
     const email = trimEmail(ticket.email);
+    const emailHash = await hashEmail(email);
 
     if (visited.has(email)) continue;
     visited.add(email);
 
-    const ref = `tito/ticket/${ticket.id}`;
+    // Use the base64'd hash of the email as the unique reference
+    const ref = `tito/email:${emailHash}`;
 
     diff.users.push({
       id: ref,
