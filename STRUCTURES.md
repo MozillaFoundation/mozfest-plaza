@@ -109,11 +109,12 @@ SessionSave {
   - e.g. `ref = pretalx/type/1234`
   - e.g. `ref = tito/email/[sha1 hash of the email]`
 
-### Meta layer
+## Meta layer
 
 With the Taxonomy / Label relationship, custom organisation systems can be deployed for different conferences.
 A Taxonomy can be any classification to organise things by, like a Category, Theme or Tag.
-Then a Taxonomy has Labels which are the allowed values within that classification, e.g. a specific theme like AI or Agriculture or a session format like Debate or Keynote
+Labels are the allowed values within a Taxonomy, e.g. a specific theme like AI or Agriculture or a session format like Debate or Keynote.
+Sessions are then related to these labels.
 
 ## Pretalx integration
 
