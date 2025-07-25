@@ -100,18 +100,7 @@ SessionSave {
 }
 ```
 
-### Meta layer
-
-With the Taxonomy / Label relationship, custom organisation systems can be deployed for different conferences. With Pretalx it is set up like this:
-
-- Taxonomy - Tracks
-  - labels are generated from [pretalx rooms](https://pretalx.com/orga/event/mozilla-festival-2025/schedule/rooms/)
-- Taxonomy - Themes
-  - labels are generated from [pretalx tracks](https://pretalx.com/orga/event/mozilla-festival-2025/cfp/tracks/)
-- Taxonomy - Types
-  - labels are generated from [pretalx types](https://pretalx.com/orga/event/mozilla-festival-2025/cfp/types/)
-
-## General
+## General fields
 
 - Any `id` field is unique to the MozFest database
 - Any `created_at` timestamp is when the record was first imported
@@ -120,10 +109,16 @@ With the Taxonomy / Label relationship, custom organisation systems can be deplo
   - e.g. `ref = pretalx/type/1234`
   - e.g. `ref = tito/email/[sha1 hash of the email]`
 
+### Meta layer
+
+With the Taxonomy / Label relationship, custom organisation systems can be deployed for different conferences.
+A Taxonomy can be any classification to organise things by, like a Category, Theme or Tag.
+Then a Taxonomy has Labels which are the allowed values within that classification, e.g. a specific theme like AI or Agriculture or a session format like Debate or Keynote
+
 ## Pretalx integration
 
 Records pulled from pretalx will have their `metadata.ref` set based on the type of record it came from,
-so that they can be updated in the future to provide consistency.
+so that they can be updated in the future to provide consistency. e.g. `pretalx/submission/3389FV` or `pretalx/type/5838`
 
 **Sessions** come from [Pretalx submissions](https://pretalx.com/orga/event/mozilla-festival-2025/submissions/)
 
@@ -149,7 +144,7 @@ There are three **Taxonomy** records and their labels are generated based on dif
 
 ## TiTo integration
 
-Records pulled from TiTo will have a `metadata.ref` set to a hash of the unique email they are based on
+Records pulled from TiTo will have a `metadata.ref` set to a hash of the unique email they are based on, i.e. `tito/email:<sha1 hash of email>`
 
 **Users** are generated from TiTo tickets, one per unique email (duplicate emails are ignored)
 
