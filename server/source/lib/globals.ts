@@ -1,6 +1,7 @@
 import { getTerminator, loader, Store } from "gruber";
 import { useAppConfig } from "../config.ts";
 import { RedisStore } from "./redis.ts";
+import { getDeconfClient } from "./mod.ts";
 
 //
 // Things for re-use across the entire server,
@@ -21,3 +22,7 @@ export const useStore = loader<Store & AsyncDisposable>(() => {
 
 /** a configuration that was stubbed out for development */
 export const MOZ_STUB = "moz://stub";
+
+export const useDeconfClient = loader(() => {
+  return getDeconfClient(useAppConfig().deconf);
+});

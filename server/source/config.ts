@@ -82,6 +82,10 @@ const struct = config.object({
       variable: "TITO_API_KEY",
       fallback: MOZ_STUB,
     }),
+    securityToken: config.string({
+      variable: "TITO_SECURITY_TOKEN",
+      fallback: MOZ_STUB,
+    }),
   }),
 
   redis: config.object({
@@ -155,6 +159,9 @@ export async function loadConfiguration(path: string | URL) {
     }
     if (value.tito.apiToken === MOZ_STUB) {
       throw new MissingConfig("tito.apiToken");
+    }
+    if (value.tito.securityToken === MOZ_STUB) {
+      throw new MissingConfig("tito.securityToken");
     }
   }
 

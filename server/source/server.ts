@@ -2,6 +2,7 @@ import { defineRoute, FetchRouter, serveHTTP } from "gruber";
 import { useAppConfig } from "./config.ts";
 import { useStore, useTerminator } from "./lib/globals.ts";
 import { emailRoute } from "./deconf/email.ts";
+import { titoWebhookRoute } from "./tito/tito-webhook.ts";
 
 export const helloRoute = defineRoute({
   method: "GET",
@@ -28,7 +29,7 @@ export const healthzRoute = defineRoute({
   },
 });
 
-export const routes = [helloRoute, healthzRoute, emailRoute];
+export const routes = [helloRoute, healthzRoute, emailRoute, titoWebhookRoute];
 
 export interface RunServerOptions {
   port: number;

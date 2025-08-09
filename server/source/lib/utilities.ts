@@ -3,6 +3,7 @@ import path from "node:path";
 import url from "node:url";
 import { AppConfig } from "../config.ts";
 import { DeconfApiClient } from "./deconf-client.ts";
+import { _nestContext, Structure } from "gruber";
 
 /**
  * A helper to wrap a method in a cache.
@@ -65,4 +66,31 @@ export class MissingConfig extends Error {
     this.name = "MissingConfig";
     Error.captureStackTrace(this, MissingConfig);
   }
+}
+
+// NOTE: working towards https://github.com/robb-j/gruber/issues/44
+export function structureInterface<
+  T extends Record<string, Structure<unknown>>,
+>(fields: T) {
+  return new Structure({}, (value: any, context) => {
+    if (!value || typeof value !== "object") {
+      throw new Error("not an object");
+    }
+
+    const output: any = {};
+    const errors: any[] = [];
+
+    for (const property in fields) {
+      try {
+        output[property] = fields[property].process(
+          value[property],
+          _nestContext(context, property),
+        );
+      } catch (error) {
+        errors.push(Structure.Error.chain(error, context));
+      }
+    }
+
+    return output;
+  });
 }

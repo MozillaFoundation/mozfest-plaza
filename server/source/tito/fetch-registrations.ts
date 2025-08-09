@@ -65,7 +65,7 @@ export async function fetchRegistrations(options: FetchRegistrationsOptions) {
     () => tito.listTickets(),
   );
 
-  const diff = await convertToDeconf(tickets);
+  const diff = await _convertTitoToDeconf(tickets);
 
   // Output the diff file
   if (options.dryRun === "client") {
@@ -103,7 +103,14 @@ async function jsonHash(input: any) {
   return Buffer.from(data).toString("base64");
 }
 
-async function convertToDeconf(tickets: TitoTicket[]): Promise<StagedTitoData> {
+export type _MinimalTitoTicket = Pick<
+  TitoTicket,
+  "email" | "consented_at" | "name"
+>;
+
+export async function _convertTitoToDeconf(
+  tickets: _MinimalTitoTicket[],
+): Promise<StagedTitoData> {
   // One email might have bought multiple tickets
   // The other tickets might not have been assigned (null)
   // or use the same email address multiple times
