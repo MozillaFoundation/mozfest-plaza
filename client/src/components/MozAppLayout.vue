@@ -7,7 +7,7 @@
     class="mozAppLayout"
   >
     <template v-slot:brandA>
-      <MozfestLogo />
+      <MozillaLogo />
     </template>
     <!-- <MozillaLogo slot="brandB" /> -->
 
@@ -39,8 +39,8 @@ import {
   Routes,
 } from '@openlab/deconf-ui-toolkit'
 
-import MozfestLogo from '@/components/MozfestLogo.vue'
-// import MozillaLogo from '@/components/MozillaLogo.vue'
+// import MozfestLogo from '@/components/MozfestLogo.vue'
+import MozillaLogo from '@/components/MozillaLogo.vue'
 import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
@@ -52,8 +52,6 @@ import MapsIcon from '@/icons/MapsIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
-// import SpacesIcon from '@/icons/SpacesIcon.vue'
-// import WhatsOnIcon from '@/icons/WhatsOnIcon.vue'
 import { ExtraRoutes, mapApiState, pages } from '@/lib/module'
 
 interface RouteIntermediate {
@@ -67,8 +65,8 @@ export default defineComponent({
   name: 'MozAppLayout',
   components: {
     AppLayout,
-    MozfestLogo,
-    // MozillaLogo,
+    // MozfestLogo,
+    MozillaLogo,
     MozfestSquareLogo,
     MozPageFooter,
     LanguageControl,
@@ -94,12 +92,6 @@ export default defineComponent({
           icon: PlazaIcon,
           pageFlag: this.settings.atrium,
         },
-        // {
-        //   title: this.$t('mozfest.appLayout.whatsOn') as string,
-        //   name: Routes.WhatsOn,
-        //   icon: WhatsOnIcon,
-        //   pageFlag: this.settings.whatsOn,
-        // },
         {
           title: this.$t('mozfest.appLayout.schedule') as string,
           name: Routes.Schedule,

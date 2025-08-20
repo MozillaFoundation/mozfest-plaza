@@ -1,3 +1,7 @@
 <template>
-  <img src="/mozfest.png" width="118" height="33" />
+  <!-- NOTE: not currently in use -->
+  <img src="/mozilla-foundation.svg" width="112" height="33" />
+
+  <!-- 1024 x 300 -->
+  <!-- ~~   -->
 </template>

@@ -5,36 +5,13 @@ $title-family: 'MozillaHeadlineVariable', 'MozillaHeadline', $family-sans-serif;
 $title-weight: 700;
 $title-color: #000;
 
-$text-light: #757a8a;
-
-$mradi-red: #b5000f;
-$mradi-orange: #e24623;
-$mradi-yellow: #ffaa01;
-$mradi-blue: #01a9a9;
-
-//
-// MozFest
-//
-// $primary: #ff02b1;
-// $secondary: #8f14fb;
-// $green: #03cccc;
-// $link: #6702bf;
-
 //
 // MozFest 2024
 //
-$primary: #ff008a;
-$secondary: #7f00ca;
-$green: #00d230;
-$link: #7f00ca;
-
-//
-// House Kenya
-//
-// $primary: $mradi-orange;
-// $secondary: $mradi-yellow;
-// $green: $mradi-blue;
-// $link: $mradi-red;
+$primary: #f06c13;
+$secondary: #22c376;
+$green: #22c376;
+$link: #117dd9;
 
 //
 // New brand
@@ -53,7 +30,7 @@ $sideTabs-activeBackground: #ffebf4;
 
 $countdown-background: $link;
 
-$background: #f4f4f4;
+$background: #f9f9f9;
 
 $button-border-width: 1px;
 $button-padding-vertical: calc(0.1em - #{$button-border-width});

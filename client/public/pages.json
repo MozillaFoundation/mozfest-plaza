@@ -80,18 +80,6 @@
           }
         },
         {
-          "id": "mastodon",
-          "kind": "custom",
-          "options": {
-            "title": { "en": "Toot #MozFest" },
-            "subtitle": {
-              "en": "Share the sessions you're most excited about attending."
-            },
-            "url": "https://mzl.la/mf-share-mastodon",
-            "icon": "fab mastodon"
-          }
-        },
-        {
           "id": "book",
           "kind": "custom",
           "options": {
@@ -105,18 +93,7 @@
         }
       ],
       "featured": { "limit": 7 },
-      "sponsors": [
-        {
-          "title": "Presenting Sponsor",
-          "size": "medium",
-          "sponsors": [{ "title": "Visa", "image": "sponsors/visa.png" }]
-        },
-        {
-          "title": "Showcase Sponsor",
-          "size": "regular",
-          "sponsors": [{ "title": "Skoll", "image": "sponsors/skoll.png" }]
-        }
-      ]
+      "sponsors": []
     }
   },
   "schedule": {
@@ -128,7 +105,7 @@
       "es": "Programa"
     },
     "options": {
-      "filter": "types=40,41",
+      "filter": "types=58,59,60,61,62",
       "tile": {
         "header": ["type"],
         "attributes": ["languages", "recorded", "track", "themes"],
@@ -154,7 +131,7 @@
       "es": "Arte y Medios"
     },
     "options": {
-      "filter": "types=42",
+      "filter": "types=64",
       "tile": {
         "header": ["track"],
         "attributes": ["themes"]

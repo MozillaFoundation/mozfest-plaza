@@ -4,7 +4,7 @@
       <HeroCard
         :title="localise(config.options.hero.title)"
         :subtitle="localise(config.options.hero.subtitle)"
-        coverImage="/plaza-hero.png"
+        coverImage="/plaza-hero.webp"
       />
     </template>
 
