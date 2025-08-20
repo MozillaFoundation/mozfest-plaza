@@ -53,8 +53,8 @@
     "visible": false
   },
   "mySchedule": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "search": {
     "enabled": true,
