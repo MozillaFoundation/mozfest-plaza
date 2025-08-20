@@ -275,7 +275,7 @@ function upsertLabel(ctx: ConvertContext, init: LabelInit) {
     metadata: {
       ref: id,
       description: init.description ?? undefined,
-      cover_image: enhancements.coverImage ?? undefined,
+      preview_image: enhancements.preview_image ?? undefined,
     },
   });
 }
@@ -308,6 +308,29 @@ function upsertSession(
 ) {
   const id = `pretalx/submission/${submission.code}`;
   const isPublic = submission.tags.some((id) => ctx.publicTags.has(id));
+  const extraMetadata: any = {};
+
+  for (const resource of submission.resources) {
+    // Generate session links for each resource
+    ctx.data.sessionLinks.push({
+      id: resource.resource,
+      session_id: id,
+      title: { en: resource.description },
+      url: { en: resource.resource },
+      metadata: {
+        ref: resource.resource,
+      },
+    });
+
+    // Set the first image-looking resource as the preview_image
+    if (
+      !extraMetadata.preview_image &&
+      previewExtensions.some((ex) => ex.test(resource.resource))
+    ) {
+      extraMetadata.preview_image = resource.resource;
+    }
+  }
+
   ctx.data.sessions.push({
     id: id,
     title: { en: submission.title },
@@ -320,22 +343,15 @@ function upsertSession(
     start_date: slot?.start ? new Date(slot.start) : null,
     end_date: slot?.end ? new Date(slot.end) : null,
     metadata: {
+      ...extraMetadata,
       ref: id,
     },
   });
-  for (const resource of submission.resources) {
-    ctx.data.sessionLinks.push({
-      id: resource.resource,
-      session_id: id,
-      title: { en: resource.description },
-      url: { en: resource.resource },
-      metadata: {
-        ref: resource.resource,
-      },
-    });
-  }
+
   return id;
 }
+
+const previewExtensions = [/\.png$/i, /\.jpe?g$/i, /\.gif$/i, /\.webp$/i];
 
 function upsertSessionPerson(
   ctx: ConvertContext,
