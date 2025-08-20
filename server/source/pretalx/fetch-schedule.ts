@@ -113,6 +113,7 @@ interface ConvertContext {
   id(): string;
   data: StagedDeconfData;
   publicTags: Set<number>;
+  enhancements: any;
 }
 
 interface Taxonomies {
@@ -147,6 +148,7 @@ function convertToDeconf(
     id: () => `fake://${crypto.randomUUID()}`,
     data,
     publicTags,
+    enhancements: appConfig.enhancements,
   };
 
   const taxonomies: Taxonomies = {
@@ -196,6 +198,7 @@ function convertToDeconf(
       id: `theme/${track.id}`,
       taxonomy: taxonomies.themes.id,
       title: track.name,
+      description: track.description,
     });
   }
 
@@ -258,17 +261,21 @@ interface LabelInit {
   id: string | number;
   taxonomy: string;
   title: Localised;
+  description?: Localised;
 }
 
 function upsertLabel(ctx: ConvertContext, init: LabelInit) {
   const id = `pretalx/${init.id}`;
+  const enhancements = ctx.enhancements[id] ?? {};
   ctx.data.labels.push({
     id,
-    icon: "",
+    icon: enhancements?.icon ?? "",
     taxonomy_id: init.taxonomy,
     title: init.title,
     metadata: {
       ref: id,
+      description: init.description ?? undefined,
+      cover_image: enhancements.coverImage ?? undefined,
     },
   });
 }

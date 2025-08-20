@@ -1,4 +1,4 @@
-import { getConfiguration, Infer, loader } from "gruber";
+import { getConfiguration, Infer, loader, Structure } from "gruber";
 import fs from "node:fs";
 import process from "node:process";
 
@@ -137,6 +137,8 @@ const struct = config.object({
       fallback: "mozfest@eml.mozilla.org",
     }),
   }),
+
+  enhancements: Structure.any(),
 });
 
 export async function loadConfiguration(path: string | URL) {

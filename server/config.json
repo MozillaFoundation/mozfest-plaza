@@ -5,5 +5,32 @@
   "pretalx": {
     "event": "mozilla-festival-2025",
     "publicTags": "1698"
+  },
+  "enhancements": {
+    "pretalx/type/5843": {
+      "icon": "fontawesome://icon?group=fas&name=flask"
+    },
+    "pretalx/type/5834": {
+      "icon": "fontawesome://icon?group=fas&name=comment"
+    },
+    "pretalx/type/__todo_plenary__": {
+      "icon": "fontawesome://icon?group=fas&name=bullhorn"
+    },
+    "pretalx/type/6413": {
+      "icon": "fontawesome://icon?group=fas&name=person-chalkboard"
+    },
+    "pretalx/type/5837": {
+      "icon": "fontawesome://icon?group=fas&name=palette"
+    },
+    "pretalx/type/__todo_forum__": {
+      "icon": "fontawesome://icon?group=fas&name=people-group"
+    },
+    "pretalx/type/5456": {
+      "icon": "fontawesome://icon?group=fas&name=microphone"
+    },
+
+    "pretalx/theme/5729": {
+      "coverImage": "https://mozfest.r0b.tech/themes/1-building-unified-futures.jpg"
+    }
   }
 }

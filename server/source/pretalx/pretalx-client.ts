@@ -239,7 +239,7 @@ export class PretalxEventClient {
       headers.set("Pretalx-Version", this.#options.version);
     }
 
-    this.debug("headers", headers);
+    // this.debug("headers", headers);
 
     return headers;
   }
