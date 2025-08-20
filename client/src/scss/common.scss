@@ -1,21 +1,7 @@
 // ...
-$family-sans-serif:
-  'MozillaSans',
-  BlinkMacSystemFont,
-  -apple-system,
-  'Segoe UI',
-  'Roboto',
-  'Oxygen',
-  'Ubuntu',
-  'Cantarell',
-  'Fira Sans',
-  'Droid Sans',
-  'Helvetica Neue',
-  'Helvetica',
-  'Arial',
-  sans-serif;
+$family-sans-serif: 'MozillaTextVariable', 'MozillaText', system-ui, sans-serif;
 
-$title-family: 'MozillaSemiSlab', $family-sans-serif;
+$title-family: 'MozillaHeadlineVariable', 'MozillaHeadline', $family-sans-serif;
 $title-weight: 700;
 $title-color: #000;
 

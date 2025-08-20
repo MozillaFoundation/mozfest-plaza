@@ -1,131 +1,124 @@
 //
-// Sans
+// Mozilla Headline
 //
 
-// 100
+// Variable
 @font-face {
-  font-family: 'MozillaSans';
+  font-family: 'MozillaHeadlineVariable';
   font-style: normal;
-  font-weight: 100;
+  font-weight: 200 700;
   font-display: swap;
-  src:
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Extralight.woff2')
-      format('woff2'),
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Extralight.woff')
-      format('woff');
+  font-optical-sizing: auto;
+  font-variation-settings: 'wdth' 100;
+  src: url('@/fonts/mozilla-headline/MozillaHeadline-VariableFont_wdth,wght.woff2')
+    format('woff2');
 }
 
-// 200
+// ExtraLight
 @font-face {
-  font-family: 'MozillaSans';
+  font-family: 'MozillaHeadline';
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src:
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Light.woff2') format('woff2'),
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Light.woff') format('woff');
+  src: url('@/fonts/mozilla-headline/MozillaHeadline-ExtraLight.woff2')
+    format('woff2');
+}
+
+// Light
+@font-face {
+  font-family: 'MozillaHeadline';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('@/fonts/mozilla-headline/MozillaHeadline-Light.woff2')
+    format('woff2');
 }
 
 // 400
 @font-face {
-  font-family: 'MozillaSans';
+  font-family: 'MozillaHeadline';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src:
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Regular.woff2')
-      format('woff2'),
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Regular.woff') format('woff');
+  src: url('@/fonts/mozilla-headline/MozillaHeadline-Regular.woff2')
+    format('woff2');
 }
 
 // 600
 @font-face {
-  font-family: 'MozillaSans';
+  font-family: 'MozillaHeadline';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src:
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Semibold.woff2')
-      format('woff2'),
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Semibold.woff') format('woff');
+  src: url('@/fonts/mozilla-headline/MozillaHeadline-SemiBold.woff2')
+    format('woff2');
 }
 
 // 700
 @font-face {
-  font-family: 'MozillaSans';
+  font-family: 'MozillaHeadline';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src:
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Bold.woff2') format('woff2'),
-    url('@/fonts/moz-sans/MozillaSansNormalBETA05-Bold.woff') format('woff');
+  src: url('@/fonts/mozilla-headline/MozillaHeadline-Bold.woff2')
+    format('woff2');
 }
-
 //
-// Semi Slab
+// Mozilla Headline
 //
 
-// 100
+// Variable
 @font-face {
-  font-family: 'MozillaSemiSlab';
+  font-family: 'MozillaTextVariable';
   font-style: normal;
-  font-weight: 100;
+  font-weight: 200 700;
   font-display: swap;
-  src:
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Extralight.woff2')
-      format('woff2'),
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Extralight.woff')
-      format('woff');
+  font-optical-sizing: auto;
+  src: url('@/fonts/mozilla-text/MozillaText-VariableFont_wght.woff2')
+    format('woff2');
 }
 
-// 200
+// ExtraLight
 @font-face {
-  font-family: 'MozillaSemiSlab';
+  font-family: 'MozillaText';
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src:
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Light.woff2')
-      format('woff2'),
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Light.woff')
-      format('woff');
+  src: url('@/fonts/mozilla-text/MozillaText-ExtraLight.woff2') format('woff2');
+}
+
+// Light
+@font-face {
+  font-family: 'MozillaText';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('@/fonts/mozilla-text/MozillaText-Light.woff2') format('woff2');
 }
 
 // 400
 @font-face {
-  font-family: 'MozillaSemiSlab';
+  font-family: 'MozillaText';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src:
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Regular.woff2')
-      format('woff2'),
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Regular.woff')
-      format('woff');
+  src: url('@/fonts/mozilla-text/MozillaText-Regular.woff2') format('woff2');
 }
 
 // 600
 @font-face {
-  font-family: 'MozillaSemiSlab';
+  font-family: 'MozillaText';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src:
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Semibold.woff2')
-      format('woff2'),
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Semibold.woff')
-      format('woff');
+  src: url('@/fonts/mozilla-text/MozillaText-SemiBold.woff2') format('woff2');
 }
 
 // 700
 @font-face {
-  font-family: 'MozillaSemiSlab';
+  font-family: 'MozillaText';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src:
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Bold.woff2')
-      format('woff2'),
-    url('@/fonts/moz-semi-slab/MozillaSemi-SlabNormalBETA05-Bold.woff')
-      format('woff');
+  src: url('@/fonts/mozilla-text/MozillaText-Bold.woff2') format('woff2');
 }
