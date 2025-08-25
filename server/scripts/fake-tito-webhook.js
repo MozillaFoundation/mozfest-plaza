@@ -10,6 +10,9 @@ usage:
 
 info:
   Send a request to the tito fake webhook with the correct payload + signature
+
+note:
+  You can configure server.url and tito.securityToken to live values to test them too.
 `;
 
 const [email = "geoff@r0b.io"] = process.argv.slice(2);
