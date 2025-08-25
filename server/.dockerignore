@@ -1,0 +1,13 @@
+#
+# Files to ignore from git source control
+#
+
+node_modules
+coverage
+*.env
+dist
+bundle
+.cache
+**/*.spec.ts
+config.json
+.DS_Store
