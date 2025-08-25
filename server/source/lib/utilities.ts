@@ -9,16 +9,21 @@ import { _nestContext, Structure } from "gruber";
  * A helper to wrap a method in a cache.
  * The frist time it is used, the result is written to the specified cache file as JSON.
  * When called again, the cached version is returned instead of executing the function.
+ *
+ * NOTE: if the factory method changes, the cached file will be incorrect
  */
 export async function cacheToDisk<T>(
   file: URL,
   cache: boolean,
   fn: () => Promise<T>,
 ): Promise<T> {
+  // Ensure the cache directory exists
   await fs.promises.mkdir(path.dirname(url.fileURLToPath(file)), {
     recursive: true,
   });
 
+  // If the cache is enabled, attempt to load and parse the existing JSON file
+  // NOTE: this does assume the JSON structure has not changed since it was cached
   if (cache) {
     try {
       const value = JSON.parse(await fs.promises.readFile(file, "utf8"));
@@ -31,6 +36,7 @@ export async function cacheToDisk<T>(
     console.error("[cache] skip cache");
   }
 
+  // If the cache was not used, populate it using the factory method and return the result
   const data = await fn();
   if (data) {
     await fs.promises.writeFile(file, JSON.stringify(data));
@@ -60,6 +66,7 @@ export function getDeconfClient({ url, apiToken }: AppConfig["deconf"]) {
   return deconf;
 }
 
+/** A helper error to throw consistent errors when configuration is not set correctly */
 export class MissingConfig extends Error {
   constructor(key: string) {
     super(`[config] ${key} not set`);
@@ -93,4 +100,14 @@ export function structureInterface<
 
     return output;
   });
+}
+
+export async function sha1Hash(input: string) {
+  const data = await crypto.subtle.digest(
+    "SHA-1",
+    new TextEncoder().encode(input),
+  );
+  // NOTE: I'd prefer this be web-standards based
+  // i.e. Uint8Array.prototype.toBase64 when it is supported
+  return Buffer.from(data).toString("base64");
 }

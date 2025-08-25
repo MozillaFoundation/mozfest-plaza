@@ -1,5 +1,4 @@
 import { loader, Store } from "gruber";
-import { useAppConfig } from "../config.ts";
 import { useStore } from "./globals.ts";
 
 export interface LockRecord {
@@ -19,7 +18,17 @@ export interface SemaphoreOptions {
   prefix: string;
 }
 
-/** A manager for locking a process for exclusive non-concurrent execution */
+/**
+ * A manager for locking a process for exclusive non-concurrent execution
+ *
+ * It stores a key in the store to reserve the execution for itself.
+ * In the payload it stores the hostname of the aquirer and the timestamp for redundancy
+ *
+ * There is a rough idea that the host aquiring the lock might want to check it still has access,
+ * but this isn't really used in this version.
+ *
+ * It will throw a {@link Semaphore.Error} if things go wrong
+ */
 export class Semaphore {
   static use = loader(() => new Semaphore(useStore()));
 

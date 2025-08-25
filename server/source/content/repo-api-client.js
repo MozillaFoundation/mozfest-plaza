@@ -1,5 +1,5 @@
 //
-// repo-api-client@0.3.6 ~ modified a bit
+// repo-api-client@0.3.6 ~ modified a bit, ideally this would be TypeScript
 //
 
 /**

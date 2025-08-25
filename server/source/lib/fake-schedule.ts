@@ -20,6 +20,9 @@ export interface FakeScheduleOptions {
   dryRun?: string;
 }
 
+/**
+ * A command to generate a good-enough schedule with completely fake data
+ */
 export async function fakeSchedule(options: FakeScheduleOptions) {
   debug("dryRun=%o", options.dryRun);
 
@@ -27,7 +30,7 @@ export async function fakeSchedule(options: FakeScheduleOptions) {
   await using _store = useStore();
   const semaphore = Semaphore.use();
 
-  // Aquire a lock so that only one instance of this job can run at once
+  // Aquire a lock so that only one instance of this job can run exclusively
   await using _lock = await semaphore.aquire({
     name: "fetch_schedule",
     hostname: os.hostname(),
@@ -167,6 +170,7 @@ export async function fakeSchedule(options: FakeScheduleOptions) {
       ),
       fakeLink("Worksheet", "https://docs.google.com/abcdef", "fake/session-c"),
     ],
+    assets: [],
   };
 
   if (options.dryRun === "client") {

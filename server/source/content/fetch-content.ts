@@ -31,10 +31,12 @@ export interface FetchContentOptions {
 export async function fetchContent(options: FetchContentOptions) {
   debug("start cache=%o dryRun=%o", options.cache, options.dryRun);
 
+  // Set up dependencies
   const appConfig = useAppConfig();
   await using _store = useStore();
   const semaphore = Semaphore.use();
 
+  // Lock the process against the store to ensure synchronous execution
   await using _lock = await semaphore.aquire({
     name: "fetch_content",
     hostname: os.hostname(),
@@ -44,6 +46,7 @@ export async function fetchContent(options: FetchContentOptions) {
 
   debug("query url=%o", appConfig.content.url.toString());
 
+  // Create a client for the repo-api
   const api = new RepoApi(appConfig.content.url);
 
   const newRecords = [
@@ -77,7 +80,7 @@ export async function getContent(
   appConfig: AppConfig,
 ): Promise<StagedContent[]> {
   const files = await repo.queryGlob<RepoMarkdown>(
-    appConfig.content.prefix + "**/*.md",
+    appConfig.content.prefix + "*/*.md",
     { format: "markdown" },
   );
 
@@ -85,6 +88,7 @@ export async function getContent(
 
   const content = new Map<string, Map<string, string>>();
 
+  // Group "<dir>/<locale>.md" based on the directory then locale into nested maps
   for (const [file, data] of files) {
     const normalised = path.relative(appConfig.content.prefix, file);
     const { dir, name } = path.parse(normalised);
@@ -92,6 +96,7 @@ export async function getContent(
     getOrInsert(content, dir, new Map()).set(name, processMarkdown(data.body));
   }
 
+  // Convert grouped content into staged ContentRecord objects
   return Array.from(content.entries()).map(([slug, copy]) => ({
     id: `moz/${slug}`,
     slug,
@@ -124,11 +129,13 @@ export async function getConfig(
 ): Promise<StagedContent[]> {
   const files: StagedContent[] = [];
 
+  // Fetch the settings.json file
   const settings = await repo.queryFile<any>(
     appConfig.content.prefix + "settings.json",
     { format: "json" },
   );
 
+  // Do a rough check that the it will not crash the legacy deconf client
   if (!checkSettings(settings)) throw new Error("Invalid settings");
 
   files.push({
@@ -142,7 +149,14 @@ export async function getConfig(
   return files;
 }
 
-// https://github.com/digitalinteraction/deconf-api-toolkit/blob/main/src/content/content-service.ts
+/**
+ * Replace %shortcode% widget-things into <div id=shortcode></div> for
+ * the legacy deconf client to consume, based on:
+ * https://github.com/digitalinteraction/deconf-api-toolkit/blob/main/src/content/content-service.ts
+ *
+ * NOTE: in the future, I'd like to move these widgets to HTML custom elements
+ *       that can support attributes along with being web-standards based
+ */
 function processMarkdown(input: string) {
   return input
     .split("\n")

@@ -1,7 +1,7 @@
 import { getTerminator, loader, Store } from "gruber";
 import { useAppConfig } from "../config.ts";
 import { RedisStore } from "./redis.ts";
-import { getDeconfClient } from "./mod.ts";
+import { getDeconfClient } from "./utilities.ts";
 
 //
 // Things for re-use across the entire server,

@@ -173,7 +173,7 @@ export interface WebPushMessageRecord {
 }
 
 //
-// Not copied
+// These are custom types for MozFest
 //
 
 /**
@@ -193,7 +193,13 @@ export type StagedSessionLabel = StagedRecord<
   "id" | "label_id" | "session_id"
 >;
 
-export type StagedPerson = StagedRecord<PersonRecord, "id">;
+export type StagedPerson = Omit<
+  StagedRecord<PersonRecord, "id">,
+  "avatar_id"
+> & {
+  avatar_id: string | null;
+};
+
 export type StagedSessionPerson = StagedRecord<
   SessionPersonRecord,
   "id" | "session_id" | "person_id"
@@ -209,6 +215,7 @@ export interface StagedDeconfData {
   people: StagedPerson[];
   taxonomies: StagedTaxonomy[];
   labels: StagedLabel[];
+  assets: StagedAsset[];
 
   sessions: StagedSession[];
   sessionPeople: StagedSessionPerson[];

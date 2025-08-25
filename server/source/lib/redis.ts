@@ -21,27 +21,18 @@ export class RedisStore implements Store {
     return client as any;
   }
 
-  _client: RedisClientType | undefined;
+  _client: Promise<RedisClientType> | undefined;
   prefix: string;
   url: URL;
 
   constructor(options: RedisOptions) {
     this.prefix = options.prefix;
     this.url = options.url;
-
-    this.getClient = async () => {
-      if (!this._client) {
-        this._client = await RedisStore.getClient(options.url);
-      }
-      return this._client!;
-    };
   }
 
   async getClient(): Promise<RedisClientType> {
-    if (!this._client) {
-      this._client = await RedisStore.getClient(this.url);
-    }
-    return this._client!;
+    this._client ??= RedisStore.getClient(this.url);
+    return this._client;
   }
 
   async get<T>(key: string): Promise<T | undefined> {
