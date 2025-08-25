@@ -9,6 +9,7 @@ import {
   MissingConfig,
   MOZ_STUB,
   Semaphore,
+  sha1Hash,
   StagedDeconfData,
   StagedTaxonomy,
   useStore,
@@ -31,10 +32,12 @@ export interface FetchScheduleOptions {
 export async function fetchSchedule(options: FetchScheduleOptions) {
   debug("start cache=%o dryRun=%o", options.cache, options.dryRun);
 
+  // Load dependencies
   const appConfig = useAppConfig();
   await using _store = useStore();
   const semaphore = Semaphore.use();
 
+  // Ensure the environment is set up correctly
   if (appConfig.pretalx.event === MOZ_STUB) {
     throw new MissingConfig("pretalx.event");
   }
@@ -45,7 +48,7 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     throw new MissingConfig("deconf.apiToken");
   }
 
-  // Aquire a lock so that only one instance of this job can run at once
+  // Aquire a lock so that only one instance of this job can run exclusively
   await using _lock = await semaphore.aquire({
     name: "fetch_schedule",
     hostname: os.hostname(),
@@ -64,7 +67,8 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
 
   // TODO: configure questions
 
-  // Fetch the current deconf data
+  // Fetch the current deconf data,
+  // not currenty used but useful to have around in the .cache for debugging
   const _schedule = await cacheToDisk(
     new URL("deconf.json", appConfig.cache.local),
     options.cache,
@@ -78,7 +82,7 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     () => getPretalxData(event),
   );
 
-  const diff = convertToDeconf(pretalx, appConfig);
+  const diff = await convertToDeconf(pretalx, appConfig);
 
   // Output the diff file
   if (options.dryRun === "client") {
@@ -94,6 +98,7 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
   console.log(JSON.stringify(output));
 }
 
+/** Get all relevant information out of Pretalx */
 export async function getPretalxData(event: PretalxEventClient) {
   const rooms = await event.listRooms(); // -> tracks
   const slots = await event.listSlots(); // -> add to sessions
@@ -123,10 +128,10 @@ interface Taxonomies {
 }
 
 /** Convert pretalx data into a staged Deconf schedule */
-function convertToDeconf(
+async function convertToDeconf(
   input: PretalxData,
   appConfig: AppConfig,
-): StagedDeconfData {
+): Promise<StagedDeconfData> {
   const data: StagedDeconfData = {
     labels: [],
     people: [],
@@ -135,6 +140,7 @@ function convertToDeconf(
     sessionPeople: [],
     sessions: [],
     taxonomies: [],
+    assets: [],
   };
 
   const publicTags = new Set(
@@ -151,6 +157,7 @@ function convertToDeconf(
     enhancements: appConfig.enhancements,
   };
 
+  // Create the static taxonomies so they can be referenced later
   const taxonomies: Taxonomies = {
     themes: {
       id: "legacy/themes",
@@ -172,9 +179,10 @@ function convertToDeconf(
     },
   };
 
+  // Also add the taxonomies into the staged data
   data.taxonomies.push(...Object.values(taxonomies));
 
-  // Rooms -> "track" labels
+  // Pretalx Rooms -> Deconf "track" labels
   for (const room of input.rooms) {
     upsertLabel(ctx, {
       id: `room/${room.guid ?? room.id}`,
@@ -183,7 +191,7 @@ function convertToDeconf(
     });
   }
 
-  // Types -> "type" labels
+  // Pretalx Types -> Deconf "type" labels
   for (const type of input.types) {
     upsertLabel(ctx, {
       id: `type/${type.id}`,
@@ -192,7 +200,7 @@ function convertToDeconf(
     });
   }
 
-  // Tracks -> "themes" labels
+  // Pretalx Tracks -> Deconf "themes" labels
   for (const track of input.tracks) {
     upsertLabel(ctx, {
       id: `theme/${track.id}`,
@@ -202,9 +210,9 @@ function convertToDeconf(
     });
   }
 
-  // speakers -> people
+  // Pretalx Speakers -> Deconf People + assets
   for (const speaker of input.speakers) {
-    upsertPerson(ctx, speaker);
+    await upsertPerson(ctx, speaker);
   }
 
   const slots = new Map(input.slots.map((s) => [s.id, s]));
@@ -280,12 +288,27 @@ function upsertLabel(ctx: ConvertContext, init: LabelInit) {
   });
 }
 
-function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
+async function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
   const id = `pretalx/speaker/${speaker.code}`;
+
+  let avatarId: string | null = null;
+
+  if (speaker.avatar_url) {
+    avatarId = `pretalx/avatar:${await sha1Hash(speaker.avatar_url)}`;
+
+    ctx.data.assets.push({
+      id: avatarId,
+      title: { en: `Headshot of ${speaker.name}` },
+      url: speaker.avatar_url,
+      metadata: {
+        ref: avatarId,
+      },
+    });
+  }
 
   ctx.data.people.push({
     id,
-    avatar_id: null, // TODO: ...
+    avatar_id: avatarId,
     bio: { en: speaker.biography ?? "" },
     name: speaker.name,
     subtitle: "", // TODO: pull from a Q
