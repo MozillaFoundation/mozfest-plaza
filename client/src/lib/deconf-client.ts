@@ -55,6 +55,7 @@ export class DeconfClient {
       body: JSON.stringify({
         emailAddress,
         redirectUri: new URL('login', env.SELF_URL),
+        conferenceId: env.DECONF_CONFERENCE,
       }),
       headers: {
         'Content-Type': 'application/json',
