@@ -1,7 +1,8 @@
 <template>
   <section v-if="scriptLoaded" class="titoWidget block">
     <tito-widget
-      event="mozilla/mozfest-house-zambia"
+      event="giantcookie-mozfest/mozilla-festival-2025"
+      source="scheduleapp"
       :locale="$i18n.locale"
       v-pre
     ></tito-widget>

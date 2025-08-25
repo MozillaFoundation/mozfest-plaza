@@ -1,1 +1,3 @@
-Welcome to MozFest House Zambia Installations Page. Here you will find information on all the art and installations that will be on display at the festival. Navigate these experiences at any time as it fits into your schedule.
+Welcome to the Mozilla Festival Installations page. Explore the art and interactive installations that bring this year’s theme, Unlearning, to life.
+
+You can visit these experiences anytime and weave them into your festival journey at your own pace.

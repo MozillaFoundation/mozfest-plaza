@@ -1,14 +1,18 @@
-# Secure your ticket to MozFest House Zambia
+# Secure your badge to Mozilla Festival
 
-## Community Tickets - Free
+## Community Badge (€45)
 
-Join MozFest House Zambia with free access to the range of sessions, workshops, and interactive experiences available over the two days. You'll engage in meaningful conversations, collaborate with others, and ignite creativity as we work together to achieve Trustworthy AI in Africa.
+Get your all access pass to Mozilla Festival in Barcelona, November 7–9, 2025. This badge gives you full access to main stage debates, hands on sessions, labs, hackathons, and interactive exhibits with a global community creating a more trustworthy internet.  
 
-The Community Ticket includes:
-- Full access to MozFest House Zambia from November 20-21, 2024
-- Return local transport between Lusaka city center and the event venue
-- Lunch and refreshments provided throughout both days
+Interested in going further? The **Benefactor Badge (€399)** helps support community pricing and gives you early access along with meaningful ways to connect throughout the festival.
 
-**[Register for tickets on our website:](https://www.mozillafestival.org/tickets)**
+%tito%
+
+## Group Rates
+
+Mozilla Festival sparks bigger ideas when you experience it with others. That’s why we offer discounted group rates—for teams, classrooms, collectives, and friends—so you can explore and build together.
+
+Email the MozFest team for group rate bookings: **festival@mozillafoundation.org**
+
 
 All information provided during ticket purchases will be handled in accordance with the [MozFest Event Privacy Policy](https://www.mozillafestival.org/event-privacy-policy).
