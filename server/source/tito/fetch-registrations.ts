@@ -1,22 +1,21 @@
-import os from "node:os";
 import { Buffer } from "node:buffer";
+import os from "node:os";
 
 import { useAppConfig } from "../config.ts";
-import { MOZ_STUB, useStore } from "../lib/globals.ts";
-import { Semaphore } from "../lib/semaphore.ts";
 import {
   cacheToDisk,
   createDebug,
   getDeconfClient,
   MissingConfig,
-} from "../lib/utilities.ts";
-import { TitoEventV3Client, TitoTicket } from "./tito-client.ts";
-import {
-  StagedAsset,
+  MOZ_STUB,
+  Semaphore,
+  sha1Hash,
   StagedRegistration,
   StagedTitoData,
   StagedUser,
-} from "../lib/types.ts";
+  useStore,
+} from "../lib/mod.ts";
+import { TitoEventV3Client, TitoTicket } from "./tito-client.ts";
 
 const debug = createDebug("fetch-registrations");
 
@@ -28,10 +27,12 @@ export interface FetchRegistrationsOptions {
 export async function fetchRegistrations(options: FetchRegistrationsOptions) {
   debug("start cache=%o dryRun=%o", options.cache, options.dryRun);
 
+  // Load dependencies
   const appConfig = useAppConfig();
   await using _store = useStore();
   const semaphore = Semaphore.use();
 
+  // Ensure the environment is set up correctly
   if (appConfig.tito.apiToken === MOZ_STUB) {
     throw new MissingConfig("tito.apiToken");
   }
@@ -39,6 +40,7 @@ export async function fetchRegistrations(options: FetchRegistrationsOptions) {
     throw new MissingConfig("deconf.apiToken");
   }
 
+  // Aquire a lock so that only one instance of this job can run exclusively
   await using _lock = await semaphore.aquire({
     name: "fetch_registrations",
     hostname: os.hostname(),
@@ -85,24 +87,6 @@ function trimEmail(input: string) {
   return input.toLowerCase().trim();
 }
 
-async function hashEmail(input: string) {
-  const data = await crypto.subtle.digest(
-    "SHA-1",
-    new TextEncoder().encode(input),
-  );
-  // NOTE: I'd prefer this be web-standards based
-  // i.e. Uint8Array.prototype.toBase64 when it is supported
-  return Buffer.from(data).toString("base64");
-}
-
-async function jsonHash(input: any) {
-  const data = await crypto.subtle.digest(
-    "SHA-1",
-    new TextEncoder().encode(JSON.stringify(input)),
-  );
-  return Buffer.from(data).toString("base64");
-}
-
 export type _MinimalTitoTicket = Pick<
   TitoTicket,
   "email" | "consented_at" | "name"
@@ -119,13 +103,14 @@ export async function _convertTitoToDeconf(
   const diff = {
     users: [] as StagedUser[],
     registrations: [] as StagedRegistration[],
-    // assets: [] as StagedAsset[],
   };
 
+  // Convert each ticket into a user and registration
+  // ignore duplicate tickets for the same email address
   for (const ticket of tickets) {
     if (!ticket.email) continue;
     const email = trimEmail(ticket.email);
-    const emailHash = await hashEmail(email);
+    const emailHash = await sha1Hash(email);
 
     if (visited.has(email)) continue;
     visited.add(email);

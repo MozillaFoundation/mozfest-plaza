@@ -1,12 +1,13 @@
 # mozfest-server
 
-This is the server-side component of the Plaza.
+This is the server-side component of the Plaza, it is a satellite container to a
+[Deconf](https://github.com/digitalinteraction/deconf) API Server.
+
+It contains a couple of public endpoints and some "job" commands that interact with services and the Deconf API server.
 
 ## development
 
 ### setup
-
-> First make sure you have the [root setup](../README.md#setup)
 
 ```bash
 # cd to/this/folder
@@ -15,9 +16,8 @@ npm install
 
 # Run the docker stack
 # -> Stop with "docker-compose down"
-# -> Runs redis on localhost:6379 with persistence
-# -> Runs postgres on localhost:5432 with persistence
-#    (username: user, password: secret, database: user)
+# -> Runs a Repo API Service to serve the files within content/
+#   - more info: https://github.com/robb-j/repo-api-service
 docker-compose up -d
 ```
 
@@ -27,9 +27,7 @@ docker-compose up -d
 # cd to/this/folder
 
 # Run the development server
-# -> Runs on localhost:3000
-# -> Runs database migrations on start up
-# -> Fetchs content from ../content on startup
+# -> Runs on localhost:3001
 npm run start
 
 # Run the CLI

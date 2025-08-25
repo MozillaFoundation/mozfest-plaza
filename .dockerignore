@@ -1,0 +1,34 @@
+#
+# Files to ignore from git source control
+# NOTE: this has to be top-level because that is how the images are built
+#
+
+# Top-level stuff
+node_modules
+*.env
+.nova
+.vscode
+.git
+.github
+.husky
+docker-compose.yml
+
+# client stuff
+client/node_modules
+client/coverage
+client/public/schedule
+client/dist
+client/*.env
+
+# server stuff
+server/node_modules
+server/coverage
+server/*.env
+server/dist
+server/bundle
+server/.cache
+server/**/*.spec.ts
+server/config.json
+
+# ignore content
+content

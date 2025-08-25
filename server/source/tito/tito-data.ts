@@ -6,6 +6,7 @@ function dump(data: any) {
   console.log(JSON.stringify(data, null, 2));
 }
 
+// A command to fetch and output specific information from TiTo
 export async function titoData(arg: string) {
   const appConfig = useAppConfig();
 

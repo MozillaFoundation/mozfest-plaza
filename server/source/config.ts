@@ -64,7 +64,7 @@ const struct = config.object({
       fallback: MOZ_STUB,
     }),
 
-    // TODO: IDEA - deconf provides a JWKS endpoint that JWTs are signed with,
+    // TODO: IDEA - deconf coudld provide a JWKS endpoint that JWTs are signed with,
     //              this server can use the public key to verify authenticity and trust requests to assert admins
     // jwksEndpoint: config.url({
     //   variable: "AUTH_JWKS_ENDPOINT",
@@ -170,11 +170,13 @@ export async function loadConfiguration(path: string | URL) {
   return value;
 }
 
+// Output configuration, if non-interactive just output config i.e. if piped to a file
 export function dumpConfiguration() {
   if (process.stdout.isTTY) console.log(config.getUsage(struct, _appConfig));
   else console.log(JSON.stringify(_appConfig));
 }
 
+// Internal configuration to keep the "loader" below synchronous
 export const _appConfig = await loadConfiguration(
   new URL("../config.json", import.meta.url),
 );

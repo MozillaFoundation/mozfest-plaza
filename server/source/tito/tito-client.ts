@@ -97,26 +97,36 @@ export class TitoEventV3Client {
   // Internal
   //
 
+  // Log messages to the debugger, if it was set up
   debug(...args: any[]) {
     this.#options.debug?.(...args);
   }
 
+  // Create a URL against the internal TiTo URL
   endpoint(input: string): URL {
     return new URL(input, this.#url);
   }
 
+  // Perform a fetch against TiTo
   fetch(input: URL | string | Request, init: RequestInit = {}) {
+    // Convert raw strings, i.e. pathnames, to endpoints
     if (typeof input === "string") input = this.endpoint(input);
+
+    // Construct the HTTP request
     const request = new Request(input, init);
+
+    // If the API Token is set, add it as a header to the request
     if (this.#options.apiToken) {
       request.headers.set(
         "Authorization",
         `Token token=${this.#options.apiToken}`,
       );
     }
+
     return fetch(request);
   }
 
+  /** Enumerate all pages of a URL, collecting all results into a single array */
   async paginate<T>(url: URL, key: string): Promise<T[]> {
     this.debug("paginate url=%o", url.toString());
     const res = await this.fetch(url);
@@ -132,6 +142,11 @@ export class TitoEventV3Client {
     return items;
   }
 
+  /**
+   * Perform successive requests against the TiTo API, yielding each result.
+   * It will continue making requests while the pagination options are set,
+   * each array of results are yielded so it can be stopped outside too.
+   */
   async *iterate<T>(res: Response, key: string): AsyncIterable<T[]> {
     this.debug("iterate status=%o page=%o", res.status, 1);
 
