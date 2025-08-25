@@ -18,6 +18,6 @@ EXPOSE 3000
 ENV NODE_ENV=production
 RUN npm ci && npm cache clean --force
 # COPY --chown=node ["res", "/app/res"]
-COPY --from=builder --chown=node ["/app/bundle/source", "/app/bundle"]
-ENTRYPOINT [ "node", "bundle/main.js" ]
+COPY --from=builder --chown=node ["/app/bundle/source", "/app/source"]
+ENTRYPOINT [ "node", "source/main.js" ]
 CMD ["serve"]
