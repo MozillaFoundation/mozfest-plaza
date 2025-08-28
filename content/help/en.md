@@ -18,7 +18,7 @@ You can reach the venue easily by public transport. Take the L1 or L3 metro to *
 
 <details>
 <summary><strong>Visa and Invitation Letter</strong></summary>
-If you need a letter of invitation for your visa application, you can request one once your badge is confirmed. Submit your booking code through the [invitation letter request form](/visa-invitation-form).
+If you need a letter of invitation for your visa application, you can request one once your badge is confirmed. Submit your booking code through the [invitation letter request form](https://mzl.la/mozfest-letter).
 </details>
 
 <details>
@@ -43,7 +43,7 @@ Keynotes, debates, and other public festival sessions may be recorded. If you wo
 <summary><strong>Community Guidelines</strong></summary>
 Mozilla Festival is a space for connecting, creating, and learning together. Please treat everyone with respect, welcome diverse perspectives, and help us maintain an inclusive environment. Harassment of any kind is not tolerated.  
 
-Read the full [Mozilla Festival Community Guidelines](/community-guidelines).
+Read the full [Mozilla Festival Community Guidelines](https://www.mozillafestival.org/guidelines/).
 </details>
 
 <details>
