@@ -21,8 +21,8 @@
     "visible": false
   },
   "arts": {
-    "enabled": true,
-    "visible": true
+    "enabled": false,
+    "visible": false
   },
   "lightningTalks": {
     "enabled": false,
@@ -61,6 +61,14 @@
     "visible": true
   },
   "maps": {
+    "enabled": false,
+    "visible": false
+  },
+  "installations": {
+    "enabled": false,
+    "visible": false
+  },
+  "ventures": {
     "enabled": false,
     "visible": false
   },

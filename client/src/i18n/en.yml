@@ -301,6 +301,8 @@ mozfest:
     # calendar: My Calendar
     mySchedule: My Schedule
     admin: Admin
+    installations: Installations
+    ventures: Ventures
 
   whatsOn:
     title: Sneak Peek
@@ -345,6 +347,8 @@ mozfest:
     emergentSessions: Emergent Sessions
     mySchedule: My Schedule
     search: Search
+    installations: Installations
+    ventures: Ventures
 
   mySchedule:
     title: My Schedule

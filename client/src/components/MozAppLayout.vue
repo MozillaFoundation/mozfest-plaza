@@ -105,10 +105,16 @@ export default defineComponent({
           pageFlag: this.settings.mySchedule,
         },
         {
-          title: this.$t('mozfest.appLayout.arts') as string,
-          name: ExtraRoutes.Arts,
+          title: this.$t('mozfest.appLayout.installations') as string,
+          name: ExtraRoutes.Installations,
           icon: ArtsIcon,
-          pageFlag: this.settings.arts,
+          pageFlag: this.settings.installations,
+        },
+        {
+          title: this.$t('mozfest.appLayout.ventures') as string,
+          name: ExtraRoutes.Ventures,
+          icon: ArtsIcon,
+          pageFlag: this.settings.ventures,
         },
         {
           title: this.$t('mozfest.appLayout.search') as string,

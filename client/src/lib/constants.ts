@@ -38,6 +38,8 @@ export enum ExtraRoutes {
   Admin = 'Admin',
   AdminSchedule = 'AdminSchedule',
   AdminMessaging = 'AdminMessaging',
+  Installations = 'Installations',
+  Ventures = 'Ventures',
 }
 
 export const themeAllowlist = new Set([])
@@ -89,6 +91,16 @@ export type GridOptions = {
 
 export type ContentOptions = {
   contentSlug: string
+}
+
+export type CollageOptions = {
+  filter: string
+  // tile: {
+  //   header: string[]
+  //   attributes: string[]
+  //   actions: string[]
+  // }
+  controls: string[]
 }
 
 export type AtriumWidgetInit<Kind, Options> = {

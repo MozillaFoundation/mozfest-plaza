@@ -205,5 +205,29 @@
     "options": {
       "contentSlug": "help"
     }
+  },
+  "installations": {
+    "path": "/installations",
+    "name": "installations",
+    "kind": "collage",
+    "title": {
+      "en": "Installations"
+    },
+    "options": {
+      "filter": "types=64",
+      "controls": ["query", "language", "theme"]
+    }
+  },
+  "ventures": {
+    "path": "/ventures",
+    "name": "ventures",
+    "kind": "collage",
+    "title": {
+      "en": "Ventures"
+    },
+    "options": {
+      "filter": "types=65",
+      "controls": ["query", "language", "theme"]
+    }
   }
 }

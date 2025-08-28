@@ -183,6 +183,22 @@ const routes: RouteRecordRaw[] = [
       pageTitle: 'mozfest.pageTitles.search',
     },
   },
+  {
+    path: '/installations',
+    name: ExtraRoutes.Installations,
+    component: () => import('../views/InstallationsView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.installations',
+    },
+  },
+  {
+    path: '/ventures',
+    name: ExtraRoutes.Ventures,
+    component: () => import('../views/VenturesView.vue'),
+    meta: {
+      pageTitle: 'mozfest.pageTitles.ventures',
+    },
+  },
 
   //
   // Admin
