@@ -346,8 +346,8 @@ async function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
     id,
     avatar_id: avatarId,
     bio: { en: speaker.biography ?? "" },
-    name: speaker.name,
-    subtitle: subtitle ? subtitle.answer : "",
+    name: truncate(speaker.name, 128),
+    subtitle: truncate(subtitle ? subtitle.answer : "", 128),
     metadata: {
       ref: id,
     },
@@ -379,6 +379,10 @@ function lookupAnswer(
     }
   }
   return undefined;
+}
+
+function truncate(input: string, length: number) {
+  return input.length > length ? input.slice(0, length - 1) + "…" : input;
 }
 
 function convertState(input: PretalxSubmission["state"]) {
