@@ -3,6 +3,11 @@
 //
 .sideTabs {
   overflow-y: auto;
+  margin-top: -24px;
+}
+.sideTabs-tab {
+  margin: 0;
+  padding: 12px 0;
 }
 
 .addToCalendar {
@@ -93,4 +98,11 @@
 
 .scheduleHeader-title {
   color: $black;
+}
+
+.button.is-primary {
+  color: $black;
+}
+.button.is-primary.is-light {
+  color: #06546e;
 }

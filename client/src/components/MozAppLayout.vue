@@ -16,9 +16,9 @@
     </template>
 
     <template v-slot:brandC>
-      <router-link :to="atriumRoute">
+      <!-- <router-link :to="atriumRoute">
         <MozfestSquareLogo />
-      </router-link>
+      </router-link> -->
     </template>
 
     <template v-slot:main>

@@ -191,9 +191,13 @@ export default defineComponent({
     }
   }
   .colorWidget.is-book {
-    background-color: $book;
+    color: $black;
+    background-color: $secondary;
     &[href]:hover {
-      background-color: darken($book, 7%);
+      background-color: darken($secondary, 7%);
+    }
+    * {
+      color: $black;
     }
   }
   .colorWidget.is-discord {

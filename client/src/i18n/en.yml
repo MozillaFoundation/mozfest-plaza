@@ -108,7 +108,7 @@ deconf:
     profile: My profile
     login: Login
     interpret: Interpret mode
-    register: Register
+    register: Secure Your Badge
     unavailable: ' (Unavailable)'
 
   login:
