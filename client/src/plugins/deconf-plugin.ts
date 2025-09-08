@@ -36,4 +36,14 @@ export class MozFestDeconfPlugin implements DeconfPlugin {
   closeDialog(): void {
     DialogPlugin.shared?.close()
   }
+  renameIcon([groupName, iconName]: string[]): [string, string] {
+    return customIcons[groupName]?.[iconName] ?? [groupName, iconName]
+  }
 }
+
+const customIcons = {
+  fas: {
+    'code-branch': ['fas', 'location-dot'],
+    tags: ['fas', 'shapes'],
+  },
+} as Record<string, undefined | Record<string, [string, string] | undefined>>
