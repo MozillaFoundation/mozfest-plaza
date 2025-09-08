@@ -29,6 +29,13 @@ export async function pretalxData(arg: string) {
   if (arg === "tracks") return dump(await pretalx.listTracks());
   if (arg === "rooms") return dump(await pretalx.listRooms());
   if (arg === "slots") return dump(await pretalx.listSlots());
+  if (arg === "answers") {
+    return dump({
+      speakerSubtitle: await pretalx.listAnswers(
+        appConfig.pretalx.questions.speakerSubtitle,
+      ),
+    });
+  }
 
   throw new Error("unknown command");
 }

@@ -15,6 +15,7 @@ import {
   useStore,
 } from "../lib/mod.ts";
 import {
+  PretalxAnswer,
   PretalxEventClient,
   PretalxSlot,
   PretalxSpeaker,
@@ -79,7 +80,7 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
   const pretalx = await cacheToDisk(
     new URL("pretalx.json", appConfig.cache.local),
     options.cache,
-    () => getPretalxData(event),
+    () => getPretalxData(event, appConfig),
   );
 
   const diff = await convertToDeconf(pretalx, appConfig);
@@ -99,16 +100,24 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
 }
 
 /** Get all relevant information out of Pretalx */
-export async function getPretalxData(event: PretalxEventClient) {
-  const rooms = await event.listRooms(); // -> tracks
-  const slots = await event.listSlots(); // -> add to sessions
-  const speakers = await event.listSpeakers(); // -> people
-  const types = await event.listSubmissionTypes(); // -> types
-  const tags = await event.listTags(); // -> not used
-  const tracks = await event.listTracks(); // -> themes
-  const submissions = await event.listSubmissions(); // -> sessions
+export async function getPretalxData(
+  event: PretalxEventClient,
+  appConfig: AppConfig,
+) {
+  const questions = [appConfig.pretalx.questions.speakerSubtitle];
 
-  return { rooms, slots, speakers, types, tags, tracks, submissions };
+  const rooms = await event.listRooms();
+  const slots = await event.listSlots();
+  const speakers = await event.listSpeakers();
+  const types = await event.listSubmissionTypes();
+  const tags = await event.listTags();
+  const tracks = await event.listTracks();
+  const submissions = await event.listSubmissions();
+  const answers = (
+    await Promise.all(questions.map((q) => event.listAnswers(q)))
+  ).flat();
+
+  return { rooms, slots, speakers, types, tags, tracks, submissions, answers };
 }
 
 type PretalxData = Awaited<ReturnType<typeof getPretalxData>>;
@@ -119,6 +128,8 @@ interface ConvertContext {
   data: StagedDeconfData;
   publicTags: Set<number>;
   enhancements: any;
+  questions: AppConfig["pretalx"]["questions"];
+  answers: Map<number, Map<number, PretalxAnswer>>;
 }
 
 interface Taxonomies {
@@ -150,11 +161,30 @@ async function convertToDeconf(
       .filter((v) => !Number.isNaN(v)),
   );
 
+  // The ids of questions we want to lookup the answers to
+  const questions = [appConfig.pretalx.questions.speakerSubtitle];
+
+  // This isn't ideal,
+  // it creates a map of question id to a map of answers keyed by their own id
+  // it means you can quickly get all the answers to a question and look up specific ones
+  const answers = new Map(
+    questions.map((question) => [
+      question,
+      new Map(
+        input.answers
+          .filter((a) => a.question === question)
+          .map((a) => [a.id, a]),
+      ),
+    ]),
+  );
+
   const ctx: ConvertContext = {
     id: () => `fake://${crypto.randomUUID()}`,
     data,
     publicTags,
+    questions: appConfig.pretalx.questions,
     enhancements: appConfig.enhancements,
+    answers,
   };
 
   // Create the static taxonomies so they can be referenced later
@@ -306,16 +336,49 @@ async function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
     });
   }
 
+  const subtitle = lookupAnswer(
+    ctx.answers,
+    ctx.questions.speakerSubtitle,
+    speaker.answers,
+  );
+
   ctx.data.people.push({
     id,
     avatar_id: avatarId,
     bio: { en: speaker.biography ?? "" },
     name: speaker.name,
-    subtitle: "", // TODO: pull from a Q
+    subtitle: subtitle ? subtitle.answer : "",
     metadata: {
       ref: id,
     },
   });
+}
+
+/**
+ * This is a bit backwards, but is the most efficient way with the way the pretalx API is structured.
+ * To avoid adding ?expand=answers to endpoints, we find the intersection of
+ * questions that were answered and answers that the record has.
+ *
+ * The intersection being the answer for a specific question
+ */
+function lookupAnswer(
+  input: Map<number, Map<number, PretalxAnswer>>,
+  question: number,
+  potentials: number[],
+) {
+  // Find all answers to the specific question
+  const answers = input.get(question);
+  if (!answers) return undefined;
+
+  // Loop through all "answered" questions
+  // If a a record is found it is for the correct question
+  for (const id of potentials) {
+    const record = answers.get(id);
+    if (record && record.question === question) {
+      return record;
+    }
+  }
+  return undefined;
 }
 
 function convertState(input: PretalxSubmission["state"]) {

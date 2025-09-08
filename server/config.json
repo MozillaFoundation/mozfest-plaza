@@ -4,7 +4,10 @@
   },
   "pretalx": {
     "event": "mozilla-festival-2025",
-    "publicTags": "1698"
+    "publicTags": "1698",
+    "questions": {
+      "speakerSubtitle": "5191"
+    }
   },
   "enhancements": {
     "pretalx/type/5843": {
@@ -30,7 +33,22 @@
     },
 
     "pretalx/theme/5729": {
-      "preview_image": "https://mozfest.r0b.tech/themes/1-building-unified-futures.jpg"
+      "preview_image": "https://assets.mofoprod.net/network/images/mozfest-human-centered-internet.2e16d0ba.fill-700x394_poxOirC.jpg"
+    },
+    "pretalx/theme/5730": {
+      "preview_image": "https://assets.mofoprod.net/network/images/48997821868_1bb03c3222_k.2e16d0ba.fill-700x394_K6dqJRU.jpg"
+    },
+    "pretalx/theme/5731": {
+      "preview_image": "https://assets.mofoprod.net/network/images/30726058647_d9b11f33b8_k.2e16d0ba.fill-700x394_WBduTYG.jpg"
+    },
+    "pretalx/theme/5732": {
+      "preview_image": "https://assets.mofoprod.net/network/images/53018880117_5c239f30e7_k_I7lyV8x.2e16d0ba.fill-700x394_wQqJS9P.jpg"
+    },
+    "pretalx/theme/5733": {
+      "preview_image": "https://assets.mofoprod.net/network/images/22436855777_63b9237cab_k.2e16d0ba.fill-700x394_5L2wiYj.jpg"
+    },
+    "pretalx/theme/5734": {
+      "preview_image": "https://assets.mofoprod.net/network/images/48998362896_0804fd5a30_k.35fb5714.fill-700x394_JTOkR3H.jpg"
     }
   }
 }

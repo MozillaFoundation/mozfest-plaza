@@ -270,6 +270,12 @@ export class PretalxEventClient {
     return this.paginate<PretalxSpeaker>(url);
   }
 
+  async listAnswers(question: number) {
+    const url = this.endpoint(`answers`);
+    url.searchParams.set("question", question.toString());
+    return this.paginate<PretalxAnswer>(url);
+  }
+
   // https://docs.pretalx.org/api/resources/#tag/tags/operation/tags_list
   async listTags() {
     const url = this.endpoint(`tags`);

@@ -48,6 +48,9 @@ const struct = config.object({
       variable: "PRETALX_PUBLIC_TAGS",
       fallback: "",
     }),
+    questions: config.object({
+      speakerSubtitle: config.number({ fallback: -1 }),
+    }),
   }),
 
   deconf: config.object({
