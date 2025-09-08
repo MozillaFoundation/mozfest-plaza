@@ -1,19 +1,20 @@
 <template>
-  <MozAppLayout>
-    <GridTemplate :config="config" />
+  <MozAppLayout v-if="config">
+    <CollageTemplate :config="config" />
   </MozAppLayout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 import MozAppLayout from '@/components/MozAppLayout.vue'
-import GridTemplate from '@/templates/GridTemplate.vue'
-import { getPageConfig, type GridOptions } from '@/lib/module.js'
+import CollageTemplate from '@/templates/CollageTemplate.vue'
+import { getPageConfig, type CollageOptions } from '@/lib/module.js'
 
 export default defineComponent({
-  components: { GridTemplate, MozAppLayout },
+  components: { CollageTemplate, MozAppLayout },
   data: () => ({
-    config: getPageConfig<GridOptions>('arts'),
+    config: getPageConfig<CollageOptions>('arts'),
   }),
 })
 </script>

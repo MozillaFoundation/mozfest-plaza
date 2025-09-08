@@ -87,55 +87,49 @@ export default defineComponent({
       // TODO: migrate this toward @/data/pages.json
       const routes: RouteIntermediate[] = [
         {
-          title: this.$t('mozfest.appLayout.atrium') as string,
+          title: this.pageTitle('plaza'),
           name: Routes.Atrium,
           icon: PlazaIcon,
           pageFlag: this.settings.atrium,
         },
         {
-          title: this.$t('mozfest.appLayout.schedule') as string,
+          title: this.pageTitle('schedule'),
           name: Routes.Schedule,
           icon: ScheduleIcon,
           pageFlag: this.settings.schedule,
         },
         {
-          title: this.$t('mozfest.appLayout.mySchedule') as string,
+          title: this.$t('mozfest.mySchedule.title') as string,
           name: ExtraRoutes.MySchedule,
           icon: MyScheduleIcon,
           pageFlag: this.settings.mySchedule,
         },
         {
-          title: this.$t('mozfest.appLayout.installations') as string,
-          name: ExtraRoutes.Installations,
+          title: this.pageTitle('arts'),
+          name: pages.arts.name,
           icon: ArtsIcon,
-          pageFlag: this.settings.installations,
+          pageFlag: this.settings.arts,
         },
         {
-          title: this.$t('mozfest.appLayout.ventures') as string,
-          name: ExtraRoutes.Ventures,
+          title: this.pageTitle('expo'),
+          name: pages.expo.name,
           icon: ArtsIcon,
-          pageFlag: this.settings.ventures,
+          pageFlag: this.settings.expo,
         },
         {
-          title: this.$t('mozfest.appLayout.search') as string,
+          title: this.$t('mozfest.searchView.title') as string,
           name: ExtraRoutes.Search,
           icon: SearchIcon,
           pageFlag: this.settings.search,
         },
         {
-          title: localiseFromObject(
-            this.$i18n.locale,
-            pages.maps.title
-          ) as string,
+          title: this.pageTitle('maps'),
           name: pages.maps.name,
           icon: MapsIcon,
           pageFlag: this.settings.maps,
         },
         {
-          title: localiseFromObject(
-            this.$i18n.locale,
-            pages.helpDesk.title
-          ) as string,
+          title: this.pageTitle('helpDesk'),
           name: Routes.HelpDesk,
           icon: HelpDeskIcon,
           pageFlag: this.settings.helpDesk,
@@ -153,6 +147,11 @@ export default defineComponent({
     },
     atriumRoute(): RouteLocationRaw {
       return { name: Routes.Atrium }
+    },
+  },
+  methods: {
+    pageTitle(name: string) {
+      return localiseFromObject(this.$i18n.locale, pages[name].title) as string
     },
   },
 })

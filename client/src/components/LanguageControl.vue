@@ -1,5 +1,5 @@
 <template>
-  <div class="select is-small languageControl">
+  <div class="select is-small languageControl" v-if="hasOptions">
     <select name="languageControl" :value="$i18n.locale" @change="onChange">
       <option
         v-for="option in options"
@@ -31,6 +31,11 @@ export default defineComponent({
         (l) => !hiddenLanguages.has(l.value as string)
       ),
     }
+  },
+  computed: {
+    hasOptions(): boolean {
+      return this.options.length > 1
+    },
   },
   methods: {
     onChange(event: Event) {

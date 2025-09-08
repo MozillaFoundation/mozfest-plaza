@@ -13,12 +13,12 @@
 import { defineComponent } from 'vue'
 import { loadScript } from '@/lib/module'
 
-interface Data {
+export interface _Data {
   scriptLoaded: boolean
 }
 
 export default defineComponent({
-  data(): Data {
+  data(): _Data {
     return { scriptLoaded: false }
   },
   async mounted() {

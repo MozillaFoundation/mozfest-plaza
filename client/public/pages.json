@@ -4,12 +4,13 @@
     "name": "atrium",
     "kind": "atrium",
     "title": {
-      "en": "MozFest House Zambia"
+      "en": "Plaza"
     },
     "options": {
       "hero": {
-        "title": { "en": "MozFest House Zambia" },
-        "subtitle": { "en": "from November 20 - 21 2024" }
+        "title": { "en": "" },
+        "subtitle": { "en": "" },
+        "image": { "en": "/plaza-hero.webp" }
       },
       "widgets": [
         {
@@ -75,7 +76,7 @@
             "subtitle": {
               "en": "Add yourself to MozFest's LinkedIn Event to let others know you'll be attending."
             },
-            "url": "https://www.linkedin.com/events/7241748022966063105/",
+            "url": "https://mzl.la/plaza-linkedin",
             "icon": "fab linkedin"
           }
         },
@@ -120,24 +121,6 @@
         "isRecorded",
         "theme"
       ]
-    }
-  },
-  "arts": {
-    "path": "/art-and-media",
-    "name": "arts",
-    "kind": "grid",
-    "title": {
-      "en": "Art & Media",
-      "es": "Arte y Medios"
-    },
-    "options": {
-      "filter": "types=64",
-      "tile": {
-        "header": ["track"],
-        "attributes": ["themes"]
-      },
-      "controls": ["query", "track", "language", "theme"],
-      "readonly": false
     }
   },
   "whatsOn": {
@@ -206,7 +189,7 @@
       "contentSlug": "help"
     }
   },
-  "installations": {
+  "arts": {
     "path": "/installations",
     "name": "installations",
     "kind": "collage",
@@ -218,12 +201,12 @@
       "controls": ["query", "language", "theme"]
     }
   },
-  "ventures": {
-    "path": "/ventures",
-    "name": "ventures",
+  "expo": {
+    "path": "/expo",
+    "name": "expo",
     "kind": "collage",
     "title": {
-      "en": "Ventures"
+      "en": "Expo"
     },
     "options": {
       "filter": "types=65",

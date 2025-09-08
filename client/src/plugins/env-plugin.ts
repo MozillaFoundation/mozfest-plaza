@@ -7,6 +7,8 @@ export interface EnvRecord {
   readonly SERVER_URL: URL
   readonly BUILD_NAME: string | null
   readonly GA_TOKEN: string | null
+  readonly CONSENT_ID: string | null
+  readonly CONSENT_URL: string
   readonly JWT_ISSUER: string | null
   readonly DISABLE_SOCKETS: boolean
   readonly STATIC_BUILD: boolean
@@ -26,6 +28,8 @@ const {
   SERVER_URL = 'http://localhost:3000/',
   BUILD_NAME = null,
   GA_TOKEN = null,
+  CONSENT_ID = null,
+  CONSENT_URL = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js',
   JWT_ISSUER = 'deconf-app',
   DISABLE_SOCKETS = false,
   STATIC_BUILD = false,
@@ -40,6 +44,8 @@ export const env = Object.seal<EnvRecord>({
   SERVER_URL: new URL(SERVER_URL),
   BUILD_NAME,
   GA_TOKEN,
+  CONSENT_ID,
+  CONSENT_URL,
   JWT_ISSUER,
   DISABLE_SOCKETS: Boolean(DISABLE_SOCKETS),
   STATIC_BUILD: Boolean(STATIC_BUILD),

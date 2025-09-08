@@ -18,7 +18,7 @@ deconf:
     hideWorkshops: Hide all
 
   general:
-    appName: MozFest 2024 Schedule
+    appName: MozFest Schedule
     days: days | day | days
     hours: hours | hour | hours
     minutes: minutes | minute | minutes
@@ -119,9 +119,9 @@ deconf:
       help: The email you registered with on ti.to
     badEmail: We don't recognise that email address or something went wrong
     doneText: Login code sent
-    submitButton: Request magic link
-    registerLabel: Not registered yet?
-    registerAction: Register here
+    submitButton: Login
+    registerLabel: Still need to get your badge?
+    registerAction: Register now to secure your spot
 
   profile:
     title: My Profile
@@ -202,159 +202,39 @@ mozfest:
     backToAtrium: Back to Plaza
     'yes': 'Yes'
     'no': 'No'
-    registerUrl: https://www.mozillafestival.org/en/tickets/
-    helpDeskUrl: https://www.mozillafestival.org/helpdesk
     loading: Loading...
     noResults: We couldn't find any sessions matching that
-
-  atrium:
-    bookSubtitle: Discover our award-winning book, a celebration of our past and future.
-    bookTitle: How To MozFest
-    bookUrl: https://book.mozillafestival.org
-    familySubtitle: On-demand activities for attendees ages 3-12.
-    familyTitle: Family Resources
-    familyUrl: https://www.mozillafestival.org/family-resources
-    heading: MozFest
-    linkedinSubtitle: Add yourself to MozFest's LinkedIn Event to let others know you'll be attending.
-    linkedinTitle: Share on LinkedIn
-    linkedinUrl: https://www.linkedin.com/events/mozfesthouseamsterdam20247183440579597336577/about/
-    logIn: Log in
-    onlineUsers: Online now
-    registerSubtitle: Registration is now available for MozFest.
-    registerTitle: Secure Your Ticket
-    registerUrl: https://www.mozillafestival.org/tickets
-    slackSubtitle: Connect, collaborate, join the conversation on the MozFest slack
-    slackTitle: Slack
-    slackUrl: https://www.mozillafestival.org/slack
-    spacialChatSubtitle: Join the MozFest Common Spaces
-    spacialChatTitle: Common Spaces
-    spacialChatUrl: https://app.spatial.chat/s/mozilla-festival?guest
-    submissionsSubtitle: Interested in Facilitating at MozFest? The call for proposals closes on December 16th.
-    submissionsTitle: Submit Your Session Idea
-    submissionsUrl: https://www.mozillafestival.org/proposals/
-    subtitle: from June 11 - 13 2024.
-    title: MozFest House
-    twitterSubtitle: Share the sessions you're most excited about attending.
-    twitterTitle: 'Tweet #MozFest'
-    twitterUrl: https://twitter.com/hashtag/MozFest
-    calendarHelpSubtitle: Get your MozFest sessions in your own calendar
-    calendarHelpTitle: 'Calendar Sync'
-    calendarHelpUrl: /sync-calendar
-    hubsSubtitle: Explore MozFest on Mozilla Hubs
-    hubsTitle: Mozilla Hubs
-    hubsUrl: https://mozfest.myhubs.net/
-    discordTitle: MozFest on Discord
-    discordSubtitle: Connect, collaborate and join the conversation.
-    discordUrl: https://www.discord.com/invite/mozfest
-    mastodonTitle: 'Toot #MozFest'
-    mastodonSubtitle: Share the sessions you're most excited about attending.
-    mastodonUrl: https://mzl.la/mf-share-mastodon
-    themeHeading: Thematic Focuses
-    theme1:
-      image: /themes/1-building-unified-futures.jpg
-      title: Building Unified Futures
-      content: >
-        Technology, like the planet, belongs to us all. Building Unified Futures is reclaiming technology and thinking about different ways we can shape its future. We'll look at how to make new, meaningful connections, facilitate inclusivity, and work towards trustworthy AI that uplifts those historically shut out of tech. Together we're creating new possibilities and exploring how to build a future with AI that's truly accessible for us all.
-    theme2:
-      image: /themes/2-fair-and-inclusive-ai.jpg
-      title: Fair and Inclusive AI
-      content: >
-        Technology can be fairer, and that's exactly what we're aiming for. We're bringing together people from different backgrounds across Europe to collaborate on AI solutions that are ethical, inclusive, and fair. Our focus is on ensuring transparency in both: the data utilized by AI and its development process. Fair and Inclusive AI will also explore how AI legislation can truly embody transparency and diversity.
-    theme3:
-      image: /themes/3-our-democratic-futures.jpg
-      title: Our Democratic Futures
-      content: >
-        Globally, democracy is under threat, and AI has the potential to make it worse. We have the opportunity to rethink approaches to democracy in the age of AI so that it enhances transparency, fairness, and protects citizen rights. By prioritizing ethical considerations and inclusivity, we can build more engaged, informed, and democratic societies.
-    theme4:
-      image: /themes/4-planetary-justice.jpg
-      title: Planetary Justice
-      content: >
-        We're challenging the conventional understanding of technology and the normative approach to resolving the planetary crises' we experience. Together, we are creating an ecosystem-driven understanding of the interconnectedness between our personal and communal well-being and actions, and an agenda to enact planetary justice in our digital futures.
 
   footer:
     appName: MozFest
     guidelines: Community Guidelines
     guidelinesUrl: https://www.mozillafestival.org/guidelines/
-    privacy: Privacy
-    privacyUrl: https://www.mozilla.org/privacy/websites/
+    privacy: Privacy Notice
+    privacyUrl: https://www.mozillafestival.org/terms/event-privacy-notice/
     terms: Terms & Conditions
     termsUrl: https://www.mozillafestival.org/en/event-terms-and-conditions/
 
   pageTitles:
-    atrium: Plaza
     login: Log in
     profile: My Profile
-    # schedule: Schedule
     session: View Session
-    # spaces: Social
-    # skillShare: Lightning Talks
-    # artGallery: Art & Media
-    terms: Ts & Cs
-    guidelines: Guidelines
-    privacy: Privacy
-    # fringeEvents: Fringe Events
-    whatsOn: Sneak Peek
-    # helpDesk: Help Desk
-    # houseEvents: HouseEvents
-    # misinfoCon: MisinfoCon
-    # emergentSessions: Emergent Sessions
-    # calendar: My Calendar
     mySchedule: My Schedule
     admin: Admin
-    installations: Installations
-    ventures: Ventures
-
-  whatsOn:
-    title: Sneak Peek
+    search: Search
 
   arts:
     title: Art and Media
 
-  fringeEvents:
-    title: Fringe Events
-
-  houseEvents:
-    title: House Events
-    info: ''
-
-  misinfoCon:
-    title: MisinfoCon
-
-  emergent:
-    title: Emergent Sessions
-    takePart: Take Part
-    caption: A sample of sessions that emerged at MozFest 2021
-
-  skillShare:
-    title: Lightning Talks
-
   notFound:
     title: Page Not Found
     info: We can't find the page you're looking for
-
-  appLayout:
-    atrium: Plaza
-    whatsOn: Sneak Peek
-    schedule: Schedule
-    # helpDesk: Help Desk
-    social: Social
-    arts: Arts & Media
-    skillShare: Lightning Talks
-    fringe: Fringe Events
-    house: House Events
-    houseInfo: House Info
-    misinfoCon: MisinfoCon
-    emergentSessions: Emergent Sessions
-    mySchedule: My Schedule
-    search: Search
-    installations: Installations
-    ventures: Ventures
 
   mySchedule:
     title: My Schedule
     noResults: Add some sessions to My Schedule
 
   searchView:
+    title: Search
     search: Search
     noResults: Nothing matched your query
     prompt: Start a search

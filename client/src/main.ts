@@ -18,6 +18,7 @@ import { MetricsPlugin } from './plugins/metrics-plugin'
 import { SocketIoPlugin } from './plugins/socketio-plugin'
 import { ServiceWorkerPlugin } from './plugins/service-worker-plugin'
 import { registerWidgets } from './lib/widgets.js'
+import { ConsentPlugin } from './plugins/consent-plugin.js'
 
 const app = createApp(MozApp)
 
@@ -30,6 +31,7 @@ export function setupApp(app: App<Element>) {
     .use(DevPlugin)
     .use(EnvPlugin)
     .use(FontawesomePlugin)
+    .use(ConsentPlugin)
     .use(MetricsPlugin)
     .use(MozFestDeconfPlugin)
     .use(DialogPlugin)

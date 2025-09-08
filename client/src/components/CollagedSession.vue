@@ -30,7 +30,7 @@ export default defineComponent({
     session: {
       type: Object as PropType<Session>,
       required: true
-    }
+    },
   },
   computed: {
     source(): string {

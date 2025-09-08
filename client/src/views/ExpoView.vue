@@ -14,7 +14,7 @@ import { getPageConfig, type CollageOptions } from '@/lib/module.js'
 export default defineComponent({
   components: { CollageTemplate, MozAppLayout },
   data: () => ({
-    config: getPageConfig<CollageOptions>('installations'),
+    config: getPageConfig<CollageOptions>('expo'),
   }),
 })
 </script>

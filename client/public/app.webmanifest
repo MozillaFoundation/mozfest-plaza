@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest.json",
   "$comment": "https://developer.mozilla.org/en-US/docs/Web/Manifest",
-  "name": "MozFest Plaza",
-  "short_name": "Plaza",
+  "name": "Mozilla Festival Schedule",
+  "short_name": "MozFest",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F4F4F4",
-  "theme_color": "#FF008A",
+  "background_color": "#F9F9F9",
+  "theme_color": "#F06C13",
   "lang": "en",
   "scope": "/",
   "icons": [

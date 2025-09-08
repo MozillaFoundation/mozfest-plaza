@@ -20,10 +20,6 @@
     "enabled": false,
     "visible": false
   },
-  "arts": {
-    "enabled": false,
-    "visible": false
-  },
   "lightningTalks": {
     "enabled": false,
     "visible": false
@@ -64,11 +60,11 @@
     "enabled": false,
     "visible": false
   },
-  "installations": {
+  "arts": {
     "enabled": false,
     "visible": false
   },
-  "ventures": {
+  "expo": {
     "enabled": false,
     "visible": false
   },

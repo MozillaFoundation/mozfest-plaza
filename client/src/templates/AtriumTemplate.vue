@@ -4,12 +4,12 @@
       <HeroCard
         :title="localise(config.options.hero.title)"
         :subtitle="localise(config.options.hero.subtitle)"
-        coverImage="/plaza-hero.webp"
+        :coverImage="localise(config.options.hero.image)"
       />
     </template>
 
     <template v-slot:left>
-      <BoxContent :title="$t('mozfest.atrium.heading')">
+      <BoxContent>
         <div class="atriumView-content">
           <ApiContent :slug="contentSlug" />
         </div>

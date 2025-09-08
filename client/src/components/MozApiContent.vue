@@ -57,37 +57,10 @@
 
     <template v-slot:themes>
       <div class="atriumView-themes">
-        <article class="atriumView-theme">
-          <img
-            :src="$t('mozfest.atrium.theme1.image')"
-            :alt="$t('mozfest.atrium.theme1.title')"
-          />
-          <h3>{{ $t('mozfest.atrium.theme1.title') }}</h3>
-          <p>{{ $t('mozfest.atrium.theme1.content') }}</p>
-        </article>
-        <article class="atriumView-theme">
-          <img
-            :src="$t('mozfest.atrium.theme2.image')"
-            :alt="$t('mozfest.atrium.theme2.title')"
-          />
-          <h3>{{ $t('mozfest.atrium.theme2.title') }}</h3>
-          <p>{{ $t('mozfest.atrium.theme2.content') }}</p>
-        </article>
-        <article class="atriumView-theme">
-          <img
-            :src="$t('mozfest.atrium.theme3.image')"
-            :alt="$t('mozfest.atrium.theme3.title')"
-          />
-          <h3>{{ $t('mozfest.atrium.theme3.title') }}</h3>
-          <p>{{ $t('mozfest.atrium.theme3.content') }}</p>
-        </article>
-        <article class="atriumView-theme">
-          <img
-            :src="$t('mozfest.atrium.theme4.image')"
-            :alt="$t('mozfest.atrium.theme4.title')"
-          />
-          <h3>{{ $t('mozfest.atrium.theme4.title') }}</h3>
-          <p>{{ $t('mozfest.atrium.theme4.content') }}</p>
+        <article class="atriumView-theme" v-for="theme in featuredThemes">
+          <img :src="theme.image" :alt="localise(theme.title)" />
+          <h3>{{ localise(theme.title) }}</h3>
+          <p>{{ localise(theme.description) }}</p>
         </article>
       </div>
     </template>
@@ -114,6 +87,7 @@ import { defineComponent } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   ApiContent,
+  localiseFromObject,
   PrimaryEmbed,
   PrivateCalendarCreator,
   type ScheduleConfig,
@@ -123,7 +97,17 @@ import {
 import TitoWidget from '@/components/TitoWidget.vue'
 import AirtableEmbed from '@/components/AirtableEmbed.vue'
 import { mapApiState } from '@/lib/module'
-import type { Session } from '@openlab/deconf-shared'
+import type { Localized, Session, Theme } from '@openlab/deconf-shared'
+
+export interface _PageTheme {
+  title: Localized
+  description: Localized
+  image: string
+}
+
+export interface _DeconfTheme extends Theme {
+  metadata: any
+}
 
 export default defineComponent({
   components: {
@@ -163,6 +147,23 @@ export default defineComponent({
       return this.settings.content.featuredSessions
         .map((id) => sessions.get(id) as Session)
         .filter((s) => Boolean(s))
+    },
+
+    // a "featured" theme is one that has a preview_image and description set in it's Deconf metadata field
+    featuredThemes(): _PageTheme[] {
+      if (!this.schedule) return []
+      return (this.schedule.themes as _DeconfTheme[])
+        .filter((t) => t.metadata.description && t.metadata.preview_image)
+        .map((t) => ({
+          title: t.title,
+          description: t.metadata.description,
+          image: t.metadata.preview_image,
+        }))
+    },
+  },
+  methods: {
+    localise(input: Localized) {
+      return localiseFromObject(this.$i18n.locale, input) as string
     },
   },
 })

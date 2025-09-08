@@ -18,11 +18,13 @@ import {
   DialogPlugin,
 } from '@openlab/deconf-ui-toolkit'
 import { StoreState } from '@/store/module'
+import type { ConsentPlugin } from './plugins/consent-plugin.js'
 
 declare global {
   interface Window {
     CONFIG?: Record<string, string | undefined>
     dataLayer?: unknown[]
+    OptanonWrapper?: any
   }
 }
 
@@ -45,5 +47,6 @@ declare module 'vue' {
     // $deconf: DeconfPlugin
     $router: VueRouter
     $route: RouteLocationNormalizedLoaded
+    $consent: ConsentPlugin
   }
 }

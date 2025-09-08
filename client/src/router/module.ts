@@ -35,11 +35,11 @@ const routes: RouteRecordRaw[] = [
     redirect: { name: Routes.Atrium },
   },
   {
-    path: '/plaza',
+    path: pages.plaza.path,
     name: Routes.Atrium,
     component: AtriumView,
     meta: {
-      pageTitle: 'mozfest.pageTitles.atrium',
+      title: pages.plaza.title,
     },
   },
   {
@@ -94,7 +94,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/RegisterView.vue'),
     meta: {
       title: pages.register.title,
-      // pageTitle: 'mozfest.pageTitles.register',
     },
   },
   {
@@ -103,7 +102,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/ScheduleView.vue'),
     meta: {
       title: pages.schedule.title,
-      // pageTitle: 'mozfest.pageTitles.schedule',
     },
   },
   {
@@ -115,15 +113,6 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: pages.arts.path,
-    name: ExtraRoutes.Arts,
-    component: () => import('../views/ArtsView.vue'),
-    meta: {
-      title: pages.arts.title,
-      // pageTitle: 'mozfest.pageTitles.artGallery',
-    },
-  },
-  {
     path: pages.maps.path,
     name: pages.maps.name,
     component: () => import('../views/MapsView.vue'),
@@ -131,20 +120,10 @@ const routes: RouteRecordRaw[] = [
       title: pages.maps.title,
     },
   },
-  // {
-  //   path: '/sneak-peek',
-  //   name: Routes.WhatsOn,
-  //   component: () =>
-  //     import( '../views/WhatsOnView.vue'),
-  //   meta: {
-  //     pageTitle: 'mozfest.pageTitles.whatsOn',
-  //   },
-  // },
   {
     path: '/session/:sessionId',
     name: Routes.Session,
     props: true,
-    // This is in the "schedule" chunk because it shares CSS
     component: () => import('../views/SessionView.vue'),
     meta: {
       pageTitle: 'mozfest.pageTitles.session',
@@ -162,8 +141,7 @@ const routes: RouteRecordRaw[] = [
     name: Routes.HelpDesk,
     component: () => import('../views/HelpDeskView.vue'),
     meta: {
-      title: pages.helpDesk.path,
-      // pageTitle: 'mozfest.pageTitles.helpDesk',
+      title: pages.helpDesk.title,
     },
   },
   {
@@ -172,7 +150,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/CalendarView.vue'),
     meta: {
       title: pages.calendar.title,
-      // pageTitle: 'mozfest.pageTitles.calendar',
     },
   },
   {
@@ -184,19 +161,19 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: '/installations',
-    name: ExtraRoutes.Installations,
-    component: () => import('../views/InstallationsView.vue'),
+    path: pages.arts.path,
+    name: pages.arts.name,
+    component: () => import('../views/ArtsView.vue'),
     meta: {
-      pageTitle: 'mozfest.pageTitles.installations',
+      title: pages.arts.title,
     },
   },
   {
-    path: '/ventures',
-    name: ExtraRoutes.Ventures,
-    component: () => import('../views/VenturesView.vue'),
+    path: pages.expo.path,
+    name: pages.expo.name,
+    component: () => import('../views/ExpoView.vue'),
     meta: {
-      pageTitle: 'mozfest.pageTitles.ventures',
+      title: pages.expo.title,
     },
   },
 

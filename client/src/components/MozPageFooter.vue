@@ -1,9 +1,7 @@
 <template>
   <PageFooter :links="links">
-    Made by
-    <a href="https://openlab.ncl.ac.uk/" target="_blank" rel="noopener">
-      Open Lab
-    </a>
+    Made with
+    <a href="https://deconf.app/" target="_blank" rel="noopener"> Deconf </a>
     /
     {{ appName }}
     {{ appVersion }}
