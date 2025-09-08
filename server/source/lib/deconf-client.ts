@@ -131,11 +131,13 @@ export class DeconfApiClient {
     conference: number | string,
     data: StagedTitoData,
     dryRun = false,
+    notify = false,
   ) {
     const url = this.endpoint(
       `./admin/v1/conferences/${conference}/registrations`,
     );
     if (dryRun) url.searchParams.set("dryRun", "verbose");
+    if (notify) url.searchParams.set("notify", "email");
 
     const res = await this.fetch(url, {
       method: "POST",

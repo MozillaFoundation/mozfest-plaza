@@ -68,6 +68,7 @@ export const titoWebhookRoute = defineRoute({
       appConfig.deconf.conference,
       data,
       dryRun,
+      appConfig.tito.webhookNotify,
     );
 
     if (!uploaded) throw HTTPError.badRequest("failed to append registration");

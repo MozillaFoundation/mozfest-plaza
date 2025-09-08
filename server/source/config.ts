@@ -89,6 +89,10 @@ const struct = config.object({
       variable: "TITO_SECURITY_TOKEN",
       fallback: MOZ_STUB,
     }),
+    webhookNotify: config.boolean({
+      variable: "TITO_WEBHOOK_NOTIFY",
+      fallback: false,
+    }),
   }),
 
   redis: config.object({
