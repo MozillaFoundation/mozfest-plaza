@@ -37,13 +37,17 @@ export class MozFestDeconfPlugin implements DeconfPlugin {
     DialogPlugin.shared?.close()
   }
   renameIcon([groupName, iconName]: string[]): [string, string] {
-    return customIcons[groupName]?.[iconName] ?? [groupName, iconName]
+    if (customIcons[groupName]?.[iconName]) {
+      return customIcons[groupName]?.[iconName]!
+    }
+    if (groupName === 'fas') groupName = 'fass'
+    return [groupName, iconName]
   }
 }
 
 const customIcons = {
   fas: {
-    'code-branch': ['fas', 'location-dot'],
-    tags: ['fas', 'shapes'],
+    'code-branch': ['fass', 'location-dot'],
+    tags: ['fass', 'shapes'],
   },
 } as Record<string, undefined | Record<string, [string, string] | undefined>>

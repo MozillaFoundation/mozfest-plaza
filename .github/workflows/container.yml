@@ -52,6 +52,8 @@ jobs:
           push: true
           tags: ${{ steps.client_meta.outputs.tags }}
           labels: ${{ steps.client_meta.outputs.labels }}
+          secrets: |
+            "fa_token=${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}"
           # platforms: linux/arm64,linux/amd64
 
   build_server:

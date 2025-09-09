@@ -64,7 +64,7 @@ import {
   // remaps
   faLocationDot, // was faCodeBranch
   faShapes, // was faTags
-} from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/sharp-solid-svg-icons'
 
 //
 // Import regulars ~ https://fontawesome.com/icons?d=gallery&s=regular
