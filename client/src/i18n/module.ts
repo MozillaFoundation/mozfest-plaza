@@ -1,14 +1,14 @@
 import { createI18n } from 'vue-i18n'
 
 import en from './en.yml'
-import es from './es.yml'
+// import es from './es.yml'
 // import sw from './sw.yml'
 
 const rtlLocales = new Set(['ar'])
 
 const i18n = createI18n({
   locale: pickLocale(),
-  messages: { en, es },
+  messages: { en },
 })
 
 export function pickLocale() {

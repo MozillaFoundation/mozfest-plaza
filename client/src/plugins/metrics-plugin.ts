@@ -23,7 +23,7 @@ export class MetricsPlugin {
     SocketIoPlugin.sharedSocket?.emit(
       'trackMetric',
       metric.eventName,
-      metric.payload,
+      metric.payload
     )
     if (!gaExcluded.has(metric.eventName)) gaTrack({ event: metric.eventName })
   }
@@ -33,7 +33,7 @@ export class MetricsPlugin {
   }
 }
 
-export function gaTrack(event: Record<string, string>) {
+export function gaTrack(...args: any[]) {
   window.dataLayer = window.dataLayer || []
-  window.dataLayer.push(event)
+  window.dataLayer.push(args)
 }

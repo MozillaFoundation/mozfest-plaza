@@ -26,7 +26,7 @@ export class ConsentPlugin {
   }
 
   async start() {
-    window.OptanonWrapper = this.onOption.bind(this)
+    window.OptanonWrapper = (...args: any[]) => this.onOption(...args)
     window.dataLayer = window.dataLayer || []
 
     await loadScript('cookielaw-sdk', env.CONSENT_URL, {

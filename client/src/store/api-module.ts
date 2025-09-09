@@ -58,15 +58,15 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
       async authenticate({ commit, dispatch }, { token }: AuthenticateOptions) {
         const user = decodeJwt(token) as FullAuthToken
 
-        // TODO: this is a pre-deconf hack
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        user.user_roles = (user as any).scope.split(/\s+/)
-
         if (user.iss !== env.JWT_ISSUER) {
           console.error('JWT signed by unknown issuer %o', user.iss)
           commit('user', null)
           return
         }
+
+        // TODO: this is a pre-deconf hack
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        user.user_roles = (user as any).scope.split(/\s+/)
 
         commit('user', user)
 
