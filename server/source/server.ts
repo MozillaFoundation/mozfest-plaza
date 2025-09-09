@@ -56,7 +56,7 @@ export const headshot = defineRoute({
     const id = target.replace("https://pretalx.com/media/avatars/", "");
 
     // See if a resized version is already stored
-    const found = await store.get<string>(`headshot/${id}`);
+    const found = await store.get<string>(`/headshot/${id}`);
     if (found) return new Response(Buffer.from(found, "base64"), { headers });
 
     // Fetch the image
