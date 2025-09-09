@@ -1,6 +1,6 @@
 <template>
   <MozUtilLayout>
-    <ApiError :home-route="homeRoute"></ApiError>
+    <ApiError />
     <template v-slot:backButton>
       <span><!-- this hides the back button --></span>
     </template>
@@ -8,16 +8,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 import { ApiError } from '@openlab/deconf-ui-toolkit'
+import { defineComponent } from 'vue'
 
 import MozUtilLayout from './MozUtilLayout.vue'
 
 export default defineComponent({
   components: { MozUtilLayout, ApiError },
-  props: {
-    homeRoute: { type: Object as PropType<RouteLocationRaw>, required: true },
-  },
+  props: {},
 })
 </script>
