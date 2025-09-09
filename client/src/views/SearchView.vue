@@ -3,17 +3,22 @@
     <div class="searchView">
       <div class="searchView-header">
         <ApiContent slug="search" />
-        <div class="inlineField">
-          <label class="button is-static is-size-5" for="searchQuery">
+        <div class="field">
+          <!-- <label class="label" for="searchQuery">
             {{ $t('mozfest.searchView.search') }}
-          </label>
-          <input
-            id="searchQuery"
-            type="text"
-            class="input is-size-5"
-            :value="query"
-            @input="onQuery"
-          />
+          </label> -->
+          <div class="control has-icons-left">
+            <span class="icon is-small is-left">
+              <FontAwesomeIcon :icon="['fas', 'search']" />
+            </span>
+            <input
+              id="searchQuery"
+              type="text"
+              class="input"
+              :value="query"
+              @input="onQuery"
+            />
+          </div>
         </div>
       </div>
       <div class="searchView-results">
@@ -49,6 +54,7 @@ import {
   createQueryPredicate,
   debounce,
   type Debounced,
+  FontAwesomeIcon,
   guardPage,
   NoResults,
   type ScheduleConfig,
@@ -70,7 +76,14 @@ const config: ScheduleConfig = {
 }
 
 export default defineComponent({
-  components: { AppLayout, ApiContent, NoResults, SessionBoard, SessionTile },
+  components: {
+    AppLayout,
+    ApiContent,
+    NoResults,
+    SessionBoard,
+    SessionTile,
+    FontAwesomeIcon,
+  },
   data(): Data {
     return {
       query: '',
