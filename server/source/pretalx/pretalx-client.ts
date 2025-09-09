@@ -325,7 +325,7 @@ export class PretalxEventClient {
 
   /** Iterate through the pagination and apply retry-headers when asked to */
   async *_iterate<T = unknown>(response: Response) {
-    this.debug("iterate", response.status, response.headers);
+    this.debug("iterate", response.status);
 
     if (!response.ok) console.error("iterate error", await response.json());
 
