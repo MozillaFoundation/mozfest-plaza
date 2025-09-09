@@ -15,7 +15,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.0.1",
     "@fortawesome/free-regular-svg-icons": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
-    "@fortawesome/vue-fontawesome": "^3.1.1",
+    "@fortawesome/vue-fontawesome": "^3.1.2",
     "@openlab/deconf-shared": "^4.0.0",
     "@openlab/deconf-ui-toolkit": "^3.1.0",
     "bulma": "^0.9.4",
@@ -30,7 +30,7 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@modyfi/vite-plugin-yaml": "^1.1.0",
+    "@modyfi/vite-plugin-yaml": "^1.1.1",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue/eslint-config-prettier": "^10.0.0",
     "@vue/eslint-config-typescript": "^14.0.1",
