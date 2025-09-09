@@ -244,7 +244,7 @@ export default defineComponent({
 
   @include mobile {
     .heroCard {
-      padding: 2rem;
+      padding: 0;
     }
     .heroCard-title {
       margin-bottom: 2rem;

@@ -1,7 +1,7 @@
 <template>
   <UtilLayout :home-route="atriumRoute" :width="width">
     <template v-slot:brand>
-      <MozillaLogo />
+      <MozFestLogo />
     </template>
 
     <template v-slot:backButton>
@@ -31,17 +31,17 @@ import { defineComponent } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 import { BackButton, Routes, UtilLayout } from '@openlab/deconf-ui-toolkit'
 
-import MozillaLogo from './MozillaLogo.vue'
+import MozFestLogo from './MozfestLogo.vue'
 import MozPageFooter from './MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
 export default defineComponent({
   components: {
     UtilLayout,
-    MozillaLogo,
     MozPageFooter,
     BackButton,
     LanguageControl,
+    MozFestLogo,
   },
   props: {
     width: { type: String, default: 'regular' },

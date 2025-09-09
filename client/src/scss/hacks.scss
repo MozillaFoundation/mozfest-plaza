@@ -106,3 +106,14 @@
 .button.is-primary.is-light {
   color: #06546e;
 }
+
+.sessionTile-description {
+  word-break: break-word;
+}
+
+@include mobile {
+  .navigationBar .navbar-menu .navbar-item.is-active {
+    color: $black;
+    background: $primary;
+  }
+}

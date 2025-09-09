@@ -7,7 +7,7 @@
     class="mozAppLayout"
   >
     <template v-slot:brandA>
-      <MozillaLogo />
+      <MozfestLogo />
     </template>
     <!-- <MozillaLogo slot="brandB" /> -->
 
@@ -39,8 +39,8 @@ import {
   Routes,
 } from '@openlab/deconf-ui-toolkit'
 
-// import MozfestLogo from '@/components/MozfestLogo.vue'
-import MozillaLogo from '@/components/MozillaLogo.vue'
+import MozfestLogo from '@/components/MozfestLogo.vue'
+// import MozillaLogo from '@/components/MozillaLogo.vue'
 import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
@@ -65,8 +65,8 @@ export default defineComponent({
   name: 'MozAppLayout',
   components: {
     AppLayout,
-    // MozfestLogo,
-    MozillaLogo,
+    MozfestLogo,
+    // MozillaLogo,
     MozfestSquareLogo,
     MozPageFooter,
     LanguageControl,
