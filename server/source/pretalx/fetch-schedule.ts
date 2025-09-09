@@ -128,7 +128,7 @@ interface ConvertContext {
   data: StagedDeconfData;
   publicTags: Set<number>;
   enhancements: any;
-  questions: AppConfig["pretalx"]["questions"];
+  appConfig: AppConfig;
   answers: Map<number, Map<number, PretalxAnswer>>;
 }
 
@@ -182,7 +182,7 @@ async function convertToDeconf(
     id: () => `fake://${crypto.randomUUID()}`,
     data,
     publicTags,
-    questions: appConfig.pretalx.questions,
+    appConfig,
     enhancements: appConfig.enhancements,
     answers,
   };
@@ -326,10 +326,13 @@ async function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
   if (speaker.avatar_url) {
     avatarId = `pretalx/avatar:${await sha1Hash(speaker.avatar_url)}`;
 
+    const url = new URL("headshot", ctx.appConfig.server.url);
+    url.searchParams.set("url", speaker.avatar_url);
+
     ctx.data.assets.push({
       id: avatarId,
       title: { en: `Headshot of ${speaker.name}` },
-      url: speaker.avatar_url,
+      url: url.toString(),
       metadata: {
         ref: avatarId,
       },
@@ -338,7 +341,7 @@ async function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
 
   const subtitle = lookupAnswer(
     ctx.answers,
-    ctx.questions.speakerSubtitle,
+    ctx.appConfig.pretalx.questions.speakerSubtitle,
     speaker.answers,
   );
 
