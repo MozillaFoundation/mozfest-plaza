@@ -34,6 +34,11 @@
   border-bottom-left-radius: 2.5rem;
 }
 
+.atriumLayout-left > .boxContent {
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+}
+
 .sessionLayout-main {
   // https://weblog.west-wind.com/posts/2016/Feb/15/Flexbox-Containers-PRE-tags-and-managing-Overflow
   min-width: 0;
