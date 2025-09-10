@@ -130,6 +130,7 @@ const internalDomains = [
   'mozfest.myhubs.net',
   'discord.gg',
   'discord.com',
+  'pretalx.com',
 ]
 
 const recommendationConfig: ScheduleConfig = {
