@@ -17,6 +17,8 @@ window.CONFIG = {
   // CONSENT_ID: "0198a3bb-c388-70f1-8d6d-d2cbf7d0bbfa-test",
 
   // SCHEDULE_TIMEZONE: 'Europe/Madrid'
+
+  // CUSTOM_METRICS: true
 }
 
 // async function fetchPages() {

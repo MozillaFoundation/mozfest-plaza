@@ -21,6 +21,8 @@ export interface EnvRecord {
   readonly APP_VERSION: string
 
   readonly SCHEDULE_TIMEZONE: string | null
+
+  readonly CUSTOM_METRICS: boolean
 }
 
 // window.CONFIG is from public/config.js
@@ -41,6 +43,8 @@ const {
   DECONF_CONFERENCE = '-1',
 
   SCHEDULE_TIMEZONE = null,
+
+  CUSTOM_METRICS = false,
 } = window.CONFIG || {}
 
 export const env = Object.seal<EnvRecord>({
@@ -65,6 +69,7 @@ export const env = Object.seal<EnvRecord>({
   APP_VERSION: BUILD_NAME ?? __APP_VERSION__,
 
   SCHEDULE_TIMEZONE,
+  CUSTOM_METRICS: Boolean(CUSTOM_METRICS),
 })
 
 if (env.DECONF_CONFERENCE === -1) {
