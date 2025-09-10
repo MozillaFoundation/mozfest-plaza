@@ -116,8 +116,18 @@
   border-color: #4183f1;
 }
 
+.scheduleHeader {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  border-top-right-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+}
 .scheduleHeader-title {
   color: $black;
+}
+
+.scheduleBlock-sessions {
+  border-top-left-radius: 2.5rem !important;
 }
 
 .button.is-primary {
