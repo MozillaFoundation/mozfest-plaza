@@ -192,9 +192,9 @@ export default defineComponent({
   }
   .colorWidget.is-book {
     color: $black;
-    background-color: $secondary;
+    background-color: #1fc375;
     &[href]:hover {
-      background-color: darken($secondary, 7%);
+      background-color: darken(#1fc375, 7%);
     }
     * {
       color: $black;
