@@ -15,6 +15,8 @@ window.CONFIG = {
 
   // GA_TOKEN: 'G-HXLCGDQJZB',
   // CONSENT_ID: "0198a3bb-c388-70f1-8d6d-d2cbf7d0bbfa-test",
+
+  // SCHEDULE_TIMEZONE: 'Europe/Madrid'
 }
 
 // async function fetchPages() {
