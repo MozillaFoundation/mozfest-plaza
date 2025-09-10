@@ -3,7 +3,7 @@ import path from "node:path";
 import url from "node:url";
 import { AppConfig } from "../config.ts";
 import { DeconfApiClient } from "./deconf-client.ts";
-import { _nestContext, Structure } from "gruber";
+import { _nestContext, Store, Structure } from "gruber";
 
 /**
  * A helper to wrap a method in a cache.
@@ -110,4 +110,55 @@ export async function sha1Hash(input: string) {
   // NOTE: I'd prefer this be web-standards based
   // i.e. Uint8Array.prototype.toBase64 when it is supported
   return Buffer.from(data).toString("base64");
+}
+
+interface CachedOptions<T> {
+  store: Store;
+  factory(): T;
+  maxAge: number;
+  key: string;
+}
+
+// Run a factory but cache the result in the store for a certain amount of time
+export async function withCache<T>({
+  store,
+  factory,
+  maxAge,
+  key,
+}: CachedOptions<T>): Promise<Awaited<T>> {
+  const previous = await store.get<T>(key);
+  if (previous !== undefined) return previous;
+
+  const value = await factory();
+  await store.set(key, value, { maxAge });
+  return value;
+}
+
+/** Get the schedule from Deconf, but cached so it only requests it every 5 minutes */
+export function getSchedule(store: Store, appConfig: AppConfig) {
+  return withCache({
+    store,
+    maxAge: 5 * 60 * 1_000,
+    key: `/schedule`,
+    factory() {
+      return getDeconfClient(appConfig.deconf).getSchedule(
+        appConfig.deconf.conference,
+      );
+    },
+  });
+}
+
+/** Truncate a string so it is never longer that `length` */
+export function truncate(input: string, length: number) {
+  return input.length > length ? input.slice(0, length - 1) + "…" : input;
+}
+
+/** VERY BASIC HTML escape of a string, to avoid extra dependencies */
+export function escapeHTML(input: string) {
+  return input
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&gt;")
+    .replace(/>/g, "&lt;");
 }

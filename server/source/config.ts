@@ -34,6 +34,13 @@ const struct = config.object({
     }),
   }),
 
+  client: config.object({
+    url: config.url({
+      variable: "CLIENT_URL",
+      fallback: "http://localhost:8080",
+    }),
+  }),
+
   pretalx: config.object({
     event: config.string({ variable: "PRETALX_EVENT", fallback: MOZ_STUB }),
     url: config.url({

@@ -12,6 +12,7 @@ import {
   sha1Hash,
   StagedDeconfData,
   StagedTaxonomy,
+  truncate,
   useStore,
 } from "../lib/mod.ts";
 import {
@@ -386,10 +387,6 @@ function lookupAnswer(
     }
   }
   return undefined;
-}
-
-function truncate(input: string, length: number) {
-  return input.length > length ? input.slice(0, length - 1) + "…" : input;
 }
 
 function convertState(input: PretalxSubmission["state"]) {
