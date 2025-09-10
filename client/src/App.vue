@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type Component } from 'vue'
+import { defineComponent } from 'vue'
 import {
   AppDialog,
   AppLoading,
@@ -40,6 +40,7 @@ import PretalxDevBlock from '@/components/PretalxDevBlock.vue'
 
 import { ExtraRoutes, mapApiState, StorageKey } from '@/lib/module'
 import { setLocale } from '@/i18n/module'
+import { env } from './plugins/env-plugin.ts'
 
 interface Data {
   timerId: null | number
@@ -48,7 +49,7 @@ interface Data {
 export default defineComponent({
   components: {
     AppLoading,
-    DevControl: DevControl as Component, // Vue is complaining because "Data" isn't exported
+    DevControl,
     MozApiError,
     AppDialog,
     PretalxDevBlock,
@@ -72,6 +73,7 @@ export default defineComponent({
     this.fetchData()
 
     // Setup temporal plugin
+    if (env.SCHEDULE_TIMEZONE) this.$temporal.timeZone = env.SCHEDULE_TIMEZONE
     this.$temporal.setup()
 
     // Listen for site-visitors and update vuex

@@ -19,6 +19,8 @@ export interface EnvRecord {
 
   readonly APP_NAME: string
   readonly APP_VERSION: string
+
+  readonly SCHEDULE_TIMEZONE: string | null
 }
 
 // window.CONFIG is from public/config.js
@@ -37,6 +39,8 @@ const {
 
   DECONF_API_URL = 'http://localhost:3000/',
   DECONF_CONFERENCE = '-1',
+
+  SCHEDULE_TIMEZONE = null,
 } = window.CONFIG || {}
 
 export const env = Object.seal<EnvRecord>({
@@ -59,6 +63,8 @@ export const env = Object.seal<EnvRecord>({
 
   /** @ts-expect-error This is injected by vite */
   APP_VERSION: BUILD_NAME ?? __APP_VERSION__,
+
+  SCHEDULE_TIMEZONE,
 })
 
 if (env.DECONF_CONFERENCE === -1) {
