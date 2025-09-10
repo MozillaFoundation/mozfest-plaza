@@ -48,6 +48,7 @@ const struct = config.object({
       variable: "PRETALX_PUBLIC_TAGS",
       fallback: "",
     }),
+    resize: config.boolean({ variable: "PRETALX_RESIZE", fallback: false }),
     questions: config.object({
       speakerSubtitle: config.number({ fallback: -1 }),
     }),

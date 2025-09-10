@@ -326,8 +326,12 @@ async function upsertPerson(ctx: ConvertContext, speaker: PretalxSpeaker) {
   if (speaker.avatar_url) {
     avatarId = `pretalx/avatar:${await sha1Hash(speaker.avatar_url)}`;
 
-    const url = new URL("headshot", ctx.appConfig.server.url);
-    url.searchParams.set("url", speaker.avatar_url);
+    let url = new URL(speaker.avatar_url);
+
+    if (ctx.appConfig.pretalx.resize) {
+      url = new URL("headshot", ctx.appConfig.server.url);
+      url.searchParams.set("url", speaker.avatar_url);
+    }
 
     ctx.data.assets.push({
       id: avatarId,
