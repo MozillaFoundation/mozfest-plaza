@@ -36,7 +36,7 @@ export class MozFestDeconfPlugin implements DeconfPlugin {
   closeDialog(): void {
     DialogPlugin.shared?.close()
   }
-  renameIcon([groupName, iconName]: string[]): [string, string] {
+  renameIcon([groupName, iconName]: [string, string]): [string, string] {
     if (customIcons[groupName]?.[iconName]) {
       return customIcons[groupName]?.[iconName]!
     }

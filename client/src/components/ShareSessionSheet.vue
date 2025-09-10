@@ -20,11 +20,9 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
-import { Stack } from '@openlab/deconf-ui-toolkit'
+import { FontAwesomeIcon, Stack } from '@openlab/deconf-ui-toolkit'
 import type { MozSession } from '@/lib/module'
 import copy from 'copy-to-clipboard'
-
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default defineComponent({
   components: { Stack, FontAwesomeIcon },

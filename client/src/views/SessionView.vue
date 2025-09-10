@@ -91,7 +91,6 @@ import AppLayout from '@/components/MozAppLayout.vue'
 import ShareSessionSheet from '@/components/ShareSessionSheet.vue'
 import { type MozSession, mapApiState } from '@/lib/module'
 import { env } from '@/plugins/env-plugin'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import type {
   LocalisedLink,
   Session,
@@ -99,6 +98,7 @@ import type {
 } from '@openlab/deconf-shared'
 import {
   BackButton,
+  FontAwesomeIcon,
   IframeEmbed,
   Routes,
   type ScheduleConfig,

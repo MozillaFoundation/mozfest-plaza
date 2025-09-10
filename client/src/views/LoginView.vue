@@ -117,9 +117,8 @@
 import { defineComponent } from 'vue'
 
 import MozUtilLayout from '@/components/MozUtilLayout.vue'
-import { ApiContent, Routes } from '@openlab/deconf-ui-toolkit'
+import { ApiContent, FontAwesomeIcon, Routes } from '@openlab/deconf-ui-toolkit'
 import { env } from '@/plugins/env-plugin'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import type { RouteLocationRaw } from 'vue-router'
 import { ExtraRoutes } from '@/lib/constants'
 import MozTextField from '@/components/MozTextField.vue'

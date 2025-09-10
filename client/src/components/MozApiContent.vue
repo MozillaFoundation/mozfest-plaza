@@ -84,7 +84,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   ApiContent,
   localiseFromObject,
@@ -92,6 +91,7 @@ import {
   PrivateCalendarCreator,
   type ScheduleConfig,
   SessionTile,
+  FontAwesomeIcon,
 } from '@openlab/deconf-ui-toolkit'
 
 import TitoWidget from '@/components/TitoWidget.vue'

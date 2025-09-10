@@ -20,8 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { Stack } from '@openlab/deconf-ui-toolkit'
+import { FontAwesomeIcon, Stack } from '@openlab/deconf-ui-toolkit'
 import { apiClient, mapApiState } from '@/lib/module'
 
 export interface _Data {
