@@ -35,7 +35,7 @@ const {
   JWT_ISSUER = 'deconf-app',
   DISABLE_SOCKETS = false,
   STATIC_BUILD = false,
-  SESSION_SHARE_URL = 'http://localhost:8080/session/$1',
+  SESSION_SHARE_URL = `${location.origin}/session/$1`,
 
   DECONF_API_URL = 'http://localhost:3000/',
   DECONF_CONFERENCE = '-1',
