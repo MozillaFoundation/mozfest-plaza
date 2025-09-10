@@ -44,9 +44,7 @@ export class MetricsPlugin {
   async custom(metric: MetricsEvent) {
     if (!env.CUSTOM_METRICS) return
 
-    const url = deconfClient.endpoint(
-      `/legacy/${env.DECONF_CONFERENCE}/metrics`
-    )
+    const url = deconfClient.endpoint(`legacy/${env.DECONF_CONFERENCE}/metrics`)
     if (this.visitor) url.searchParams.set('visitor_id', this.visitor)
 
     const res = await deconfClient.fetch(url, {
