@@ -49,12 +49,18 @@ export class DeconfClient {
     return res
   }
 
-  async login(emailAddress: string): Promise<ApiLogin | null> {
+  async login(
+    emailAddress: string,
+    redirect?: string
+  ): Promise<ApiLogin | null> {
+    const redirectUri = new URL('login', env.SELF_URL)
+    if (redirect) redirectUri.searchParams.set('redirect', redirect)
+
     const res = await this.fetch(`auth/v1/login`, {
       method: 'POST',
       body: JSON.stringify({
         emailAddress,
-        redirectUri: new URL('login', env.SELF_URL),
+        redirectUri,
         conferenceId: env.DECONF_CONFERENCE,
       }),
       headers: {

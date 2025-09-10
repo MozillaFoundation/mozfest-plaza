@@ -151,8 +151,8 @@ export default defineComponent({
     ...mapApiState('api', ['settings']),
     googleLink(): string {
       const url = new URL('./auth/oauth2/google', env.SERVER_URL)
-      if (this.$route.query.redirect) {
-        url.searchParams.set('redirect', this.$route.query.redirect as string)
+      if (this.redirect) {
+        url.searchParams.set('redirect', this.redirect)
       }
       return url.toString()
     },
@@ -161,6 +161,9 @@ export default defineComponent({
     },
     registerRoute(): RouteLocationRaw {
       return { name: Routes.Register }
+    },
+    redirect() {
+      return this.$route.query.redirect as string | undefined
     },
   },
 
@@ -178,12 +181,10 @@ export default defineComponent({
 
   methods: {
     async submitEmail() {
-      console.log('email', this.emailAddress)
-
       if (this.state === 'working') return
       this.state = 'working'
 
-      const login = await deconfClient.login(this.emailAddress)
+      const login = await deconfClient.login(this.emailAddress, this.redirect)
 
       if (!login) {
         this.state = 'error'
@@ -195,8 +196,6 @@ export default defineComponent({
       this.state = 'input'
     },
     async submitCode() {
-      console.log('code', this.oneTimeCode)
-
       if (this.state === 'working') return
       this.state = 'working'
 
@@ -207,9 +206,9 @@ export default defineComponent({
         return
       }
 
-      // this.$store.dispatch('api/authenticate', { token: result.token })
-
       const params = new URLSearchParams({ token: result.token })
+      if (this.redirect) params.set('redirect', this.redirect)
+
       const url = new URL('_auth', env.SELF_URL)
       url.hash = params.toString()
 

@@ -15,9 +15,9 @@ export default defineComponent({
   },
   methods: {
     onSuccess(user: AuthToken, params: URLSearchParams) {
-      const redir = params.get('redirect')
-      if (!redir) this.$router.replace({ name: Routes.Atrium })
-      else window.location.href = redir
+      const redirect = params.get('redirect')
+      if (redirect?.startsWith('/')) window.location.href = redirect
+      else this.$router.replace({ name: Routes.Atrium })
     },
   },
 })
