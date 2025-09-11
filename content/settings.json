@@ -90,7 +90,7 @@
     "discord": true,
     "familyResources": false,
     "mozfestBook": true,
-    "linkedin": true,
+    "linkedin": false,
     "mastodon": true,
     "submissions": false,
     "calendarHelp": false
