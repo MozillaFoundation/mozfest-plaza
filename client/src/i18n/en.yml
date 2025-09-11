@@ -259,7 +259,7 @@ mozfest:
     oneTimeCode:
       label: One time code
       help: The six digit code we sent to your email
-    emailSent: We've sent an email to that address if it is registered on ti.to
+    emailSent: We've sent an email to that address if it has secured a badge
     badCode: Invalid code, please check and try again
 
   profile:
