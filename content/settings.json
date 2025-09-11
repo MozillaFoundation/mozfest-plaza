@@ -61,8 +61,8 @@
     "visible": false
   },
   "arts": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
   "expo": {
     "enabled": false,
