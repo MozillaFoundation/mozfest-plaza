@@ -1,29 +1,23 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import {
   PrimaryEmbed,
   SecondaryEmbed,
   TextField,
 } from '@openlab/deconf-ui-toolkit'
-import type { Localised } from '@openlab/deconf-shared'
+import { computed, ref } from 'vue'
 
 import MozUtilLayout from '@/components/MozUtilLayout.vue'
 import { ExtraRoutes } from '@/lib/constants'
-import rawRooms from '@/data/rooms.json'
+import { getRooms, type Room } from '@/lib/module.ts'
+import store from '@/store/module.ts'
 import { useRouter } from 'vue-router'
 
 const messagingRoute = { name: ExtraRoutes.AdminMessaging }
 const scheduleRoute = { name: ExtraRoutes.AdminSchedule }
 
-interface Room {
-  slug: string
-  id: number
-  name: Localised
-}
-
-const rooms = Object.entries(rawRooms)
-  .map(([slug, room]) => ({ ...room, slug } as Room))
-  .sort((a, b) => a.name.en!.localeCompare(b.name.en!))
+const rooms = computed<Room[]>(() => {
+  return getRooms(store.state.api.schedule?.tracks ?? [])
+})
 
 const primaryExamples = Object.freeze([
   'https://player.vimeo.com/video/123456',

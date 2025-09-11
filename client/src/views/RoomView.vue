@@ -1,21 +1,18 @@
 <template>
+  <!-- <pre>{{ room }}</pre> -->
   <TimelineTemplate v-if="room" :config="config" class="roomView" />
   <NotFoundView v-else />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import TimelineTemplate from '@/templates/TimelineTemplate.vue'
-import NotFoundView from './NotFoundView.vue'
-import rooms from '@/data/rooms.json'
 import type { PageConfig, TimelineOptions } from '@/lib/constants'
+import { mapApiState } from '@/lib/deconf-hacks.ts'
+import { getRooms, type Room } from '@/lib/rooms.ts'
+import TimelineTemplate from '@/templates/TimelineTemplate.vue'
+import { defineComponent } from 'vue'
+import NotFoundView from './NotFoundView.vue'
 
 type Config = PageConfig<string, TimelineOptions>
-
-interface RoughRoom {
-  name: Record<string, string>
-  id: string
-}
 
 export default defineComponent({
   components: { TimelineTemplate, NotFoundView },
@@ -23,17 +20,19 @@ export default defineComponent({
     roomId: { type: String, required: true },
   },
   computed: {
-    room(): RoughRoom {
-      return (rooms as Record<string, unknown>)[this.roomId] as RoughRoom
+    ...mapApiState('api', ['schedule']),
+    room(): Room {
+      const rooms = getRooms(this.schedule?.tracks ?? [])
+      return rooms.find((r) => r.slug === this.roomId)!
     },
     config(): Config {
       return {
         path: 'not_used',
         name: `room_${this.roomId}`,
         kind: 'room',
-        title: this.room.name,
+        title: this.room.name as Record<string, string>,
         options: {
-          filter: `rooms=${this.room.id}`,
+          filter: `tracks=${this.room.id}`,
           tile: {
             header: ['type'],
             attributes: ['themes'],
