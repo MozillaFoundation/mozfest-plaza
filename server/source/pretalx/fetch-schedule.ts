@@ -404,8 +404,18 @@ function upsertSession(
   const isPublic = submission.tags.some((id) => ctx.publicTags.has(id));
   const extraMetadata: any = {};
 
+  // Set the location metadata field based on the room
+  // TODO: this could be a full-field on the session in the future
+  if (slot?.room) {
+    const roomRef = `pretalx/room/${slot.room}`;
+    const room = ctx.data.labels.find((l) => l.id === roomRef);
+    if (room) {
+      extraMetadata.location = room.title.en;
+    }
+  }
+
+  // Generate session links for each resource
   for (const resource of submission.resources) {
-    // Generate session links for each resource
     ctx.data.sessionLinks.push({
       id: resource.resource,
       session_id: id,
