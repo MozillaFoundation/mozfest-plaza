@@ -1,15 +1,15 @@
-import { defineRoute, HTTPError, Store } from "gruber";
+import { defineRoute, HTTPError } from "gruber";
+import { AppConfig, useAppConfig } from "../config.ts";
+import { Semaphore, useAuthorization } from "../lib/mod.ts";
 import {
   _fetchSchedule,
   FETCH_SCHEDULE_LOCK,
   FetchScheduleOptions,
 } from "./fetch-schedule.ts";
-import { Semaphore, useAuthorization, useStore } from "../lib/mod.ts";
-import { AppConfig, useAppConfig } from "../config.ts";
 
 // whether the pretalx schedule job is already running or not
-async function isRunning(store: Store) {
-  return Boolean(await store.get(FETCH_SCHEDULE_LOCK));
+async function isRunning(semaphore: Semaphore) {
+  return Boolean(await semaphore.isLocked(FETCH_SCHEDULE_LOCK));
 }
 
 // perform the schedule job
@@ -30,15 +30,15 @@ export const pretalxStatusRoute = defineRoute({
   method: "GET",
   pathname: "/pretalx/fetch-schedule",
   dependencies: {
-    store: useStore,
     authz: useAuthorization,
+    semaphore: Semaphore.use,
   },
-  async handler({ authz, request, store }) {
+  async handler({ authz, request, semaphore }) {
     await authz.assert(request, { scope: "admin" });
 
     return Response.json({
       isEnabled: true,
-      isRunning: await isRunning(store),
+      isRunning: await isRunning(semaphore),
     });
   },
 });
@@ -48,15 +48,14 @@ export const runPretalxRoute = defineRoute({
   method: "POST",
   pathname: "/pretalx/fetch-schedule",
   dependencies: {
-    store: useStore,
     semaphore: Semaphore.use,
     authz: useAuthorization,
     appConfig: useAppConfig,
   },
-  async handler({ authz, request, store, semaphore, url, appConfig }) {
+  async handler({ authz, request, semaphore, url, appConfig }) {
     await authz.assert(request, { scope: "admin" });
 
-    if (await isRunning(store)) {
+    if (await isRunning(semaphore)) {
       throw HTTPError.badRequest("already running");
     }
 

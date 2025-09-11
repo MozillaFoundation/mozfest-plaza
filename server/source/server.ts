@@ -2,7 +2,7 @@ import { defineRoute, FetchRouter, serveHTTP } from "gruber";
 
 import { useAppConfig } from "./config.ts";
 import { emailRoute } from "./deconf/email.ts";
-import { useStore, useTerminator } from "./lib/globals.ts";
+import { useCors, useStore, useTerminator } from "./lib/globals.ts";
 import { headshotRoute } from "./mozfest/headshots.ts";
 import { titoWebhookRoute } from "./tito/tito-webhook.ts";
 import { shareSessionRoute } from "./mozfest/share.ts";
@@ -33,6 +33,17 @@ export const healthzRoute = defineRoute({
   },
 });
 
+export const corsRoute = defineRoute({
+  method: "OPTIONS",
+  pathname: "*",
+  dependencies: {
+    cors: useCors,
+  },
+  handler({ request, cors }) {
+    return cors?.apply(request, new Response());
+  },
+});
+
 export const routes = [
   helloRoute,
   healthzRoute,
@@ -40,6 +51,7 @@ export const routes = [
   titoWebhookRoute,
   headshotRoute,
   shareSessionRoute,
+  corsRoute,
   ...pretalxRoutes,
 ];
 
@@ -51,10 +63,12 @@ export interface RunServerOptions {
 export async function runServer(options: RunServerOptions) {
   const arnie = useTerminator();
   const store = useStore();
+  const cors = useCors();
 
   const router = new FetchRouter({
     log: true,
     routes,
+    cors,
     errorHandler(error, request) {
       console.error("[http error]", request.url, error);
     },

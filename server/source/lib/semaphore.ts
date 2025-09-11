@@ -39,12 +39,21 @@ export class Semaphore {
     this.store = store;
   }
 
+  getLockKey(name: string) {
+    return `/semaphore/${name}`;
+  }
+
+  async isLocked(name: string) {
+    const key = this.getLockKey(name);
+    return Boolean(await this.store.get(key));
+  }
+
   /**
    * Aquire a lock on a key from a specific host for a specified duration.
    * Capture it with "using" or manually call {@link release}
    */
   async aquire({ name, hostname, maxAge, debug }: LockInit) {
-    const key = `/semaphore/${name}`;
+    const key = this.getLockKey(name);
 
     debug?.("attempting key=%o", key);
 

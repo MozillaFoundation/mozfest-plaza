@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { FontAwesomeIcon, Stack } from '@openlab/deconf-ui-toolkit'
-import { apiClient, mapApiState } from '@/lib/module'
+import { mapApiState, mozClient } from '@/lib/module'
 
 export interface _Data {
   status: PretalxStatus | null
@@ -51,7 +51,7 @@ export default defineComponent({
     if (!this.isAdmin) return
 
     this.fetchStatus()
-    this.timerId = window.setInterval(() => this.fetchStatus(), 1000)
+    this.timerId = window.setInterval(() => this.fetchStatus(), 1_000)
   },
   unmounted() {
     if (this.timerId) {
@@ -62,7 +62,9 @@ export default defineComponent({
   methods: {
     /** Fetch the pretalx status from the API */
     async fetchStatus() {
-      this.status = await apiClient.fetchJson<PretalxStatus>('admin/pretalx')
+      this.status = await mozClient.json<PretalxStatus>(
+        'pretalx/fetch-schedule'
+      )
     },
 
     /** Start a pretalx scrape */
@@ -75,11 +77,13 @@ export default defineComponent({
       const confirmed = confirm('Are you sure?')
       if (!confirmed) return
 
-      const result = await apiClient.fetchJson('admin/pretalx', {
-        method: 'post',
+      const result = await mozClient.json('pretalx/fetch-schedule', {
+        method: 'POST',
       })
 
       if (result === null) alert('Failed to start regeneration')
+
+      await this.fetchStatus()
     },
   },
 })

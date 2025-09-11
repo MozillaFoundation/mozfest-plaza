@@ -1,4 +1,10 @@
-import { AuthorizationService, getTerminator, loader, Store } from "gruber";
+import {
+  AuthorizationService,
+  Cors,
+  getTerminator,
+  loader,
+  Store,
+} from "gruber";
 import { useAppConfig } from "../config.ts";
 import { RedisStore } from "./redis.ts";
 import { DeconfTokens, getDeconfClient } from "./utilities.ts";
@@ -18,6 +24,13 @@ export const useTerminator = loader(() => {
 /** Simplified access to a key-value store */
 export const useStore = loader<Store & AsyncDisposable>(() => {
   return new RedisStore(useAppConfig().redis);
+});
+
+export const useCors = loader(() => {
+  const appConfig = useAppConfig();
+  return appConfig.env === "development"
+    ? new Cors({ origins: [appConfig.client.url.origin], credentials: true })
+    : undefined;
 });
 
 /** a configuration that was stubbed out for development */

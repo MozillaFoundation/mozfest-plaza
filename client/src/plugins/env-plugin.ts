@@ -14,7 +14,7 @@ export interface EnvRecord {
   readonly STATIC_BUILD: boolean
   readonly SESSION_SHARE_URL: string
 
-  readonly DECONF_API_URL: string
+  readonly DECONF_API_URL: URL
   readonly DECONF_CONFERENCE: number
 
   readonly APP_NAME: string
@@ -23,6 +23,8 @@ export interface EnvRecord {
   readonly SCHEDULE_TIMEZONE: string | null
 
   readonly CUSTOM_METRICS: boolean
+
+  readonly MOZ_API_URL: URL
 }
 
 // window.CONFIG is from public/config.js
@@ -45,6 +47,8 @@ const {
   SCHEDULE_TIMEZONE = null,
 
   CUSTOM_METRICS = false,
+
+  MOZ_API_URL = 'http://localhost:3001',
 } = window.CONFIG || {}
 
 export const env = Object.seal<EnvRecord>({
@@ -59,7 +63,7 @@ export const env = Object.seal<EnvRecord>({
   STATIC_BUILD: Boolean(STATIC_BUILD),
   SESSION_SHARE_URL,
 
-  DECONF_API_URL,
+  DECONF_API_URL: new URL(DECONF_API_URL),
   DECONF_CONFERENCE: parseInt(DECONF_CONFERENCE),
 
   /** @ts-expect-error This is injected by vite */
@@ -70,6 +74,8 @@ export const env = Object.seal<EnvRecord>({
 
   SCHEDULE_TIMEZONE,
   CUSTOM_METRICS: Boolean(CUSTOM_METRICS),
+
+  MOZ_API_URL: new URL(MOZ_API_URL),
 })
 
 if (env.DECONF_CONFERENCE === -1) {

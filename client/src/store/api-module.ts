@@ -16,6 +16,7 @@ import {
   type ProfileToken,
 } from '@/lib/module.js'
 import type { Module } from 'vuex'
+import { mozClient } from '@/lib/mozfest-client.ts'
 
 export interface LoginPayload {
   email: string
@@ -71,7 +72,8 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
         commit('user', user)
 
         apiClient.setAuthToken(token)
-        deconfClient.setAuthToken(token)
+        deconfClient.options.bearerToken = token
+        mozClient.options.bearerToken = token
         SocketIoPlugin.authenticate(token)
 
         await dispatch('fetchData')

@@ -273,3 +273,48 @@ export interface ProfileToken {
 }
 
 export const apiClient = pickApi(env)
+
+export interface FetchClientOptions {
+  bearerToken?: string
+  credentials?: RequestCredentials
+}
+
+/** A client to talk to a specific API using the Fetch API */
+export class FetchClient {
+  url: URL
+  options: FetchClientOptions
+  constructor(url: string | URL, options: FetchClientOptions = {}) {
+    this.url = new URL(url)
+    this.options = options
+  }
+
+  /** construct an endpoint for the server */
+  endpoint(input: string) {
+    return new URL(input, this.url)
+  }
+
+  /** perform a fetch against the server, adding auth logic & resolving endpoints */
+  fetch(input: string | URL | Request, init: RequestInit = {}) {
+    if (this.options.credentials) init.credentials = this.options.credentials
+    if (typeof input === 'string') input = this.endpoint(input)
+
+    const request = new Request(input, init)
+
+    if (this.options.bearerToken) {
+      request.headers.set('Authorization', `Bearer ${this.options.bearerToken}`)
+    }
+
+    request.headers.set('User-Agent', `MozFestClient/${env.APP_VERSION}`)
+
+    return fetch(request)
+  }
+
+  /** Fetch JSON and parse it if the request is successful */
+  async json<T>(
+    input: string | URL | Request,
+    init: RequestInit = {}
+  ): Promise<T | null> {
+    const res = await this.fetch(input, init)
+    return res.ok ? res.json() : null
+  }
+}
