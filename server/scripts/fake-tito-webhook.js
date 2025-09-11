@@ -28,7 +28,7 @@ const appConfig = useAppConfig();
 // Generate the body to send to the webhook
 const payload = JSON.stringify({
   _type: "ticket",
-  name: "Geoff Testington 2",
+  name: "Geoff Testington",
   email,
 });
 console.log("body", payload);
