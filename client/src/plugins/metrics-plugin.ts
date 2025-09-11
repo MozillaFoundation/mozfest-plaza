@@ -1,4 +1,4 @@
-import { deconfClient } from '@/lib/module.ts'
+import { DeconfClient } from '@/lib/module.ts'
 import type { MetricsEvent } from '@openlab/deconf-ui-toolkit'
 import type { App } from 'vue'
 import { env } from './env-plugin.ts'
@@ -24,6 +24,9 @@ export class MetricsPlugin {
     return sessionStorage.getItem('visitor_id')
   }
 
+  // Use a client client that doesn't send authz or credentials
+  deconf = new DeconfClient(env.DECONF_API_URL)
+
   track(metric: MetricsEvent): void {
     console.debug('MetricsPlugin#track %o', metric.eventName, metric.payload)
     SocketIoPlugin.sharedSocket?.emit(
@@ -44,10 +47,10 @@ export class MetricsPlugin {
   async custom(metric: MetricsEvent) {
     if (!env.CUSTOM_METRICS) return
 
-    const url = deconfClient.endpoint(`legacy/${env.DECONF_CONFERENCE}/metrics`)
+    const url = this.deconf.endpoint(`legacy/${env.DECONF_CONFERENCE}/metrics`)
     if (this.visitor) url.searchParams.set('visitor_id', this.visitor)
 
-    const res = await deconfClient.fetch(url, {
+    const res = await this.deconf.fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
