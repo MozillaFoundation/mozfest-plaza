@@ -120,7 +120,7 @@ export async function _convertTitoToDeconf(
 
     diff.users.push({
       id: ref,
-      email: ticket.email,
+      email: email,
       consented_at: new Date(ticket.consented_at ?? Date.now()),
       metadata: { ref },
     });
