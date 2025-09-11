@@ -60,6 +60,7 @@ export interface PretalxSubmission {
   slot_count: number;
   content_locale: string;
   do_not_record: boolean;
+  is_featured: boolean;
   image: string;
   resources: PretalxResource[];
   slots: number[];

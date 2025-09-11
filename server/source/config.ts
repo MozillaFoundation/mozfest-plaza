@@ -74,6 +74,10 @@ const struct = config.object({
       variable: "DECONF_API_TOKEN",
       fallback: MOZ_STUB,
     }),
+    issuer: config.string({
+      variable: "DECONF_ISSUER",
+      fallback: "deconf.app",
+    }),
 
     // TODO: IDEA - deconf coudld provide a JWKS endpoint that JWTs are signed with,
     //              this server can use the public key to verify authenticity and trust requests to assert admins

@@ -6,6 +6,7 @@ import { useStore, useTerminator } from "./lib/globals.ts";
 import { headshotRoute } from "./mozfest/headshots.ts";
 import { titoWebhookRoute } from "./tito/tito-webhook.ts";
 import { shareSessionRoute } from "./mozfest/share.ts";
+import { pretalxRoutes } from "./pretalx/pretalx-routes.ts";
 
 export const helloRoute = defineRoute({
   method: "GET",
@@ -39,6 +40,7 @@ export const routes = [
   titoWebhookRoute,
   headshotRoute,
   shareSessionRoute,
+  ...pretalxRoutes,
 ];
 
 export interface RunServerOptions {

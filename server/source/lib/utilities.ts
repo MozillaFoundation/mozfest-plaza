@@ -1,9 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
+import * as jose from "jose";
 import { AppConfig } from "../config.ts";
 import { DeconfApiClient } from "./deconf-client.ts";
-import { _nestContext, Store, Structure } from "gruber";
+import {
+  _nestContext,
+  AuthzToken,
+  SignTokenOptions,
+  Store,
+  Structure,
+  TokenService,
+} from "gruber";
 
 /**
  * A helper to wrap a method in a cache.
@@ -161,4 +169,79 @@ export function escapeHTML(input: string) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&gt;")
     .replace(/>/g, "&lt;");
+}
+
+export interface ExternalJoseOptions {
+  url: URL;
+  issuer: string;
+}
+
+// NOTE: I think this is the ideal solution, but it needs more testing
+export class ExternalJoseTokens implements TokenService {
+  options: ExternalJoseOptions;
+
+  constructor(options: ExternalJoseOptions) {
+    this.options = options;
+  }
+
+  sign(scope: string, options?: SignTokenOptions): Promise<string> {
+    throw new Error("Not implemented");
+  }
+
+  async verify(input: string): Promise<AuthzToken | null> {
+    try {
+      const key = jose.createRemoteJWKSet(
+        new URL(".well-known/jwks.json", this.options.url),
+      );
+
+      const token = await jose.jwtVerify(input, key, {
+        issuer: this.options.issuer,
+      });
+
+      return {
+        userId: token.payload.sub ? parseInt(token.payload.sub) : undefined,
+        scope: token.payload.scope as string,
+      };
+    } catch (error) {
+      return null;
+    }
+  }
+}
+
+interface PartialDeconfAuth {
+  kind: string;
+  scope: string;
+  user?: { id: number };
+}
+
+export class DeconfTokens implements TokenService {
+  url: URL;
+  constructor(url: URL) {
+    this.url = url;
+  }
+
+  sign(scope: string, options?: SignTokenOptions): Promise<string> {
+    throw new Error("Not implemented");
+  }
+
+  async verify(token: string): Promise<AuthzToken | null> {
+    try {
+      const res = await fetch(new URL("auth/v1/me", this.url), {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) return null;
+
+      const payload: PartialDeconfAuth = await res.json();
+
+      return {
+        userId: payload.user?.id,
+        scope: payload.scope,
+      };
+    } catch (error) {
+      return null;
+    }
+  }
 }

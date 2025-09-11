@@ -25,6 +25,8 @@ import {
 
 const debug = createDebug("fetch-schedule");
 
+export const FETCH_SCHEDULE_LOCK = "fetch_schedule";
+
 export interface FetchScheduleOptions {
   cache: boolean;
   dryRun?: string;
@@ -50,9 +52,18 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     throw new MissingConfig("deconf.apiToken");
   }
 
+  const output = await _fetchSchedule(options, semaphore, appConfig);
+  console.log(JSON.stringify(output));
+}
+
+export async function _fetchSchedule(
+  options: FetchScheduleOptions,
+  semaphore: Semaphore,
+  appConfig: AppConfig,
+) {
   // Aquire a lock so that only one instance of this job can run exclusively
   await using _lock = await semaphore.aquire({
-    name: "fetch_schedule",
+    name: FETCH_SCHEDULE_LOCK,
     hostname: os.hostname(),
     maxAge: 10 * 60 * 1_000, // ten minutes
     debug: createDebug("semaphore"),
@@ -65,9 +76,8 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     version: "v1",
   });
 
+  debug("deconf=%o", appConfig.deconf.url.href);
   const deconf = getDeconfClient(appConfig.deconf);
-
-  // TODO: configure questions
 
   // Fetch the current deconf data,
   // not currenty used but useful to have around in the .cache for debugging
@@ -97,7 +107,8 @@ export async function fetchSchedule(options: FetchScheduleOptions) {
     diff,
     options.dryRun === "server",
   );
-  console.log(JSON.stringify(output));
+
+  return output;
 }
 
 /** Get all relevant information out of Pretalx */
@@ -402,7 +413,10 @@ function upsertSession(
 ) {
   const id = `pretalx/submission/${submission.code}`;
   const isPublic = submission.tags.some((id) => ctx.publicTags.has(id));
-  const extraMetadata: any = {};
+  const extraMetadata: any = {
+    recorded: Boolean(!submission.do_not_record),
+    featured: Boolean(submission.is_featured),
+  };
 
   // Set the location metadata field based on the room
   // TODO: this could be a full-field on the session in the future
