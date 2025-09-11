@@ -46,6 +46,7 @@ import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
 import ArtsIcon from '@/icons/ArtsIcon.vue'
+import ExpoIcon from '@/icons/ExpoIcon.vue'
 import SearchIcon from '@/icons/SearchIcon.vue'
 import HelpDeskIcon from '@/icons/HelpDeskIcon.vue'
 import MapsIcon from '@/icons/MapsIcon.vue'
@@ -113,7 +114,7 @@ export default defineComponent({
         {
           title: this.pageTitle('expo'),
           name: pages.expo.name,
-          icon: ArtsIcon,
+          icon: ExpoIcon,
           pageFlag: this.settings.expo,
         },
         {
