@@ -1,6 +1,6 @@
 {
   "name": "@openlab/mozfest-client",
-  "version": "5.0.7",
+  "version": "5.0.8",
   "private": true,
   "type": "module",
   "scripts": {
@@ -18,7 +18,7 @@
     "@fortawesome/sharp-solid-svg-icons": "^7.0.1",
     "@fortawesome/vue-fontawesome": "^3.1.2",
     "@openlab/deconf-shared": "^4.0.0",
-    "@openlab/deconf-ui-toolkit": "^3.2.3",
+    "@openlab/deconf-ui-toolkit": "^3.2.4",
     "bulma": "^0.9.4",
     "copy-to-clipboard": "^3.3.2",
     "ky": "^0.28.7",
