@@ -1,3 +1,1 @@
-Welcome to the Mozilla Festival Installations page. Explore the art and interactive installations that bring this year’s theme, Unlearning, to life.
-
-You can visit these experiences anytime and weave them into your festival journey at your own pace.
+Installations are woven throughout the festival venue, turning every corner into a chance to explore and reflect. These art and interactive pieces bring this year’s theme of Unlearning to life. Take them in at your own pace as part of your festival journey.
