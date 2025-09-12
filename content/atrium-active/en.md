@@ -19,12 +19,10 @@ Add the MozFest Plaza to your home screen to carry your festival at your finger 
 - **iPhone and iPad**: Tap **Share**, then **Add to Home Screen**
 - **Android**: Tap **Menu**, then **Install App** or **Add to Home screen**
 
-## Featured Sessions
-
 ## Get Ready to MozFest
 
 The festival starts before you even arrive in Barcelona. Here are some ways to connect, share, and get ready together.
 
 - Meet other participants in the [**Festival Discord**](https://discord.com/invite/mozfest)
-- Share that you're attending with your friends and collegues with our [social cheat sheets](https://www.mozillafestival.org/thank-you)
+- Share that you're attending with your friends and collegues with our [templated social posts](https://www.mozillafestival.org/thank-you)
 - Find tips for making the most of Barcelona and access exclusive hotel rates when you [Plan Your Trip](https://www.mozillafestival.org/plan-your-trip)
