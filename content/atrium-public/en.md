@@ -2,19 +2,21 @@
 
 # Welcome to the Mozilla Festival 2025 Schedule
 
-Mozilla Festival is where we come together to make good technology the default. From November 7–9 in Barcelona, explore Unlearning through community-led sessions, labs, and installations. Curated by Wranglers and contributors, the program opens space for building new ideas and imagining what comes next. This schedule is your guide to three days of collective creativity and connection.
+Mozilla Festival is where we come together to make good technology the default. From November 7–9 in Barcelona, explore Unlearning through community-led sessions, labs, and installations.
+
+Curated by our community of Wranglers and contributors, the program is designed to open space for building new ideas and imagining what comes next.
 
 [Explore the schedule →](/schedule)
 
 ## Tickets and Registration
 
-Get your all access pass with the **Community Badge (€45)**. Join us in Barcelona this November for main stage debates, hands on sessions, labs, hackathons, and interactive exhibits. Connect with a global community creating a more trustworthy internet.
+Get your all access pass with the **Community Badge (€45)** today and connect with a global community creating a more trustworthy internet.
 
 %tito%
 
 ## What You'll Experience
 
-Whether you're here to learn new skills, challenge assumptions, or connect with innovators shaping the future, you’re in the right place. Here are the formats where you can take part:
+Whether you're here to learn new skills, challenge assumptions, or connect with innovators shaping the future, you’re in the right place. Formats include:
 
 - **Labs** for hands on building and experimentation
 - **Talks** that share ideas and spark action
