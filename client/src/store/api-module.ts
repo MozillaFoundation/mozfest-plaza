@@ -67,7 +67,7 @@ export function apiModule(): Module<MozApiStoreState, unknown> {
 
         // TODO: this is a pre-deconf hack
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        user.user_roles = (user as any).scope.split(/\s+/)
+        user.user_roles = (user as any)?.scope?.split(/\s+/) ?? []
 
         commit('user', user)
 
