@@ -6,6 +6,13 @@ import { SocketIoPlugin } from './socketio-plugin'
 
 const gaExcluded = new Set(['general/pageView'])
 
+function errorFields(input: unknown) {
+  if (input instanceof Error) {
+    const { message, name, stack } = input
+    return { message, name, stack }
+  } else return {}
+}
+
 export class MetricsPlugin {
   static shared: MetricsPlugin | null = null
 
@@ -17,6 +24,18 @@ export class MetricsPlugin {
     app.config.errorHandler = function (error, _vm, info) {
       console.error(error, info)
       MetricsPlugin.shared?.error(error)
+
+      plugin.track({
+        eventName: 'general/error',
+        payload: { error, info, ...errorFields(error) },
+      })
+    }
+
+    window.onerror = (event, source, lineno, colno, error) => {
+      plugin.track({
+        eventName: 'general/error',
+        payload: { event, source, lineno, colno, error, ...errorFields(error) },
+      })
     }
   }
 
