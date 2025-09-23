@@ -7,7 +7,8 @@ import en from './en.yml'
 const rtlLocales = new Set(['ar'])
 
 const i18n = createI18n({
-  locale: pickLocale(),
+  // locale: pickLocale(),
+  locale: 'en',
   messages: { en },
 })
 
