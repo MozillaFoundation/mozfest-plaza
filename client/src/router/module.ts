@@ -113,14 +113,6 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: pages.maps.path,
-    name: pages.maps.name,
-    component: () => import('../views/MapsView.vue'),
-    meta: {
-      title: pages.maps.title,
-    },
-  },
-  {
     path: '/session/:sessionId',
     name: Routes.Session,
     props: true,
@@ -174,6 +166,14 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/ExpoView.vue'),
     meta: {
       title: pages.expo.title,
+    },
+  },
+  {
+    path: pages.map.path,
+    name: pages.map.name,
+    component: () => import('../views/MapView.vue'),
+    meta: {
+      title: pages.map.title,
     },
   },
 

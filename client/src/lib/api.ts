@@ -19,7 +19,7 @@ export interface MozConferenceConfig {
   schedule: PageFlag
   helpDesk: PageFlag
   coffeeChat: PageFlag
-  maps?: PageFlag
+  map?: PageFlag
 
   social?: PageFlag
   arts?: PageFlag

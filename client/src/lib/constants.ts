@@ -67,6 +67,15 @@ export type CollageOptions = {
   controls: string[]
 }
 
+export type MapOptions = {
+  tiles: string
+  center: { lat: number; lng: number }
+  zoom: number
+  bounds?: [number, number, number, number]
+  minZoom?: number
+  annotations: string
+}
+
 export type AtriumWidgetInit<Kind, Options> = {
   id: string
   kind: Kind

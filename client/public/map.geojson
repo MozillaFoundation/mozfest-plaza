@@ -1,0 +1,702 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1474335, 41.368736],
+            [2.1473249, 41.3689222],
+            [2.1469071, 41.3687808],
+            [2.146879, 41.368733],
+            [2.146877, 41.3686882],
+            [2.1468984, 41.3686454],
+            [2.146946, 41.3686107],
+            [2.1470131, 41.3685926],
+            [2.1474335, 41.368736]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone A",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1467289, 41.3692094],
+            [2.1467812, 41.3691259],
+            [2.1468522, 41.3691576],
+            [2.146804, 41.3692306],
+            [2.1467905, 41.3692381],
+            [2.1467745, 41.3692431],
+            [2.1467577, 41.3692436],
+            [2.1467456, 41.3692381],
+            [2.1467362, 41.3692275],
+            [2.1467322, 41.369216],
+            [2.1467289, 41.3692094]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone A",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1473434, 41.3689596],
+            [2.1474802, 41.3687155],
+            [2.1477048, 41.368787],
+            [2.1475667, 41.369032],
+            [2.1473434, 41.3689596]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone A",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1465581, 41.3689194],
+            [2.1466573, 41.3689657],
+            [2.1466023, 41.3690261],
+            [2.1465071, 41.3689798],
+            [2.1465581, 41.3689194]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone A",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1474768, 41.3689439]
+      },
+      "properties": {
+        "title": "Room A1",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1467877, 41.3691858]
+      },
+      "properties": {
+        "title": "Badge Pickup",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1466153, 41.3689637]
+      },
+      "properties": {
+        "title": "Prayer Room",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1465723, 41.3689416]
+      },
+      "properties": {
+        "title": "Lactation Space",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1471551, 41.368752]
+      },
+      "properties": {
+        "title": "Main Stage",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1474863, 41.3686306],
+            [2.1471511, 41.3684756],
+            [2.1472034, 41.368385],
+            [2.1475494, 41.36855],
+            [2.1474863, 41.3686306]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone B",
+        "description": "",
+        "theme": "#FFD600"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1474508, 41.368549]
+      },
+      "properties": {
+        "title": "B1 - Session Room",
+        "description": "",
+        "theme": "#FFD600"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1473556, 41.3685108]
+      },
+      "properties": {
+        "title": "B2 - Session Room",
+        "description": "",
+        "theme": "#FFD600"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.147247, 41.3684685]
+      },
+      "properties": {
+        "title": "B3 - Session Room",
+        "description": "",
+        "theme": "#FFD600"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1477359, 41.3685626],
+            [2.1476487, 41.3683855],
+            [2.1479075, 41.368307],
+            [2.1479612, 41.3684147],
+            [2.1480282, 41.3684227],
+            [2.1479974, 41.3685063],
+            [2.1480121, 41.3685435],
+            [2.147866, 41.3685264],
+            [2.1477359, 41.3685626]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone C",
+        "description": "",
+        "theme": "#109D58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1479348, 41.3684884]
+      },
+      "properties": {
+        "title": "C1 - Session Room",
+        "description": "",
+        "theme": "#109D58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1478705, 41.3683827]
+      },
+      "properties": {
+        "title": "C2 - Session Room",
+        "description": "",
+        "theme": "#109D58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1477859, 41.3683962]
+      },
+      "properties": {
+        "title": "C3 - Session Room",
+        "description": "",
+        "theme": "#109D58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1477349, 41.3684525]
+      },
+      "properties": {
+        "title": "C4 - Session Room",
+        "description": "",
+        "theme": "#109D58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1477694, 41.3686442],
+            [2.1477359, 41.3685626],
+            [2.147866, 41.3685264],
+            [2.1480121, 41.3685435],
+            [2.1480041, 41.3685133],
+            [2.1480108, 41.3684841],
+            [2.1480242, 41.368459],
+            [2.1480497, 41.3684389],
+            [2.1480846, 41.3684268],
+            [2.1481248, 41.3684227],
+            [2.1481583, 41.3684328],
+            [2.1481878, 41.3684479],
+            [2.1482066, 41.368466],
+            [2.1482348, 41.3684721],
+            [2.1482415, 41.3684529],
+            [2.1485177, 41.3684962],
+            [2.1484668, 41.3686985],
+            [2.1481328, 41.3686643],
+            [2.1481422, 41.3686281],
+            [2.1480256, 41.3686059],
+            [2.1479263, 41.3686049],
+            [2.1477694, 41.3686442]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone D",
+        "description": "",
+        "theme": "#0188D1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.149311, 41.3686032],
+            [2.1492587, 41.368717],
+            [2.1489703, 41.3686747],
+            [2.1489837, 41.3686264],
+            [2.1490119, 41.3685287],
+            [2.1490736, 41.3685418],
+            [2.1490964, 41.3685287],
+            [2.1491728, 41.3685408],
+            [2.1491836, 41.368561],
+            [2.149268, 41.368575],
+            [2.14926, 41.3685901],
+            [2.149311, 41.3686032]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone D",
+        "description": "",
+        "theme": "#0188D1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1482824, 41.3685093]
+      },
+      "properties": {
+        "title": "D1 - Session Room",
+        "description": "",
+        "theme": "#0188D1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1478653, 41.3685868]
+      },
+      "properties": {
+        "title": "D2 - Session Room",
+        "description": "",
+        "theme": "#0188D1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.149138, 41.3686234]
+      },
+      "properties": {
+        "title": "D3 - Installations",
+        "description": "",
+        "theme": "#0188D1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.148665, 41.3682777],
+            [2.1484182, 41.3682354],
+            [2.14838, 41.3682228],
+            [2.1483599, 41.3682078],
+            [2.1483465, 41.3681851],
+            [2.1483452, 41.368162],
+            [2.1483478, 41.3681333],
+            [2.1483619, 41.368103],
+            [2.1483908, 41.3680799],
+            [2.1484323, 41.3680734],
+            [2.148482, 41.3680719],
+            [2.1486409, 41.3680958],
+            [2.1487998, 41.3681283],
+            [2.1488193, 41.3681484],
+            [2.1488259, 41.368166],
+            [2.1488326, 41.3681937],
+            [2.1488226, 41.3682259],
+            [2.1488078, 41.3682485],
+            [2.1487884, 41.3682707],
+            [2.1487696, 41.3682817],
+            [2.1487508, 41.3682842],
+            [2.148665, 41.3682777]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone E",
+        "description": "",
+        "theme": "#9C27B0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1482777, 41.3681752],
+            [2.1479813, 41.3681571],
+            [2.147929, 41.3677857],
+            [2.1484171, 41.3679407],
+            [2.1483621, 41.3680655],
+            [2.1482937, 41.3680635],
+            [2.1482777, 41.3681752]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone E",
+        "description": "",
+        "theme": "#9C27B0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.148562, 41.3681752]
+      },
+      "properties": {
+        "title": "E1 - Social Hub",
+        "description": "",
+        "theme": "#9C27B0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1480765, 41.3679548]
+      },
+      "properties": {
+        "title": "Food Trucks",
+        "description": "",
+        "icon": "food",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.1500047, 41.3691053],
+            [2.1499745, 41.3690635],
+            [2.1500315, 41.3690424],
+            [2.1500154, 41.3690243],
+            [2.1500513, 41.3690094],
+            [2.1500346, 41.3689883],
+            [2.150114, 41.3689551],
+            [2.1501298, 41.3689777],
+            [2.1503521, 41.3688866],
+            [2.1504768, 41.3690502],
+            [2.1502401, 41.3691481],
+            [2.1502055, 41.369102],
+            [2.1501382, 41.3691302],
+            [2.1500892, 41.369063],
+            [2.1500574, 41.3690763],
+            [2.150058, 41.3690834],
+            [2.1500047, 41.3691053]
+          ]
+        ]
+      },
+      "properties": {
+        "title": "Zone F",
+        "description": "",
+        "theme": "#C2185B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1503036, 41.3689492]
+      },
+      "properties": {
+        "title": "F1 - Session Room",
+        "description": "",
+        "theme": "#C2185B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1501413, 41.369074]
+      },
+      "properties": {
+        "title": "F2 - Installations",
+        "description": "",
+        "theme": "#C2185B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1502118, 41.3689257]
+      },
+      "properties": {
+        "title": "F3 - Session Room",
+        "description": "",
+        "theme": "#C2185B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.14683, 41.368627]
+      },
+      "properties": {
+        "title": "Coffee",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1480378, 41.3678965]
+      },
+      "properties": {
+        "title": "Coffee",
+        "description": "",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1465485, 41.369101]
+      },
+      "properties": {
+        "title": "Medic",
+        "description": "",
+        "icon": "medic",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1500839, 41.3688722]
+      },
+      "properties": {
+        "title": "Food",
+        "description": "",
+        "icon": "food",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1481611, 41.3679821]
+      },
+      "properties": {
+        "title": "Food",
+        "description": "",
+        "icon": "food",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1474138, 41.3689413]
+      },
+      "properties": {
+        "title": "Toilets",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1490945, 41.3685836]
+      },
+      "properties": {
+        "title": "Toilet",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1474597, 41.3685997]
+      },
+      "properties": {
+        "title": "Toilet",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1481106, 41.36851]
+      },
+      "properties": {
+        "title": "Toilet",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1464151, 41.3688266]
+      },
+      "properties": {
+        "title": "Toilet",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1485886, 41.3681007]
+      },
+      "properties": {
+        "title": "Toilets",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1496193, 41.3689148]
+      },
+      "properties": {
+        "title": "Toilets",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1502963, 41.3690412]
+      },
+      "properties": {
+        "title": "Toilets",
+        "description": "",
+        "icon": "toilet",
+        "theme": "#E65100"
+      }
+    }
+  ]
+}

@@ -165,18 +165,6 @@
       "contentSlug": "register"
     }
   },
-  "maps": {
-    "path": "/maps",
-    "name": "maps",
-    "kind": "content",
-    "title": {
-      "en": "Maps",
-      "es": "Mapas"
-    },
-    "options": {
-      "contentSlug": "maps"
-    }
-  },
   "helpDesk": {
     "path": "/help",
     "name": "helpDesk",
@@ -211,6 +199,21 @@
     "options": {
       "filter": "types=65",
       "controls": ["query", "language", "theme"]
+    }
+  },
+  "map": {
+    "path": "/map",
+    "name": "map",
+    "kind": "map",
+    "title": { "en": "Map" },
+    "options": {
+      "tiles": "pmtiles://https://maps.openlab.dev/tiles/bcn.pmtiles",
+      "center": { "lng": 2.1486069878907017, "lat": 41.36875914104712 },
+      "bounds": [1.89976, 41.21714, 2.37275, 41.5166],
+      "minZoom": 12,
+      "zoom": 17.5,
+
+      "annotations": "/map.geojson"
     }
   }
 }

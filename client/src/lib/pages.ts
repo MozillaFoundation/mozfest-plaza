@@ -1,8 +1,10 @@
 import { computed, ref } from 'vue'
 import type {
   AtriumOptions,
+  CollageOptions,
   ContentOptions,
   GridOptions,
+  MapOptions,
   PageConfig,
   TimelineOptions,
 } from './constants.js'
@@ -11,7 +13,12 @@ type AllPages = Record<
   string,
   PageConfig<
     string,
-    TimelineOptions | GridOptions | ContentOptions | AtriumOptions
+    | TimelineOptions
+    | GridOptions
+    | ContentOptions
+    | AtriumOptions
+    | CollageOptions
+    | MapOptions
   >
 >
 

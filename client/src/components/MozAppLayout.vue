@@ -41,7 +41,7 @@ import {
 
 import MozfestLogo from '@/components/MozfestLogo.vue'
 // import MozillaLogo from '@/components/MozillaLogo.vue'
-import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
+// import MozfestSquareLogo from '@/components/MozfestSquareLogo.vue'
 import MozPageFooter from '@/components/MozPageFooter.vue'
 import LanguageControl from '@/components/LanguageControl.vue'
 
@@ -53,6 +53,7 @@ import MapsIcon from '@/icons/MapsIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
+import MapIcon from '@/icons/MapIcon.vue'
 import { ExtraRoutes, mapApiState, pages } from '@/lib/module'
 
 interface RouteIntermediate {
@@ -68,7 +69,7 @@ export default defineComponent({
     AppLayout,
     MozfestLogo,
     // MozillaLogo,
-    MozfestSquareLogo,
+    // MozfestSquareLogo,
     MozPageFooter,
     LanguageControl,
   },
@@ -124,10 +125,10 @@ export default defineComponent({
           pageFlag: this.settings.search,
         },
         {
-          title: this.pageTitle('maps'),
-          name: pages.maps.name,
-          icon: MapsIcon,
-          pageFlag: this.settings.maps,
+          title: this.pageTitle('map'),
+          name: pages.map.name,
+          icon: MapIcon,
+          pageFlag: this.settings.map,
         },
         {
           title: this.pageTitle('helpDesk'),
