@@ -83,7 +83,6 @@ fs.createReadStream(filename, "utf8")
       properties: {
         title: data.name,
         description: data.description,
-        // theme: getTheme(data.name),
         icon: getIcon(data.name),
         ...themeProperties[getTheme(data.name)],
       },
