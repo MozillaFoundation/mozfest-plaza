@@ -112,7 +112,7 @@
       "properties": {
         "title": "Badge Pickup",
         "description": "",
-        "theme": "#000000"
+        "theme": "#E65100"
       }
     },
     {
@@ -124,7 +124,7 @@
       "properties": {
         "title": "Prayer Room",
         "description": "",
-        "theme": "#000000"
+        "theme": "#E65100"
       }
     },
     {
@@ -136,7 +136,7 @@
       "properties": {
         "title": "Lactation Space",
         "description": "",
-        "theme": "#000000"
+        "theme": "#E65100"
       }
     },
     {
@@ -540,7 +540,7 @@
       "properties": {
         "title": "Coffee",
         "description": "",
-        "theme": "#000000"
+        "theme": "#E65100"
       }
     },
     {
@@ -552,7 +552,7 @@
       "properties": {
         "title": "Coffee",
         "description": "",
-        "theme": "#000000"
+        "theme": "#9C27B0"
       }
     },
     {
@@ -564,7 +564,7 @@
       "properties": {
         "title": "Medic",
         "description": "",
-        "icon": "medic",
+        "icon": "medical",
         "theme": "#000000"
       }
     },
