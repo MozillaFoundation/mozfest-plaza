@@ -51,7 +51,7 @@ function getTheme(name) {
 
 /** @type {any} */
 const icons = {
-  medic: "medic",
+  medic: "medical",
   toilet: "toilet",
   toilets: "toilet",
   food: "food",
