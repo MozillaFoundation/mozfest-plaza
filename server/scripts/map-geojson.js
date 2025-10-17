@@ -46,7 +46,7 @@ function getTheme(name) {
   if (/^E\d/.test(name)) return "purple";
   if (/^F\d/.test(name)) return "magenta";
 
-  return themes[name.toLowerCase()] ?? "red";
+  return themes[name.toLowerCase()] ?? "black";
 }
 
 /** @type {any} */
@@ -66,6 +66,7 @@ function getIcon(name) {
 
 /** @type {any} */
 const themeProperties = {
+  black: { theme: "#000000" },
   red: { theme: "#E65100" },
   yellow: { theme: "#FFD600" },
   green: { theme: "#109D58" },
