@@ -67,6 +67,13 @@ export default defineComponent({
 
       const source = 'annotations'
 
+      map.addControl(
+        new maplibre.GeolocateControl({
+          trackUserLocation: true,
+        }),
+        'top-right'
+      )
+
       map.addSource(source, {
         type: 'geojson',
         data: this.config.options.annotations,
@@ -95,26 +102,11 @@ export default defineComponent({
           'fill-opacity': 0.2,
         },
       })
-
-      // Show POI
       map.addLayer({
         id: 'mozfest-poi',
-        source,
-        type: 'circle',
-        filter: [
-          'all',
-          ['==', ['geometry-type'], 'Point'],
-          ['!', ['has', 'icon']],
-        ],
-        paint: {
-          'circle-color': ['get', 'theme'],
-          'circle-radius': 10,
-        },
-      })
-      map.addLayer({
-        id: 'poi-labels',
         type: 'symbol',
         source,
+        filter: ['all', ['==', ['geometry-type'], 'Point']],
         layout: {
           'text-field': ['get', 'title'],
           'text-font': ['Noto Sans Medium'],
@@ -133,6 +125,13 @@ export default defineComponent({
 
       // Hide maplibre toilets
       map.removeLayer('pois')
+
+      map.on('mouseenter', 'mozfest-poi', () => {
+        map.getCanvas().style.cursor = 'pointer'
+      })
+      map.on('mouseleave', 'mozfest-poi', () => {
+        map.getCanvas().style.cursor = ''
+      })
 
       // Navigate to URLs from poi
       map.on('click', 'mozfest-poi', (e) => {

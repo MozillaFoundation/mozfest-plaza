@@ -98,9 +98,10 @@
         "coordinates": [2.1474768, 41.3689439]
       },
       "properties": {
-        "title": "Room A1",
-        "description": "",
-        "theme": "#E65100"
+        "title": "A1",
+        "url": "https://schedule.mozillafestival.org/schedule?track=13",
+        "theme": "#E65100",
+        "icon": "red"
       }
     },
     {
@@ -112,7 +113,8 @@
       "properties": {
         "title": "Badge Pickup",
         "description": "",
-        "theme": "#E65100"
+        "theme": "#E65100",
+        "icon": "red"
       }
     },
     {
@@ -124,7 +126,8 @@
       "properties": {
         "title": "Prayer Room",
         "description": "",
-        "theme": "#E65100"
+        "theme": "#E65100",
+        "icon": "red"
       }
     },
     {
@@ -136,7 +139,8 @@
       "properties": {
         "title": "Lactation Space",
         "description": "",
-        "theme": "#E65100"
+        "theme": "#E65100",
+        "icon": "red"
       }
     },
     {
@@ -147,8 +151,9 @@
       },
       "properties": {
         "title": "Main Stage",
-        "description": "",
-        "theme": "#E65100"
+        "url": "https://schedule.mozillafestival.org/schedule?track=11",
+        "theme": "#E65100",
+        "icon": "red"
       }
     },
     {
@@ -178,9 +183,10 @@
         "coordinates": [2.1474508, 41.368549]
       },
       "properties": {
-        "title": "B1 - Session Room",
-        "description": "",
-        "theme": "#FFD600"
+        "title": "B1",
+        "url": "https://schedule.mozillafestival.org/schedule?track=15",
+        "theme": "#FFD600",
+        "icon": "yellow"
       }
     },
     {
@@ -190,9 +196,10 @@
         "coordinates": [2.1473556, 41.3685108]
       },
       "properties": {
-        "title": "B2 - Session Room",
-        "description": "",
-        "theme": "#FFD600"
+        "title": "B2",
+        "url": "https://schedule.mozillafestival.org/schedule?track=16",
+        "theme": "#FFD600",
+        "icon": "yellow"
       }
     },
     {
@@ -202,9 +209,10 @@
         "coordinates": [2.147247, 41.3684685]
       },
       "properties": {
-        "title": "B3 - Session Room",
-        "description": "",
-        "theme": "#FFD600"
+        "title": "B3",
+        "url": "https://schedule.mozillafestival.org/schedule?track=86",
+        "theme": "#FFD600",
+        "icon": "yellow"
       }
     },
     {
@@ -238,9 +246,10 @@
         "coordinates": [2.1479348, 41.3684884]
       },
       "properties": {
-        "title": "C1 - Session Room",
-        "description": "",
-        "theme": "#109D58"
+        "title": "C1",
+        "url": "https://schedule.mozillafestival.org/schedule?track=17",
+        "theme": "#109D58",
+        "icon": "green"
       }
     },
     {
@@ -250,9 +259,10 @@
         "coordinates": [2.1478705, 41.3683827]
       },
       "properties": {
-        "title": "C2 - Session Room",
-        "description": "",
-        "theme": "#109D58"
+        "title": "C2",
+        "url": "https://schedule.mozillafestival.org/schedule?track=18",
+        "theme": "#109D58",
+        "icon": "green"
       }
     },
     {
@@ -262,9 +272,10 @@
         "coordinates": [2.1477859, 41.3683962]
       },
       "properties": {
-        "title": "C3 - Session Room",
-        "description": "",
-        "theme": "#109D58"
+        "title": "C3",
+        "url": "https://schedule.mozillafestival.org/schedule?track=19",
+        "theme": "#109D58",
+        "icon": "green"
       }
     },
     {
@@ -274,9 +285,23 @@
         "coordinates": [2.1477349, 41.3684525]
       },
       "properties": {
-        "title": "C4 - Session Room",
-        "description": "",
-        "theme": "#109D58"
+        "title": "C4",
+        "description": "https://schedule.mozillafestival.org/schedule?track=20",
+        "theme": "#109D58",
+        "icon": "green"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1478248006526144, 41.368496288166]
+      },
+      "properties": {
+        "title": "C5",
+        "url": "https://schedule.mozillafestival.org/schedule?track=89",
+        "theme": "#109D58",
+        "icon": "green"
       }
     },
     {
@@ -350,9 +375,10 @@
         "coordinates": [2.1482824, 41.3685093]
       },
       "properties": {
-        "title": "D1 - Session Room",
-        "description": "",
-        "theme": "#0188D1"
+        "title": "D1",
+        "url": "https://schedule.mozillafestival.org/schedule?track=21",
+        "theme": "#0188D1",
+        "icon": "blue"
       }
     },
     {
@@ -362,9 +388,10 @@
         "coordinates": [2.1478653, 41.3685868]
       },
       "properties": {
-        "title": "D2 - Session Room",
-        "description": "",
-        "theme": "#0188D1"
+        "title": "D2",
+        "url": "https://schedule.mozillafestival.org/schedule?track=22",
+        "theme": "#0188D1",
+        "icon": "blue"
       }
     },
     {
@@ -374,9 +401,10 @@
         "coordinates": [2.149138, 41.3686234]
       },
       "properties": {
-        "title": "D3 - Installations",
-        "description": "",
-        "theme": "#0188D1"
+        "title": "D3",
+        "description": "Installations",
+        "theme": "#0188D1",
+        "icon": "blue"
       }
     },
     {
@@ -445,9 +473,11 @@
         "coordinates": [2.148562, 41.3681752]
       },
       "properties": {
-        "title": "E1 - Social Hub",
-        "description": "",
-        "theme": "#9C27B0"
+        "title": "E1",
+        "description": "Social Hub",
+        "url": "https://schedule.mozillafestival.org/schedule?track=12",
+        "theme": "#9C27B0",
+        "icon": "purple"
       }
     },
     {
@@ -502,9 +532,10 @@
         "coordinates": [2.1503036, 41.3689492]
       },
       "properties": {
-        "title": "F1 - Session Room",
-        "description": "",
-        "theme": "#C2185B"
+        "title": "F1",
+        "url": "https://schedule.mozillafestival.org/schedule?track=24",
+        "theme": "#C2185B",
+        "icon": "magenta"
       }
     },
     {
@@ -516,19 +547,8 @@
       "properties": {
         "title": "F2 - Installations",
         "description": "",
-        "theme": "#C2185B"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [2.1502118, 41.3689257]
-      },
-      "properties": {
-        "title": "F3 - Session Room",
-        "description": "",
-        "theme": "#C2185B"
+        "theme": "#C2185B",
+        "icon": "magenta"
       }
     },
     {
@@ -540,7 +560,8 @@
       "properties": {
         "title": "Coffee",
         "description": "",
-        "theme": "#E65100"
+        "theme": "#E65100",
+        "icon": "food"
       }
     },
     {
@@ -552,7 +573,8 @@
       "properties": {
         "title": "Coffee",
         "description": "",
-        "theme": "#9C27B0"
+        "theme": "#9C27B0",
+        "icon": "food"
       }
     },
     {
