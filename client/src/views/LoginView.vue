@@ -184,7 +184,10 @@ export default defineComponent({
       if (this.state === 'working') return
       this.state = 'working'
 
-      const login = await deconfClient.login(this.emailAddress, this.redirect)
+      const login = await deconfClient.auth.login(
+        this.emailAddress,
+        this.redirect
+      )
 
       if (!login) {
         this.state = 'error'
@@ -199,7 +202,10 @@ export default defineComponent({
       if (this.state === 'working') return
       this.state = 'working'
 
-      const result = await deconfClient.verify(this.oneTimeCode, this.token)
+      const result = await deconfClient.auth.verify(
+        this.oneTimeCode,
+        this.token
+      )
 
       if (!result) {
         this.state = 'error'

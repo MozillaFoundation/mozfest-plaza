@@ -82,7 +82,7 @@ export interface WebPushDevice {
   attendee: number
   name: string
   endpoint: string
-  expiration: Date | null
+  expires_at: Date | null
   keys: Record<string, string>
   categories: string[]
 }
@@ -90,7 +90,7 @@ export interface WebPushDevice {
 export interface WebPushDeviceInit {
   name: string
   endpoint: string
-  expiration: Date | null
+  expires_at: Date | null
   keys: Record<string, string>
   categories: string[]
 }
@@ -316,5 +316,26 @@ export class FetchClient {
   ): Promise<T | null> {
     const res = await this.fetch(input, init)
     return res.ok ? res.json() : null
+  }
+
+  // NOTE: experimental
+  async ok(
+    input: string | URL | Request,
+    init: RequestInit = {}
+  ): Promise<boolean> {
+    const res = await this.fetch(input, init)
+    return res.ok
+  }
+}
+
+// NOTE: should it be a RequestInit or HeadersInit?
+export function jsonBody(body: any, init: HeadersInit = {}): RequestInit {
+  const headers = new Headers(init)
+  if (!headers.has('Content-Type')) {
+    headers.set('Content-Type', 'application/json')
+  }
+  return {
+    body: JSON.stringify(body),
+    headers,
   }
 }

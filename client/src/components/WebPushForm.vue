@@ -12,12 +12,18 @@ const data = ref<WebPushSubmit>({
   categories: [],
 })
 
+const props = defineProps<{ disabled?: boolean }>()
+
 const emit = defineEmits<{
   (e: 'submit', data: WebPushSubmit): void
 }>()
 
 const canSubmit = computed(() => {
-  return data.value.name.trim().length > 0 && data.value.categories.length > 0
+  return (
+    !props.disabled &&
+    data.value.name.trim().length > 0 &&
+    data.value.categories.length > 0
+  )
 })
 
 function onSubmit() {

@@ -30,11 +30,6 @@ import type { MapOptions, PageConfig } from '@/lib/module.js'
 
 type Config = PageConfig<string, MapOptions>
 
-async function getBytes(url: string) {
-  const res = await fetch(url)
-  return res.bytes()
-}
-
 const icons = [
   'blue',
   'food',

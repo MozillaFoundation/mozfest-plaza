@@ -7,6 +7,8 @@ export enum StorageKey {
   ScheduleFilters = 'scheduleFilters',
   WhatsOnFilters = 'whatsOnFilters',
   MyScheduleFilters = 'myScheduleFilters',
+
+  WebPushDevice = 'webPushDeviceId',
 }
 
 export enum ExtraRoutes {

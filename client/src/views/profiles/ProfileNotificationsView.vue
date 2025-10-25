@@ -31,7 +31,11 @@
         />
       </section>
 
-      <WebPushForm v-if="!hasCurrent && canAddDevice" @submit="addDevice" />
+      <WebPushForm
+        v-if="!hasCurrent && canAddDevice"
+        @submit="addDevice"
+        :disabled="isWorking"
+      />
 
       <p v-if="!canAddDevice">
         Your current device doesn't support the
@@ -41,10 +45,10 @@
         . If you're on mobile, try adding this website to your homescreen.
       </p>
 
-      <!-- <details>
+      <details v-if="$dev.isEnabled">
         <summary>debug</summary>
         <button @click="test">Send a test</button>
-      </details> -->
+      </details>
     </div>
   </MozUtilLayout>
 </template>
@@ -55,9 +59,10 @@ import { BackButton, Routes } from '@openlab/deconf-ui-toolkit'
 import MozUtilLayout from '@/components/MozUtilLayout.vue'
 
 import {
-  apiClient,
+  deconfClient,
   localise,
   shallowCompare,
+  StorageKey,
   type WebPushDevice,
   type WebPushDeviceUpdate,
 } from '@/lib/module.js'
@@ -67,10 +72,13 @@ import WebPushForm, { type WebPushSubmit } from '@/components/WebPushForm.vue'
 
 const profileRoute = { name: Routes.Profile }
 
-const devices = ref<WebPushDevice[]>()
+const isWorking = ref(false)
+const devices = ref<WebPushDevice[] | null>(null)
 
 const serviceWorker = ServiceWorkerPlugin.use()
 const subscription = shallowRef<PushSubscription | null>(null)
+
+const currentDeviceId = ref<number>()
 
 const webPushAvailable = 'Notification' in window
 
@@ -82,6 +90,13 @@ onMounted(async () => {
     await serviceWorker.registration.pushManager.getSubscription()
 })
 
+// Get and parse the "current" web push device id
+onMounted(() => {
+  const deviceId = localStorage.getItem(StorageKey.WebPushDevice)
+  currentDeviceId.value = deviceId ? parseInt(deviceId) : undefined
+})
+
+// Fetch web push devices from the server
 onMounted(() => fetchDevices())
 
 const hasCurrent = computed(() => {
@@ -89,7 +104,7 @@ const hasCurrent = computed(() => {
 })
 
 async function fetchDevices() {
-  devices.value = (await apiClient.listWebPushDevices()) ?? undefined
+  devices.value = await deconfClient.notifs.listWebPushDevices()
 }
 
 function isCurrent(device: WebPushDevice) {
@@ -101,7 +116,7 @@ function isCurrent(device: WebPushDevice) {
 
 async function updateDevice(id: number, update: WebPushDeviceUpdate) {
   console.log('@update', id, update)
-  const ok = await apiClient.updateWebPushDevice(id, update)
+  const ok = await deconfClient.notifs.updateWebPushDevice(id, update)
   if (!ok) alert('Failed to update device')
   await fetchDevices()
 }
@@ -109,7 +124,7 @@ async function updateDevice(id: number, update: WebPushDeviceUpdate) {
 async function deleteDevice(id: number) {
   if (!confirm('Are you sure?')) return
   console.log('@delete', id)
-  const ok = await apiClient.deleteWebPushDevice(id)
+  const ok = await deconfClient.notifs.deleteWebPushDevice(id)
   if (!ok) alert('Failed to delete device')
   await fetchDevices()
 }
@@ -119,11 +134,12 @@ const canAddDevice = computed(
 )
 
 async function addDevice(data: WebPushSubmit) {
-  console.log('addDevice', data)
+  if (isWorking.value) return
+  isWorking.value = true
 
   if (!webPushAvailable || !serviceWorker.registration) return
 
-  const creds = await apiClient.getWebPushCredentials()
+  const creds = await deconfClient.notifs.getWebPushCredentials()
   if (!creds) return
 
   const result = await Notification.requestPermission()
@@ -135,29 +151,29 @@ async function addDevice(data: WebPushSubmit) {
       userVisibleOnly: true,
       applicationServerKey: creds.publicKey,
     }))
-  await apiClient.createWebPushDevice({
+  const newDevice = await deconfClient.notifs.createWebPushDevice({
     ...data,
     endpoint: sub.endpoint,
-    expiration: sub.expirationTime ? new Date(sub.expirationTime) : null,
+    expires_at: sub.expirationTime ? new Date(sub.expirationTime) : null,
     keys: sub.toJSON().keys!,
   })
   subscription.value = sub
 
+  if (newDevice) {
+    currentDeviceId.value = newDevice.id
+    localStorage.setItem(StorageKey.WebPushDevice, `${newDevice.id}`)
+  }
+
   await fetchDevices()
+
+  isWorking.value = false
 }
 
 async function test() {
   if (!subscription.value) return
 
-  // await apiClient.fetch(
-  //   new URL('notifications/web-push-test', apiClient.baseUrl).toString(),
-  //   {
-  //     method: 'POST',
-  //     body: JSON.stringify(subscription.value),
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //   }
-  // )
+  const ok = await deconfClient.notifs.testWebPush()
+
+  if (!ok) alert('Something went wrong')
 }
 </script>
