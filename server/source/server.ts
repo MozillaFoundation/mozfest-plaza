@@ -69,9 +69,6 @@ export async function runServer(options: RunServerOptions) {
     log: true,
     routes,
     cors,
-    errorHandler(error, request) {
-      console.error("[http error]", request.url, error);
-    },
   });
 
   const server = await serveHTTP(options, (r) => router.getResponse(r));
