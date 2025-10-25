@@ -147,3 +147,7 @@
     background: $primary;
   }
 }
+
+.flow > * + * {
+  margin-block-start: var(--flow, 1em);
+}

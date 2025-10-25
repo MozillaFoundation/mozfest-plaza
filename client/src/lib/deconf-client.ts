@@ -37,8 +37,28 @@ export interface ApiVerify {
   token: string
 }
 
-export interface ApiLogin {
+export interface ApiEmailLogin {
   token: string
+}
+
+export interface ApiOAuthLogin {
+  token: string
+  location: string
+}
+
+// export interface ApiOauth
+
+export interface EmailLoginOptions {
+  emailAddress: string
+  redirect?: string
+}
+
+export type OauthProvider = 'google'
+
+export interface OauthLoginOptions {
+  provider: OauthProvider
+  redirect?: string
+  scope?: 'calendar'
 }
 
 export class AuthClient {
@@ -47,39 +67,49 @@ export class AuthClient {
     this.deconf = deconf
   }
 
-  async login(
-    emailAddress: string,
-    redirect?: string
-  ): Promise<ApiLogin | null> {
+  emailLogin({
+    emailAddress,
+    redirect,
+  }: EmailLoginOptions): Promise<ApiEmailLogin | null> {
     const redirectUri = new URL('login', env.SELF_URL)
     if (redirect) redirectUri.searchParams.set('redirect', redirect)
 
-    const res = await this.deconf.fetch(`auth/v1/login`, {
+    return this.deconf.json(`auth/v1/login`, {
       method: 'POST',
-      body: JSON.stringify({
+      ...jsonBody({
         type: 'email',
         emailAddress,
         redirectUri,
-        conferenceId: env.DECONF_CONFERENCE,
+        conferenceId: this.deconf.conferenceId,
       }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
-
-    return res.ok ? res.json() : null
   }
 
-  async verify(code: string, token?: string): Promise<ApiVerify | null> {
-    const res = await this.deconf.fetch('auth/v1/verify', {
+  verify(code: string, token?: string): Promise<ApiVerify | null> {
+    return this.deconf.json('auth/v1/verify', {
       method: 'POST',
-      body: JSON.stringify({ method: 'email', token, code }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      ...jsonBody({ method: 'email', token, code }),
     })
+  }
 
-    return res.ok ? res.json() : null
+  oauthLogin({
+    provider,
+    redirect,
+    scope,
+  }: OauthLoginOptions): Promise<ApiOAuthLogin | null> {
+    const redirectUri = new URL('login', env.SELF_URL)
+    if (redirect) redirectUri.searchParams.set('redirect', redirect)
+
+    return this.deconf.json('auth/v1/login', {
+      method: 'POST',
+      ...jsonBody({
+        type: 'oauth',
+        provider,
+        redirectUri: redirectUri,
+        conferenceId: this.deconf.conferenceId,
+        scope,
+      }),
+    })
   }
 }
 

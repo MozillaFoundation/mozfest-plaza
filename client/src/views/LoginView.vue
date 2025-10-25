@@ -8,8 +8,9 @@
       </div>
 
       <div class="loginView-form" v-if="mode === 'email'">
-        <div class="notification is-danger" v-if="state === 'error'">
+        <div class="notification is-danger flow" v-if="state === 'error'">
           <p>{{ $t('deconf.login.badEmail') }}</p>
+          <p v-if="error">Error code: {{ error }}</p>
         </div>
 
         <MozTextField
@@ -80,12 +81,12 @@
         {{ $t('mozfest.login.oauth') }}
       </p>
       <div class="buttons">
-        <a :href="googleLink" class="button is-google">
+        <button @click="startGoogle" class="button is-google">
           <span class="icon">
             <FontAwesomeIcon :icon="['fab', 'google']" />
           </span>
           <span> {{ $t('mozfest.login.google') }} </span>
-        </a>
+        </button>
       </div>
     </div>
 
@@ -130,6 +131,7 @@ export interface _Data {
   emailAddress: string
   oneTimeCode: string
   state: FormState
+  error?: string
   mode: 'email' | 'code'
   token?: string
 }
@@ -149,13 +151,6 @@ export default defineComponent({
   }),
   computed: {
     ...mapApiState('api', ['settings']),
-    googleLink(): string {
-      const url = new URL('./auth/oauth2/google', env.SERVER_URL)
-      if (this.redirect) {
-        url.searchParams.set('redirect', this.redirect)
-      }
-      return url.toString()
-    },
     profileAuthRoute(): RouteLocationRaw {
       return { name: ExtraRoutes.ProfileAuth }
     },
@@ -168,14 +163,21 @@ export default defineComponent({
   },
 
   mounted() {
-    const { code, token } = this.$route.query
+    const { method, code, token, error } = this.$route.query
     if (typeof token === 'string') {
       this.token = token
     }
-    if (typeof code === 'string') {
+    if (method === 'login' && typeof code === 'string') {
       this.oneTimeCode = code
       this.mode = 'code'
       this.submitCode()
+    }
+    if (method === 'oauth' && typeof token === 'string') {
+      this.finish(token)
+    }
+    if (typeof error === 'string') {
+      this.state = 'error'
+      this.error = error
     }
   },
 
@@ -184,10 +186,10 @@ export default defineComponent({
       if (this.state === 'working') return
       this.state = 'working'
 
-      const login = await deconfClient.auth.login(
-        this.emailAddress,
-        this.redirect
-      )
+      const login = await deconfClient.auth.emailLogin({
+        emailAddress: this.emailAddress,
+        redirect: this.redirect,
+      })
 
       if (!login) {
         this.state = 'error'
@@ -212,7 +214,11 @@ export default defineComponent({
         return
       }
 
-      const params = new URLSearchParams({ token: result.token })
+      this.finish(result.token)
+    },
+
+    finish(token: string) {
+      const params = new URLSearchParams({ token })
       if (this.redirect) params.set('redirect', this.redirect)
 
       const url = new URL('_auth', env.SELF_URL)
@@ -220,11 +226,31 @@ export default defineComponent({
 
       location.href = url.toString()
     },
+
     startAgain() {
       this.oneTimeCode = ''
       this.mode = 'email'
       this.state = 'input'
       this.$router.push({ name: Routes.Login })
+    },
+
+    async startGoogle() {
+      if (this.state === 'working') return
+      this.state = 'working'
+
+      const login = await deconfClient.auth.oauthLogin({
+        provider: 'google',
+        redirect: this.redirect,
+        // scope: "calendar"
+      })
+
+      if (!login) {
+        this.state = 'error'
+        return
+      }
+
+      this.state = 'input'
+      location.href = login.location
     },
   },
 })
