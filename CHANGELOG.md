@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.0.0...v5.1.0) (2025-10-26)
+
+- new map page template
+- re-integrate web-push with deconf/api-server
+- re-integrate google oauth with deconf/api-server
+
+## [5.0.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.0.0...v5.0.0) (???)
+
+Missing entry
+
 ## [4.2.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/4.2.1...v4.2.2) (2024-11-18)
 
 - Improve survey presentation
