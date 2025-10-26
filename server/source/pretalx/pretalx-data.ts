@@ -26,6 +26,7 @@ export async function pretalxData(arg: string) {
   if (arg === "submissions") return dump(await pretalx.listSubmissions());
   if (arg === "speakers") return dump(await pretalx.listSpeakers());
   if (arg === "tags") return dump(await pretalx.listTags());
+  if (arg === "types") return dump(await pretalx.listSubmissionTypes());
   if (arg === "tracks") return dump(await pretalx.listTracks());
   if (arg === "rooms") return dump(await pretalx.listRooms());
   if (arg === "slots") return dump(await pretalx.listSlots());
