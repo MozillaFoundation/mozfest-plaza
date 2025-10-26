@@ -2,11 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 5.1.1
+
+- Fix build
+
 ## [5.1.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.0.0...v5.1.0) (2025-10-26)
 
-- new map page template
-- re-integrate web-push with deconf/api-server
-- re-integrate google oauth with deconf/api-server
+- New map page template
+- Re-integrate web-push with deconf/api-server
+- Re-integrate google oauth with deconf/api-server
 
 ## [5.0.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.0.0...v5.0.0) (???)
 
