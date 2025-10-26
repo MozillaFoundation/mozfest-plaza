@@ -1,8 +1,4 @@
-import {
-  Store,
-  StoreSetOptions,
-  MemoryStore as DeconfMemoryStore,
-} from "gruber";
+import { Store, StoreSetOptions } from "gruber";
 import { RedisClientType, createClient, SetOptions } from "redis";
 
 export interface RedisOptions {
@@ -64,11 +60,11 @@ export class RedisStore implements Store {
     if (client.isOpen) await client.quit();
   }
 
-  async [Symbol.asyncDispose]() {
-    await this.close();
+  dispose(): Promise<void> {
+    return this.close();
   }
-}
 
-export class MemoryStore extends DeconfMemoryStore {
-  async [Symbol.asyncDispose]() {}
+  [Symbol.asyncDispose]() {
+    return this.close();
+  }
 }
