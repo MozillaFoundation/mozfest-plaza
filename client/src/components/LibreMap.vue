@@ -42,8 +42,7 @@ const emit = defineEmits<{
 
 const style = computed<maplibre.StyleSpecification>(() => ({
   version: 8,
-  glyphs:
-    'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
+  glyphs: 'https://mzf.st/cdn/maps/fonts/{fontstack}/{range}.pbf',
   sources: {
     protomaps: {
       type: 'vector',

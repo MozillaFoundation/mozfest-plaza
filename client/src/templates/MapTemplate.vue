@@ -109,7 +109,7 @@ export default defineComponent({
         filter: ['all', ['==', ['geometry-type'], 'Point']],
         layout: {
           'text-field': ['get', 'title'],
-          'text-font': ['Noto Sans Medium'],
+          'text-font': ['Inter Medium'],
           'text-offset': [0, 2],
           'text-size': 12,
           'text-justify': 'auto',

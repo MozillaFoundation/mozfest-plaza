@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.1.0...v5.1.2) (2025-10-26)
+
+- Use moz-hosted CDN for map assets
+
 ## 5.1.1
 
 - Fix build
