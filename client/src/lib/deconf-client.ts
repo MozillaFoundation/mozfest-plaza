@@ -31,6 +31,7 @@ export class DeconfClient extends FetchClient {
 
   auth = new AuthClient(this)
   notifs = new NotificationsClient(this)
+  admin = new AdminClient(this)
 }
 
 export interface ApiVerify {
@@ -157,6 +158,44 @@ export class NotificationsClient {
     return this.deconf.ok(
       `notifications/v1/conference/${this.deconf.conferenceId}/web-push/test`,
       { method: 'POST' }
+    )
+  }
+}
+
+export interface AdminStats {
+  categories: Record<string, number>
+  messages: Record<string, number>
+}
+
+export interface AdminWebPushMessage {
+  title: string
+  body: string
+  url: string
+}
+
+export class AdminClient {
+  deconf: DeconfClient
+  constructor(deconf: DeconfClient) {
+    this.deconf = deconf
+  }
+
+  getMessaging() {
+    return this.deconf.json<AdminStats>(
+      `admin/v1/conferences/${this.deconf.conferenceId}/web-push/info`
+    )
+  }
+
+  testWebPush(message: AdminWebPushMessage) {
+    return this.deconf.ok(
+      `admin/v1/conferences/${this.deconf.conferenceId}/web-push/test`,
+      { method: 'POST', ...jsonBody(message) }
+    )
+  }
+
+  sendWebPush(message: AdminWebPushMessage) {
+    return this.deconf.ok(
+      `admin/v1/conferences/${this.deconf.conferenceId}/web-push/send`,
+      { method: 'POST', ...jsonBody(message) }
     )
   }
 }

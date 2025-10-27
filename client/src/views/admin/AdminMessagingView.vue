@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { BackButton } from '@openlab/deconf-ui-toolkit'
 
 import MozUtilLayout from '@/components/MozUtilLayout.vue'
-import { apiClient, ExtraRoutes, localise } from '@/lib/module.js'
+import { deconfClient, ExtraRoutes, localise } from '@/lib/module.js'
 
 const adminRoute = { name: ExtraRoutes.Admin }
 
@@ -31,7 +31,7 @@ onUnmounted(() => {
 })
 
 async function fetchData() {
-  stats.value = await apiClient.fetchJson<AdminStats>('admin/messaging')
+  stats.value = await deconfClient.admin.getMessaging()
   updated.value = new Date()
 }
 
@@ -42,14 +42,14 @@ const message = ref({
 })
 
 async function sendTestMessage() {
-  const success = await apiClient.testWebPush(message.value)
+  const success = await deconfClient.admin.testWebPush(message.value)
   if (!success) alert('Failed to send test message')
   alert('Test message sent')
   await fetchData()
 }
 async function sendFullMessage() {
   if (!confirm('Are you sure?')) return
-  const success = await apiClient.sendWebPush(message.value)
+  const success = await deconfClient.admin.sendWebPush(message.value)
   if (!success) alert('Failed to send message')
   else {
     message.value = { title: '', body: '', url: location.origin }
