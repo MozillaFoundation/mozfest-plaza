@@ -406,6 +406,8 @@ function convertState(input: PretalxSubmission["state"]) {
   return "draft";
 }
 
+const publicDomains = [/^https:\/\/discord.com\/channels\/.*$/];
+
 function upsertSession(
   ctx: ConvertContext,
   submission: PretalxSubmission,
@@ -446,6 +448,15 @@ function upsertSession(
       previewExtensions.some((ex) => ex.test(resource.resource))
     ) {
       extraMetadata.preview_image = resource.resource;
+    }
+
+    // Store the pre-session discord in metadata for the front-end to display
+    // before the session goes live
+    if (
+      !extraMetadata.discord_url &&
+      publicDomains.some((regex) => regex.test(resource.resource))
+    ) {
+      extraMetadata.discord_url = resource.resource;
     }
   }
 
