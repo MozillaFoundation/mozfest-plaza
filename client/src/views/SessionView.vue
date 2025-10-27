@@ -37,10 +37,23 @@
         </p>
       </template>
 
-      <template v-slot:afterEmbed v-if="activeSurvey">
-        <div class="sessionSurvey">
-          <h3>{{ $t('deconf.session.mozfest.feedback') }}</h3>
-          <IframeEmbed :src="activeSurvey" />
+      <template v-slot:afterEmbed v-if="activeSurvey || discordUrl">
+        <div class="flow">
+          <a
+            class="sessionDiscord button is-discord is-medium"
+            v-if="discordUrl"
+            :href="discordUrl"
+            target="_blank"
+          >
+            <span class="icon">
+              <FontAwesomeIcon :icon="['fab', 'discord']" />
+            </span>
+            <span>{{ $t('deconf.session.mozfest.discordButton') }}</span>
+          </a>
+          <div class="sessionSurvey" v-if="activeSurvey">
+            <h3>{{ $t('deconf.session.mozfest.feedback') }}</h3>
+            <IframeEmbed :src="activeSurvey" />
+          </div>
         </div>
       </template>
 
@@ -237,6 +250,9 @@ export default defineComponent({
       if (dt < 0 || dt > SURVEY_THRESHOLD_MS) return null
 
       return this.session?.surveys?.[0]?.url ?? null
+    },
+    discordUrl(): string | null {
+      return this.session?.metadata?.discord_url as string
     },
   },
   methods: {

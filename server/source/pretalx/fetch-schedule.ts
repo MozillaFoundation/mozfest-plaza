@@ -406,7 +406,7 @@ function convertState(input: PretalxSubmission["state"]) {
   return "draft";
 }
 
-const publicDomains = [/^https:\/\/discord.com\/channels\/.*$/];
+const publicDomains = [/^https:\/\/discord.com\/.*$/];
 
 function upsertSession(
   ctx: ConvertContext,

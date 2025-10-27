@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.1.2...v5.2.0) (2025-10-27)
+
+- Add fa-sharp-solid sparkles icon
+- Show custom discord links early
+
 ## [5.1.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.1.0...v5.1.2) (2025-10-26)
 
 - Use moz-hosted CDN for map assets

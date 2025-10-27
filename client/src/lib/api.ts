@@ -264,6 +264,7 @@ export class StaticApiClient
 export interface MozSession extends Session {
   recommendations?: LocalisedLink[]
   surveys?: LocalisedLink[]
+  metadata?: Record<string, unknown>
 }
 
 export interface ProfileToken {

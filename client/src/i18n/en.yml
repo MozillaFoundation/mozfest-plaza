@@ -170,6 +170,7 @@ deconf:
       recommendationsInfo: ''
       share: Share this session
       feedback: How was this session?
+      discordButton: Join the session discussion
 
   interestSection:
     message: Register your interest
