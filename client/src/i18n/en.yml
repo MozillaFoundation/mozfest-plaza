@@ -157,14 +157,14 @@ deconf:
     linkPreview: The session links will be available 15 minutes before the start time
     actions: Actions
     logIn: Log in below with your ticket email to create your own personalized schedule. Click 'Add to My Schedule' once you're logged in.
-    speakers: Facilitators
+    speakers: Hosts
     zoomLink: Zoom Room
     teamsLink: Teams Meeting
     miroLink: Miro Board
     generalLink: Link
     mozfest:
       backButton: Back to Schedule
-      externalLinks: Please be aware the Facilitator for this session is using a third-party service not officially being used at MozFest.
+      externalLinks: Please be aware that this session is using a third-party service not officially being used at MozFest.
       logIn: Log in
       recommendations: 'Recommendations:'
       recommendationsInfo: ''
