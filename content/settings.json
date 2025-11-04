@@ -65,8 +65,8 @@
     "visible": true
   },
   "expo": {
-    "enabled": false,
-    "visible": false
+    "enabled": true,
+    "visible": true
   },
 
   "navigation": {
