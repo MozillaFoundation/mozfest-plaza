@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## next
+
+- Fix MapIcon on a dark background
+
 ## [5.2.3](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.2.2...v5.2.3) (2025-11-05)
 
 - Re-integrate web-push admin dashboard
