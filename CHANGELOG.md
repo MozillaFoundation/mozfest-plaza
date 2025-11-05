@@ -2,16 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [5.2.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.2.0...v5.2.1) (2025-11-05)
+## [5.2.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.2.0...v5.2.1) (2025-11-05)
+
+- Add maps copy to top of map view
+
+## [5.2.1](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.2.0...v5.2.1) (2025-11-05)
 
 - Update map page content
+- Update "hosts" copy
 
-## [5.2.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.1.2...v5.2.0) (2025-10-27)
+## [5.2.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.1.2...v5.2.0) (2025-10-27)
 
 - Add fa-sharp-solid sparkles icon
 - Show custom discord links early
 
-## [5.1.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.1.0...v5.1.2) (2025-10-26)
+## [5.1.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.1.0...v5.1.2) (2025-10-26)
 
 - Use moz-hosted CDN for map assets
 
@@ -19,17 +24,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 - Fix build
 
-## [5.1.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.0.0...v5.1.0) (2025-10-26)
+## [5.1.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.0.0...v5.1.0) (2025-10-26)
 
 - New map page template
 - Re-integrate web-push with deconf/api-server
 - Re-integrate google oauth with deconf/api-server
 
-## [5.0.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/5.0.0...v5.0.0) (???)
+## [5.0.0](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.0.0...v5.0.0) (???)
 
 Missing entry
 
-## [4.2.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/4.2.1...v4.2.2) (2024-11-18)
+## [4.2.2](https://github.com/MozillaFoundation/mozfest-plaza/compare/v4.2.1...v4.2.2) (2024-11-18)
 
 - Improve survey presentation
 

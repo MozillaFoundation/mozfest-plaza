@@ -1,13 +1,11 @@
 <template>
-  <div class="mapTemplate appLayout-main section">
-    <!-- <section class="section"> -->
-    <!-- <BoxContent>
-          <IframeEmbed
-            src="https://www.google.com/maps/d/embed?mid=1DL8-SHjXdL9TRRtAEP3gCQbx9IgyucM&ehbc=2E312F&noprof=1"
-          />
-        </BoxContent> -->
+  <div class="mapTemplate appLayout-main section flow">
+    <BoxContent>
+      <div class="content">
+        <MozApiContent :slug="config.name" />
+      </div>
+    </BoxContent>
 
-    <!-- <BoxContent> -->
     <LibreMap
       :center="config.options.center"
       :source="config.options.tiles"
@@ -16,8 +14,6 @@
       :bounds="config.options.bounds"
       @setup="setupMap"
     />
-    <!-- </BoxContent> -->
-    <!-- </section> -->
   </div>
 </template>
 
@@ -27,6 +23,8 @@ import { defineComponent, type PropType } from 'vue'
 
 import LibreMap from '@/components/LibreMap.vue'
 import type { MapOptions, PageConfig } from '@/lib/module.js'
+import { BoxContent } from '@openlab/deconf-ui-toolkit'
+import MozApiContent from '@/components/MozApiContent.vue'
 
 type Config = PageConfig<string, MapOptions>
 
@@ -50,7 +48,7 @@ async function addIcon(map: maplibre.Map, icon: string) {
 }
 
 export default defineComponent({
-  components: { LibreMap },
+  components: { LibreMap, BoxContent, MozApiContent },
   props: {
     config: { type: Object as PropType<Config>, required: true },
   },
@@ -168,6 +166,18 @@ export default defineComponent({
 .mapTemplate .libreMap {
   // margin: 3rem 3rem;
   flex: 1;
+}
+
+.mapTemplate .content details {
+  border: none;
+  padding: 0;
+}
+
+.mapTemplate .content summary {
+  margin-inline: -1em;
+  padding-inline: 1em;
+  margin-block-start: -1em;
+  padding-block-start: 1em;
 }
 
 @media (max-width: 640px) {

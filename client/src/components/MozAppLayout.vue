@@ -23,7 +23,9 @@
 
     <template v-slot:main>
       <slot></slot>
-      <MozPageFooter />
+      <slot name="footer">
+        <MozPageFooter />
+      </slot>
     </template>
   </AppLayout>
 </template>
@@ -49,7 +51,6 @@ import ArtsIcon from '@/icons/ArtsIcon.vue'
 import ExpoIcon from '@/icons/ExpoIcon.vue'
 import SearchIcon from '@/icons/SearchIcon.vue'
 import HelpDeskIcon from '@/icons/HelpDeskIcon.vue'
-import MapsIcon from '@/icons/MapsIcon.vue'
 import PlazaIcon from '@/icons/PlazaIcon.vue'
 import ScheduleIcon from '@/icons/ScheduleIcon.vue'
 import MyScheduleIcon from '@/icons/MyScheduleIcon.vue'
