@@ -1,6 +1,6 @@
 {
   "name": "@openlab/mozfest-server",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "type": "module",
   "scripts": {
     "dev": "tsx source/main.ts",
