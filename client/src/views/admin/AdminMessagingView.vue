@@ -15,6 +15,7 @@ interface AdminStats {
 const updated = ref(new Date())
 const stats = ref<AdminStats | null>()
 const timerId = ref<number>()
+const output = ref<unknown>('')
 
 const fullDate = new Intl.DateTimeFormat(undefined, {
   dateStyle: 'short',
@@ -42,18 +43,20 @@ const message = ref({
 })
 
 async function sendTestMessage() {
-  const success = await deconfClient.admin.testWebPush(message.value)
-  if (!success) alert('Failed to send test message')
-  alert('Test message sent')
+  output.value = 'Sending…'
+  const result = await deconfClient.admin.testWebPush(message.value)
+  output.value = result ?? 'Something went wrong'
   await fetchData()
 }
 async function sendFullMessage() {
   if (!confirm('Are you sure?')) return
-  const success = await deconfClient.admin.sendWebPush(message.value)
-  if (!success) alert('Failed to send message')
-  else {
+
+  output.value = 'Sending…'
+  const result = await deconfClient.admin.sendWebPush(message.value)
+  output.value = result ?? 'Something went wrong'
+
+  if (result) {
     message.value = { title: '', body: '', url: location.origin }
-    alert('Message sent')
   }
   await fetchData()
 }
@@ -134,6 +137,11 @@ async function sendFullMessage() {
           <div class="control">
             <input type="url" id="url" class="input" v-model="message.url" />
           </div>
+        </div>
+
+        <div class="field">
+          <label for="output" class="label">Result</label>
+          <pre id="output">{{ output }}</pre>
         </div>
 
         <p>A test message will go to any of your registered devices</p>

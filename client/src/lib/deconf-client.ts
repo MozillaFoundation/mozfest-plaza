@@ -13,7 +13,6 @@ export interface DeconfClientOptions extends FetchClientOptions {
   conferenceId?: number
 }
 
-// TODO: this is a modified copy of the server version
 export class DeconfClient extends FetchClient {
   #conferenceId: number | undefined
 
@@ -173,6 +172,11 @@ export interface AdminWebPushMessage {
   url: string
 }
 
+export interface AdminWebPushDelivery {
+  devices: number
+  sent: number
+}
+
 export class AdminClient {
   deconf: DeconfClient
   constructor(deconf: DeconfClient) {
@@ -185,15 +189,19 @@ export class AdminClient {
     )
   }
 
-  testWebPush(message: AdminWebPushMessage) {
-    return this.deconf.ok(
+  testWebPush(
+    message: AdminWebPushMessage
+  ): Promise<AdminWebPushDelivery | null> {
+    return this.deconf.json(
       `admin/v1/conferences/${this.deconf.conferenceId}/web-push/test`,
       { method: 'POST', ...jsonBody(message) }
     )
   }
 
-  sendWebPush(message: AdminWebPushMessage) {
-    return this.deconf.ok(
+  sendWebPush(
+    message: AdminWebPushMessage
+  ): Promise<AdminWebPushDelivery | null> {
+    return this.deconf.json(
       `admin/v1/conferences/${this.deconf.conferenceId}/web-push/send`,
       { method: 'POST', ...jsonBody(message) }
     )

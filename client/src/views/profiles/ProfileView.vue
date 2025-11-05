@@ -12,7 +12,7 @@
           <router-link
             class="button is-primary"
             :to="calendarRoute"
-            v-if="settings?.features.calendarSync"
+            v-if="settings?.features.calendarSync || $dev.isVisible"
           >
             {{ $t('mozfest.profile.calendar') }}
           </router-link>
@@ -20,7 +20,7 @@
           <router-link
             class="button is-primary"
             :to="notificationsRoute"
-            v-if="settings?.features.webPush"
+            v-if="settings?.features.webPush || $dev.isVisible"
           >
             {{ $t('mozfest.profile.notifications') }}
           </router-link>
@@ -28,7 +28,7 @@
           <router-link
             class="button is-primary"
             :to="authRoute"
-            v-if="settings?.features.appCodes"
+            v-if="settings?.features.appCodes || $dev.isVisible"
           >
             {{ $t('mozfest.profile.auth') }}
           </router-link>

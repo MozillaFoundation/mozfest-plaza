@@ -18,7 +18,6 @@
             Admin dashboard →
           </RouterLink>
         </div>
-        <PretalxDevBlock class="devControl-block" :dev-plugin="$dev" />
       </template>
     </DevControl>
     <AppDialog :dialog-plugin="$dialog" />
@@ -36,7 +35,6 @@ import {
 import type { RouteLocationRaw } from 'vue-router'
 
 import MozApiError from '@/components/MozApiError.vue'
-import PretalxDevBlock from '@/components/PretalxDevBlock.vue'
 
 import { ExtraRoutes, mapApiState, StorageKey } from '@/lib/module'
 import { setLocale } from '@/i18n/module'
@@ -52,7 +50,6 @@ export default defineComponent({
     DevControl,
     MozApiError,
     AppDialog,
-    PretalxDevBlock,
   },
   data(): Data {
     return { timerId: null }

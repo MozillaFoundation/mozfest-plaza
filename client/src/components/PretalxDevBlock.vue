@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { FontAwesomeIcon, Stack } from '@openlab/deconf-ui-toolkit'
-import { mapApiState, mozClient } from '@/lib/module'
+import { mapApiState, mozClient } from '@/lib/module.js'
 
 export interface _Data {
   status: PretalxStatus | null
