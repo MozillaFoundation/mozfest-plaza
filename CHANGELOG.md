@@ -2,9 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## next
+## 5.2.4
 
 - Fix MapIcon on a dark background
+- Override flags if you are an admin
 
 ## [5.2.3](https://github.com/MozillaFoundation/mozfest-plaza/compare/v5.2.2...v5.2.3) (2025-11-05)
 
