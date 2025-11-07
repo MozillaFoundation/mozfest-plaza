@@ -12,7 +12,7 @@
           <router-link
             class="button is-primary"
             :to="calendarRoute"
-            v-if="settings?.features.calendarSync || $dev.isVisible"
+            v-if="settings?.features.calendarSync || flagOverride"
           >
             {{ $t('mozfest.profile.calendar') }}
           </router-link>
@@ -20,7 +20,7 @@
           <router-link
             class="button is-primary"
             :to="notificationsRoute"
-            v-if="settings?.features.webPush || $dev.isVisible"
+            v-if="settings?.features.webPush || flagOverride"
           >
             {{ $t('mozfest.profile.notifications') }}
           </router-link>
@@ -28,7 +28,7 @@
           <router-link
             class="button is-primary"
             :to="authRoute"
-            v-if="settings?.features.appCodes || $dev.isVisible"
+            v-if="settings?.features.appCodes || flagOverride"
           >
             {{ $t('mozfest.profile.auth') }}
           </router-link>
@@ -89,6 +89,9 @@ export default defineComponent({
     },
     authRoute(): RouteLocationRaw {
       return { name: ExtraRoutes.ProfileAuth }
+    },
+    flagOverride() {
+      return this.$dev.isVisible || this.user?.user_roles?.includes('admin')
     },
   },
   mounted() {
