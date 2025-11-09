@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 5.2.5
+
+- Don't add discord links to sessions, only add them to the metadata
+
 ## 5.2.4
 
 - Fix MapIcon on a dark background

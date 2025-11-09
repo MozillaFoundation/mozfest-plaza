@@ -406,7 +406,7 @@ function convertState(input: PretalxSubmission["state"]) {
   return "draft";
 }
 
-const publicDomains = [/^https:\/\/discord.com\/.*$/];
+const discordDomains = [/^https:\/\/discord.com\/.*$/];
 
 function upsertSession(
   ctx: ConvertContext,
@@ -432,6 +432,16 @@ function upsertSession(
 
   // Generate session links for each resource
   for (const resource of submission.resources) {
+    // Store the pre-session discord in metadata for the front-end to display
+    // before the session goes live & don't add it as a regular link
+    if (
+      !extraMetadata.discord_url &&
+      discordDomains.some((regex) => regex.test(resource.resource))
+    ) {
+      extraMetadata.discord_url = resource.resource;
+      continue;
+    }
+
     ctx.data.sessionLinks.push({
       id: resource.resource,
       session_id: id,
@@ -448,15 +458,6 @@ function upsertSession(
       previewExtensions.some((ex) => ex.test(resource.resource))
     ) {
       extraMetadata.preview_image = resource.resource;
-    }
-
-    // Store the pre-session discord in metadata for the front-end to display
-    // before the session goes live
-    if (
-      !extraMetadata.discord_url &&
-      publicDomains.some((regex) => regex.test(resource.resource))
-    ) {
-      extraMetadata.discord_url = resource.resource;
     }
   }
 
